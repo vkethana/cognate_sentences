@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Sentence Generator</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wikipedia Sentence Generator</h1>
+    <form method="post" action="/generate_sentence">
+        <button type="submit">Generate Sentence</button>
+    </form>
+    {% if sentence %}
+        <h2>Sentence:</h2>
+        <p>{{ sentence | safe }}</p>
+    {% endif %}
+    
+    {% if word_definitions %}
+        <h2>Unfamiliar Word Definitions</h2>
+        <table border="1">
+            <tr>
+                <th>Word</th>
+                <th>Definition</th>
+            </tr>
+            {% for word, definition in word_definitions.items() %}
+                <tr>
+                    <td>{{ word }}</td>
+                    <td>{{ definition }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
+

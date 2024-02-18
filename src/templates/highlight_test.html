@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Highlighter</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Highlighter</h1>
+    <form method="post" action="/">
+        <label for="sentence">Enter a Sentence:</label>
+        <input type="text" name="sentence" id="sentence" required>
+        <br>
+        <label for="words_to_highlight">Words to Highlight (comma-separated):</label>
+        <input type="text" name="words_to_highlight" id="words_to_highlight">
+        <button type="submit">Highlight Words</button>
+    </form>
+    
+    {% if sentence %}
+        <h2>Original Sentence:</h2>
+        <p>{{ sentence }}</p>
+    {% endif %}
+
+    {% if highlighted_sentence %}
+        <h2>Highlighted Sentence:</h2>
+        <p>{{ highlighted_sentence | safe }}</p>
+    {% endif %}
+</body>
+</html>

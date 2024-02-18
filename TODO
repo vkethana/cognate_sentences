@@ -1,0 +1,16 @@
+2023-02-05
+
+- File structure has been re-ordered but there is still a fundamental bug with how the program reads a set of sentences and checks for cognates
+- Fix HTML highlighting bug
+- Data structures are passed in very confusing ways, make a set of clear standards for what data types each function should take. Add some abstraction to make the code cleaner
+- Improve interface.
+- The sentences should gradually get harder
+- Use multilingual embeddings to speed up translation process
+- Make translations more permissive, so fewer false negatives
+
+2023-02-06
+
+- Fundamental code structure is now working, but need to speed it up a lot:
+- Optimization techniques:
+    1) Use LLM to generate sentences or pull them from Dictionary site
+    2) Speed up cognate detection using word embeddings, not dictionary lookup

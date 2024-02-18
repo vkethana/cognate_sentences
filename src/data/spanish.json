@@ -1,0 +1,529 @@
+[
+    {
+        "meta": {
+            "id": "test:1",
+            "uuid": "1be25655-187a-4e3a-949e-d0ec3e30c9ba",
+            "lang": "en",
+            "sort": "2624229000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "test",
+                "tested",
+                "testing",
+                "tests",
+                "testability",
+                "testabilities",
+                "testable",
+                "test the waters",
+                "test the water"
+            ],
+            "offensive": false
+        },
+        "hom": 1,
+        "hwi": {
+            "hw": "test",
+            "prs": [
+                {
+                    "mw": "\u02c8t\u025bst",
+                    "sound": {
+                        "audio": "test0001"
+                    }
+                }
+            ]
+        },
+        "fl": "transitive verb",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|examinar} (estudiantes, etc.), {a_link|evaluar} (conocimientos, etc.)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}hacerle un an\u00e1lisis a, hacerle una prueba a, someter a pruebas "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "to test someone for drugs/cancer",
+                                                "tr": "hacerle a alguien pruebas de drogas/c\u00e1ncer"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|analizar} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "to test soil for lead",
+                                                "tr": "analizar tierra para detectar la presencia de plomo"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "4",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|probar}, {a_link|experimentar} (productos, etc.)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "5",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{sx|challenge||}, {sx|try||} {bc}{a_link|poner a prueba} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "you're testing my patience",
+                                                "tr": "est\u00e1s poniendo a prueba mi paciencia"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            },
+            {
+                "vd": "intransitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}hacer pruebas"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "examinar (estudiantes, etc.), evaluar (conocimientos, etc.)",
+            "hacerle un an\u00e1lisis a, hacerle una prueba a, someter a pruebas",
+            "analizar"
+        ]
+    },
+    {
+        "meta": {
+            "id": "test:2",
+            "uuid": "17964912-bfcd-4a36-b8fa-0b59703d33d0",
+            "lang": "en",
+            "sort": "2624230000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "test",
+                "tests"
+            ],
+            "offensive": false
+        },
+        "hom": 2,
+        "hwi": {
+            "hw": "test"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|prueba} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ],
+                                    [
+                                        "text",
+                                        ", {a_link|examen} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ],
+                                    [
+                                        "text",
+                                        ", test "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "to put to the test",
+                                                "tr": "poner a prueba"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "prueba, examen, test"
+        ]
+    },
+    {
+        "meta": {
+            "id": "test",
+            "uuid": "a2ace6d2-df9f-476b-a05c-0d4b648582bc",
+            "lang": "es",
+            "sort": "2621761000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "test"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "test"
+        },
+        "fl": "masculine noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}test"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "test"
+        ]
+    },
+    {
+        "meta": {
+            "id": "test tube",
+            "uuid": "197a9186-65ba-4fa4-b7d3-32134ba94eb7",
+            "lang": "en",
+            "sort": "2624237000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "test tube"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "test tube"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|probeta} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ],
+                                    [
+                                        "text",
+                                        ", {a_link|tubo} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ],
+                                    [
+                                        "text",
+                                        " de ensayo"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "probeta, tubo de ensayo"
+        ]
+    },
+    {
+        "meta": {
+            "id": "acid test",
+            "uuid": "da960624-2e73-4671-9c06-aa9f5c5a2708",
+            "lang": "en",
+            "sort": "2600216000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "acid test"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "acid test"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|prueba} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ],
+                                    [
+                                        "text",
+                                        " de fuego"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "prueba de fuego"
+        ]
+    },
+    {
+        "meta": {
+            "id": "blood test",
+            "uuid": "fee3a927-5241-4cad-8cf7-0e6bde057055",
+            "lang": "en",
+            "sort": "2602482000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "blood test"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "blood test"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|an\u00e1lisis} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ],
+                                    [
+                                        "text",
+                                        " de sangre"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "an\u00e1lisis de sangre"
+        ]
+    },
+    {
+        "meta": {
+            "id": "litmus test",
+            "uuid": "97a28e62-ae23-44fa-ac98-14ed53d88176",
+            "lang": "en",
+            "sort": "2614246000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "litmus test"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "litmus test"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|prueba} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ],
+                                    [
+                                        "text",
+                                        " {a_link|decisiva}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "prueba decisiva"
+        ]
+    },
+    {
+        "meta": {
+            "id": "Pap smear",
+            "uuid": "d8da00ab-7605-4622-8c2a-2547065785be",
+            "lang": "en",
+            "sort": "2617326000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "pap smear",
+                "papanicolaou smear",
+                "papanicolaou test",
+                "pap test"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Pap smear",
+            "prs": [
+                {
+                    "mw": "\u02c8p\u00e6p-",
+                    "sound": {
+                        "audio": "papsme01"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|Papanicolau} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "Papanicolau"
+        ]
+    }
+]
