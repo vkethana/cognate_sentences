@@ -14,3 +14,6 @@
 - Optimization techniques:
     1) Use LLM to generate sentences or pull them from Dictionary site
     2) Speed up cognate detection using word embeddings, not dictionary lookup
+
+2023-02-18
+- App is almost working, need to run one last Patch command
