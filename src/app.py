@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from get_article import get_article
-from src.cognate_analysis import cognate_analysis, sentence_to_word_list
+from cognate_analysis import cognate_analysis, sentence_to_word_list
 import re
 
 app = Flask(__name__)

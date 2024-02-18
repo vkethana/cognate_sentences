@@ -4,8 +4,8 @@ import wikipedia
 import re
 import json
 import random
-from src.cognate_analysis import SOURCE_LANG, TARGET_LANG
-from src.cognate_analysis import get_english_translation
+from cognate_analysis import SOURCE_LANG, TARGET_LANG
+from cognate_analysis import get_english_translation
 
 def get_wikipedia(language_code=TARGET_LANG, char_cutoff=200):
     """
