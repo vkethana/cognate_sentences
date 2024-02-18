@@ -164,7 +164,6 @@ secrets/
 secret/*
 secret/
 secrets/*
-.idea2
 .idea
 .idea/*
-.idea2/
+.pyc
