@@ -164,5 +164,7 @@ secrets/
 secret/*
 secret/
 secrets/*
-.idea/*
+.idea2
 .idea
+.idea/*
+.idea2/

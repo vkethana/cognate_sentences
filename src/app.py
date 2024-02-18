@@ -31,7 +31,7 @@ def index():
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
     sentence = get_article()
-    #sentence = "Star Wars: Return of the Jedi, conocido en castellano como. El profesor de la HOUSE OF RAVENCLAW puede hablar el japones y el ingles"
+    #sentence = "Star Wars: Return of the Jedi, conocido en español como... El profesor puede hablar el japones y el ingles"
     print("Successfully grabbed article sentences = ", sentence)
     word_list = sentence_to_word_list(sentence, trim_small_words=True)
     cognates, non_cognates, ratio = cognate_analysis(word_list)
