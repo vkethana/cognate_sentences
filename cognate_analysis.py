@@ -14,14 +14,17 @@ def get_edit_ratio(a, b):
     # print(str(a) + " and " + str(b) + " have edit ratio " + str(edit_ratio))
     return edit_ratio
 
-def get_english_translation(word, src_lang, target_lang):
+def get_target_lang_translation(word, src_lang, target_lang):
     # assert(variable word does not contain more than 1 word)
     # return translator.translate(word, src=target_lang, dest=src_lang).text
-    return GoogleTranslator(source=src_lang, target=target_lang).translate(word)
+    translation = GoogleTranslator(source=target_lang, target=src_lang).translate(word)
+    print(word, " became ", translation, " OK?")
+    print(src_lang, target_lang)
+    return translation
     #return translator.translate(word, lang_tgt=lang_tgt, lang_src=lang_src)
 
 def get_cognate(a, src_lang, target_lang):
-    b = get_english_translation(a, src_lang, target_lang)
+    b = get_target_lang_translation(a, src_lang, target_lang)
     edit_ratio = get_edit_ratio(a, b)
     #print("Does " + a + " equal " + b + "?")
     return b if edit_ratio <= 0.60 else None
@@ -65,7 +68,7 @@ def cognate_analysis(words, src_lang, target_lang):
             score += 1
         else:
             # otherwise add to list of english words
-            english_translation = get_english_translation(word, src_lang, target_lang).replace(' ', '').lower()
+            english_translation = get_target_lang_translation(word, src_lang, target_lang).replace(' ', '').lower()
             non_cognates_with_translation[word] = english_translation
     # return the 2 dicts, and score ratio
     return cognates_with_translation, non_cognates_with_translation, score/total

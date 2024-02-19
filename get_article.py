@@ -4,7 +4,7 @@ import wikipedia
 import re
 import json
 import random
-from cognate_analysis import get_english_translation
+from cognate_analysis import get_target_lang_translation
 
 def get_wikipedia(language_code, char_cutoff=200):
     """
@@ -103,7 +103,7 @@ def get_webster(src_lang, target_lang):
 
     print("asdfsadf")
     random_sentence = random.choice(english_sentences);
-    target_lang_translation = get_english_translation(random_sentence, src_lang, target_lang)
+    target_lang_translation = get_target_lang_translation(random_sentence, target_lang, src_lang)
     print("Grabbed sentence = ", random_sentence, " and turned it into target language ",  target_lang_translation)
     return target_lang_translation
 
@@ -121,7 +121,7 @@ def clean_article(article_text):
     cleaned_text = article_text.replace('\n', '')
 
     # Remove text within brackets using regular expressions
-    cleaned_text = re.sub(r'[\[\(].*?[\]\)]', '', cleaned_text)
+    #cleaned_text = re.sub(r'[\[\(].*?[\]\)]', '', cleaned_text)
 
     return cleaned_text
 

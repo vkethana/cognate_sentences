@@ -44,7 +44,7 @@ def generate_sentence():
     print("old_sentence=", sentence)
     sentence = highlight_words_in_sentence(sentence, list(cognates.keys()))
     print("new_sentence=", sentence)
-
+    print("non_cognates=",non_cognates)
     return render_template('index.html', sentence=sentence, word_definitions=non_cognates)
 
 # Handle requests to /generate_sentence without POST method
