@@ -1,11 +1,11 @@
 from Levenshtein import distance as lev_distance
-from google_trans_new import google_translator
+from deep_translator import GoogleTranslator
 import re
 
 SOURCE_LANG = 'en'
 TARGET_LANG = 'fr'
 
-translator = google_translator()
+#translator = google_translator()
 def get_edit_ratio(a, b):
     # the levenshtein distance (minimum number of edit operations) between the two words.
     # lower is better, as it implies the two words are cognate
@@ -22,7 +22,8 @@ def get_edit_ratio(a, b):
 def get_english_translation(word, lang_tgt=SOURCE_LANG, lang_src=TARGET_LANG):
     # assert(variable word does not contain more than 1 word)
     # return translator.translate(word, src=target_lang, dest=src_lang).text
-    return translator.translate(word, lang_tgt=lang_tgt, lang_src=lang_src)
+    return GoogleTranslator(source=lang_src, target=lang_tgt).translate(word)
+    #return translator.translate(word, lang_tgt=lang_tgt, lang_src=lang_src)
 
 def get_cognate(a):
     b = get_english_translation(a)
