@@ -1,10 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from get_article import get_article
 from cognate_analysis import cognate_analysis, sentence_to_word_list
 import re
 
 src_lang = 'en'
 target_lang = 'fr'
+language_codes = {
+    'English': 'en',
+    'Spanish': 'es',
+    'French': 'fr',
+    'Italian': 'it',
+    'Dutch': 'nl',    # Dutch
+    'German': 'de',   # German
+    'Swedish': 'sv',  # Swedish
+    'Danish': 'da'    # Danish
+}
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -27,6 +37,27 @@ def highlight_words_in_sentence(sentence, words_to_highlight):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+# Route to update source_lang and target_lang variables
+@app.route('/update_lang', methods=['POST'])
+def update_lang():
+    global src_lang, target_lang  # Use global keyword to access and modify global variables
+
+    # Retrieve selected language values from the request
+    src_lang = request.form.get('src_lang')
+    target_lang = request.form.get('target_lang')
+
+    #assert((src_lang in language_codes.keys()) or (src_lang in language_codes.values()))
+    #assert((target_lang in language_codes.keys()) or (target_lang in language_codes.values()))
+
+    print("Source and Target Language are: ", src_lang, target_lang)
+    src_lang = language_codes[src_lang]
+    target_lang = language_codes[target_lang]
+
+    # Optionally, you can perform validation or additional processing here
+
+    # Return a response indicating success
+    return jsonify({'status': 'success', 'src_lang': src_lang, 'target_lang': target_lang})
 
 
 @app.route('/generate_sentence', methods=['POST'])

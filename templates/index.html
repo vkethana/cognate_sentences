@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikipedia Sentence Generator</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>Cognate Sentence Generator</h1>
@@ -19,7 +20,29 @@
       </form>
     </section>
 
-    <section class="second-section">
+    <section class="gap-section">
+      <h2>Settings</h2>
+      <form action="/result" method="post">
+          <label for="target_lang">Target Language:</label>
+          <select id="target_lang" name="target_lang">
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+              <option value="french">French</option>
+              <!-- Add more options as needed -->
+          </select>
+          <br>
+          <label for="src_lang">Source Language:</label>
+          <select id="src_lang" name="src_lang">
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+              <option value="french">French</option>
+              <!-- Add more options as needed -->
+          </select>
+          <br>
+          <input type="submit" value="Submit">
+      </form>
+    </section>
+    <section class="gap-section">
     {% if word_definitions %}
         <h2>Unfamiliar Word Definitions</h2>
         <table border="1">
@@ -36,6 +59,32 @@
         </table>
     {% endif %}
     </section>
+    <script>
+        // Function to update backend variables
+        function updateBackendVariables() {
+            var target_lang = $('#target_lang').val();
+            var src_lang = $('#src_lang').val();
+            
+            $.ajax({
+                url: '/update_lang',
+                method: 'POST',
+                data: { target_lang: targetLang, src_lang: sourceLang },
+                success: function(data) {
+                    console.log('Backend variables updated successfully:', data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error updating backend variables:', error);
+                }
+            });
+        }
+
+        // Bind change event to the dropdowns
+        $(document).ready(function() {
+            $('#target_lang, #source_lang').change(function() {
+                updateBackendVariables();
+            });
+        });
+    </script>
 </body>
 </html>
 

@@ -20,7 +20,7 @@ h4 {
 .highlight {
 	background-color: orange;
 }
-body .friendly-button {
+.friendly-button {
     padding: 10px 20px;
     font-size: 1.0em;
     border: none;
@@ -30,15 +30,18 @@ body .friendly-button {
     cursor: pointer;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-		text-align: center !important;
+		text-align: center;
 }
 
 .friendly-button:hover {
     background-color: #35a474;
 }
 
-.second-section {
+.gap-section {
     margin-top: 10%; /* Adjust this value to change the gap size */
     padding: 20px;
+}
+form {
+		text-align: center; 
 }
 
