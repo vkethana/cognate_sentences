@@ -18,8 +18,8 @@ def get_target_lang_translation(word, src_lang, target_lang):
     # assert(variable word does not contain more than 1 word)
     # return translator.translate(word, src=target_lang, dest=src_lang).text
     translation = GoogleTranslator(source=target_lang, target=src_lang).translate(word)
-    print(word, " became ", translation, " OK?")
-    print(src_lang, target_lang)
+    #print(word, " became ", translation, " OK?")
+    #print(src_lang, target_lang)
     return translation
     #return translator.translate(word, lang_tgt=lang_tgt, lang_src=lang_src)
 
@@ -63,7 +63,7 @@ def cognate_analysis(words, src_lang, target_lang):
             # add to dictionary
             cognate = cognate.replace(' ', '').lower()
             # print out
-            print("Cognate detected:", word, "=", cognate)
+            #print("Cognate detected:", word, "=", cognate)
             cognates_with_translation[word] = cognate
             score += 1
         else:

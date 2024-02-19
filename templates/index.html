@@ -21,31 +21,9 @@
     </section>
 
     <section class="gap-section">
-      <h2>Settings</h2>
-      <form action="/result" method="post">
-          <label for="target_lang">Target Language:</label>
-          <select id="target_lang" name="target_lang">
-              <option value="english">English</option>
-              <option value="spanish">Spanish</option>
-              <option value="french">French</option>
-              <!-- Add more options as needed -->
-          </select>
-          <br>
-          <label for="src_lang">Source Language:</label>
-          <select id="src_lang" name="src_lang">
-              <option value="english">English</option>
-              <option value="spanish">Spanish</option>
-              <option value="french">French</option>
-              <!-- Add more options as needed -->
-          </select>
-          <br>
-          <input type="submit" value="Submit">
-      </form>
-    </section>
-    <section class="gap-section">
     {% if word_definitions %}
         <h2>Unfamiliar Word Definitions</h2>
-        <table border="1">
+        <table border="1" class="center">
             <tr>
                 <th>Word</th>
                 <th>Definition</th>
@@ -59,16 +37,40 @@
         </table>
     {% endif %}
     </section>
+
+    <section>
+      <h2>Settings</h2>
+      <form action="/result" method="post">
+        <label for="src_lang">Select Source Language:</label>
+        <select id="src_lang" name="src_lang">
+            {% for lang, code in language_codes.items() %}
+                <option value="{{ code }}" {% if code == src_lang %} selected {% endif %}>{{ lang }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="target_lang">Select Target Language:</label>
+        <select id="target_lang" name="target_lang">
+            {% for lang, code in language_codes.items() %}
+                <option value="{{ code }}" {% if code == target_lang %} selected {% endif %}>{{ lang }}</option>
+            {% endfor %}
+        </select>
+      </form>
+    </section>
+
     <script>
         // Function to update backend variables
         function updateBackendVariables() {
-            var target_lang = $('#target_lang').val();
-            var src_lang = $('#src_lang').val();
+            var targetLangSelect = document.getElementById("target_lang");
+            var srcLangSelect = document.getElementById("src_lang");
+
+            var target_lang = targetLangSelect.options[targetLangSelect.selectedIndex].value;
+            var src_lang = srcLangSelect.options[srcLangSelect.selectedIndex].value;
+            console.log("We have data", target_lang, " and ", src_lang);
             
             $.ajax({
                 url: '/update_lang',
                 method: 'POST',
-                data: { target_lang: targetLang, src_lang: sourceLang },
+                data: { target_lang: target_lang, src_lang: src_lang },
                 success: function(data) {
                     console.log('Backend variables updated successfully:', data);
                 },
@@ -80,7 +82,8 @@
 
         // Bind change event to the dropdowns
         $(document).ready(function() {
-            $('#target_lang, #source_lang').change(function() {
+            $('#target_lang, #src_lang').change(function() {
+                console.log("SDFDAF")
                 updateBackendVariables();
             });
         });

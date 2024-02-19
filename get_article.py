@@ -98,10 +98,10 @@ def get_webster(src_lang, target_lang):
     cntr = 0
     # Print the extracted English sentences
     for sentence in english_sentences:
-        print(str(cntr) + ": " + sentence)
+        #print(str(cntr) + ": " + sentence)
         cntr += 1
 
-    print("asdfsadf")
+    #print("asdfsadf")
     random_sentence = random.choice(english_sentences);
     target_lang_translation = get_target_lang_translation(random_sentence, target_lang, src_lang)
     print("Grabbed sentence = ", random_sentence, " and turned it into target language ",  target_lang_translation)

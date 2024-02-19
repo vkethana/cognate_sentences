@@ -10,10 +10,10 @@ language_codes = {
     'Spanish': 'es',
     'French': 'fr',
     'Italian': 'it',
-    'Dutch': 'nl',    # Dutch
-    'German': 'de',   # German
-    'Swedish': 'sv',  # Swedish
-    'Danish': 'da'    # Danish
+    'Dutch': 'nl',
+    'German': 'de',
+    'Swedish': 'sv',
+    'Danish': 'da'
 }
 
 app = Flask(__name__, static_folder="templates/static")
@@ -36,7 +36,7 @@ def highlight_words_in_sentence(sentence, words_to_highlight):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', language_codes=language_codes, src_lang=src_lang, target_lang=target_lang)
 
 # Route to update source_lang and target_lang variables
 @app.route('/update_lang', methods=['POST'])
@@ -51,8 +51,8 @@ def update_lang():
     #assert((target_lang in language_codes.keys()) or (target_lang in language_codes.values()))
 
     print("Source and Target Language are: ", src_lang, target_lang)
-    src_lang = language_codes[src_lang]
-    target_lang = language_codes[target_lang]
+    #src_lang = language_codes[src_lang]
+    #target_lang = language_codes[target_lang]
 
     # Optionally, you can perform validation or additional processing here
 
@@ -64,19 +64,19 @@ def update_lang():
 def generate_sentence():
     sentence = get_article(src_lang, target_lang)
     #sentence = "Star Wars: Return of the Jedi, conocido en español como... El profesor puede hablar el japones y el ingles"
-    print("Successfully grabbed article sentences = ", sentence)
+    #print("Successfully grabbed article sentences = ", sentence)
     word_list = sentence_to_word_list(sentence, trim_small_words=True)
     cognates, non_cognates, ratio = cognate_analysis(word_list, src_lang, target_lang)
 
     # cognates = list(cognates) # cognates needs to be a list format -- not a set -- for Flask to read it
-    print("Cognates=", cognates)
-    print("Cognates being passed into as list to Flask:", list(cognates.keys()))
-    print("Versus:", cognates.keys())
-    print("old_sentence=", sentence)
+    #print("Cognates=", cognates)
+    #print("Cognates being passed into as list to Flask:", list(cognates.keys()))
+    #print("Versus:", cognates.keys())
+    #print("old_sentence=", sentence)
     sentence = highlight_words_in_sentence(sentence, list(cognates.keys()))
-    print("new_sentence=", sentence)
-    print("non_cognates=",non_cognates)
-    return render_template('index.html', sentence=sentence, word_definitions=non_cognates)
+    #print("new_sentence=", sentence)
+    #print("non_cognates=",non_cognates)
+    return render_template('index.html', sentence=sentence, word_definitions=non_cognates, language_codes=language_codes, src_lang=src_lang, target_lang=target_lang)
 
 # Handle requests to /generate_sentence without POST method
 @app.route('/generate_sentence', methods=['GET'])
