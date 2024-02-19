@@ -8,15 +8,18 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body>
-    <h1>Wikipedia Sentence Generator</h1>
-    <form method="post" action="/generate_sentence">
-        <button type="submit">Generate Sentence</button>
-    </form>
-    {% if sentence %}
-        <h2>Sentence:</h2>
-        <p>{{ sentence | safe }}</p>
-    {% endif %}
-    
+    <h1>Cognate Sentence Generator</h1>
+    <section>
+      {% if sentence %}
+          <p>{{ sentence | safe }}</p>
+      {% endif %}
+      
+      <form align="center" method="post" action="/generate_sentence">
+      <button type="submit" class="friendly-button">Generate Sentence</button>
+      </form>
+    </section>
+
+    <section class="second-section">
     {% if word_definitions %}
         <h2>Unfamiliar Word Definitions</h2>
         <table border="1">
@@ -32,6 +35,7 @@
             {% endfor %}
         </table>
     {% endif %}
+    </section>
 </body>
 </html>
 

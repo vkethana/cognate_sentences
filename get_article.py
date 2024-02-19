@@ -4,10 +4,9 @@ import wikipedia
 import re
 import json
 import random
-from cognate_analysis import SOURCE_LANG, TARGET_LANG
 from cognate_analysis import get_english_translation
 
-def get_wikipedia(language_code=TARGET_LANG, char_cutoff=200):
+def get_wikipedia(language_code, char_cutoff=200):
     """
     Fetches a random sentence from a Wikipedia article in the specified language, limited by character count.
 
@@ -33,7 +32,7 @@ def get_wikipedia(language_code=TARGET_LANG, char_cutoff=200):
     random_sentence = sentences[0]
     return random_sentence
 
-def get_vikidia(language_code=TARGET_LANG):
+def get_vikidia(language_code):
     """
     Fetches a random article from Vikidia, the encyclopedia for children, in the specified language.
 
@@ -67,7 +66,7 @@ def get_webster_json(word):
     # incomplete for now
     pass
 
-def get_webster():
+def get_webster(src_lang, target_lang):
     # Read JSON data from file
     with open('data/learner.json', 'r') as file:
         json_data = file.read()
@@ -104,7 +103,7 @@ def get_webster():
 
     print("asdfsadf")
     random_sentence = random.choice(english_sentences);
-    target_lang_translation = get_english_translation(random_sentence, lang_src=SOURCE_LANG, lang_tgt=TARGET_LANG)
+    target_lang_translation = get_english_translation(random_sentence, src_lang, target_lang)
     print("Grabbed sentence = ", random_sentence, " and turned it into target language ",  target_lang_translation)
     return target_lang_translation
 
@@ -126,13 +125,13 @@ def clean_article(article_text):
 
     return cleaned_text
 
-def get_article(language_code=TARGET_LANG):
+def get_article(src_lang, target_lang):
     #article_text = get_vikidia(language_code).split()[:30]
     #article_text = " ".join(article_text)
 
-    article_text = get_webster()
+    article_text = get_webster(src_lang, target_lang)
 
     while (len(article_text.split()) < 6):
-        article_text = get_webster()
+        article_text = get_webster(src_lang, target_lang)
 
     return clean_article(article_text)

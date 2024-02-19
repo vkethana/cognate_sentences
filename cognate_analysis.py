@@ -2,10 +2,6 @@ from Levenshtein import distance as lev_distance
 from deep_translator import GoogleTranslator
 import re
 
-SOURCE_LANG = 'en'
-TARGET_LANG = 'fr'
-
-#translator = google_translator()
 def get_edit_ratio(a, b):
     # the levenshtein distance (minimum number of edit operations) between the two words.
     # lower is better, as it implies the two words are cognate
@@ -18,15 +14,14 @@ def get_edit_ratio(a, b):
     # print(str(a) + " and " + str(b) + " have edit ratio " + str(edit_ratio))
     return edit_ratio
 
-# 2. cognate tester
-def get_english_translation(word, lang_tgt=SOURCE_LANG, lang_src=TARGET_LANG):
+def get_english_translation(word, src_lang, target_lang):
     # assert(variable word does not contain more than 1 word)
     # return translator.translate(word, src=target_lang, dest=src_lang).text
-    return GoogleTranslator(source=lang_src, target=lang_tgt).translate(word)
+    return GoogleTranslator(source=src_lang, target=target_lang).translate(word)
     #return translator.translate(word, lang_tgt=lang_tgt, lang_src=lang_src)
 
-def get_cognate(a):
-    b = get_english_translation(a)
+def get_cognate(a, src_lang, target_lang):
+    b = get_english_translation(a, src_lang, target_lang)
     edit_ratio = get_edit_ratio(a, b)
     #print("Does " + a + " equal " + b + "?")
     return b if edit_ratio <= 0.60 else None
@@ -50,21 +45,27 @@ def sentence_to_word_list(sentence, trim_small_words = False):
     else:
         return word_list
 
-def cognate_analysis(words):
+def cognate_analysis(words, src_lang, target_lang):
     # Given sentence, split it into individual words, discard non-ASCII chars and retrun list of cognates
     total = len(words)
     score = 0
+    # Initialize empty dicts
     cognates_with_translation = dict()
     non_cognates_with_translation = dict()
+    # Iterate thru all words in sentence
     for word in words:
-        cognate = get_cognate(word)
+        # check if the word is a cognate
+        cognate = get_cognate(word, src_lang, target_lang)
         if cognate:
+            # add to dictionary
             cognate = cognate.replace(' ', '').lower()
+            # print out
             print("Cognate detected:", word, "=", cognate)
             cognates_with_translation[word] = cognate
             score += 1
         else:
-            english_translation = get_english_translation(word).replace(' ', '').lower()
+            # otherwise add to list of english words
+            english_translation = get_english_translation(word, src_lang, target_lang).replace(' ', '').lower()
             non_cognates_with_translation[word] = english_translation
-
+    # return the 2 dicts, and score ratio
     return cognates_with_translation, non_cognates_with_translation, score/total
