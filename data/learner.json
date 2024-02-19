@@ -134,19 +134,19 @@
                                                 "t": "a vision/hearing {it}test{/it} [=a test that shows how well you see/hear]"
                                             },
                                             {
-                                                "t": "a urine {it}test{/it} [=a test that examines a person's urine for evidence of disease or illegal drugs]"
+                                                "t": "a drug {it}test{/it} [=a test that looks for evidence of disease or illegal drugs]"
                                             },
                                             {
                                                 "t": "allergy {it}tests{/it} [=tests that show what you are allergic to]"
                                             },
                                             {
-                                                "t": "All applicants must pass a {phrase}drug test{/phrase}. [=a test that examines a person's blood or urine for evidence of illegal drugs]"
+                                                "t": "All applicants must pass a {phrase}drug test{/phrase}. [=a test that examines a person's blood for evidence of illegal drugs]"
                                             },
                                             {
                                                 "t": "The doctor will call you with the {phrase}test results{/phrase}."
                                             },
                                             {
-                                                "t": "They went to the drug store to buy a {phrase}pregnancy test{/phrase}. [=a device that reacts to a woman's urine in a way that shows whether or not she is pregnant]"
+                                                "t": "They went to the drug store to buy a {phrase}pregnancy test{/phrase}. [=a device that indicates whether or not an individual is pregnant]"
                                             },
                                             {
                                                 "t": "a {phrase}DNA test{/phrase} [=a test that examines DNA and that is used to identify someone or to show that people are relatives]"
@@ -553,7 +553,7 @@
                                                 "t": "The athletes knew that tournament officials would be {it}testing for{/it} (the presence of) illegal drugs."
                                             },
                                             {
-                                                "t": "She {phrase}tested positive/negative{/phrase} {it}for{/it} AIDS."
+                                                "t": "She {phrase}tested positive/negative{/phrase} {it}for{/it} COVID."
                                             }
                                         ]
                                     ]
