@@ -5,16 +5,17 @@ blinker==1.7.0
 blis==0.7.11
 catalogue==2.0.10
 certifi==2023.11.17
+chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
 cloudpathlib==0.16.0
 confection==0.1.4
 cymem==2.0.8
 deep-translator==1.11.4
+deptry==0.12.0
 distro==1.9.0
 es-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.7.0/es_core_news_sm-3.7.0-py3-none-any.whl#sha256=61e6e5530941f5880166855f09f60d7e6ba79ec1e8e45f96244bdb1eb169eb1d
 Flask==3.0.1
-google-trans-new==1.1.9
 gunicorn==21.2.0
 h11==0.14.0
 httpcore==1.0.2
@@ -32,6 +33,7 @@ nltk==3.8.1
 numpy==1.26.3
 openai==1.6.1
 packaging==23.2
+pathspec==0.12.1
 pluggy==1.4.0
 preshed==3.0.9
 pydantic==2.5.3

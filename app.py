@@ -3,8 +3,7 @@ from get_article import get_article
 from cognate_analysis import cognate_analysis, sentence_to_word_list
 import re
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder="templates/static")
 
 def highlight_words_in_sentence(sentence, words_to_highlight):
     for word in words_to_highlight:
