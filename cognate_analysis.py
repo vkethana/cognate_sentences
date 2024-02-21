@@ -61,14 +61,14 @@ def cognate_analysis(words, src_lang, target_lang):
         cognate = get_cognate(word, src_lang, target_lang)
         if cognate:
             # add to dictionary
-            cognate = cognate.replace(' ', '').lower()
+            #cognate = cognate.replace(' ', '').lower()
             # print out
             #print("Cognate detected:", word, "=", cognate)
             cognates_with_translation[word] = cognate
             score += 1
         else:
             # otherwise add to list of english words
-            english_translation = get_target_lang_translation(word, src_lang, target_lang).replace(' ', '').lower()
+            english_translation = get_target_lang_translation(word, src_lang, target_lang).lower()
             non_cognates_with_translation[word] = english_translation
     # return the 2 dicts, and score ratio
     return cognates_with_translation, non_cognates_with_translation, score/total

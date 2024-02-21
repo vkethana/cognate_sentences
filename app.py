@@ -4,10 +4,11 @@ from cognate_analysis import cognate_analysis, sentence_to_word_list
 import re
 
 src_lang = 'en'
-target_lang = 'fr'
+target_lang = 'es'
 language_codes = {
     'English': 'en',
     'Spanish': 'es',
+    'Portuguese': 'pt',
     'French': 'fr',
     'Italian': 'it',
     'Dutch': 'nl',
@@ -67,16 +68,33 @@ def generate_sentence():
     #print("Successfully grabbed article sentences = ", sentence)
     word_list = sentence_to_word_list(sentence, trim_small_words=True)
     cognates, non_cognates, ratio = cognate_analysis(word_list, src_lang, target_lang)
+    print("Ratio=", ratio)
+
+    sentence = highlight_words_in_sentence(sentence, list(cognates.keys()))
+
+    cognates_highlighted = cognates.copy()
+
+    for key, value in cognates.items():
+      cognates_highlighted[key] = f'<span class="highlight">{value}</span>'
+
+    print("cognates highlighted: ", cognates_highlighted)
+
+    all_word_definitions = non_cognates
+
+    try:
+      all_word_definitions = cognates_highlighted | non_cognates
+    except:
+      print("Could not merge dictionaries together")
+    print("Word_Defs_List:", all_word_definitions)
 
     # cognates = list(cognates) # cognates needs to be a list format -- not a set -- for Flask to read it
     #print("Cognates=", cognates)
     #print("Cognates being passed into as list to Flask:", list(cognates.keys()))
     #print("Versus:", cognates.keys())
     #print("old_sentence=", sentence)
-    sentence = highlight_words_in_sentence(sentence, list(cognates.keys()))
     #print("new_sentence=", sentence)
     #print("non_cognates=",non_cognates)
-    return render_template('index.html', sentence=sentence, word_definitions=non_cognates, language_codes=language_codes, src_lang=src_lang, target_lang=target_lang)
+    return render_template('index.html', sentence=sentence, word_definitions=all_word_definitions, language_codes=language_codes, src_lang=src_lang, target_lang=target_lang)
 
 # Handle requests to /generate_sentence without POST method
 @app.route('/generate_sentence', methods=['GET'])

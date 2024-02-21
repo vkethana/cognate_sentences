@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>Cognate Sentence Generator</h1>
+    <h1>Spanish-English Comprehensible Input</h1>
     <section>
       {% if sentence %}
           <p>{{ sentence | safe }}</p>
@@ -22,7 +22,7 @@
 
     <section class="gap-section">
     {% if word_definitions %}
-        <h2>Unfamiliar Word Definitions</h2>
+        <h2>Glossary</h2>
         <table border="1" class="center">
             <tr>
                 <th>Word</th>
@@ -30,11 +30,12 @@
             </tr>
             {% for word, definition in word_definitions.items() %}
                 <tr>
-                    <td>{{ word }}</td>
-                    <td>{{ definition }}</td>
+                    <td>{{ word | safe }}</td>
+                    <td>{{ definition | safe}}</td>
                 </tr>
             {% endfor %}
         </table>
+        <p style="text-align: center;">(Chances are, you already know the highlighted words!)</p>
     {% endif %}
     </section>
 
