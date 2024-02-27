@@ -14,17 +14,21 @@ def get_edit_ratio(a, b):
     # print(str(a) + " and " + str(b) + " have edit ratio " + str(edit_ratio))
     return edit_ratio
 
-def get_target_lang_translation(word, src_lang, target_lang):
-    # assert(variable word does not contain more than 1 word)
-    # return translator.translate(word, src=target_lang, dest=src_lang).text
-    translation = GoogleTranslator(source=target_lang, target=src_lang).translate(word)
-    #print(word, " became ", translation, " OK?")
-    #print(src_lang, target_lang)
-    return translation
+def get_target_lang_translation(word, src_lang, target_lang, auxilary_dictionary = None):
+    if auxilary_dictionary and word in auxilary_dictionary:
+        print("Fast-translating the word", word, " because it's in the auxilary dictionary under", auxilary_dictionary[word])
+        return auxilary_dictionary[word]
+    else:
+      # assert(variable word does not contain more than 1 word)
+      # return translator.translate(word, src=target_lang, dest=src_lang).text
+      translation = GoogleTranslator(source=target_lang, target=src_lang).translate(word)
+      #print(word, " became ", translation, " OK?")
+      #print(src_lang, target_lang)
+      return translation
     #return translator.translate(word, lang_tgt=lang_tgt, lang_src=lang_src)
 
-def get_cognate(a, src_lang, target_lang):
-    b = get_target_lang_translation(a, src_lang, target_lang)
+def get_cognate(a, src_lang, target_lang, auxilary_dictionary = None):
+    b = get_target_lang_translation(a, src_lang, target_lang, auxilary_dictionary)
     edit_ratio = get_edit_ratio(a, b)
     #print("Does " + a + " equal " + b + "?")
     return b if edit_ratio <= 0.60 else None
@@ -48,8 +52,7 @@ def sentence_to_word_list(sentence, trim_small_words = False):
     else:
         return word_list
 
-def cognate_analysis(words, src_lang, target_lang):
-    # Given sentence, split it into individual words, discard non-ASCII chars and retrun list of cognates
+def cognate_analysis(words, src_lang, target_lang, auxilary_dict = None):
     total = len(words)
     score = 0
     # Initialize empty dicts
@@ -58,7 +61,7 @@ def cognate_analysis(words, src_lang, target_lang):
     # Iterate thru all words in sentence
     for word in words:
         # check if the word is a cognate
-        cognate = get_cognate(word, src_lang, target_lang)
+        cognate = get_cognate(word, src_lang, target_lang, auxilary_dict)
         if cognate:
             # add to dictionary
             #cognate = cognate.replace(' ', '').lower()
@@ -68,7 +71,7 @@ def cognate_analysis(words, src_lang, target_lang):
             score += 1
         else:
             # otherwise add to list of english words
-            english_translation = get_target_lang_translation(word, src_lang, target_lang).lower()
+            english_translation = get_target_lang_translation(word, src_lang, target_lang, auxilary_dict).lower()
             non_cognates_with_translation[word] = english_translation
     # return the 2 dicts, and score ratio
     return cognates_with_translation, non_cognates_with_translation, score/total

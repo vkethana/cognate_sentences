@@ -13,9 +13,10 @@ language_codes = {
     'Italian': 'it',
     'Dutch': 'nl',
     'German': 'de',
-    'Swedish': 'sv',
-    'Danish': 'da'
 }
+
+with open('data/auxilary_dict_es_en.py', 'r') as f:
+  es_en_dict = eval(f.read())
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -63,11 +64,17 @@ def update_lang():
 
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
-    sentence = get_article(src_lang, target_lang)
+    auxilary_dict = None
+    if (src_lang, target_lang) == ('en', 'es'):
+      auxilary_dict = es_en_dict
+    sentence = get_article(src_lang, target_lang, use_vikidia=False)
     #sentence = "Star Wars: Return of the Jedi, conocido en español como... El profesor puede hablar el japones y el ingles"
     #print("Successfully grabbed article sentences = ", sentence)
     word_list = sentence_to_word_list(sentence, trim_small_words=True)
-    cognates, non_cognates, ratio = cognate_analysis(word_list, src_lang, target_lang)
+    if auxilary_dict:
+      cognates, non_cognates, ratio = cognate_analysis(word_list, src_lang, target_lang, auxilary_dict)
+    else:
+      cognates, non_cognates, ratio = cognate_analysis(word_list, src_lang, target_lang)
     print("Ratio=", ratio)
 
     sentence = highlight_words_in_sentence(sentence, list(cognates.keys()))

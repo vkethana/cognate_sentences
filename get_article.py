@@ -1,4 +1,5 @@
 import requests
+import wikitextparser
 from bs4 import BeautifulSoup
 import wikipedia
 import re
@@ -125,13 +126,13 @@ def clean_article(article_text):
 
     return cleaned_text
 
-def get_article(src_lang, target_lang):
-    #article_text = get_vikidia(language_code).split()[:30]
-    #article_text = " ".join(article_text)
-
-    article_text = get_webster(src_lang, target_lang)
-
-    while (len(article_text.split()) < 6):
-        article_text = get_webster(src_lang, target_lang)
+def get_article(src_lang, target_lang, use_vikidia=False):
+    if use_vikidia:
+      article_text = get_vikidia(target_lang).split()
+      article_text = " ".join(article_text)
+    else:
+      article_text = get_webster(src_lang, target_lang)
+      while (len(article_text.split()) < 6):
+          article_text = get_webster(src_lang, target_lang)
 
     return clean_article(article_text)
