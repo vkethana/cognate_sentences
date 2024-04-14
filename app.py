@@ -15,7 +15,7 @@ language_codes = {
     'German': 'de',
 }
 
-with open('data/auxilary_dict_es_en.py', 'r') as f:
+with open('data/es_en_word_pairs.json', 'r') as f:
   es_en_dict = eval(f.read())
 
 app = Flask(__name__, static_folder="templates/static")
