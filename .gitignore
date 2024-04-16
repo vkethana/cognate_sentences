@@ -167,3 +167,5 @@ secrets/*
 .idea
 .idea/*
 .pyc
+
+data/*

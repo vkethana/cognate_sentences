@@ -1,11 +1,13 @@
 from sentence import Sentence
 import json
 import random
+import dill
 
 class Database:
   # If you do give a file path, it will load the data from the file
   def __init__(self, file_path):
     self.data = {}
+    '''
     with open(file_path, 'r') as f:
       json_data = json.load(f)
     # Iterate thru the dictionary langauge pair
@@ -14,6 +16,10 @@ class Database:
       # Iterate thru the list of sentences
       for sentence in json_data[language_pair]:
         self.data[language_pair].append(Sentence(sentence['sentence'], sentence['difficulty'], sentence['cognate_percentage'], sentence['cognate_list']))
+    '''
+    with open(file_path, 'rb') as in_strm:
+      datastruct = dill.load(in_strm)
+    print(datastruct)
 
   def get_sentence(self, src_lang, target_lang, difficulty):
     lang_code = src_lang + "-" + target_lang
@@ -28,4 +34,4 @@ class Database:
       return random.choice(sentences)
 
 if __name__ == "__main__":
-  db = Database("data/small.json")
+  db = Database("data/europarl-en-es.pik")
