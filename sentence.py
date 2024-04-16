@@ -12,6 +12,10 @@ class Sentence:
     # Return dictionary representation of all atrributes
     return str(self.__dict__)
 
+  def __repr__(self):
+    # Return dictionary representation of all atrributes
+    return str(self.__dict__)
+
   # return formatted version of sentence with the relevant words highlighted
   def get_highlighted(self):
       highlighted_sentence = self.sentence

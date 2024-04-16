@@ -1,21 +1,31 @@
 from sentence import Sentence
+import json
+import random
 
 class Database:
-  def __init__(self):
-    self.data = {
-    "en-es": [
-        Sentence("Yo soy Vijay y me gusta jugar al golf", "easy", 0.5, ["vijay", "golf"]),
-        Sentence("Soy de los estados unidos", "easy", 0.2, ['estados', 'unidos']),
-        Sentence("Entender esta oración no es muy difícil", "easy", 0.1, ["dificil"]),
-      ]
-    }
+  # If you do give a file path, it will load the data from the file
+  def __init__(self, file_path):
+    self.data = {}
+    with open(file_path, 'r') as f:
+      json_data = json.load(f)
+    # Iterate thru the dictionary langauge pair
+    for language_pair in json_data.keys():
+      self.data[language_pair] = []
+      # Iterate thru the list of sentences
+      for sentence in json_data[language_pair]:
+        self.data[language_pair].append(Sentence(sentence['sentence'], sentence['difficulty'], sentence['cognate_percentage'], sentence['cognate_list']))
 
   def get_sentence(self, src_lang, target_lang, difficulty):
     lang_code = src_lang + "-" + target_lang
     if self.data.get(lang_code) == None:
       print("ERROR: No data for language pair")
     else:
-      for item in self.data.get(lang_code):
-        if item.difficulty == difficulty:
-          return item
-      print("ERROR: No sentence at difficulty level")
+      # Get list of all sentences in the language pair at specified difficulty leve
+      sentences = self.data[lang_code]
+      # Filter out sentences that are not at the specified difficulty level
+      sentences = [sentence for sentence in sentences if sentence.difficulty == difficulty]
+      # Return a random sentence from the list
+      return random.choice(sentences)
+
+if __name__ == "__main__":
+  db = Database("data/small.json")
