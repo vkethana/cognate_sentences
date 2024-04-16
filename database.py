@@ -4,27 +4,19 @@ import random
 import dill
 
 class Database:
+  default_path = "data/europarl-en-es.pik"
   # If you do give a file path, it will load the data from the file
-  def __init__(self, file_path):
+  def __init__(self, file_path=default_path):
     self.data = {}
-    '''
-    with open(file_path, 'r') as f:
-      json_data = json.load(f)
-    # Iterate thru the dictionary langauge pair
-    for language_pair in json_data.keys():
-      self.data[language_pair] = []
-      # Iterate thru the list of sentences
-      for sentence in json_data[language_pair]:
-        self.data[language_pair].append(Sentence(sentence['sentence'], sentence['difficulty'], sentence['cognate_percentage'], sentence['cognate_list']))
-    '''
     with open(file_path, 'rb') as in_strm:
       datastruct = dill.load(in_strm)
     print(datastruct)
+    self.data = datastruct
 
   def get_sentence(self, src_lang, target_lang, difficulty):
     lang_code = src_lang + "-" + target_lang
     if self.data.get(lang_code) == None:
-      print("ERROR: No data for language pair")
+      print("ERROR: No data for language pair" + lang_code)
     else:
       # Get list of all sentences in the language pair at specified difficulty leve
       sentences = self.data[lang_code]
@@ -34,4 +26,4 @@ class Database:
       return random.choice(sentences)
 
 if __name__ == "__main__":
-  db = Database("data/europarl-en-es.pik")
+  db = Database()

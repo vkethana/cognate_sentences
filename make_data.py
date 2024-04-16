@@ -254,14 +254,15 @@ if __name__ == "__main__":
   target_lang = 'es'
 
   lines = read_news_data(src_lang, target_lang)
-  final_dataset = []
-  for i in range(0, 1):
+  final_dataset = {}
+  final_dataset[src_lang + '-' + target_lang] = []
+  for i in range(0, 25):
     s = lines[i]
     cognates, non_cognates, ratio = cognate_analysis(sentence_to_word_list(s), src_lang, target_lang)
     # Remember that sentence takes in args (sentence, difficulty, cognate_percentage, cognate_list):
     print("Processing ", s)
     s = Sentence(s, 'medium', round(ratio, 2), cognates.keys())
-    final_dataset.append(s)
+    final_dataset[src_lang + '-' + target_lang].append(s)
     print(s)
 
   filename = 'data/europarl-' + src_lang + '-' + target_lang + '.pik'
