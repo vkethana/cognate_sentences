@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
 from generator import Generator
+from database import Database
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -8,7 +9,9 @@ app = Flask(__name__, static_folder="templates/static")
 # there are NO global variables for user target lang, difficulty, etc.
 # the generator object will be updated with the user's choices
 # so you don't need to keep track of these attributes separately
-sentence_generator = Generator(source='en', target='es', difficulty='easy')
+database = Database()
+generator = Generator(source='en', target='es', difficulty='easy', database=database)
+allow_other_languages = False
 
 # it's helpful to not hard-code the lang codes
 lang_codes = {
@@ -26,11 +29,11 @@ def index():
     target_lang = 'es'
     difficulty = 'easy'
 
-    # src_lang = request.cookies.get('src_lang')
-    # target_lang = request.cookies.get('target_lang')
-    # difficulty = request.cookies.get('difficulty') 
+    src_lang = request.cookies.get('src_lang')
+    target_lang = request.cookies.get('target_lang')
+    difficulty = request.cookies.get('difficulty')
 
-    return render_template('index.html', lang_codes=language_codes, src_lang=src_lang, target_lang=target_lang, difficulty=difficulty)
+    return render_template('index.html', lang_codes=lang_codes, src_lang=src_lang, target_lang=target_lang, difficulty=difficulty, allow_other_languages=allow_other_languages)
 
 # Route to update source_lang and target_lang variables
 @app.route('/update_lang', methods=['POST'])
@@ -42,32 +45,21 @@ def update_lang():
 
     print("Source and Target lang are: ", src_lang, target_lang)
     # Update the sentence generator object
-    #sentence_generator = Generator(source=src_lang, target=target_lang, difficulty=difficulty)
+    generator = Generator(source=src_lang, target=target_lang, difficulty=difficulty)
 
     # Return a response indicating success
     return jsonify({'status': 'success', 'src_lang': src_lang, 'target_lang': target_lang})
 
-
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
-  sentence = generator.generate_sentence()
+  sentence = generator.get_sentence()
   # return sentence and sentence.get_cognate_list()
+  return render_template('index.html', sentence=sentence.get_highlighted(), lang_codes=lang_codes, allow_other_languages=allow_other_languages)
 
-# Helper method for highlighting words in a sentence
-def highlight_words_in_sentence(sentence, words_to_highlight):
-    for word in words_to_highlight:
-        # Shamelessly taken from ChatGPT lol
-        # Create a regex pattern with the word, but make it case-insensitive
-        pattern = re.compile(re.escape(word), re.IGNORECASE)
-
-        # Find all case-insensitive matches of the word in the original sentence
-        matches = pattern.findall(sentence)
-
-        # Iterate over matches and replace them with the original case in the original sentence
-        for match in matches:
-            original_case_match = re.search(re.escape(match), sentence)
-            sentence = sentence.replace(original_case_match.group(), f'<span class="highlight">{original_case_match.group()}</span>')
-    return sentence
+# Handle requests to /generate_sentence without POST method
+@app.route('/generate_sentence', methods=['GET'])
+def generate_sentence_redirect():
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
