@@ -9,7 +9,7 @@ app = Flask(__name__, static_folder="templates/static")
 # there are NO global variables for user target lang, difficulty, etc.
 # the generator object will be updated with the user's choices
 # so you don't need to keep track of these attributes separately
-database = Database()
+database = Database('production_data/europarl-en-es.pik')
 generator = Generator(source='en', target='es', difficulty='medium', database=database)
 allow_other_languages = False
 
