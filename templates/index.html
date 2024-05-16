@@ -13,29 +13,19 @@
       {% if sentence %}
           <p class="center">{{ sentence | safe }}</p>
       {% endif %}
-      
-      <form align="center" method="post" action="/generate_sentence">
-      <button type="submit" class="friendly-button">Generate Sentence</button>
-      </form>
-    </section>
+     
+      <div style="text-align:center">
+        <button class="friendly-button" onclick="adjustDifficulty('+')">+</button>
+        <form method="post" action="/generate_sentence" style="display:inline-block; text-align: center;">
+        <button type="submit" class="friendly-button">Generate Sentence</button>
+        </form>
+        <button class="friendly-button" onclick="adjustDifficulty('-')">-</button>
+      </div>
 
-    <section class="gap-section">
-    {% if word_definitions %}
-        <h2>Glossary</h2>
-        <table border="1" class="center">
-            <tr>
-                <th>Word</th>
-                <th>Definition</th>
-            </tr>
-            {% for word, definition in word_definitions.items() %}
-                <tr>
-                    <td>{{ word | safe }}</td>
-                    <td>{{ definition | safe}}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <p style="text-align: center;">(Chances are, you already know the highlighted words!)</p>
-    {% endif %}
+    </section>
+    <section id="difficulty-indicator" class="center">
+      <p>Difficulty (lower = harder): <span id="difficulty_value">{{ difficulty }}</span></p>
+      <div id="difficulty-bar"></div>
     </section>
 
     <section>
@@ -60,19 +50,40 @@
     </section>
 
     <script>
-        // Function to update backend variables
-        function updateBackendVariables() {
-            var targetLangSelect = document.getElementById("target_lang");
-            var srcLangSelect = document.getElementById("src_lang");
+        // Function to adjust difficulty and update backend variables
+        function adjustDifficulty(operation) {
+            var difficultySpan = document.getElementById("difficulty_value");
+            console.log("We have data", difficultySpan.innerText, "with operation", operation);
+            var currentDifficulty = parseFloat(difficultySpan.innerText);
+            console.log("CurrentDifficulty", currentDifficulty);
+            
+            if (operation === '+') {
+                currentDifficulty += 0.1; // Increase difficulty by 0.1 (adjust as needed)
+            } else if (operation === '-') {
+                currentDifficulty -= 0.1; // Decrease difficulty by 0.1 (adjust as needed)
+            }
+            
+            // Ensure difficulty is within bounds (0 to 1)
+            currentDifficulty = Math.max(0, Math.min(1, currentDifficulty));
 
-            var target_lang = targetLangSelect.options[targetLangSelect.selectedIndex].value;
-            var src_lang = srcLangSelect.options[srcLangSelect.selectedIndex].value;
-            console.log("We have data", target_lang, " and ", src_lang);
+            // Update difficulty display
+            difficultySpan.innerText = currentDifficulty.toFixed(1);
+
+            // Update difficulty indicator bar width
+            var difficultyBar = document.getElementById("difficulty-bar");
+            difficultyBar.style.width = (currentDifficulty * 100) + '%';
+
+            // Send AJAX request to update backend
+            updateBackendVariables("es", "en", currentDifficulty);
+        }
+
+        // Function to update backend variables
+        function updateBackendVariables(target_lang, src_lang, difficulty) {
             
             $.ajax({
                 url: '/update_lang',
                 method: 'POST',
-                data: { target_lang: target_lang, src_lang: src_lang },
+                data: { target_lang: target_lang, src_lang: src_lang, difficulty},
                 success: function(data) {
                     console.log('Backend variables updated successfully:', data);
                 },
@@ -85,7 +96,6 @@
         // Bind change event to the dropdowns
         $(document).ready(function() {
             $('#target_lang, #src_lang').change(function() {
-                console.log("SDFDAF")
                 updateBackendVariables();
             });
         });

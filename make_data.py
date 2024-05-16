@@ -254,17 +254,21 @@ if __name__ == "__main__":
   target_lang = 'es'
 
   lines = read_news_data(src_lang, target_lang)
+  print("Found dataset of length ", len(lines))
+  dataset_size = min(len(lines), 100)
+  print("Generating Dataset of size ", dataset_size)
   final_dataset = {}
   final_dataset[src_lang + '-' + target_lang] = []
-  for i in range(0, 25):
+  for i in range(10, dataset_size):
     s = lines[i]
     cognates, non_cognates, ratio = cognate_analysis(sentence_to_word_list(s), src_lang, target_lang)
     # Remember that sentence takes in args (sentence, difficulty, cognate_percentage, cognate_list):
     print("Processing ", s)
-    s = Sentence(s, 'medium', round(ratio, 2), cognates.keys())
+    s = Sentence(s, round(ratio, 2), cognates.keys())
     final_dataset[src_lang + '-' + target_lang].append(s)
     print(s)
 
-  filename = 'data/europarl-' + src_lang + '-' + target_lang + '.pik'
+  # Get timestamp
+  filename = 'data/europarl-' + src_lang + '-' + target_lang + '-3.pik'
   with open(filename, 'wb') as f:
     dill.dump(final_dataset, f)

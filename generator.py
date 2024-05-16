@@ -13,5 +13,7 @@ class Generator:
 
   # Spit out a sentence in the target language @ the target level of difficulty
   def get_sentence(self):
-    # Placeholder for now
-    return self.database.get_sentence(self.source, self.target, self.difficulty)
+    s = self.database.get_sentence(self.source, self.target, self.difficulty)
+    if s == None:
+      s = Sentence("No sentence at specified difficulty level in dataset :(", 0.0, None)
+    return s
