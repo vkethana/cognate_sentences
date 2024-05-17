@@ -32,12 +32,12 @@ def sliding_window_helper(sentence, word_set):
       window_sizes[curr_count] = 1
 
   max_count = max(max_count, curr_count)
-  print(window_sizes)
-  print(max_count)
+  #print(window_sizes)
+  #print(max_count)
   # Return the value corresponding to the largest key in the dictionary
   return window_sizes, max_count
 
-def score_sentence(sentence, word_set):
+def gap_heuristic(sentence, word_set):
   window_sizes, max_count = sliding_window_helper(sentence, word_set)
   num_gaps = 0
   gap_count = 0
@@ -55,14 +55,14 @@ def score_sentence(sentence, word_set):
     #"word_set": word_set,
     "biggest_gap": max_count,
     "num_gaps": num_gaps,
-    "avg_gap": round(avg_gap, 2)
+    "avg_gap": round(avg_gap, 1)
   }
   return results
 
 if __name__ == "__main__":
   sentence = "I am a student named Victor and ice cream is my favorite food".split(" ")
   word_set = {"am", "student", "victor", "ice", "food"}
-  print(score_sentence(sentence, word_set))
+  print(gap_heuristic(sentence, word_set))
   sentence = ["aa", "cc", "bb", "cc", "cc", "cc", "bb", "aa", "cc", "cc", "cc", "cc", "cc", "cc", "bb", "cc"]
   word_set = {"aa", "bb"}
-  print(score_sentence(sentence, word_set))
+  print(gap_heuristic(sentence, word_set))

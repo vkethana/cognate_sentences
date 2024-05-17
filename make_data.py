@@ -1,4 +1,3 @@
-from Levenshtein import distance as lev_distance
 from deep_translator import GoogleTranslator
 import re
 import requests
@@ -10,6 +9,7 @@ import json
 import random
 from sentence import Sentence
 import dill
+from utils import sentence_to_word_list, get_edit_ratio
 
 # Code to get list of blocked words
 with open('secrets/blocked_words.txt', 'r') as file:
@@ -18,18 +18,6 @@ with open('secrets/blocked_words.txt', 'r') as file:
   blocked_words = set(file.read().split(','))
   # Remove any whitespace
   blocked_words = {word.strip() for word in blocked_words}
-
-def get_edit_ratio(a, b):
-    # the levenshtein distance (minimum number of edit operations) between the two words.
-    # lower is better, as it implies the two words are cognate
-    dist = lev_distance(a, b)
-    assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
-    max_len = max(len(a), len(b))
-    # print(str(a) + " and " + str(b) + " are " + str(dist)
-    # + " edit operations apart and max length is " + str(max_len))
-    edit_ratio = round(dist / max_len, 2)
-    # print(str(a) + " and " + str(b) + " have edit ratio " + str(edit_ratio))
-    return edit_ratio
 
 def get_target_lang_translation(word, src_lang, target_lang, auxilary_dictionary = None):
     if auxilary_dictionary and word in auxilary_dictionary:
@@ -50,27 +38,8 @@ def get_cognate(a, src_lang, target_lang, auxilary_dictionary = None):
     #print("Does " + a + " equal " + b + "?")
     return b if edit_ratio <= 0.60 else None
 
-def sentence_to_word_list(sentence, trim_small_words = False):
-    '''
-    Cleans a sentence by removing all punctuation, lowercasing all letters
-
-    Args:
-    - sentence (str): a full sentence string
-    - trim_small_words (bool): whether words of length 2 and under should be excluded
-    Returns:
-    - list: a list of words with no punctuation or spaces in them
-    '''
-    sentence = re.sub(r'[^\w\s]', '', sentence) # strip all punctuation
-    sentence = sentence.lower() # lowercase the sentence
-    word_list = sentence.split() # split into individual words
-
-    if trim_small_words:
-        return [i for i in word_list if len(i) > 2]
-    else:
-        return word_list
-
 def cognate_analysis(words, src_lang, target_lang, auxilary_dict = None):
-    ''' 
+    '''
     Args:
     - words (list): a list of words
     - src_lang (str): the source language of the words
@@ -104,6 +73,11 @@ def cognate_analysis(words, src_lang, target_lang, auxilary_dict = None):
             non_cognates_with_translation[word] = english_translation
     # return the 2 dicts, and score ratio
     return cognates_with_translation, non_cognates_with_translation, score/total
+
+def get_ratio_from_sentence(sentence, src_lang, target_lang):
+  words = sentence_to_word_list(sentence)
+  a, b, c = cognate_analysis(words, src_lang, target_lang)
+  return c
 
 def get_wikipedia(language_code, char_cutoff=200):
     """
