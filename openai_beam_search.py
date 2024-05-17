@@ -4,6 +4,7 @@ from utils import sentence_to_word_list, get_edit_ratio
 from deep_translator import GoogleTranslator
 import re
 from scoring import gap_heuristic
+from random import choice
 
 class Node:
   def __init__(self, sentence, cognates, score_breakdown):
@@ -51,7 +52,7 @@ def call_gpt(prompt):
   prompt=prompt,
   max_tokens=20,
   n=4,
-  stop=[".", "!", "?"],
+  stop=None,
   temperature=0.7,
   top_p=0.9,
   frequency_penalty=0,
@@ -74,7 +75,7 @@ def get_cognates(words):
   '''
   cognates = set()
   for w in words:
-    translation = get_target_lang_translation(w, src_lang="es", target_lang="en")
+    translation = get_target_lang_translation(w, src_lang="fr", target_lang="en")
 
     # note that words which begin with an uppercase letter are automatically considered cognates for now
     if w[0].isupper() or get_edit_ratio(w, translation) < 0.25:
@@ -95,7 +96,11 @@ def get_score_breakdown(words, cognates):
   - If a sentence has more than 80% cognates, approve it for sure
   - If a sentence has less than 20% cognates, reject it for sure
   - Otherwise, use gap heuristic to score the sentence
+    - The gap heuristic is weighted average of all the factors
   '''
+
+  if (len(words) == 0):
+    assert False, "ERROR: Scoring an empty sentence"
 
   ratio = len(cognates) / len(words)
   #print("   Ratio of cognates to total words:", ratio)
@@ -111,7 +116,7 @@ def get_score_breakdown(words, cognates):
   biggest_gap = gap_analysis['biggest_gap'] # this metric isnt really used right now
   # avg_gap typically ranges from 1-8. But for scoring purposes we force it to be between 0-1
   # the reason why we use min() is to prevent the score from going negative
-  avg_gap_normalized = 1 - (min(gap_analysis['avg_gap'], 8) / 8)
+  avg_gap_normalized = 1 - (min(gap_analysis['avg_gap'], 6) / 6)
   # throw out sentences with too many large gaps in between cognates
   if avg_gap_normalized > 7 or biggest_gap > 10:
     return {"total_score": 0.0}
@@ -121,7 +126,7 @@ def get_score_breakdown(words, cognates):
     "cognate_ratio": round(ratio, 2),
     "avg_gap_between_consecutive_cognates": round(gap_analysis['avg_gap'], 2),
     "avg_gap_normalized": round(avg_gap_normalized, 2),
-    "total_score": round(max(0.25 * ratio + 0.75 * avg_gap_normalized, 0.0), 2)
+    "total_score": round(max(0.60 * ratio + 0.40 * avg_gap_normalized, 0.0), 2)
   }
   return breakdown
 
@@ -141,8 +146,17 @@ def get_candidates_from_node(currNode):
   response = call_gpt(currNode.sentence)
   choices = []
   for i, choice in enumerate(response.choices):
-      #print(f"Choice {i+1}:")
+      print(f"Choice {i+1}:")
       text = choice.text.strip().replace("\n", " ")
+      # Truncate the text to the last space
+      # This prevents the model from outputting a half-finished word, 
+      # which would then get split in half awkwardly during the next iteration
+      last_space_index = text.rfind(' ')
+      if last_space_index != -1:
+          text = text[:last_space_index]
+
+      print("   Original text:", currNode.sentence)
+      print("   Newly-added text:", text)
 
       # We run cognate analysis on just the new part of the sentence, so that we don't
       # have to check the same thing twice
@@ -151,18 +165,23 @@ def get_candidates_from_node(currNode):
 
       text = currNode.sentence + " " + text
       newNode = Node(text, cognates, get_score_breakdown(decompose_sentence(text), cognates))
-      choices.append(newNode)
-      #print(f"{newNode.sentence}, with score {newNode.score}")
-      #print("-" * 50)
-  # Pick the choice with the largest score
-  choices.sort(key=lambda x: x.score, reverse=True)
+
+      # if text does not contain any lowercase letters a-z, then we reject it
+      # this is important because sometimes the model outputs incoherent text in ALLCAPS or only numbers
+      if not re.search("[a-z]", text.lower()):
+        continue
+      else:
+        choices.append(newNode)
   return choices
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 aux_dict = get_aux_dict("data/es_en_dict.txt")
 beam_size = 3
 
-first_sentence = "El presidente de Argentina dijó"
+#sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
+sentence_starters = ["le président George Bush", "la ville de New York", "la ville de San Francisco", "le gouvernement américain", "le premier ministre Justin Trudeau"]
+first_sentence = choice(sentence_starters)
+
 print("Starting sentence:", first_sentence)
 first_cognates = get_cognates(decompose_sentence(first_sentence))
 first_node = Node(first_sentence, first_cognates, get_score_breakdown(first_sentence, first_cognates))
