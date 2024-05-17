@@ -47,7 +47,7 @@ def get_score(sentence):
   '''
   words = decompose_sentence(sentence)
   cognates = get_cognates(words)
-  #print("   Found cognates:", cognates)
+  print("   Found cognates:", cognates)
   ratio = len(cognates) / len(words)
 
   if ratio > 0.8:
@@ -101,10 +101,12 @@ def extend_sentence(sentence):
   response = call_gpt(sentence)
   choices = []
   for i, choice in enumerate(response.choices):
+      print(f"Choice {i+1}:")
       text = choice.text.strip().replace("\n", " ")
       score = get_score(text)
       choices.append((text, score))
-      #print(f"    Choice {i+1}: {text}, with score {score}")
+      print(f"{text}, with score {score}")
+      print("-" * 50)
   # Pick the choice with the largest score
   choices.sort(key=lambda x: x[1], reverse=True)
   best_choice = choices[0]
