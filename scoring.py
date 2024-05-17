@@ -37,8 +37,17 @@ def sliding_window_helper(sentence, word_set):
   # Return the value corresponding to the largest key in the dictionary
   return window_sizes, max_count
 
-def gap_heuristic(sentence, word_set):
-  window_sizes, max_count = sliding_window_helper(sentence, word_set)
+def gap_heuristic(word_list, word_set):
+  '''
+  Gap heuristic function that returns the biggest gap between cognates, the number of gaps, and the average gap between cognates.
+  Assumes that cognates have already been computed under word_set
+  '''
+
+  # Make sure that word_list is a list
+  if type(word_list) == str:
+    assert False, "word_list should be a list of words, not a string"
+
+  window_sizes, max_count = sliding_window_helper(word_list, word_set)
   num_gaps = 0
   gap_count = 0
 
@@ -60,9 +69,15 @@ def gap_heuristic(sentence, word_set):
   return results
 
 if __name__ == "__main__":
+  '''
   sentence = "I am a student named Victor and ice cream is my favorite food".split(" ")
   word_set = {"am", "student", "victor", "ice", "food"}
   print(gap_heuristic(sentence, word_set))
   sentence = ["aa", "cc", "bb", "cc", "cc", "cc", "bb", "aa", "cc", "cc", "cc", "cc", "cc", "cc", "bb", "cc"]
   word_set = {"aa", "bb"}
+  print(gap_heuristic(sentence, word_set))
+  '''
+  sentence = "El presidente de Argentina dijó que el país está 'en la etapa final de un largo ciclo de crecimiento económico'".split(" ")
+  print(sentence)
+  word_set = {'argentina', 'económico', 'presidente', 'final', 'presidente'}
   print(gap_heuristic(sentence, word_set))

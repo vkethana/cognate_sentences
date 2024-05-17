@@ -24,7 +24,16 @@ def get_edit_ratio(a, b):
     # the levenshtein distance (minimum number of edit operations) between the two words.
     # lower is better, as it implies the two words are cognate
     dist = lev_distance(a, b)
+
+    if (min(len(a), len(b)) <= 5):
+      # Must be a near-perfect match if less than or equal to 5 chars
+      if dist <= 1:
+        return 0.0
+      else:
+        return 1.0
+
     assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
-    max_len = max(len(a), len(b))
-    edit_ratio = round(dist / max_len, 2)
+    avg_len = (len(a) + len(b)) / 2
+    edit_ratio = round(dist / avg_len, 2)
+
     return edit_ratio

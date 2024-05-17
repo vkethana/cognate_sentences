@@ -24,14 +24,17 @@ def get_target_lang_translation(word, src_lang, target_lang):
     return translation
 
 def get_cognates(words):
+  '''
+  Given a list of words, return a set of cognates. A "cognate" is defined as < 40% edit distance between the word and its translation (might make the rule stricter later)
+  '''
   cognates = set()
   for w in words:
     translation = get_target_lang_translation(w, src_lang="es", target_lang="en")
-    if get_edit_ratio(w, translation) < 0.40:
+    if get_edit_ratio(w, translation) < 0.25:
       cognates.add(w)
   return cognates
 
-def get_score(sentence):
+def get_score(sentence, existing_cognates):
   '''
   Heuristic function that returns the ratio of cognates to total words in a sentence
 
@@ -49,13 +52,17 @@ def get_score(sentence):
   cognates = get_cognates(words)
   print("   Found cognates:", cognates)
   ratio = len(cognates) / len(words)
+  print("   Ratio of cognates to total words:", ratio)
 
+  # some simple rules to throw out obviously good or bad sentences
   if ratio > 0.8:
     return 1.0
   elif ratio < 0.2:
     return 0.0
 
-  gap_analysis = gap_heuristic(sentence, cognates) # get word-gap analysis from the scoring.py file
+  cognates.update(existing_cognates) # update cognate list with existing cognates for the gap heuristic, because otherwise all words before the current generation run will be considered non cognate
+  gap_analysis = gap_heuristic(words, cognates) # get word-gap analysis from the scoring.py file
+  print("   Gap analysis:", gap_analysis)
   biggest_gap = gap_analysis['biggest_gap'] # this metric isnt really used right now
   # avg_gap typically ranges from 1-8. But for scoring purposes we force it to be between 0-1
   # the reason why we use min() is to prevent the score from going negative
@@ -65,7 +72,7 @@ def get_score(sentence):
     return 0.0
 
   # otherwise, do a weighted average: 25% based on cognate ratio, 75% based on gap heuristic
-  return min(0.25 * ratio + 0.75 * avg_gap, 0.0)
+  return round(max(0.25 * ratio + 0.75 * avg_gap, 0.0), 2)
 
 def decompose_sentence(sentence):
   '''
@@ -85,32 +92,31 @@ def call_gpt(prompt):
   prompt=prompt,
   max_tokens=20,
   n=4,
-  stop=None,
+  stop=[".", "!", "?"],
   temperature=0.7,
   top_p=0.9,
   frequency_penalty=0,
   presence_penalty=0.6)
   return response
 
-def extend_sentence(sentence):
+def extend_sentence(sentence, existing_cognates):
   '''
   Given a sentence, extend it by calling the GPT model and picking the best choice
   "Best choice" is defined as one that maximizes the heuristic score
   '''
-
   response = call_gpt(sentence)
   choices = []
   for i, choice in enumerate(response.choices):
       print(f"Choice {i+1}:")
-      text = choice.text.strip().replace("\n", " ")
-      score = get_score(text)
+      text = choice.text.strip().replace("\n", "_")
+      score = get_score(text, existing_cognates)
       choices.append((text, score))
       print(f"{text}, with score {score}")
       print("-" * 50)
   # Pick the choice with the largest score
   choices.sort(key=lambda x: x[1], reverse=True)
   best_choice = choices[0]
-  return sentence + " " + best_choice[0]
+  return (sentence + " " + best_choice[0]), get_cognates(decompose_sentence(best_choice[0]))
 
 def get_aux_dict(filename):
   '''
@@ -129,9 +135,10 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 sentence = "El presidente de Argentina dijó"
 aux_dict = get_aux_dict("data/es_en_dict.txt")
 print("Starting sentence:", sentence)
+existing_cognates = get_cognates(decompose_sentence(sentence))
 
-for _ in range(5):
-  sentence = extend_sentence(sentence)
+for _ in range(2):
+  sentence, existing_cognates = extend_sentence(sentence, existing_cognates)
   print("\033[92m" + "Extended sentence to: " + sentence + "\033[0m .")
 
-print("Final sentence score: ", get_score(sentence))
+print("Final sentence score: ", get_score(sentence, existing_cognates))
