@@ -6,12 +6,9 @@ import re
 from scoring import gap_heuristic
 from random import choice
 
-class Node:
-  def __init__(self, sentence, cognates, score_breakdown):
-    self.sentence = sentence
-    self.cognates = cognates
-    self.score_breakdown = score_breakdown
-    self.score = score_breakdown["total_score"]
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+src_lang = 'fr'    # Language that the model will generate in
+target_lang = 'en' # Language that we will translate to for cognate detection
 
 def get_aux_dict(filename):
   '''
@@ -23,8 +20,23 @@ def get_aux_dict(filename):
     for line in f:
       word, translation = line.strip().split(" ")
       aux_dict[word] = translation
-  print("Loaded auxiliary dictionary with", len(aux_dict), "entries.")
+  print("Loaded auxiliary dictionary " + filename + " with", len(aux_dict), "entries.")
   return aux_dict
+
+if os.path.exists("data/" + src_lang + "_" + target_lang + "_dict.txt"):
+  aux_dict = get_aux_dict("data/" + src_lang + "_" + target_lang + "_dict.txt") # load auxiliary dictionary for fast translations
+else:
+  print("Failed to load auxiliary dictionary. Translations will be much slower since every word has to be google translated (!!)")
+
+class Node:
+  '''
+  Wrapper class for sentences
+  '''
+  def __init__(self, sentence, cognates, score_breakdown):
+    self.sentence = sentence
+    self.cognates = cognates
+    self.score_breakdown = score_breakdown
+    self.score = score_breakdown["total_score"]
 
 def get_target_lang_translation(word, src_lang, target_lang):
   '''
@@ -48,8 +60,9 @@ def call_gpt(prompt):
   '''
   call the gpt-3.5 turbo model for the beamsearch algorithm
   '''
+  pre_prompt = "You are about to receive a sentence in some foreign language. Please complete the sentence in that language as coherently as possible. You may include additional sentences afterward. Please try to generate human-like text."
   response = client.completions.create(model="gpt-3.5-turbo-instruct",
-  prompt=prompt,
+  prompt=pre_prompt + prompt,
   max_tokens=20,
   n=4,
   stop=None,
@@ -66,7 +79,7 @@ def decompose_sentence(sentence):
   Also force all words to be lowercase and remove all punctuation
   '''
   words = sentence_to_word_list(sentence, False)
-  words = [re.sub(r'[^\w\s]','', i.lower()) for i in words]
+  words = [re.sub(r'[^\w\s]','', i) for i in words]
   return words
 
 def get_cognates(words):
@@ -75,10 +88,10 @@ def get_cognates(words):
   '''
   cognates = set()
   for w in words:
-    translation = get_target_lang_translation(w, src_lang="fr", target_lang="en")
+    translation = get_target_lang_translation(w, src_lang, target_lang)
 
     # note that words which begin with an uppercase letter are automatically considered cognates for now
-    if w[0].isupper() or get_edit_ratio(w, translation) < 0.25:
+    if w[0].isupper() or get_edit_ratio(w, translation) < 0.35:
       cognates.add(w)
   return cognates
 
@@ -168,38 +181,50 @@ def get_candidates_from_node(currNode):
 
       # if text does not contain any lowercase letters a-z, then we reject it
       # this is important because sometimes the model outputs incoherent text in ALLCAPS or only numbers
-      if not re.search("[a-z]", text.lower()):
+      if not re.search("[a-z]", text):
         continue
       else:
         choices.append(newNode)
   return choices
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-aux_dict = get_aux_dict("data/es_en_dict.txt")
-beam_size = 3
+def init_beam_search(first_sentence, beam_size):
+  '''
+  Given a starting sentence (the root node of the beam search tree), generate three "candidate" sentences to start the beam search
+  '''
+  print("Starting sentence:", first_sentence)
 
-#sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
-sentence_starters = ["le président George Bush", "la ville de New York", "la ville de San Francisco", "le gouvernement américain", "le premier ministre Justin Trudeau"]
-first_sentence = choice(sentence_starters)
+  # run first iteration of for loop manually (this gets the beam search going by generating the first node of the tree)
+  first_cognates = get_cognates(decompose_sentence(first_sentence))
+  first_node = Node(first_sentence, first_cognates, get_score_breakdown(first_sentence, first_cognates))
+  candidates = get_candidates_from_node(first_node)
+  candidates = sorted(candidates, key=lambda x: x.score, reverse=True)
+  candidates = candidates[0:beam_size]
+  return candidates
 
-print("Starting sentence:", first_sentence)
-first_cognates = get_cognates(decompose_sentence(first_sentence))
-first_node = Node(first_sentence, first_cognates, get_score_breakdown(first_sentence, first_cognates))
-
-# Run first iteration of for loop manually
-candidates = get_candidates_from_node(first_node)
-candidates = sorted(candidates, key=lambda x: x.score, reverse=True)
-candidates = candidates[0:beam_size]
-
-for _ in range(3):
+def run_beam_search(candidates, beam_size):
+  '''
+  Run the beam search algorithm for one iteration
+  Assumes that a list which contains beam_size nodes ("candidates") has already been generated
+  '''
   new_candidates = []
   for c in candidates:
-    print("considering new candidate...")
     new_candidates.extend(get_candidates_from_node(c))
-    print("done considering new candidate.")
   new_candidates = sorted(new_candidates, key = lambda x: x.score, reverse=True)
   candidates = new_candidates[0:beam_size]
-  print(f"Final candidates after iteration {_ + 1} of beam search, are:")
-  for c in candidates:
-    print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "\033[0m.")
-  print("-" * 50)
+  return candidates
+
+if __name__ == "__main__":
+  # Generate a starting sentence for GPT-3.5 to complete
+  sentence_starters = ["le président George Bush", "la ville de New York", "la ville de San Francisco", "le gouvernement américain", "le premier ministre Justin Trudeau"]
+  #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
+  # if you want to test beam search with a different language, make sure you change target_lang = 'es'
+
+  first_sentence = choice(sentence_starters)
+  candidates = init_beam_search(first_sentence, 3)
+
+  for _ in range(5):
+    candidates = run_beam_search(candidates, 3)
+    print("\033[1m" + f"Final candidates after iteration {_ + 1} of beam search, are:" + "'\033[0m")
+    for c in candidates:
+      print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "\033[0m.")
+      print("-" * 50)

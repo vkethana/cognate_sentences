@@ -10,96 +10,28 @@
 </head>
 <body>
     <section>
-      {% if sentence %}
-          <p class="center">{{ sentence | safe }}</p>
+      The three best sentences found by the beam search are:
+      {% if sentences %}
+      <ul>
+      {% for sentence in sentences %}
+          <li>{{ sentence | safe }}</li>
+      {% endfor %}
+      </ul>
       {% endif %}
      
       <div style="text-align:center">
-        <button class="friendly-button" onclick="adjustDifficulty('+')">+</button>
         <form method="post" action="/generate_sentence" style="display:inline-block; text-align: center;">
-        <button type="submit" class="friendly-button">Generate Sentence</button>
+        <button type="submit" class="friendly-button">Generate New Beams</button>
         </form>
-        <button class="friendly-button" onclick="adjustDifficulty('-')">-</button>
+        {% if inside_beam_search %}
+        <form method="post" action="/extend_sentence" style="display:inline-block; text-align: center;">
+        <button class="friendly-button">Extend Current Beams</button>
+        </form>
+        {% endif %}
       </div>
 
     </section>
-    <section id="difficulty-indicator" class="center">
-      <p>Difficulty (lower = harder): <span id="difficulty_value">{{ difficulty }}</span></p>
-      <div id="difficulty-bar"></div>
-    </section>
 
-    <section>
-      {% if allow_other_languages %}
-      <h2>Settings</h2>
-      <form action="/result" method="post">
-        <label for="src_lang">Select Source Language:</label>
-        <select id="src_lang" name="src_lang">
-            {% for lang, code in lang_codes.items() %}
-                <option value="{{ code }}" {% if code == src_lang %} selected {% endif %}>{{ lang }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="target_lang">Select Target Language:</label>
-        <select id="target_lang" name="target_lang">
-            {% for lang, code in lang_codes.items() %}
-                <option value="{{ code }}" {% if code == target_lang %} selected {% endif %}>{{ lang }}</option>
-            {% endfor %}
-        </select>
-      </form>
-      {% endif %}
-    </section>
-
-    <script>
-        // Function to adjust difficulty and update backend variables
-        function adjustDifficulty(operation) {
-            var difficultySpan = document.getElementById("difficulty_value");
-            console.log("We have data", difficultySpan.innerText, "with operation", operation);
-            var currentDifficulty = parseFloat(difficultySpan.innerText);
-            console.log("CurrentDifficulty", currentDifficulty);
-            
-            if (operation === '+') {
-                currentDifficulty += 0.1; // Increase difficulty by 0.1 (adjust as needed)
-            } else if (operation === '-') {
-                currentDifficulty -= 0.1; // Decrease difficulty by 0.1 (adjust as needed)
-            }
-            
-            // Ensure difficulty is within bounds (0 to 1)
-            currentDifficulty = Math.max(0, Math.min(1, currentDifficulty));
-
-            // Update difficulty display
-            difficultySpan.innerText = currentDifficulty.toFixed(1);
-
-            // Update difficulty indicator bar width
-            var difficultyBar = document.getElementById("difficulty-bar");
-            difficultyBar.style.width = (currentDifficulty * 100) + '%';
-
-            // Send AJAX request to update backend
-            updateBackendVariables("es", "en", currentDifficulty);
-        }
-
-        // Function to update backend variables
-        function updateBackendVariables(target_lang, src_lang, difficulty) {
-            
-            $.ajax({
-                url: '/update_lang',
-                method: 'POST',
-                data: { target_lang: target_lang, src_lang: src_lang, difficulty},
-                success: function(data) {
-                    console.log('Backend variables updated successfully:', data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error updating backend variables:', error);
-                }
-            });
-        }
-
-        // Bind change event to the dropdowns
-        $(document).ready(function() {
-            $('#target_lang, #src_lang').change(function() {
-                updateBackendVariables();
-            });
-        });
-    </script>
 </body>
 </html>
 

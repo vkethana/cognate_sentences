@@ -1,4 +1,5 @@
 import re
+import unicodedata
 from Levenshtein import distance as lev_distance
 
 def sentence_to_word_list(sentence, trim_small_words = False):
@@ -12,17 +13,23 @@ def sentence_to_word_list(sentence, trim_small_words = False):
     - list: a list of words with no punctuation or spaces in them
     '''
     sentence = re.sub(r'[^\w\s]', '', sentence) # strip all punctuation
-    sentence = sentence.lower() # lowercase the sentence
+    #sentence = sentence.lower() # lowercase the sentence
     word_list = sentence.split() # split into individual words
 
     if trim_small_words:
-        return [i for i in word_list if len(i) > 2]
+        return [i for i in word_list if len(i) > 2 and i.isalpha()]
     else:
-        return word_list
+        return [i for i in word_list if i.isalpha()]
+
+def strip_accents(s):
+   return ''.join(c for c in unicodedata.normalize('NFD', s)
+                  if unicodedata.category(c) != 'Mn')
 
 def get_edit_ratio(a, b):
     # the levenshtein distance (minimum number of edit operations) between the two words.
     # lower is better, as it implies the two words are cognate
+    a = strip_accents(a)
+    b = strip_accents(b)
     dist = lev_distance(a, b)
 
     if (min(len(a), len(b)) <= 5):
