@@ -22,11 +22,11 @@
      
       <div style="text-align:center">
         <form method="post" action="/generate_sentence" style="display:inline-block; text-align: center;">
-        <button type="submit" class="friendly-button">Generate New Beams</button>
+        <button type="submit" class="friendly-button">Generate New Sentences</button>
         </form>
         {% if inside_beam_search %}
         <form method="post" action="/extend_sentence" style="display:inline-block; text-align: center;">
-        <button class="friendly-button">Extend Current Beams</button>
+        <button class="friendly-button">Extend Current Sentences</button>
         </form>
         {% endif %}
       </div>

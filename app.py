@@ -41,6 +41,8 @@ def generate_sentence():
     first_sentence = choice(sentence_starters)
     candidates = init_beam_search(first_sentence, 3)
     sentences_to_render = [(get_highlighted(c.sentence, c.cognates), c.score_breakdown) for c in candidates]
+    for c in candidates:
+      print("Cognate list: ", c.cognates)
 
     return render_template('index.html', sentences=sentences_to_render, inside_beam_search=True)
 
@@ -49,6 +51,8 @@ def extend_sentence():
     global candidates
     candidates = run_beam_search(candidates, 3)
     sentences_to_render = [(get_highlighted(c.sentence, c.cognates), c.score_breakdown) for c in candidates]
+    for c in candidates:
+      print("Cognate list: ", c.cognates)
     return render_template('index.html', sentences=sentences_to_render, inside_beam_search=True)
 
 # Handle requests to /generate_sentence without POST method
