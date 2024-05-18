@@ -10,11 +10,12 @@
 </head>
 <body>
     <section>
-      The three best sentences found by the beam search are:
       {% if sentences %}
+      The three best sentences found by the beam search are:
       <ul>
-      {% for sentence in sentences %}
+      {% for sentence, difficulty_breakdown in sentences %}
           <li>{{ sentence | safe }}</li>
+          <p style="font-size: 14px; color: grey;">Difficulty breakdown: {{ difficulty_breakdown }}</p>
       {% endfor %}
       </ul>
       {% endif %}

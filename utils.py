@@ -30,16 +30,19 @@ def get_edit_ratio(a, b):
     # lower is better, as it implies the two words are cognate
     a = strip_accents(a)
     b = strip_accents(b)
+    assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
+
     dist = lev_distance(a, b)
+    if (min(len(a), len(b)) <= 2):
+      return 1.0 # no two-letter words should be cognates
 
     if (min(len(a), len(b)) <= 5):
       # Must be a near-perfect match if less than or equal to 5 chars
-      if dist <= 1:
-        return 0.0
-      else:
+      if dist > 1: # if edit distance is more than one
         return 1.0
+      else:
+        return 0.0
 
-    assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
     avg_len = (len(a) + len(b)) / 2
     edit_ratio = round(dist / avg_len, 2)
 

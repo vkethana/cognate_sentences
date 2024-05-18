@@ -23,8 +23,8 @@ def get_aux_dict(filename):
   print("Loaded auxiliary dictionary " + filename + " with", len(aux_dict), "entries.")
   return aux_dict
 
-if os.path.exists("data/" + src_lang + "_" + target_lang + "_dict.txt"):
-  aux_dict = get_aux_dict("data/" + src_lang + "_" + target_lang + "_dict.txt") # load auxiliary dictionary for fast translations
+if os.path.exists("production_data/" + src_lang + "_" + target_lang + "_dict.txt"):
+  aux_dict = get_aux_dict("production_data/" + src_lang + "_" + target_lang + "_dict.txt") # load auxiliary dictionary for fast translations
 else:
   print("Failed to load auxiliary dictionary. Translations will be much slower since every word has to be google translated (!!)")
 
@@ -32,6 +32,7 @@ class Node:
   '''
   Wrapper class for sentences
   '''
+
   def __init__(self, sentence, cognates, score_breakdown):
     self.sentence = sentence
     self.cognates = cognates
@@ -48,6 +49,7 @@ def get_target_lang_translation(word, src_lang, target_lang):
   - I source my auxiliary dictionaries from here:
     https://github.com/facebookresearch/MUSE?tab=readme-ov-file
   '''
+
   if aux_dict and word in aux_dict:
       # Uncomment this line and your terminal will be flooded with translations. but useful for seeing what kind of words get fast-translated
       #print("Fast-translating the word", word, " because it's in the auxilary dictionary under", aux_dict[word])
@@ -60,6 +62,7 @@ def call_gpt(prompt):
   '''
   call the gpt-3.5 turbo model for the beamsearch algorithm
   '''
+
   pre_prompt = "You are about to receive a sentence in some foreign language. Please complete the sentence in that language as coherently as possible. You may include additional sentences afterward. Please try to generate human-like text."
   response = client.completions.create(model="gpt-3.5-turbo-instruct",
   prompt=pre_prompt + prompt,
@@ -78,6 +81,9 @@ def decompose_sentence(sentence):
   Ignore words of length <= 2
   Also force all words to be lowercase and remove all punctuation
   '''
+
+  assert type(sentence) == str, "ERROR: sentence should be a string"
+
   words = sentence_to_word_list(sentence, False)
   words = [re.sub(r'[^\w\s]','', i) for i in words]
   return words
@@ -86,12 +92,13 @@ def get_cognates(words):
   '''
   Given a list of words, return a set of cognates. A "cognate" is defined as < 40% edit distance between the word and its translation (might make the rule stricter later)
   '''
+
   cognates = set()
   for w in words:
     translation = get_target_lang_translation(w, src_lang, target_lang)
 
     # note that words which begin with an uppercase letter are automatically considered cognates for now
-    if w[0].isupper() or get_edit_ratio(w, translation) < 0.35:
+    if get_edit_ratio(w, translation) < 0.35:
       cognates.add(w)
   return cognates
 
@@ -114,6 +121,9 @@ def get_score_breakdown(words, cognates):
 
   if (len(words) == 0):
     assert False, "ERROR: Scoring an empty sentence"
+
+  if (type(words) == str):
+    assert False, "ERROR: words should be a list of words, not a string"
 
   ratio = len(cognates) / len(words)
   #print("   Ratio of cognates to total words:", ratio)
@@ -191,11 +201,11 @@ def init_beam_search(first_sentence, beam_size):
   '''
   Given a starting sentence (the root node of the beam search tree), generate three "candidate" sentences to start the beam search
   '''
-  print("Starting sentence:", first_sentence)
 
+  print("Starting sentence:", first_sentence)
   # run first iteration of for loop manually (this gets the beam search going by generating the first node of the tree)
   first_cognates = get_cognates(decompose_sentence(first_sentence))
-  first_node = Node(first_sentence, first_cognates, get_score_breakdown(first_sentence, first_cognates))
+  first_node = Node(first_sentence, first_cognates, get_score_breakdown(decompose_sentence(first_sentence), first_cognates))
   candidates = get_candidates_from_node(first_node)
   candidates = sorted(candidates, key=lambda x: x.score, reverse=True)
   candidates = candidates[0:beam_size]
@@ -206,6 +216,7 @@ def run_beam_search(candidates, beam_size):
   Run the beam search algorithm for one iteration
   Assumes that a list which contains beam_size nodes ("candidates") has already been generated
   '''
+
   new_candidates = []
   for c in candidates:
     new_candidates.extend(get_candidates_from_node(c))

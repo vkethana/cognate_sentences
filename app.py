@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
 from openai_beam_search import run_beam_search, init_beam_search
 from random import choice
-from sentence import Sentence
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -16,6 +15,16 @@ lang_codes = {
 src_lang = 'en'
 target_lang = 'fr'
 candidates = []
+
+def get_highlighted(sentence, cognate_list):
+    if (sentence == None or sentence == ""):
+      return ""
+    highlighted_sentence = sentence
+    if (cognate_list == None or len(cognate_list) == 0):
+      return highlighted_sentence
+    for word in cognate_list:
+        highlighted_sentence = re.sub(r'\b({})\b'.format(re.escape(word)), r'<span class="highlight">\1</span>', highlighted_sentence)
+    return highlighted_sentence
 
 @app.route('/')
 def index():
@@ -31,20 +40,15 @@ def generate_sentence():
 
     first_sentence = choice(sentence_starters)
     candidates = init_beam_search(first_sentence, 3)
-    sentences = [Sentence(c.sentence, None, c.cognates) for c in candidates]
-    print(sentences)
-    sentences_to_render = [s.get_highlighted() for s in sentences]
+    sentences_to_render = [(get_highlighted(c.sentence, c.cognates), c.score_breakdown) for c in candidates]
 
-    # def __init__(self, sentence, difficulty, cognate_list):
     return render_template('index.html', sentences=sentences_to_render, inside_beam_search=True)
 
 @app.route('/extend_sentence', methods=['POST'])
 def extend_sentence():
     global candidates
     candidates = run_beam_search(candidates, 3)
-    sentences = [Sentence(c.sentence, None, c.cognates) for c in candidates]
-    sentences_to_render = [s.get_highlighted() for s in sentences]
-    # def __init__(self, sentence, difficulty, cognate_list):
+    sentences_to_render = [(get_highlighted(c.sentence, c.cognates), c.score_breakdown) for c in candidates]
     return render_template('index.html', sentences=sentences_to_render, inside_beam_search=True)
 
 # Handle requests to /generate_sentence without POST method

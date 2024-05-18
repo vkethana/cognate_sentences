@@ -1,9 +1,13 @@
-# Given a sentence and a list of words, 
-# calculate the largest consecutive window of words that are NOT in word_set and return the length of the window
-# E.g. "I am a student named Victor and ice cream is my favorite food", {"am", "student", "victor", "ice", "food"} -> 4
-# Explanation: The largest window is "a" "named" "and" "is" which has length 4
-
 def sliding_window_helper(sentence, word_set):
+  '''
+  Given a sentence and a list of words,
+  calculate the largest consecutive window of words that are NOT in word_set and return the length of the window
+  E.g. "I am a student named Victor and ice cream is my favorite food", {"am", "student", "victor", "ice", "food"} -> 4
+  Explanation: The largest window is "a" "named" "and" "is" which has length 4
+  '''
+  if (type(sentence) == str):
+    assert (False)
+
   end_of_window = lambda word: word.lower() in word_set
   window_sizes = dict()
 
