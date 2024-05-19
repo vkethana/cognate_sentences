@@ -170,3 +170,4 @@ secrets/*
 
 data/*
 *.ipynb
+ignoreme.py

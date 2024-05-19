@@ -1,6 +1,6 @@
 from openai import OpenAI
 import os
-from utils import sentence_to_word_list, get_edit_ratio
+from utils import sentence_to_word_list, get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word
 from deep_translator import GoogleTranslator
 import re
 from random import choice
@@ -9,34 +9,12 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
 
-def get_aux_dict(filename):
-  '''
-  Load a txt file of words and their translations into a dictionary
-  '''
-
-  aux_dict = {}
-  with open(filename, "r") as f:
-    for line in f:
-      word, translation = line.strip().split(" ")
-      aux_dict[word] = translation
-  print("Loaded auxiliary dictionary " + filename + " with", len(aux_dict), "entries.")
-  return aux_dict
-
-if os.path.exists("production_data/" + src_lang + "_" + target_lang + "_dict.txt"):
-  aux_dict = get_aux_dict("production_data/" + src_lang + "_" + target_lang + "_dict.txt") # load auxiliary dictionary for fast translations
+# load the auxiliary dictionary
+aux_dict = None
+if os.path.exists("production_data/" + src_lang + "_" + target_lang + "_dict.json"):
+  aux_dict = get_aux_dict("production_data/" + src_lang + "_" + target_lang + "_dict.json") # load auxiliary dictionary for fast translations
 else:
   print("Failed to load auxiliary dictionary. Translations will be much slower since every word has to be google translated (!!)")
-
-class Node:
-  '''
-  Wrapper class for sentences
-  '''
-
-  def __init__(self, sentence, cognates, score_breakdown):
-    self.sentence = sentence
-    self.cognates = cognates
-    self.score_breakdown = score_breakdown
-    self.score = score_breakdown["total_score"]
 
 def get_target_lang_translation(word, src_lang, target_lang):
   '''
@@ -74,19 +52,6 @@ def call_gpt(prompt):
   presence_penalty=0.6)
   return response
 
-def decompose_sentence(sentence):
-  '''
-  Split a sentence into a list of words
-  Ignore words of length <= 2
-  Also force all words to be lowercase and remove all punctuation
-  '''
-
-  assert type(sentence) == str, "ERROR: sentence should be a string"
-
-  words = sentence_to_word_list(sentence, False)
-  words = [re.sub(r'[^\w\s]','', i) for i in words]
-  return words
-
 def get_cognates(words):
   '''
   Given a list of words, return a set of cognates. A "cognate" is defined as < 40% edit distance between the word and its translation (might make the rule stricter later)
@@ -94,12 +59,15 @@ def get_cognates(words):
 
   cognates = set()
   for w in words:
-    translation = get_target_lang_translation(w, src_lang, target_lang)
+    w_cleaned = clean_word(w) # remove all punctuation and lowercase the word
+    translation = get_target_lang_translation(w_cleaned, src_lang, target_lang)
+    edit_ratio = get_edit_ratio(w_cleaned, translation)
     if (src_lang =='fr' and w[:2].lower() == "l'"): # remove "l'" from the beginning of the word (for french)
-      w = w[2:]
+      edit_ratio = get_edit_ratio(clean_word(w[2:]), translation)
 
+    #print("Edit ratio of word", w, "and its translation", translation, "is", edit_ratio)
     # note that words which begin with an uppercase letter are automatically considered cognates for now
-    if get_edit_ratio(w, translation) < 0.35:
+    if edit_ratio < 0.35:
       cognates.add(w)
   return cognates
 
@@ -236,7 +204,7 @@ def sliding_window_helper(sentence, word_set):
   if (type(sentence) == str):
     assert (False)
 
-  end_of_window = lambda word: word.lower() in word_set
+  end_of_window = lambda word: word in word_set
   window_sizes = dict()
 
   curr_count = 0
