@@ -40,13 +40,13 @@ def call_gpt(prompt):
   call the gpt-3.5 turbo model for the beamsearch algorithm
   '''
 
-  pre_prompt = "You are about to receive a sentence in some foreign language. Please complete the sentence in that language as coherently as possible. You may include additional sentences afterward. Please try to generate human-like text."
+  pre_prompt = "You are about to receive a sentence in French. Please complete the sentence in that language as coherently as possible. You may include additional sentences afterward. Please try to generate human-like text. Above all, do NOT include any English text in your response. \n\n"
   response = client.completions.create(model="gpt-3.5-turbo-instruct",
   prompt=pre_prompt + prompt,
   max_tokens=20,
   n=4,
   stop=None,
-  temperature=0.7,
+  temperature=1.1,
   top_p=0.9,
   frequency_penalty=0,
   presence_penalty=0.6)
@@ -138,7 +138,7 @@ def get_candidates_from_node(currNode):
   response = call_gpt(currNode.sentence)
   choices = []
   for i, choice in enumerate(response.choices):
-      print(f"Choice {i+1}:")
+      #print(f"Choice {i+1}:")
       text = choice.text.strip().replace("\n", " ")
       # Truncate the text to the last space
       # This prevents the model from outputting a half-finished word, 
@@ -147,8 +147,8 @@ def get_candidates_from_node(currNode):
       if last_space_index != -1:
           text = text[:last_space_index]
 
-      print("   Original text:", currNode.sentence)
-      print("   Newly-added text:", text)
+      #print("   Original text:", currNode.sentence)
+      #print("   Newly-added text:", text)
 
       # We run cognate analysis on just the new part of the sentence, so that we don't
       # have to check the same thing twice
@@ -171,7 +171,7 @@ def init_beam_search(first_sentence, beam_size):
   Given a starting sentence (the root node of the beam search tree), generate three "candidate" sentences to start the beam search
   '''
 
-  print("Starting sentence:", first_sentence)
+  #print("Starting sentence:", first_sentence)
   # run first iteration of for loop manually (this gets the beam search going by generating the first node of the tree)
   first_cognates = get_cognates(decompose_sentence(first_sentence))
   first_node = Node(first_sentence, first_cognates, get_score_breakdown(decompose_sentence(first_sentence), first_cognates))
@@ -268,31 +268,85 @@ def gap_heuristic(word_list, word_set):
   }
   return results
 
+
 if __name__ == "__main__":
-  '''
-  sentence = "I am a student named Victor and ice cream is my favorite food".split(" ")
-  word_set = {"am", "student", "victor", "ice", "food"}
-  print(gap_heuristic(sentence, word_set))
-  sentence = ["aa", "cc", "bb", "cc", "cc", "cc", "bb", "aa", "cc", "cc", "cc", "cc", "cc", "cc", "bb", "cc"]
-  word_set = {"aa", "bb"}
-  print(gap_heuristic(sentence, word_set))
-  '''
-  sentence = "El presidente de Argentina dijó que el país está 'en la etapa final de un largo ciclo de crecimiento económico'".split(" ")
-  print(sentence)
-  word_set = {'argentina', 'económico', 'presidente', 'final', 'presidente'}
-  print(gap_heuristic(sentence, word_set))
-if __name__ == "__main__":
+
   # Generate a starting sentence for GPT-3.5 to complete
-  sentence_starters = ["le président George Bush", "la ville de New York", "la ville de San Francisco", "le gouvernement américain", "le premier ministre Justin Trudeau"]
+  sentence_starters = [
+    "Le président George Bush",
+    "La ville de New York",
+    "Dans la ville de San Francisco",
+    "Le gouvernement américain",
+    "Le premier ministre Justin Trudeau",
+    "Justin Trudeau",
+    "Le",
+    "Le",
+    "Le",
+    "L'",
+    "Les",
+    "Les",
+    "De",
+    "De",
+    "Au",
+    "Par",
+    "De plus",
+    "La",
+    "L'économie",
+    "La pension",
+    "La",
+    "La création de",
+    "En",
+    "En",
+    "En",
+    "Pour",
+    "Une",
+    "Un climat",
+    "La Constitution",
+    #"Wikipédia est une encyclopédie et",
+    #"Netflix est une",
+    "Google est une",
+    "L'entrepreneur et fondateur d'Apple Steve Jobs",
+    "Une précaution",
+    "Les Misérables est",
+    "L'intellectuel français Voltaire",
+    "L'Australien",
+    "Le hockey est",
+    "Je réserve un taxi",
+    "Manhattan est un",
+    "La pandémie de Covid-19",
+   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results.csv"
+  i = 0
+  on_good_streak = False
 
-  first_sentence = choice(sentence_starters)
-  candidates = init_beam_search(first_sentence, 3)
-
-  for _ in range(5):
-    candidates = run_beam_search(candidates, 3)
-    print("\033[1m" + f"Final candidates after iteration {_ + 1} of beam search, are:" + "'\033[0m")
+  while True:
+    if (on_good_streak and i < 5):
+      candidates = run_beam_search(candidates, 3)
+      i += 1
+    else:
+      candidates = init_beam_search(choice(sentence_starters), 3)
+      i = 0
+    on_good_streak = False
+    print("\033[1m" + f"Final candidates after iteration {i + 1} of beam search, are:" + "\033[0m")
     for c in candidates:
+      if (c.sentence == ""):
+        print("WARNING: Empty sentence detected. Skipping.")
+        continue
       print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "\033[0m.")
       print("-" * 50)
+
+      if c.score_breakdown["total_score"] >= 0.40:
+        try:
+          on_good_streak = True
+          print('\033[94m' + "Potential training data sample indicated! Want to print out: " + '\033[0m')
+          if (c.score_breakdown["total_score"] == 1.00):
+            c.score_breakdown["cognate_ratio"] = -1
+            c.score_breakdown["avg_gap_between_consecutive_cognates"] = -1
+          message = c.sentence + "," + str(c.score_breakdown['cognate_ratio']) + "," + str(c.score_breakdown['avg_gap_between_consecutive_cognates']) + "," + str(c.score_breakdown['total_score']) + "\n"
+          print(message)
+          with open(file_path, "a") as f:
+            f.write(message)
+        except:
+          print("Error printing out data or writing to file")
