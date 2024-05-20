@@ -3,23 +3,6 @@ import unicodedata
 from Levenshtein import distance as lev_distance
 import json
 
-def sentence_to_word_list(sentence, trim_small_words = False):
-    '''
-    Cleans a sentence by removing all punctuation, lowercasing all letters
-
-    Args:
-    - sentence (str): a full sentence string
-    - trim_small_words (bool): whether words of length 2 and under should be excluded
-    Returns:
-    - list: a list of words with no punctuation or spaces in them
-    '''
-    word_list = sentence.split() # split into individual words
-
-    if trim_small_words:
-        return [i for i in word_list if len(i) > 2 and i.isalpha()]
-    else:
-        return [i for i in word_list if i.isalpha()]
-
 def clean_word(word):
    word = re.sub(r'[^\w\s]', '', word).lower() # strip all punctuation and lowercase the word
    return ''.join(c for c in unicodedata.normalize('NFD', word)
@@ -30,6 +13,7 @@ def get_edit_ratio(a, b):
     # lower is better, as it implies the two words are cognate
     a = clean_word(a)
     b = clean_word(b)
+    print("Getting edit ratio for", a, "and ", b)
     assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
 
     dist = lev_distance(a, b)
@@ -60,7 +44,6 @@ def get_aux_dict(file_path):
   with open(file_path, 'r') as file:
     # Step 3: Load the JSON data as a dictionary
     aux_dict = json.load(file)
-  
   assert(len(aux_dict) > 0), "ERROR: auxiliary dictionary should not be empty"
   print("Loaded auxiliary dictionary " + file_path + " with", len(aux_dict), "entries.")
   return aux_dict
@@ -80,12 +63,9 @@ class Node:
 def decompose_sentence(sentence):
   '''
   Split a sentence into a list of words
-  Ignore words of length <= 2
-  Also force all words to be lowercase and remove all punctuation
   '''
 
   assert type(sentence) == str, "ERROR: sentence should be a string"
-
-  words = sentence_to_word_list(sentence, False)
-  # TODO: There is currently a bug where the word "l'" is not being split correctly. And any other word that has punctuation in it (won't be highlighted as a cognate)
+  words = [i for i in sentences.split() if i.lower().islower()] # we check if every string, lowercased, contains at least one lowercase letter
+  # this will remove words that are just punctuation or numbers
   return words
