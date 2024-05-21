@@ -2,6 +2,10 @@ import re
 import unicodedata
 from Levenshtein import distance as lev_distance
 import json
+import nltk
+from nltk.corpus import wordnet
+
+nltk.download('wordnet') # Need this for synonym checking
 
 def clean_word(word):
    word = re.sub(r'[^\w\s]', '', word).lower() # strip all punctuation and lowercase the word
@@ -13,7 +17,6 @@ def get_edit_ratio(a, b):
     # lower is better, as it implies the two words are cognate
     a = clean_word(a)
     b = clean_word(b)
-    print("Getting edit ratio for", a, "and ", b)
     assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
 
     dist = lev_distance(a, b)
@@ -66,6 +69,14 @@ def decompose_sentence(sentence):
   '''
 
   assert type(sentence) == str, "ERROR: sentence should be a string"
-  words = [i for i in sentences.split() if i.lower().islower()] # we check if every string, lowercased, contains at least one lowercase letter
+  words = [i for i in sentence.split() if i.lower().islower()] # we check if every string, lowercased, contains at least one lowercase letter
   # this will remove words that are just punctuation or numbers
   return words
+
+# Function to get synonyms
+def get_synonyms(word):
+    synonyms = set()
+    for syn in wordnet.synsets(word):
+        for lemma in syn.lemmas():
+            synonyms.add(lemma.name())
+    return list(synonyms)[:10]  # Return top 10 synonyms

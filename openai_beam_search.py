@@ -1,6 +1,6 @@
 from openai import OpenAI
 import os
-from utils import sentence_to_word_list, get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word
+from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms
 from deep_translator import GoogleTranslator
 import re
 from random import choice
@@ -52,6 +52,12 @@ def call_gpt(prompt):
   presence_penalty=0.6)
   return response
 
+def is_cognate(word):
+  '''
+  Assumes word is lowercased and has no punctuation
+  '''
+  return None
+
 def get_cognates(words):
   '''
   Given a list of words, return a set of cognates. A "cognate" is defined as < 40% edit distance between the word and its translation (might make the rule stricter later)
@@ -60,21 +66,29 @@ def get_cognates(words):
   cognates = set()
   for w in words:
     w_cleaned = clean_word(w) # remove all punctuation and lowercase the word
-    translation = get_target_lang_translation(w_cleaned, src_lang, target_lang)
-    edit_ratio = get_edit_ratio(w_cleaned, translation)
-    if (src_lang =='fr' and w[:2].lower() == "l'"): # remove "l'" from the beginning of the word (for french)
-      edit_ratio = get_edit_ratio(clean_word(w[2:]), translation)
+    if (src_lang =='fr' and (w[:2].lower() == "l'" or w[:2].lower() == "d'")): # remove l' and d' from any words if french
+      w_cleaned = clean_word(w[2:])
 
-    #print("Edit ratio of word", w, "and its translation", translation, "is", edit_ratio)
-    # note that words which begin with an uppercase letter are automatically considered cognates for now
-    if edit_ratio < 0.35:
-      cognates.add(w)
+    translation = get_target_lang_translation(w_cleaned, src_lang, target_lang)
+    synonyms = get_synonyms(translation) # these are English synonyms
+    synonyms.append(translation) # add the translation itself to the set of synonyms
+
+    '''
+    Reason why we iterate thru synonyms in addition to the English translation:
+    Some words (e.g. "assure" = "ensures") have a very low edit distance with their synonyms
+    But these words are clearly cognate. If we compare against the top 10 synonyms, we can catch these cases
+    '''
+    for s in synonyms:
+      edit_ratio = get_edit_ratio(w_cleaned, s)
+      if edit_ratio < 0.35:
+        cognates.add(w)
+        break
   return cognates
 
 def get_score_breakdown(words, cognates):
   '''
   Heuristic function that returns the ratio of cognates to total words in a sentence
-  (In this implementation, sentences are represented as Node objects, not raw strings)
+  Note that the sentence has to be passed in as a list of words, not a string
 
   There are three main factors that play into the score:
     1) The ratio of cognates to total words
@@ -95,7 +109,6 @@ def get_score_breakdown(words, cognates):
     assert False, "ERROR: words should be a list of words, not a string"
 
   ratio = len(cognates) / len(words)
-  #print("   Ratio of cognates to total words:", ratio)
 
   # some simple rules to throw out obviously good or bad sentences
   if ratio > 0.8:
@@ -104,7 +117,6 @@ def get_score_breakdown(words, cognates):
     return {"total_score": 0.0}
 
   gap_analysis = gap_heuristic(words, cognates) # get word-gap analysis from the scoring.py file
-  #print("   Gap analysis:", gap_analysis)
   biggest_gap = gap_analysis['biggest_gap'] # this metric isnt really used right now
   # avg_gap typically ranges from 1-8. But for scoring purposes we force it to be between 0-1
   # the reason why we use min() is to prevent the score from going negative
@@ -118,6 +130,7 @@ def get_score_breakdown(words, cognates):
     "cognate_ratio": round(ratio, 2),
     "avg_gap_between_consecutive_cognates": round(gap_analysis['avg_gap'], 2),
     "avg_gap_normalized": round(avg_gap_normalized, 2),
+    "biggest_gap": biggest_gap,
     "total_score": round(max(0.60 * ratio + 0.40 * avg_gap_normalized, 0.0), 2)
   }
   return breakdown
@@ -268,53 +281,26 @@ def gap_heuristic(word_list, word_set):
   }
   return results
 
-
 if __name__ == "__main__":
-
   # Generate a starting sentence for GPT-3.5 to complete
   sentence_starters = [
-    "Le président George Bush",
-    "La ville de New York",
-    "Dans la ville de San Francisco",
-    "Le gouvernement américain",
-    "Le premier ministre Justin Trudeau",
-    "Justin Trudeau",
-    "Le",
-    "Le",
     "Le",
     "L'",
     "Les",
-    "Les",
-    "De",
     "De",
     "Au",
     "Par",
     "De plus",
     "La",
-    "L'économie",
-    "La pension",
-    "La",
-    "La création de",
     "En",
-    "En",
-    "En",
+    "Créée par",
+    "Cette",
     "Pour",
     "Une",
     "Un climat",
-    "La Constitution",
-    #"Wikipédia est une encyclopédie et",
-    #"Netflix est une",
-    "Google est une",
-    "L'entrepreneur et fondateur d'Apple Steve Jobs",
     "Une précaution",
-    "Les Misérables est",
-    "L'intellectuel français Voltaire",
-    "L'Australien",
-    "Le hockey est",
-    "Je réserve un taxi",
-    "Manhattan est un",
-    "La pandémie de Covid-19",
-   ]
+    "Je"
+  ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
   file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results.csv"
@@ -327,6 +313,7 @@ if __name__ == "__main__":
       i += 1
     else:
       candidates = init_beam_search(choice(sentence_starters), 3)
+      print("Just grabbed the candidates ", candidates)
       i = 0
     on_good_streak = False
     print("\033[1m" + f"Final candidates after iteration {i + 1} of beam search, are:" + "\033[0m")
