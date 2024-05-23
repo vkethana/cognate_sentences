@@ -17,14 +17,17 @@ def get_edit_ratio(a, b):
     # lower is better, as it implies the two words are cognate
     a = clean_word(a)
     b = clean_word(b)
-    assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
+    #assert (len(a) != 0 and len(b) != 0), "ERROR: one of the words is of length zero"
+    if (len(a) == 0 or len(b) == 0):
+      print("WARNING: One of the words is of length zero")
+      print("The words are ", a, " and ", b)
 
     dist = lev_distance(a, b)
     if (min(len(a), len(b)) <= 2):
       return 1.0 # no two-letter words should be cognates
 
-    if (min(len(a), len(b)) <= 5):
-      # Must be a near-perfect match if less than or equal to 5 chars
+    if (min(len(a), len(b)) <= 4):
+      # Must be a near-perfect match if less than or equal to 4 chars
       if dist > 1: # if edit distance is more than one
         return 1.0
       else:
@@ -67,8 +70,7 @@ def decompose_sentence(sentence):
   '''
   Split a sentence into a list of words
   '''
-
-  assert type(sentence) == str, "ERROR: sentence should be a string"
+  assert type(sentence) == str, "ERROR: sentence should be a string. What was passed in is: " + str(sentence) + 'of type ' + str(type(sentence))
   words = [i for i in sentence.split() if i.lower().islower()] # we check if every string, lowercased, contains at least one lowercase letter
   # this will remove words that are just punctuation or numbers
   return words
@@ -80,3 +82,12 @@ def get_synonyms(word):
         for lemma in syn.lemmas():
             synonyms.add(lemma.name())
     return list(synonyms)[:10]  # Return top 10 synonyms
+
+
+def word_in_wordnet(word):
+  # Check if there are any synsets for the given word
+  synsets = wordnet.synsets(word)
+  if synsets:
+      return True
+  else:
+      return False

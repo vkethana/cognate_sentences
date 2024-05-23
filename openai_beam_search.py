@@ -1,13 +1,17 @@
 from openai import OpenAI
 import os
-from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms
+from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms, word_in_wordnet
 from deep_translator import GoogleTranslator
 import re
-from random import choice
+from random import choice, sample
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
+
+# Seed words to help with cognate generation. These don't have to be used
+use_seed_words = True
+seed_words = ['symboles', 'Gustave', 'France.', 'unique.', 'orchidées', 'caractérisé', 'Paris', 'précipitations', 'salade', 'recommande', 'emblématiques', 'région', 'abondantes.', 'suggéré', 'architecture', 'satisfait', 'frites', 'beauté', 'culinaire', 'végétation', 'restaurant,', 'touristes', 'entier', 'Triomphe', 'dessert.', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical', 'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine.', 'imprenable', 'tiramisu', 'composée', 'restaurant', 'tropicales', 'vin', 'apprécié', 'espèces', 'mètres', 'luxuriante', 'températures', 'absolument', 'admirer', 'dessert', 'Eiffel,', 'expérience', 'serveur', 'différentes,', 'est', 'célèbres', "n'ai", 'Eiffel', 'restaurant.']
 
 # load the auxiliary dictionary
 aux_dict = None
@@ -23,24 +27,32 @@ def get_target_lang_translation(word, src_lang, target_lang):
   - src_lang (str): the word's current langauge
   - target_lang (str): the language that we want to translate the word into
   - auxilary_dictionary (dict): a dictionary of words that have already been translated.
-  - I source my auxiliary dictionaries from here:
-    https://github.com/facebookresearch/MUSE?tab=readme-ov-file
   '''
 
   if aux_dict and word in aux_dict:
       # Uncomment this line and your terminal will be flooded with translations. but useful for seeing what kind of words get fast-translated
       #print("Fast-translating the word", word, " because it's in the auxilary dictionary under", aux_dict[word])
-      return aux_dict[word]
+      translation = aux_dict[word]
   else:
     translation = GoogleTranslator(source=src_lang, target=target_lang).translate(word)
-    return translation
+
+  if (translation[0:3] == 'to ' and len(translation) > 3):
+    translation = translation[3:]
+
+  return translation
 
 def call_gpt(prompt):
   '''
   call the gpt-3.5 turbo model for the beamsearch algorithm
   '''
 
-  pre_prompt = "You are about to receive a sentence in French. Please complete the sentence in that language as coherently as possible. You may include additional sentences afterward. Please try to generate human-like text. Above all, do NOT include any English text in your response. \n\n"
+  pre_prompt = "You are about to receive a sentence in French. Please complete the sentence in that language as coherently as possible."
+  if use_seed_words:
+    random_sample = sample(seed_words, 2)
+    pre_prompt += " Please include the following words in your response: " + random_sample[0] + ", " + random_sample[1] + ". "
+    print("Using seed words: ", random_sample)
+  pre_prompt += "You may include additional sentences afterward. Please try to generate human-like text. Above all, please do NOT include any English text in your response. \n\n"
+  #print("Prompt: ", pre_prompt + prompt)
   response = client.completions.create(model="gpt-3.5-turbo-instruct",
   prompt=pre_prompt + prompt,
   max_tokens=20,
@@ -51,12 +63,6 @@ def call_gpt(prompt):
   frequency_penalty=0,
   presence_penalty=0.6)
   return response
-
-def is_cognate(word):
-  '''
-  Assumes word is lowercased and has no punctuation
-  '''
-  return None
 
 def get_cognates(words):
   '''
@@ -73,6 +79,16 @@ def get_cognates(words):
     synonyms = get_synonyms(translation) # these are English synonyms
     synonyms.append(translation) # add the translation itself to the set of synonyms
 
+    '''
+    The below snippet of code checks if the TL word is in the English wordnet. E.g. French "taxi" because it's in English wordnet
+    This can help catch some stray cognates
+    WARNING: The code is fooled by false cognates
+    We check if the word length is >2 because otherwise words like "de" or "a" get flagged as cognates
+    '''
+    if len(w_cleaned) > 2 and word_in_wordnet(w_cleaned):
+      cognates.add(w)
+      #print("The french word" + w + " is in English wordnet so it must be a cognate")
+      continue
     '''
     Reason why we iterate thru synonyms in addition to the English translation:
     Some words (e.g. "assure" = "ensures") have a very low edit distance with their synonyms
@@ -108,6 +124,15 @@ def get_score_breakdown(words, cognates):
   if (type(words) == str):
     assert False, "ERROR: words should be a list of words, not a string"
 
+  # auto-reject sentence that don't have at least three cognates in the first 5 words
+  if (len(words) >= 5):
+    cntr = 0
+    for i in range(0,5):
+      if words[i] in cognates:
+        cntr += 1
+    if (cntr < 3):
+      return {"total_score": 0.0}
+
   ratio = len(cognates) / len(words)
 
   # some simple rules to throw out obviously good or bad sentences
@@ -122,7 +147,7 @@ def get_score_breakdown(words, cognates):
   # the reason why we use min() is to prevent the score from going negative
   avg_gap_normalized = 1 - (min(gap_analysis['avg_gap'], 6) / 6)
   # throw out sentences with too many large gaps in between cognates
-  if avg_gap_normalized > 7 or biggest_gap > 10:
+  if avg_gap_normalized > 7 or biggest_gap > 4:
     return {"total_score": 0.0}
 
   # otherwise, do a weighted average: 25% based on cognate ratio, 75% based on gap heuristic
@@ -303,7 +328,7 @@ if __name__ == "__main__":
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results.csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_3.csv"
   i = 0
   on_good_streak = False
 
@@ -331,7 +356,7 @@ if __name__ == "__main__":
           if (c.score_breakdown["total_score"] == 1.00):
             c.score_breakdown["cognate_ratio"] = -1
             c.score_breakdown["avg_gap_between_consecutive_cognates"] = -1
-          message = c.sentence + "," + str(c.score_breakdown['cognate_ratio']) + "," + str(c.score_breakdown['avg_gap_between_consecutive_cognates']) + "," + str(c.score_breakdown['total_score']) + "\n"
+          message = c.sentence + "\t" + str(c.score_breakdown['cognate_ratio']) + "\t" + str(c.score_breakdown['avg_gap_between_consecutive_cognates']) + "\t" + str(c.score_breakdown['biggest_gap']) + "\t" + str(c.score_breakdown['total_score']) + "\n"
           print(message)
           with open(file_path, "a") as f:
             f.write(message)
