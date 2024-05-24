@@ -5,30 +5,28 @@ from deep_translator import GoogleTranslator
 import re
 from random import choice, sample, randint
 
-# get random year between 1000 and 2024
-
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
 model = "gpt-3.5-turbo-instruct"
-#model = "gpt-4"
+#model = "gpt-4" # too expensive. and requires different API endpoints. But maybe worth trying in the future
 
 # Seed words to help with cognate generation. These don't have to be used
-use_seed_words = True
+use_seed_words = False
 seed_words = [
-    'symboles', 'Gustave', 'France', 'unique', 'orchidées', 'caractérisé', 'Paris', 'précipitations',
-    'salade', 'recommande', 'emblématiques', 'région', 'abondantes', 'suggéré', 'architecture', 
-    'satisfait', 'frites', 'beauté', 'culinaire', 'végétation', 'restaurant,', 'touristes', 'entier', 
-    'Triomphe', 'dessert', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical', 
-    'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine', 
-    'imprenable', 'tiramisu', 'composée', 'restaurant', 'tropicales', 'vin', 'apprécié', 'espèces', 
-    'mètres', 'luxuriante', 'températures', 'absolument', 'admirer', 'dessert', 'Eiffel,', 'expérience', 
-    'serveur', 'différentes,', 'est', 'célèbres', 'Eiffel', 'restaurant',
+    'symbole', 'Gustave', 'France', 'unique', 'orchidées', 'caractérisé', 'Paris', 'précipitations',
+    'salade', 'recommande', 'emblématique', 'région', 'abondante', 'suggéré', 'architecture',
+    'satisfait', 'frites', 'beauté', 'culinaire', 'végétation', 'restaurant,', 'touriste', 'entier',
+    'Triomphe', 'dessert', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical',
+    'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine',
+    'imprenable', 'tiramisu', 'composée', 'restaurant', 'tropicale', 'vin', 'apprécié', 'espèces',
+    'mètres', 'luxuriante', 'température', 'absolument', 'admirer', 'dessert', 'Eiffel,', 'expérience',
+    'serveur', 'différentes,', 'célèbres', 'Eiffel', 'restaurant',
     'artistique', 'bizarre', 'comédie', 'délicatesse', 'éducation', 'félicitations', 'génie', 'harmonie',
-    'illusion', 'joie', 'kilogramme', 'lumière', 'musique', 'noble', 'orange', 'poésie', 'qualité', 
-    'réalité', 'sérieux', 'tempête', 'unique', 'village', 'wagon', 'xylophone', 'yoga', 'zoo', 
-    'architecte', 'banane', 'chocolat', 'décor', 'électricité', 'festival', 'glace', 'hôpital', 
-    'île', 'journal', 'kiosque', 'livre', 'mélodie', 'naturel', 'océan', 'parfum', 'qualité', 
+    'illusion', 'joie', 'kilogramme', 'lumière', 'musique', 'noble', 'orange', 'poésie', 'qualité',
+    'réalité', 'sérieux', 'tempête', 'unique', 'village', 'wagon', 'xylophone', 'yoga', 'zoo',
+    'architecte', 'banane', 'chocolat', 'décor', 'électricité', 'festival', 'glace', 'hôpital',
+    'île', 'journal', 'kiosque', 'livre', 'mélodie', 'naturel', 'océan', 'parfum', 'qualité',
     'résidence', 'supermarché', 'théâtre', 'université', 'volcan', 'week-end', 'zèbre'
 ]
 
@@ -226,14 +224,16 @@ def get_candidates_from_node(currNode):
       if last_space_index != -1:
           text = text[:last_space_index]
 
-      #print("   Original text:", currNode.sentence)
-      #print("   Newly-added text:", text)
+      print("   Original text:", currNode.sentence)
+      print("   Newly-added text:", text)
+      print("   Length of Newly-added text:", len(text))
 
       # We run cognate analysis on just the new part of the sentence, so that we don't
       # have to check the same thing twice
       cognates = get_cognates(decompose_sentence(text))
       cognates.update(currNode.cognates)
 
+      # at this point, we reattach the earlier part of the sentence
       text = currNode.sentence + " " + text
       newNode = Node(text, cognates, get_score_breakdown(decompose_sentence(text), cognates), prompt)
 
@@ -389,7 +389,7 @@ if __name__ == "__main__":
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_with_prompt_2.csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_with_prompt_no_seed_word.csv"
   i = 0
   on_good_streak = False
 
