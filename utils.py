@@ -60,11 +60,14 @@ class Node:
   Makes process of passing around these 3 variables less clunky
   '''
 
-  def __init__(self, sentence, cognates, score_breakdown):
+  def __init__(self, sentence, cognates, score_breakdown, prompt_that_generated_me = None):
     self.sentence = sentence
     self.cognates = cognates
     self.score_breakdown = score_breakdown
     self.score = score_breakdown["total_score"]
+
+    if prompt_that_generated_me != None:
+      self.prompt = prompt_that_generated_me.replace("\n", "  ")
 
 def decompose_sentence(sentence):
   '''

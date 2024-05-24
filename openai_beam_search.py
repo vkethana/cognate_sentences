@@ -16,14 +16,14 @@ model = "gpt-3.5-turbo-instruct"
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = True
 seed_words = [
-    'symboles', 'Gustave', 'France.', 'unique.', 'orchidées', 'caractérisé', 'Paris', 'précipitations',
-    'salade', 'recommande', 'emblématiques', 'région', 'abondantes.', 'suggéré', 'architecture', 
+    'symboles', 'Gustave', 'France', 'unique', 'orchidées', 'caractérisé', 'Paris', 'précipitations',
+    'salade', 'recommande', 'emblématiques', 'région', 'abondantes', 'suggéré', 'architecture', 
     'satisfait', 'frites', 'beauté', 'culinaire', 'végétation', 'restaurant,', 'touristes', 'entier', 
-    'Triomphe', 'dessert.', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical', 
-    'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine.', 
+    'Triomphe', 'dessert', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical', 
+    'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine', 
     'imprenable', 'tiramisu', 'composée', 'restaurant', 'tropicales', 'vin', 'apprécié', 'espèces', 
     'mètres', 'luxuriante', 'températures', 'absolument', 'admirer', 'dessert', 'Eiffel,', 'expérience', 
-    'serveur', 'différentes,', 'est', 'célèbres', "n'ai", 'Eiffel', 'restaurant.',
+    'serveur', 'différentes,', 'est', 'célèbres', 'Eiffel', 'restaurant',
     'artistique', 'bizarre', 'comédie', 'délicatesse', 'éducation', 'félicitations', 'génie', 'harmonie',
     'illusion', 'joie', 'kilogramme', 'lumière', 'musique', 'noble', 'orange', 'poésie', 'qualité', 
     'réalité', 'sérieux', 'tempête', 'unique', 'village', 'wagon', 'xylophone', 'yoga', 'zoo', 
@@ -63,24 +63,30 @@ def get_target_lang_translation(word, src_lang, target_lang):
 
   return translation
 
+def make_prompt_for_gpt(sentence_to_be_extended):
+  pre_prompt = "You are about to receive a sentence in French. Please complete the sentence in French as coherently as possible."
+  if use_seed_words:
+    random_sample = sample(seed_words, 2)
+    pre_prompt += " Please include at least one of the following words in your response: " + random_sample[0] + ", " + random_sample[1] + ". Please include the actual word instead of substituting it with underscores. "
+    print("Using seed words: ", random_sample)
+  pre_prompt += "You may include additional sentences afterward. Please try to generate human-like text.\n\n"
+  return pre_prompt + sentence_to_be_extended
+
 def call_gpt(prompt):
   '''
   Call GPT for the beamsearch algorithm
   '''
+  # Check if prompt contains INSERT_RANDOM_YEAR
+  if "INSERT_RANDOM_YEAR" in prompt:
+    assert False, "ERROR: Prompt was not pre-processed correctly. Double check the sentence starters array?"
 
-  pre_prompt = "You are about to receive a sentence in French. Please complete the sentence in that language as coherently as possible."
-  if use_seed_words:
-    random_sample = sample(seed_words, 2)
-    pre_prompt += " Please include at least one of the following words in your response: " + random_sample[0] + ", " + random_sample[1] + ". "
-    print("Using seed words: ", random_sample)
-  pre_prompt += "You may include additional sentences afterward. Please try to generate human-like text. Above all, please do not write sentences in English (loanwords OK).\i\n"
   #print("Prompt: ", pre_prompt + prompt)
   response = client.completions.create(model=model,
-  prompt=pre_prompt + prompt,
+  prompt=prompt,
   max_tokens=20,
   n=4,
   stop=None,
-  temperature=1.1,
+  temperature=1.3,
   top_p=0.9,
   frequency_penalty=0,
   presence_penalty=0.6)
@@ -168,7 +174,10 @@ def get_score_breakdown(words, cognates):
 
   non_cognates = list(set(words) - cognates)
   # otherwise, do a weighted average: 25% based on cognate ratio, 75% based on gap heuristic
-  avg_non_cognate_length = round(sum([len(w) for w in non_cognates]) / len(non_cognates), 2)
+  if len(non_cognates) == 0:
+    avg_non_cognate_length = 0
+  else:
+    avg_non_cognate_length = round(sum([len(w) for w in non_cognates]) / len(non_cognates), 2)
 
   if early_rejection:
     total_score = 0.0
@@ -198,10 +207,14 @@ def get_candidates_from_node(currNode):
 
   Node that the Node object requires a sentence, a set of cognates, and a score
   '''
-  response = call_gpt(currNode.sentence)
+
+  prompt = make_prompt_for_gpt(currNode.sentence)
+  response = call_gpt(prompt)
+
   while min([len(choice.text) for choice in response.choices]) < 2:
-    print("Warning: Empty response detected")
-    response = call_gpt(currNode.sentence)
+    print("WARNING: Empty response detected\n" * 3)
+    response = call_gpt(prompt)
+
   choices = []
   for i, choice in enumerate(response.choices):
       #print(f"Choice {i+1}:")
@@ -222,7 +235,7 @@ def get_candidates_from_node(currNode):
       cognates.update(currNode.cognates)
 
       text = currNode.sentence + " " + text
-      newNode = Node(text, cognates, get_score_breakdown(decompose_sentence(text), cognates))
+      newNode = Node(text, cognates, get_score_breakdown(decompose_sentence(text), cognates), prompt)
 
       # if text does not contain any lowercase letters a-z, then we reject it
       # this is important because sometimes the model outputs incoherent text in ALLCAPS or only numbers
@@ -349,10 +362,15 @@ if __name__ == "__main__":
     "Le projet de",
     "De plus",
     "La",
-    "En " + str(randint(1000, 2024)),
-    "En " + str(randint(1700, 2024)),
-    "En " + str(randint(1700, 2024)),
-    "En " + str(randint(1700, 2024)),
+    "En",
+    "En",
+    "En",
+    "En_INSERT_RANDOM_YEAR", # see below for explanation (ctrl+f this file for other instances of this string)
+    "En_INSERT_RANDOM_YEAR",
+    "En_INSERT_RANDOM_YEAR",
+    "En_INSERT_RANDOM_YEAR",
+    "En_INSERT_RANDOM_YEAR",
+    "En_INSERT_RANDOM_YEAR",
     "En septembre",
     "En octobre",
     "Créée par",
@@ -371,7 +389,7 @@ if __name__ == "__main__":
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_new_format.csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_with_prompt_2.csv"
   i = 0
   on_good_streak = False
 
@@ -380,7 +398,10 @@ if __name__ == "__main__":
       candidates = run_beam_search(candidates, 3)
       i += 1
     else:
-      candidates = init_beam_search(choice(sentence_starters), 3)
+      sentence_starter = choice(sentence_starters)
+      if sentence_starter == "En_INSERT_RANDOM_YEAR":
+        sentence_starter = "En " + str(randint(1700, 2050))
+      candidates = init_beam_search(sentence_starter, 3)
       #print("Just grabbed the candidates ", candidates)
       i = 0
     on_good_streak = False
@@ -389,7 +410,7 @@ if __name__ == "__main__":
       if (c.sentence == ""):
         print("WARNING: Empty sentence detected. Skipping.")
         continue
-      print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "\033[0m.")
+      print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "   ", c.prompt, "\033[0m.")
       print("-" * 50)
 
       if c.score_breakdown["total_score"] >= 0.35:
@@ -399,7 +420,9 @@ if __name__ == "__main__":
           message = c.sentence
           for j in c.score_breakdown.keys():
             message += "\t" + str(c.score_breakdown[j])
-          message += "\t" + str(c.cognates) + "\n"
+          message += "\t" + str(c.cognates)
+          message += "\t" + str(c.prompt)
+          message += "\n"
           print(message)
           with open(file_path, "a") as f:
             f.write(message)
