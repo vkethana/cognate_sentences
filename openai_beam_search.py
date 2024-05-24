@@ -3,15 +3,34 @@ import os
 from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms, word_in_wordnet
 from deep_translator import GoogleTranslator
 import re
-from random import choice, sample
+from random import choice, sample, randint
+
+# get random year between 1000 and 2024
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
+model = "gpt-3.5-turbo-instruct"
+#model = "gpt-4"
 
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = True
-seed_words = ['symboles', 'Gustave', 'France.', 'unique.', 'orchidées', 'caractérisé', 'Paris', 'précipitations', 'salade', 'recommande', 'emblématiques', 'région', 'abondantes.', 'suggéré', 'architecture', 'satisfait', 'frites', 'beauté', 'culinaire', 'végétation', 'restaurant,', 'touristes', 'entier', 'Triomphe', 'dessert.', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical', 'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine.', 'imprenable', 'tiramisu', 'composée', 'restaurant', 'tropicales', 'vin', 'apprécié', 'espèces', 'mètres', 'luxuriante', 'températures', 'absolument', 'admirer', 'dessert', 'Eiffel,', 'expérience', 'serveur', 'différentes,', 'est', 'célèbres', "n'ai", 'Eiffel', 'restaurant.']
+seed_words = [
+    'symboles', 'Gustave', 'France.', 'unique.', 'orchidées', 'caractérisé', 'Paris', 'précipitations',
+    'salade', 'recommande', 'emblématiques', 'région', 'abondantes.', 'suggéré', 'architecture', 
+    'satisfait', 'frites', 'beauté', 'culinaire', 'végétation', 'restaurant,', 'touristes', 'entier', 
+    'Triomphe', 'dessert.', 'résister', 'repas,', 'mesure', 'climat', 'délicieux', 'steak', 'tropical', 
+    'maison,', 'accompagné', 'monuments', 'construite', 'recommander', 'panoramique', 'divine.', 
+    'imprenable', 'tiramisu', 'composée', 'restaurant', 'tropicales', 'vin', 'apprécié', 'espèces', 
+    'mètres', 'luxuriante', 'températures', 'absolument', 'admirer', 'dessert', 'Eiffel,', 'expérience', 
+    'serveur', 'différentes,', 'est', 'célèbres', "n'ai", 'Eiffel', 'restaurant.',
+    'artistique', 'bizarre', 'comédie', 'délicatesse', 'éducation', 'félicitations', 'génie', 'harmonie',
+    'illusion', 'joie', 'kilogramme', 'lumière', 'musique', 'noble', 'orange', 'poésie', 'qualité', 
+    'réalité', 'sérieux', 'tempête', 'unique', 'village', 'wagon', 'xylophone', 'yoga', 'zoo', 
+    'architecte', 'banane', 'chocolat', 'décor', 'électricité', 'festival', 'glace', 'hôpital', 
+    'île', 'journal', 'kiosque', 'livre', 'mélodie', 'naturel', 'océan', 'parfum', 'qualité', 
+    'résidence', 'supermarché', 'théâtre', 'université', 'volcan', 'week-end', 'zèbre'
+]
 
 # load the auxiliary dictionary
 aux_dict = None
@@ -36,24 +55,27 @@ def get_target_lang_translation(word, src_lang, target_lang):
   else:
     translation = GoogleTranslator(source=src_lang, target=target_lang).translate(word)
 
-  if (translation[0:3] == 'to ' and len(translation) > 3):
+  if (translation == None):
+    print("WARNING: Translation failed for word", word)
+
+  if (translation != None and translation[0:3] == 'to ' and len(translation) > 3):
     translation = translation[3:]
 
   return translation
 
 def call_gpt(prompt):
   '''
-  call the gpt-3.5 turbo model for the beamsearch algorithm
+  Call GPT for the beamsearch algorithm
   '''
 
   pre_prompt = "You are about to receive a sentence in French. Please complete the sentence in that language as coherently as possible."
   if use_seed_words:
     random_sample = sample(seed_words, 2)
-    pre_prompt += " Please include the following words in your response: " + random_sample[0] + ", " + random_sample[1] + ". "
+    pre_prompt += " Please include at least one of the following words in your response: " + random_sample[0] + ", " + random_sample[1] + ". "
     print("Using seed words: ", random_sample)
-  pre_prompt += "You may include additional sentences afterward. Please try to generate human-like text. Above all, please do NOT include any English text in your response. \n\n"
+  pre_prompt += "You may include additional sentences afterward. Please try to generate human-like text. Above all, please do not write sentences in English (loanwords OK).\i\n"
   #print("Prompt: ", pre_prompt + prompt)
-  response = client.completions.create(model="gpt-3.5-turbo-instruct",
+  response = client.completions.create(model=model,
   prompt=pre_prompt + prompt,
   max_tokens=20,
   n=4,
@@ -79,16 +101,6 @@ def get_cognates(words):
     synonyms = get_synonyms(translation) # these are English synonyms
     synonyms.append(translation) # add the translation itself to the set of synonyms
 
-    '''
-    The below snippet of code checks if the TL word is in the English wordnet. E.g. French "taxi" because it's in English wordnet
-    This can help catch some stray cognates
-    WARNING: The code is fooled by false cognates
-    We check if the word length is >2 because otherwise words like "de" or "a" get flagged as cognates
-    '''
-    if len(w_cleaned) > 2 and word_in_wordnet(w_cleaned):
-      cognates.add(w)
-      #print("The french word" + w + " is in English wordnet so it must be a cognate")
-      continue
     '''
     Reason why we iterate thru synonyms in addition to the English translation:
     Some words (e.g. "assure" = "ensures") have a very low edit distance with their synonyms
@@ -125,21 +137,24 @@ def get_score_breakdown(words, cognates):
     assert False, "ERROR: words should be a list of words, not a string"
 
   # auto-reject sentence that don't have at least three cognates in the first 5 words
+  # this heuristic is a little too strict so currently not used
+  '''
   if (len(words) >= 5):
     cntr = 0
     for i in range(0,5):
       if words[i] in cognates:
         cntr += 1
+      else:
     if (cntr < 3):
+      print("Rejecting sentence due to lack of sentence-initial cognate")
       return {"total_score": 0.0}
-
+  '''
   ratio = len(cognates) / len(words)
+  early_rejection = False
 
-  # some simple rules to throw out obviously good or bad sentences
-  if ratio > 0.8:
-    return {"total_score": 1.0}
-  elif ratio < 0.2:
-    return {"total_score": 0.0}
+  if ratio < 0.2:
+    print("Rejecting sentence due to low cognate ratio")
+    early_rejection = True
 
   gap_analysis = gap_heuristic(words, cognates) # get word-gap analysis from the scoring.py file
   biggest_gap = gap_analysis['biggest_gap'] # this metric isnt really used right now
@@ -148,15 +163,26 @@ def get_score_breakdown(words, cognates):
   avg_gap_normalized = 1 - (min(gap_analysis['avg_gap'], 6) / 6)
   # throw out sentences with too many large gaps in between cognates
   if avg_gap_normalized > 7 or biggest_gap > 4:
-    return {"total_score": 0.0}
+    print("Rejecting sentence due to large gap between cognates")
+    early_rejection = True
 
+  non_cognates = list(set(words) - cognates)
   # otherwise, do a weighted average: 25% based on cognate ratio, 75% based on gap heuristic
+  avg_non_cognate_length = round(sum([len(w) for w in non_cognates]) / len(non_cognates), 2)
+
+  if early_rejection:
+    total_score = 0.0
+  else:
+    total_score = round(max(0.60 * ratio + 0.40 * avg_gap_normalized, 0.0), 2)
+    total_score -= 0.05 * avg_non_cognate_length
   breakdown = {
     "cognate_ratio": round(ratio, 2),
     "avg_gap_between_consecutive_cognates": round(gap_analysis['avg_gap'], 2),
     "avg_gap_normalized": round(avg_gap_normalized, 2),
     "biggest_gap": biggest_gap,
-    "total_score": round(max(0.60 * ratio + 0.40 * avg_gap_normalized, 0.0), 2)
+    "avg_non_cognate_length": avg_non_cognate_length,
+    "was_sentence_rejected_early": early_rejection,
+    "total_score": round(total_score, 2)
   }
   return breakdown
 
@@ -172,8 +198,10 @@ def get_candidates_from_node(currNode):
 
   Node that the Node object requires a sentence, a set of cognates, and a score
   '''
-
   response = call_gpt(currNode.sentence)
+  while min([len(choice.text) for choice in response.choices]) < 2:
+    print("Warning: Empty response detected")
+    response = call_gpt(currNode.sentence)
   choices = []
   for i, choice in enumerate(response.choices):
       #print(f"Choice {i+1}:")
@@ -312,23 +340,38 @@ if __name__ == "__main__":
     "Le",
     "L'",
     "Les",
+    "Les problèmes",
     "De",
     "Au",
+    "Après",
+    "Son",
     "Par",
+    "Le projet de",
     "De plus",
     "La",
-    "En",
+    "En " + str(randint(1000, 2024)),
+    "En " + str(randint(1700, 2024)),
+    "En " + str(randint(1700, 2024)),
+    "En " + str(randint(1700, 2024)),
+    "En septembre",
+    "En octobre",
     "Créée par",
+    "Considérée comme",
+    "La population",
+    "Le territoire",
     "Cette",
+    "Avec",
     "Pour",
     "Une",
+    "Si",
     "Un climat",
+    "L'actuelle",
     "Une précaution",
     "Je"
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_3.csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_results_new_format.csv"
   i = 0
   on_good_streak = False
 
@@ -338,7 +381,7 @@ if __name__ == "__main__":
       i += 1
     else:
       candidates = init_beam_search(choice(sentence_starters), 3)
-      print("Just grabbed the candidates ", candidates)
+      #print("Just grabbed the candidates ", candidates)
       i = 0
     on_good_streak = False
     print("\033[1m" + f"Final candidates after iteration {i + 1} of beam search, are:" + "\033[0m")
@@ -349,14 +392,14 @@ if __name__ == "__main__":
       print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "\033[0m.")
       print("-" * 50)
 
-      if c.score_breakdown["total_score"] >= 0.40:
+      if c.score_breakdown["total_score"] >= 0.35:
         try:
           on_good_streak = True
           print('\033[94m' + "Potential training data sample indicated! Want to print out: " + '\033[0m')
-          if (c.score_breakdown["total_score"] == 1.00):
-            c.score_breakdown["cognate_ratio"] = -1
-            c.score_breakdown["avg_gap_between_consecutive_cognates"] = -1
-          message = c.sentence + "\t" + str(c.score_breakdown['cognate_ratio']) + "\t" + str(c.score_breakdown['avg_gap_between_consecutive_cognates']) + "\t" + str(c.score_breakdown['biggest_gap']) + "\t" + str(c.score_breakdown['total_score']) + "\n"
+          message = c.sentence
+          for j in c.score_breakdown.keys():
+            message += "\t" + str(c.score_breakdown[j])
+          message += "\t" + str(c.cognates) + "\n"
           print(message)
           with open(file_path, "a") as f:
             f.write(message)

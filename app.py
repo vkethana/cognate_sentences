@@ -35,6 +35,7 @@ def generate_sentence():
     global candidates
     candidates = []
     sentence_starters = ["le président George Bush", "la ville de New York", "la ville de San Francisco", "le gouvernement américain", "le premier ministre Justin Trudeau"]
+    sentence_starters.extend([ "Le", "L'", "Les", "De", "Au", "Par", "De plus", "La", "En", "Créée par", "Cette", "Pour", "Une", "Un climat", "Une précaution", "Je" ])
     #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
     # if you want to test beam search with a different language, make sure you change target_lang = 'es'
 
