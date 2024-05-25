@@ -18,16 +18,16 @@ You can check it out for yourself in the `openai_beam_search.py` file under the 
 5) If neither of these conditions is met then the word is not considered a cognate.
 
 ## What all the files do
-`production_data/fr_en_dict.json`: Contains a few thousand French words and their English translation. Speeds up the cognate identification process by several times since commonly used words don't have to be run through Google Translate (which takes at >= 0.5 sec / word)
-`app.py`: The web app, which you can try out for yourself at [app.vkethana.com](app.vkethana.com)
-`gui_free_testing.py`: Used for testing the heuristic function with manually inputted examples
-`openai_beam_search.py`:  **This is the most important file in the list.** 
+- `production_data/fr_en_dict.json`: Contains a few thousand French words and their English translation. Speeds up the cognate identification process by several times since commonly used words don't have to be run through Google Translate (which takes at >= 0.5 sec / word)
+- `app.py`: The web app, which you can try out for yourself at [app.vkethana.com](app.vkethana.com)
+- `gui_free_testing.py`: Used for testing the heuristic function with manually inputted examples
+- `openai_beam_search.py`:  **This is the most important file in the list.** 
 Used for testing the heuristic function with GPT-generated inputted examples. 
 It also has the cognate identification function, some sentence-starters for the model, and specifies some of the parameters for how the model is invoked. 
 When run, it outputs beam search results to a CSV file in `data/`. 
 Useful for debugging the scoring function and for collecting a dataset to be used for fine-tuning. 
 The GPT-3.5 calls involve asking the model to extend an already-existing sentence by around 5 words using the v1 completions endpoint, which outputs 4 choices from which we choose 3. At no point does the model generate a sentence totally from scratch, it always has least one word as a starter. If `use_seed_words` is enabled then the model will also have 2 cognates as starter words
-`utils.py`: Contains the `node` class, which is a wrapper around sentences that allows for easy comparison and storing of scoring information. Handles the calls to NLTK, WordNet, Google Translate, and the edit distance function.
+- `utils.py`: Contains the `node` class, which is a wrapper around sentences that allows for easy comparison and storing of scoring information. Handles the calls to NLTK, WordNet, Google Translate, and the edit distance function.
 
 ## Known bugs
 ### Unexplained Underscores 
