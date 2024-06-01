@@ -4,3 +4,7 @@
 	- How to get 100 good examples?
 	- Use very strict criteria 
 3) Try using RL
+  - MIght not yield super impressive results
+	- 
+4) Try using gpt as a scoring function
+4)		
