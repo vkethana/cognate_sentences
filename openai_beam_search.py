@@ -92,7 +92,7 @@ def call_gpt(system_prompt, user_prompt):
   max_tokens=10,
   n=6,
   stop=None,
-  temperature=1.3,
+  temperature=1.0,
   top_p=0.9,
   frequency_penalty=0,
   presence_penalty=0.6
@@ -445,7 +445,7 @@ if __name__ == "__main__":
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "withseedword_" + model + "restrict.csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_seedwordlist2_" + model + "restrict.csv"
   i = 0
   on_good_streak = False
   score_total = 0

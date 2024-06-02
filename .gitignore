@@ -168,6 +168,7 @@ secrets/*
 .idea/*
 .pyc
 
-data/*
 *.ipynb
 ignoreme.py
+*.pik
+new_data/*
