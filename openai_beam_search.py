@@ -12,6 +12,7 @@ target_lang = 'en' # Language that we will translate to for cognate detection
 #model = "gpt-3.5-turbo"
 #model = "ft:gpt-3.5-turbo-0125:personal:cognateful1:9SYtWhZp"
 model = "gpt-4" # too expensive. and requires different API endpoints. But maybe worth trying in the future
+beam_size = 4
 
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = True
@@ -89,7 +90,7 @@ def call_gpt(system_prompt, user_prompt):
     {'role': 'user', 'content': user_prompt},
   ],
   max_tokens=10,
-  n=4,
+  n=6,
   stop=None,
   temperature=1.3,
   top_p=0.9,
@@ -255,12 +256,15 @@ def get_candidates_from_node(currNode):
       text = currNode.sentence + " " + text
 
       newNode = Node(text, cognates, get_score_breakdown(decompose_sentence(text), cognates), prompt + currNode.sentence)
+      newNode.parent_sentence = currNode.sentence
 
       # Check if either of the seed words are in the text
       if use_seed_words:
         if random_sample[0] not in text and random_sample[1] not in text:
           print("Failed to include seed words. Rejecting sentence.")
           continue
+        else:
+          newNode.seed_words = random_sample
 
       # if text does not contain any lowercase letters a-z, then we reject it
       # this is important because sometimes the model outputs incoherent text in ALLCAPS or only numbers
@@ -294,6 +298,7 @@ def run_beam_search(candidates, beam_size):
   for c in candidates:
     new_candidates.extend(get_candidates_from_node(c))
   new_candidates = sorted(new_candidates, key = lambda x: x.score, reverse=True)
+
   candidates = new_candidates[0:beam_size]
   return candidates
 
@@ -426,15 +431,16 @@ if __name__ == "__main__":
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_round_2_with_seed_word_" + model + ".csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_round_2_with_seed_word_" + model + "_word_len_restrict.csv"
   i = 0
   on_good_streak = False
   score_total = 0
   num_sentences_processed = 0
+  num_good_sentences = 0
 
-  while num_sentences_processed < 50:
+  while num_good_sentences < 50:
     if (on_good_streak and i < 5):
-      candidates = run_beam_search(candidates, 3)
+      candidates = run_beam_search(candidates, beam_size)
       i += 1
     else:
       sentence_starter = choice(sentence_starters)
@@ -457,6 +463,8 @@ if __name__ == "__main__":
       print("num_processed = ", num_sentences_processed)
       print("Average score for this model = ", score_total / num_sentences_processed)
 
+      word_count = len(c.sentence.split(" "))
+
       if c.score_breakdown["total_score"] >= 0.35:
         try:
           on_good_streak = True
@@ -465,10 +473,15 @@ if __name__ == "__main__":
           for j in c.score_breakdown.keys():
             message += "\t" + str(c.score_breakdown[j])
           message += "\t" + str(c.cognates)
-          message += "\t" + str(c.prompt)
+          message += "\t" + str(c.seed_words)
+          message += "\t" + str(word_count)
+          message += "\t" + str(c.parent_sentence)
           message += "\n"
           print(message)
-          with open(file_path, "a") as f:
-            f.write(message)
+
+          if word_len > 8 and len(c.parent_sentence.split(" ")) > 4:
+            with open(file_path, "a") as f:
+              f.write(message)
+            num_good_sentences += 1
         except:
           print("Error printing out data or writing to file")
