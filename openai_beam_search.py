@@ -9,9 +9,9 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
 #model = "gpt-3.5-turbo-instruct"
-#model = "gpt-3.5-turbo"
+model = "gpt-3.5-turbo"
 #model = "ft:gpt-3.5-turbo-0125:personal:cognateful1:9SYtWhZp"
-model = "gpt-4" # too expensive. and requires different API endpoints. But maybe worth trying in the future
+#model = "gpt-4" # too expensive. and requires different API endpoints. But maybe worth trying in the future
 beam_size = 4
 
 # Seed words to help with cognate generation. These don't have to be used
@@ -235,7 +235,7 @@ def get_candidates_from_node(currNode):
       text = choice.strip().replace("\n", " ")
       text = text.replace("_", "")
 
-      print(f"[][][]      Choice {i+1}: {text}")
+      #print(f"[][][]      Choice {i+1}: {text}")
       # Truncate the text to the last space
       # This prevents the model from outputting a half-finished word, 
       # which would then get split in half awkwardly during the next iteration
@@ -243,9 +243,9 @@ def get_candidates_from_node(currNode):
       if last_space_index != -1:
           text = text[:last_space_index]
 
-      print("   Original text:", currNode.sentence)
-      print("   Newly-added text:", text)
-      print("   Length of Newly-added text:", len(text))
+      #print("   Original text:", currNode.sentence)
+      #print("   Newly-added text:", text)
+      #print("   Length of Newly-added text:", len(text))
 
       # We run cognate analysis on just the new part of the sentence, so that we don't
       # have to check the same thing twice
@@ -385,6 +385,7 @@ if __name__ == "__main__":
     "L'",
     "Les",
     "De",
+    "Des",
     "Au",
     "Après",
     "Son",
@@ -411,15 +412,28 @@ if __name__ == "__main__":
     "En avril",
     "En mai",
     "En juin",
-    "Créée par",
-    "Considérée comme",
+    "Créée",
+    "Considérée",
+    "Dans",
+    "Toutes",
+    "Tout",
+    "Chacun",
     "Cette",
     "Avec",
     "Pour",
+    "Par",
+    "Depuis",
+    "Quatre",
+    "Cinq",
+    "Selon",
+    "Certain",
+    "Certaines",
+    "Lors",
+    "Six",
+    "Sept",
     "Une",
     "Si",
     "Un",
-    "L'actuelle",
     "Une",
     "Je"
     "Vous",
@@ -431,14 +445,14 @@ if __name__ == "__main__":
   ]
   #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
   # if you want to test beam search with a different language, make sure you change target_lang = 'es'
-  file_path = "data/" + src_lang + "_to_" + target_lang + "_beam_search_round_2_with_seed_word_" + model + "_word_len_restrict.csv"
+  file_path = "data/" + src_lang + "_to_" + target_lang + "withseedword_" + model + "restrict.csv"
   i = 0
   on_good_streak = False
   score_total = 0
   num_sentences_processed = 0
   num_good_sentences = 0
 
-  while num_good_sentences < 50:
+  while num_good_sentences < 500:
     if (on_good_streak and i < 5):
       candidates = run_beam_search(candidates, beam_size)
       i += 1
@@ -479,9 +493,13 @@ if __name__ == "__main__":
           message += "\n"
           print(message)
 
-          if word_len > 8 and len(c.parent_sentence.split(" ")) > 4:
+          if word_count > 8 and len(c.parent_sentence.split(" ")) > 3:
+            print('\033[96m' + "Sentence good and put in file!" + '\033[0m')
             with open(file_path, "a") as f:
               f.write(message)
             num_good_sentences += 1
-        except:
+          else:
+            print("Sentence was good but not put in file because parent sentence not long enough")
+        except Exception as e:
           print("Error printing out data or writing to file")
+          print(e)
