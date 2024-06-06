@@ -1,0 +1,7 @@
+sentence,parent_sentence,seed1,seed2
+" très tropical, riche en vitamines et",La banane est un fruit,tropical,riche
+ délicieux et nutritif caractérisé par sa forme,La banane est un fruit,nutritif,caractérisé
+ Elle est absolument magnifique et symbolise le triomphe de l'architecture moderne.,J'adore la tour Eiffel,symbolise,architecture
+ différentes notes et accords,Une mélodie est composée de,notes,harmonie
+ créant une harmonie étonnante et délicate.  ,Une mélodie est composée de différentes notes et accords,harmonie,délicate
+ La combinaison de ces éléments,"Une mélodie est composée de différentes notes et accords, créant une harmonie étonnante et délicate.  ",combinaison,éléments

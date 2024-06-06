@@ -377,6 +377,15 @@ def gap_heuristic(word_list, word_set):
   }
   return results
 
+def score_sentence(sentence):
+  '''
+  Not used in this file but imported in other files
+  '''
+  sentence = sentence.split(" " )
+  cognates = get_cognates(sentence)
+  score_breakdown = get_score_breakdown(sentence, cognates)
+  return score_breakdown['total_score']
+
 if __name__ == "__main__":
   # Generate a starting sentence for GPT-3.5 to complete
   sentence_starters = [

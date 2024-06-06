@@ -1,32 +1,3 @@
-'''
-def csv_to_json(csv_file):
-    with open(csv_file, 'r') as file:
-        csv_reader = csv.reader(file)
-        next(csv_reader)  # Skip header if present
-        conversations = []
-        for row in csv_reader:
-            prompt, response = row
-            #prompt = prompt.replace("human-like text.", "human-like text.\n\n")
-            conversation = {
-                "messages": [
-                    {"role": "system", "content": "You are a helpful expert in teaching French to English speakers by way of cognates, shared words between the two languages."},
-                    {"role": "user", "content": prompt},
-                  {"role": "assistant", "content": response}
-                ]
-            }
-            conversations.append(conversation)
-
-    return conversations
-
-# Example usage
-csv_file_path = 'good_bad_cognateful.csv'
-output_json_path = 'output.jsonl'
-
-conversations = csv_to_json(csv_file_path)
-#print(conversations)
-save_to_json(conversations, output_json_path)
-'''
-
 import pandas as pd
 import json
 
@@ -36,8 +7,9 @@ def save_to_json(conversations, output_file):
             json_file.write(json.dumps(conversation) + '\n')
 
 # Open filename as Pandas DF
-path = 'cognateful_sentences.csv'
-df = pd.read_csv(path)
+filename = 'cognateful_4_EVAL'
+
+df = pd.read_csv('raw_data_2/' + filename + '.csv')
 
 print(df.head())
 
@@ -57,4 +29,4 @@ for index, row in df.iterrows():
     }
     conversations.append(conversation)
 
-save_to_json(conversations, 'finetune_round_two.jsonl')
+save_to_json(conversations, 'json/' + filename + '.jsonl')

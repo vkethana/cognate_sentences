@@ -7,6 +7,7 @@ from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_
 from deep_translator import GoogleTranslator
 import re
 from random import choice, sample, randint
+from openai_beam_search import score_sentence
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
@@ -60,7 +61,7 @@ def call_gpt(prompt, num_choices=4):
   #print("Prompt: ", pre_prompt + prompt)
   response = client.completions.create(model=model,
   prompt=prompt,
-  max_tokens=20,
+  max_tokens=8,
   n=num_choices,
   stop=None,
   temperature=1.3,
@@ -73,29 +74,67 @@ def gpt_rank(choices):
   '''
   Given a set of n choice sentences, ask GPT 3.5 or 4 to rank them
   '''
-  prompt = "Which of these sentences would be hardest for an English speaker who doesn't know any French to understand?\n"
-  for sentence in choices:
-    prompt += sentence + "\n"
-  prompt += "\nPlease output a number between 1 and " + str(len(choices) + 1) + ". Output nothing else. If one of the sentences is blank, output -1."
 
-  completion = client.chat.completions.create(model = 'gpt-4',
+  pre_prompt = "You are about to receive a set of " + str(len(choices)) + " sentences in French. Please identify which sentence would be easiest to understand for an English speaker who doesn't know any French.\n"
+  prompt = ""
+
+  for i, sentence in enumerate(choices):
+    prompt += str(i + 1) + ". " + str(sentence) + "\n"
+
+  pre_prompt += "Please output a number between 1 and " + str(len(choices)) + ". Output nothing else."
+
+  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
   messages = [ # Change the prompt parameter to the messages parameter
+    {'role': 'system', 'content': pre_prompt},
     {'role': 'user', 'content': prompt},
   ],
   temperature = 1.0
   )
-  response_text = completion.choices[0].message.content
-  #print("ChatGPT Response:", response_text)
 
-  # TODO: Use a regex for this
+  print("ASKING GPT the following prompt: ")
+  print("-" * 25)
+  print("PROMPT: ", pre_prompt + "\n" + prompt)
+  print("-" * 25)
+
+  # Extract the actual output
+  response_text = completion.choices[0].message.content
+
   response_text = response_text.replace("\n", "")
   response_text = response_text.replace("\t", "")
   response_text = response_text.replace("\r", "")
   response_text = response_text.replace(" ", "")
 
   acceptable_responses = [str(i) for i in range(1, len(choices) + 1)]
-  print("Acceptable responses: ", acceptable_responses)
+  #print("Acceptable responses: ", acceptable_responses)
   if response_text in acceptable_responses:
+    return int(response_text)
+  else:
+    print("ERROR: GPT returned an unexpected response:[" + response_text+']')
+    return -1
+
+def evaluate_translation(original_sentence, translated_sentence):
+  '''
+  Given an original sentence and a translated sentence, evaluate the quality of the translation
+  '''
+
+  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
+  messages = [ # Change the prompt parameter to the messages parameter
+    {'role': 'system', 'content': 'I will give you a sentence in French (#1) and a sentence in English (#2). If the English sentence is a good translation of the French sentence, output "1". Otherwise, output "0". Please be strict in grading translations; if a translation is merely partially correct, output "0". You are not to output anything besides the numbers 0 or 1.'},
+    {'role': 'user', 'content': "For example:\n1. I am Victor\n2. Je suis Victor\n\n = 1"},
+    {'role': 'user', 'content': prompt}
+  ],
+  temperature = 0.8
+  )
+
+  # Extract the actual output
+  response_text = completion.choices[0].message.content
+  response_text = response_text.replace("\n", "")
+  response_text = response_text.replace("\t", "")
+  response_text = response_text.replace("\r", "")
+  response_text = response_text.replace(" ", "")
+
+  #print("Acceptable responses: ", acceptable_responses)
+  if response_text in ["0", "1"]:
     return int(response_text)
   else:
     print("ERROR: GPT returned an unexpected response:[" + response_text+']')
@@ -103,55 +142,9 @@ def gpt_rank(choices):
 
 def get_sentence_starter():
   sentence_starters = [
-    "Le",
-    "Le",
-    "L'",
-    "Les",
-    "De",
-    "Au",
-    "Après",
-    "Son",
-    "Par",
-    "De plus",
-    "La",
-    "La",
-    "En",
-    "En",
-    "En",
+    "Le", "Le", "L'", "Les", "De", "Au", "Après", "Son", "Par", "De plus", "La", "La", "En", "En", "En",
     "En_INSERT_RANDOM_YEAR", # see below for explanation (ctrl+f this file for other instances of this string)
-    "En_INSERT_RANDOM_YEAR",
-    "En_INSERT_RANDOM_YEAR",
-    "En_INSERT_RANDOM_YEAR",
-    "En_INSERT_RANDOM_YEAR",
-    "En_INSERT_RANDOM_YEAR",
-    "En septembre",
-    "En octobre",
-    "En novembre",
-    "En décembre",
-    "En janvier",
-    "En février",
-    "En mars",
-    "En avril",
-    "En mai",
-    "En juin",
-    "Créée par",
-    "Considérée comme",
-    "Cette",
-    "Avec",
-    "Pour",
-    "Une",
-    "Si",
-    "Un",
-    "L'actuelle",
-    "Une",
-    "Je"
-    "Vous",
-    "Tu",
-    "Elle",
-    "Nous",
-    "Ils",
-    "Elles"
-  ]
+    "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En septembre", "En octobre", "En novembre", "En décembre", "En janvier", "En février", "En mars", "En avril", "En mai", "En juin", "Créée par", "Considérée comme", "Cette", "Avec", "Pour", "Une", "Si", "Un", "L'actuelle", "Une", "Je" "Vous", "Tu", "Elle", "Nous", "Ils", "Elles" ]
 
   sentence_starter = choice(sentence_starters)
   if sentence_starter == "En_INSERT_RANDOM_YEAR":
@@ -161,69 +154,53 @@ def get_sentence_starter():
 
 if __name__ == "__main__":
   file_path = "data/" + src_lang + "-" + target_lang + "gpt_scorer_results.csv"
-  sentence_starter = get_sentence_starter()
-
-  response = call_gpt(make_prompt_for_gpt(sentence_starter), 3)
-  choices = []
-
-  sentence = sentence_starter
+  num_good_sentences = 0
 
   while True:
-    for i, choice in enumerate(response.choices):
-        text = choice.text.strip().replace("\n", " ")
-        # Truncate the text to the last space
-        # This prevents the model from outputting a half-finished word, 
-        # which would then get split in half awkwardly during the next iteration
-        last_space_index = text.rfind(' ')
-        if last_space_index != -1:
-            text = text[:last_space_index]
+    sentence = get_sentence_starter()
+    print("Starting new iteration with starter " + sentence + "...")
+    print("-" * 50)
+    curr_score = 1.0
 
-        print("Choice", i, ": ", text)
-        choices.append(text)
+    while len(sentence.split(" ")) < 35 and curr_score > 0.0: # no sentences with >35 words
+      sentence = sentence.replace("  ", " ")
+      possible_extensions = call_gpt(make_prompt_for_gpt(sentence), num_choices=4).choices
+      possible_extensions = [sentence + " " + i.text.strip().replace("\n", " ").replace("_", "").replace("  ", "") for i in possible_extensions]
 
-    best_choice_index = gpt_rank(choices) - 1
-    sentence += choices[best_choice_index]
-    print("   ", sentence)
+      choices = []
+      for text in possible_extensions:
+          last_space_index = text.rfind(' ')
+          if last_space_index != -1:
+              text = text[:last_space_index]
+          choices.append(text)
 
-  '''
-  while True:
-    if (on_good_streak and i < 5):
-      candidates = run_beam_search(candidates, 3)
-      i += 1
-    else:
-      sentence_starter = choice(sentence_starters)
-      if sentence_starter == "En_INSERT_RANDOM_YEAR":
-        sentence_starter = "En " + str(randint(1700, 2050))
-      candidates = init_beam_search(sentence_starter, 3)
-      #print("Just grabbed the candidates ", candidates)
-      i = 0
-    on_good_streak = False
-    print("\033[1m" + f"Final candidates after iteration {i + 1} of beam search, are:" + "\033[0m")
-    for c in candidates:
-      if (c.sentence == ""):
-        print("WARNING: Empty sentence detected. Skipping.")
-        continue
-      print("\033[92m", c.sentence, "   [", c.cognates, "]   ",  c.score_breakdown, "   ", c.prompt, "\033[0m.")
-      print("-" * 50)
-      score_total += c.score_breakdown["total_score"]
-      num_sentences_processed += 1
-      print("Score_Total = ", score_total)
-      print("num_processed = ", num_sentences_processed)
-      print("Average score for this model = ", score_total / num_sentences_processed)
+      #print("(" + str(i) + ") Just generated the following choices: ")
+      #print(choices, "\n\n")
+      best_choice_index = gpt_rank(choices) - 1
+      print("Choosing option ", best_choice_index + 1, " with text: ", choices[best_choice_index])
 
-      if c.score_breakdown["total_score"] >= 0.35:
-        try:
-          on_good_streak = True
-          print('\033[94m' + "Potential training data sample indicated! Want to print out: " + '\033[0m')
-          message = c.sentence
-          for j in c.score_breakdown.keys():
-            message += "\t" + str(c.score_breakdown[j])
-          message += "\t" + str(c.cognates)
-          message += "\t" + str(c.prompt)
-          message += "\n"
-          print(message)
-          with open(file_path, "a") as f:
-            f.write(message)
-        except:
-          print("Error printing out data or writing to file")
-    '''
+      # We're not tacking on elements to sentence, we just overrwrite it
+      old_sentence = sentence # store this in case we need to print out
+
+      sentence = choices[best_choice_index]
+      curr_score = score_sentence(sentence)
+      print("Sentence = ", sentence)
+      print("Current score = ", curr_score)
+
+      if curr_score > 0.25:
+        num_good_sentences += 1
+
+        print("\033[92m" + "Good sentence number " + str(num_good_sentences))
+
+        message = ""
+        message += sentence + "\t"
+        message += str(curr_score) + "\t"
+        message += old_sentence + "\t"
+        for i in choices:
+          message += i + "\t"
+
+        print(message)
+        print("\033[0m")
+
+      print('---')
+      print()
