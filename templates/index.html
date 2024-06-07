@@ -10,29 +10,128 @@
 </head>
 <body>
     <section>
-      {% if sentences %}
-      The three best sentences found by the beam search are:
-      <ul>
-      {% for sentence, difficulty_breakdown in sentences %}
-          <li>{{ sentence | safe }}</li>
-          <p style="font-size: 14px; color: grey;">Difficulty breakdown: {{ difficulty_breakdown }}</p>
-      {% endfor %}
-      </ul>
-      {% endif %}
-     
-      <div style="text-align:center">
-        <form method="post" action="/generate_sentence" style="display:inline-block; text-align: center;">
-        <button type="submit" class="friendly-button">Generate New Sentences</button>
-        </form>
-        {% if inside_beam_search %}
-        <form method="post" action="/extend_sentence" style="display:inline-block; text-align: center;">
-        <button class="friendly-button">Extend Current Sentences</button>
-        </form>
-        {% endif %}
-      </div>
+      <div id='original-sentence' style="text-align:center; display: none;">
+        <div>
+          <p id='original-sentence-text'>
+          </p>
+        <br />
+        </div>
 
+        <div>
+          <form id="inputForm">
+              <label for="inputBox"></label>
+              <input type="text" id="user-translation" name="user-translation" placeholder="Enter translation here..." required />
+          </form>
+          <div style="text-align:center" id="check-translation">
+            <button class="friendly-button-small" onclick="sendTranslationToServer()">Check</button>
+            <button class="friendly-button-small" onclick="updatePageAfterTranslationCorrect()">Force Check</button>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="text-align:center" id="generate-buttons">
+        <button class="friendly-button" id="generate-button" onclick="generateButtonOnClick()">Generate New Sentence</button>
+        <button class="friendly-button" id="extend-button" onclick="extendButtonOnClick()" style="display: none;">Extend New Sentence</button>
+      </div>
     </section>
 
+    <script>
+      function generateButtonOnClick() {
+        sendSentenceToServer(false);
+      }
+
+      function extendButtonOnClick() {
+        console.log('Extend button clicked');
+        sendSentenceToServer(true);
+      }
+
+      // When the user clicks on the button...
+      function sendSentenceToServer(extend) {
+        let route = "";
+
+        if (extend) {
+          route = "/extend_sentence";
+        } else {
+          route = "/generate_sentence";
+        }
+
+        fetch(route, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              original_sentence: document.getElementById('original-sentence-text').textContent
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            document.getElementById('generate-buttons').style.display = 'none';
+            document.getElementById('original-sentence-text').innerHTML = data['sentence'];
+            document.getElementById('original-sentence').style.display = 'block';
+        })
+      };
+
+      function updatePageAfterTranslationCorrect() {
+            alert("Translation is correct");
+            document.getElementById('generate-buttons').style.display = 'block';
+            // check if the extend button is visible
+            if (document.getElementById('extend-button').style.display === 'none') {
+                document.getElementById('extend-button').style.display = 'inline';
+            }
+      }
+
+      function sendTranslationToServer() {
+          console.log('Sending translation to server');
+          let user_translation = document.getElementById('user-translation').value;
+          let original_sentence = document.getElementById('original-sentence-text');
+          console.log(original_sentence);
+          original_sentence = original_sentence.textContent;
+          console.log(original_sentence);
+          if (original_sentence === null || original_sentence === undefined || original_sentence === "") {
+            console.log("Original sentence is empty");
+            return;
+          }
+          original_sentence = original_sentence.trim().replace(/\s+/g, ' ');;
+          console.log("Original sentence: " + original_sentence);
+          const responseMessage = document.getElementById('responseMessage');
+
+          console.log('Sending translation to server');
+          fetch('/evaluate_translation', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ 
+                original_sentence: original_sentence,
+                user_translation: user_translation
+              })
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log('Success:', data);
+
+              // Case data into int
+              data = parseInt(data);
+
+              // If data is nota number than its 0
+              if (isNaN(data)) {
+                  data = 0;
+              }
+
+              if (data == 1) {
+                  updatePageAfterTranslationCorrect();
+              } else {
+                  alert("Translation is incorrect");
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      };
+    </script>
 </body>
 </html>
 

@@ -112,16 +112,29 @@ def gpt_rank(choices):
     print("ERROR: GPT returned an unexpected response:[" + response_text+']')
     return -1
 
-def evaluate_translation(original_sentence, translated_sentence):
+def evaluate_translation(original_sentence, translated_sentence, lang="French", use_gpt_4=False):
   '''
   Given an original sentence and a translated sentence, evaluate the quality of the translation
   '''
 
-  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
+  if use_gpt_4:
+    model = "gpt-4"
+  else:
+    model = "gpt-3.5-turbo"
+
+  prompt_1 = 'I will give you a sentence in ' + lang + ' (#1) and a sentence in English (#2). If the English sentence is a correct translation of the ' + lang + ' sentence, output "1". Otherwise, output "0". Your task is to assess whether the English sentence is a correct translation; you do not need to assess whether the sentences make sense.'
+  #prompt_1 += "Please be strict in grading translations; if a translation is merely partially correct, output "0". You are not to output anything besides the numbers 0 or 1.' # leave this commented out - causes half-sentence translations to be marked as incorrect even when they are right
+
+  if lang == "French":
+    prompt_2 = 'For example:\n1. Je suis Victor\n2. I am Victor\n\n = 1'
+  elif lang == "Spanish":
+    prompt_2 = 'For example:\n1. Soy Victor\n2. I am Victor\n\n = 1'
+
+  completion = client.chat.completions.create(model = model,
   messages = [ # Change the prompt parameter to the messages parameter
-    {'role': 'system', 'content': 'I will give you a sentence in French (#1) and a sentence in English (#2). If the English sentence is a good translation of the French sentence, output "1". Otherwise, output "0". Please be strict in grading translations; if a translation is merely partially correct, output "0". You are not to output anything besides the numbers 0 or 1.'},
-    {'role': 'user', 'content': "For example:\n1. I am Victor\n2. Je suis Victor\n\n = 1"},
-    {'role': 'user', 'content': prompt}
+    {'role': 'system', 'content': prompt_1},
+    {'role': 'system', 'content': prompt_2},
+    {'role': 'user', 'content': "1. " + original_sentence + "\n2. " + translated_sentence}
   ],
   temperature = 0.8
   )
@@ -152,15 +165,11 @@ def get_sentence_starter():
 
   return sentence_starter
 
-if __name__ == "__main__":
-  file_path = "data/" + src_lang + "-" + target_lang + "gpt_scorer_results.csv"
-  num_good_sentences = 0
-
-  while True:
-    sentence = get_sentence_starter()
+def run_iteration(sentence):
     print("Starting new iteration with starter " + sentence + "...")
     print("-" * 50)
     curr_score = 1.0
+    num_good_sentences = 0
 
     while len(sentence.split(" ")) < 35 and curr_score > 0.0: # no sentences with >35 words
       sentence = sentence.replace("  ", " ")
@@ -204,3 +213,11 @@ if __name__ == "__main__":
 
       print('---')
       print()
+    return num_good_sentences
+
+if __name__ == "__main__":
+  file_path = "data/" + src_lang + "-" + target_lang + "gpt_scorer_results.csv"
+
+  while True:
+    sentence = get_sentence_starter()
+    print('Got ', run_iteration(sentence), ' good sentences')
