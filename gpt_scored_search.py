@@ -165,13 +165,34 @@ def get_sentence_starter():
 
   return sentence_starter
 
+def gpt_extend_sentence(sentence):
+    sentence = sentence.replace("  ", " ")
+    possible_extensions = call_gpt(make_prompt_for_gpt(sentence), num_choices=4).choices
+    possible_extensions = [sentence + " " + i.text.strip().replace("\n", " ").replace("_", "").replace("  ", "") for i in possible_extensions]
+
+    choices = []
+    for text in possible_extensions:
+        last_space_index = text.rfind(' ')
+        if last_space_index != -1:
+            text = text[:last_space_index]
+        choices.append(text)
+
+    best_choice_index = gpt_rank(choices) - 1
+    #print("Choosing option ", best_choice_index + 1, " with text: ", choices[best_choice_index])
+    return choices[best_choice_index]
+
+def gpt_generate_new_sentence():
+    sentence = get_sentence_starter()
+    return gpt_extend_sentence(sentence)
+
 def run_iteration(sentence):
     print("Starting new iteration with starter " + sentence + "...")
     print("-" * 50)
     curr_score = 1.0
     num_good_sentences = 0
 
-    while len(sentence.split(" ")) < 35 and curr_score > 0.0: # no sentences with >35 words
+    while len(sentence.split(" ")) < 35 and curr_score > 0.0:
+      # no sentences with >35 words
       sentence = sentence.replace("  ", " ")
       possible_extensions = call_gpt(make_prompt_for_gpt(sentence), num_choices=4).choices
       possible_extensions = [sentence + " " + i.text.strip().replace("\n", " ").replace("_", "").replace("  ", "") for i in possible_extensions]

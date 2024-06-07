@@ -20,11 +20,11 @@
         <div>
           <form id="inputForm">
               <label for="inputBox"></label>
-              <input type="text" id="user-translation" name="user-translation" placeholder="Enter translation here..." required />
+              <input type="text" id="user-translation" name="user-translation" placeholder="Enter English translation here..." required />
           </form>
           <div style="text-align:center" id="check-translation">
             <button class="friendly-button-small" onclick="sendTranslationToServer()">Check</button>
-            <button class="friendly-button-small" onclick="updatePageAfterTranslationCorrect()">Force Check</button>
+            <button class="friendly-button-small" onclick="updatePageAfterTranslationCorrect()">Force Skip</button>
           </div>
         </div>
       </div>
@@ -81,6 +81,8 @@
             if (document.getElementById('extend-button').style.display === 'none') {
                 document.getElementById('extend-button').style.display = 'inline';
             }
+            // clear the input
+            document.getElementById('user-translation').value = '';
       }
 
       function sendTranslationToServer() {
@@ -121,7 +123,8 @@
                   data = 0;
               }
 
-              if (data == 1) {
+              // Make sure the user didn't enter a blank "" response
+              if ((data == 1) && (user_translation != "")) {
                   updatePageAfterTranslationCorrect();
               } else {
                   alert("Translation is incorrect");

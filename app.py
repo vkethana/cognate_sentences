@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
-from openai_beam_search import run_beam_search, init_beam_search
+from openai_beam_search import run_beam_search, init_beam_search, get_cognates
 from random import choice
-from gpt_scored_search import evaluate_translation
+from gpt_scored_search import evaluate_translation, gpt_extend_sentence, gpt_generate_new_sentence
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -48,32 +48,21 @@ def eval_translation():
 
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
-    global candidates
-    candidates = []
-    sentence_starters = ["le président George Bush", "la ville de New York", "la ville de San Francisco", "le gouvernement américain", "le premier ministre Justin Trudeau"]
-    sentence_starters.extend([ "Le", "L'", "Les", "De", "Au", "Par", "De plus", "La", "En", "Créée par", "Cette", "Pour", "Une", "Un climat", "Une précaution", "Je" ])
-    #sentence_starters = ["el presidente de Argentina", "en el país de México", "la ciudad de Nueva York", "barcelona es"]
-    # if you want to test beam search with a different language, make sure you change target_lang = 'es
+    sentence = gpt_generate_new_sentence()
+    cognate_list = get_cognates(sentence.split(" "))
+    highlighted_sentence = get_highlighted(sentence, cognate_list)
+    print("highlighted_sentence=", highlighted_sentence)
     output = {
-      'sentence': "Je suis Vijay"
+      'sentence': highlighted_sentence
     }
+
     return jsonify(output)
-    '''
-    first_sentence = choice(sentence_starters)
-    candidates = init_beam_search(first_sentence, 3)
-    sentences_to_render = [(get_highlighted(c.sentence, c.cognates), c.score_breakdown) for c in candidates]
-    print("Sentences_to_render = {}".format(sentences_to_render))
-    if len(sentences_to_render) == 0:
-      return render_template('index.html', sentence="", breakdown = {}, inside_beam_search=True)
-    else:
-      return render_template('index.html', sentence=sentences_to_render[0][0], breakdown = str(sentences_to_render[0][1]), inside_beam_search=True)
-    '''
 
 @app.route('/extend_sentence', methods=['POST'])
 def extend_sentence():
     data = request.get_json()
     output = {
-      'sentence': data['original_sentence'] + " et "
+      'sentence': gpt_extend_sentence(data['original_sentence'])
     }
     return jsonify(output)
 
