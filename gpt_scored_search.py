@@ -13,7 +13,7 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
 model = "gpt-3.5-turbo-instruct"
-#model = "gpt-4" # too expensive. and requires different API endpoints. But maybe worth trying in the future
+#model = "gpt-4-turbo" # too expensive. But worth trying in the future
 
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = False
@@ -118,7 +118,7 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French", 
   '''
 
   if use_gpt_4:
-    model = "gpt-4"
+    model = "gpt-4-turbo"
   else:
     model = "gpt-3.5-turbo"
 
@@ -132,8 +132,7 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French", 
 
   completion = client.chat.completions.create(model = model,
   messages = [ # Change the prompt parameter to the messages parameter
-    {'role': 'system', 'content': prompt_1},
-    {'role': 'system', 'content': prompt_2},
+    {'role': 'system', 'content': prompt_1 + "\n" + prompt_2},
     {'role': 'user', 'content': "1. " + original_sentence + "\n2. " + translated_sentence}
   ],
   temperature = 0.8
@@ -152,6 +151,36 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French", 
   else:
     print("ERROR: GPT returned an unexpected response:[" + response_text+']')
     return -1
+
+def get_wrong_words(original_sentence, translated_sentence, use_gpt_4=False):
+  if use_gpt_4:
+    model = "gpt-4-turbo"
+  else:
+    model = "gpt-3.5-turbo"
+
+  prompt_1 = 'You are an expert in professional translation. I will give you a sentence in French (#1) and a sentence in English (#2). The English sentence will be an incorrect attempted translation of the French sentence. Please output, as a Python list, all the words in the French sentence which are not correctly translated.\n\nFor example:\n1. Je suis triste et\n 2. I am happy\nShould result in the output:\n["triste", "et"]'
+
+  completion = client.chat.completions.create(model = model,
+  messages = [ # Change the prompt parameter to the messages parameter
+    {'role': 'system', 'content': prompt_1},
+    {'role': 'user', 'content': "1. " + original_sentence + "\n2. " + translated_sentence}
+  ],
+  temperature = 0.8
+  )
+
+  # Extract the actual output
+  response_text = completion.choices[0].message.content
+  response_text = response_text.replace("\n", "")
+  response_text = response_text.replace("\t", "")
+  response_text = response_text.replace("\r", "")
+
+  # Parse the response into a python list
+  try:
+    lst = eval(response_text)
+    return lst
+  except Exception as e:
+    print("ERROR: GPT returned an unexpected response:[" + response_text+']')
+    print(e)
 
 def get_sentence_starter():
   sentence_starters = [
