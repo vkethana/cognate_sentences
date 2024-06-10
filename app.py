@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
-from openai_beam_search import run_beam_search, init_beam_search, get_cognates
+from openai_beam_search import run_beam_search, init_beam_search, get_cognates, score_sentence
 from random import choice
 from gpt_scored_search import evaluate_translation, gpt_extend_sentence, gpt_generate_new_sentence
 
@@ -53,7 +53,8 @@ def generate_sentence():
     highlighted_sentence = get_highlighted(sentence, cognate_list)
     print("highlighted_sentence=", highlighted_sentence)
     output = {
-      'sentence': highlighted_sentence
+      'sentence': highlighted_sentence,
+      'score': score_sentence(highlighted_sentence)
     }
 
     return jsonify(output)
@@ -61,8 +62,10 @@ def generate_sentence():
 @app.route('/extend_sentence', methods=['POST'])
 def extend_sentence():
     data = request.get_json()
+    extended_sentence = gpt_extend_sentence(data['original_sentence'])
     output = {
-      'sentence': gpt_extend_sentence(data['original_sentence'])
+      'sentence': extended_sentence,
+      'score': score_sentence(extended_sentence)
     }
     return jsonify(output)
 
