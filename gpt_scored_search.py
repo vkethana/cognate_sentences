@@ -12,8 +12,8 @@ from openai_beam_search import score_sentence
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
-#model = "gpt-3.5-turbo-instruct"
-model = "gpt-4-turbo" # too expensive. But worth trying in the future
+model = "gpt-3.5-turbo-instruct"
+#model = "gpt-4-turbo" # too expensive. But worth trying in the future
 
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = False
