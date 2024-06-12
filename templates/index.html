@@ -113,18 +113,31 @@
           })
           .then(response => response.json())
           .then(data => {
-              console.log('Success:', data);
-
+              console.log('Success evaluating translation:', data);
               // Case data into int
-              data = parseInt(data);
+              num = parseInt(data['is_correct']);
+              console.log("num=" + num);
+              if ((num == 0) && (user_translation != "")) {
+                // Bold the occurrances of data['wrong_words'] 
+                let wrong_words = data['wrong_words'];
+                // Iterate through each wrong word and bold it
+                wrong_words.forEach(function(word) {
+                  let original_sentence = document.getElementById('original-sentence-text').innerHTML;
+                  let bolded_word = "<b>" + word + "</b>";
+                  // Only match when there a word boundary
+                  let re = new RegExp("\\b" + word + "\\b", "g");
+                  original_sentence = original_sentence.replace(re, bolded_word);
 
-              // If data is nota number than its 0
-              if (isNaN(data)) {
-                  data = 0;
+                  document.getElementById('original-sentence-text').innerHTML = original_sentence;
+                });
+
+                console.log('Wrong words: ' + wrong_words);
+                let original_sentence = document.getElementById('original-sentence-text').innerHTML;
+                console.log('Original sentence: ' + original_sentence);
               }
 
               // Make sure the user didn't enter a blank "" response
-              if ((data == 1) && (user_translation != "")) {
+              if ((num == 1) && (user_translation != "")) {
                   updatePageAfterTranslationCorrect();
               } else {
                   alert("Translation is incorrect");

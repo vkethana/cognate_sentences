@@ -12,8 +12,8 @@ from openai_beam_search import score_sentence
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
-model = "gpt-3.5-turbo-instruct"
-#model = "gpt-4-turbo" # too expensive. But worth trying in the future
+#model = "gpt-3.5-turbo-instruct"
+model = "gpt-4-turbo" # too expensive. But worth trying in the future
 
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = False
@@ -58,8 +58,10 @@ def call_gpt(prompt, num_choices=4):
   if "INSERT_RANDOM_YEAR" in prompt:
     assert False, "ERROR: Prompt was not pre-processed correctly. Double check the sentence starters array?"
 
-  #print("Prompt: ", pre_prompt + prompt)
-  response = client.completions.create(model=model,
+  # this API call requires gpt-3.5-turbo (doesn't work with 4)
+  # TODO: Refactor this to use the new completions API
+
+  response = client.completions.create(model='gpt-3.5-turbo-instruct',
   prompt=prompt,
   max_tokens=8,
   n=num_choices,
@@ -83,7 +85,7 @@ def gpt_rank(choices):
 
   pre_prompt += "Please output a number between 1 and " + str(len(choices)) + ". Output nothing else."
 
-  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
+  completion = client.chat.completions.create(model = model,
   messages = [ # Change the prompt parameter to the messages parameter
     {'role': 'system', 'content': pre_prompt},
     {'role': 'user', 'content': prompt},
@@ -112,15 +114,10 @@ def gpt_rank(choices):
     print("ERROR: GPT returned an unexpected response:[" + response_text+']')
     return -1
 
-def evaluate_translation(original_sentence, translated_sentence, lang="French", use_gpt_4=False):
+def evaluate_translation(original_sentence, translated_sentence, lang="French"):
   '''
   Given an original sentence and a translated sentence, evaluate the quality of the translation
   '''
-
-  if use_gpt_4:
-    model = "gpt-4-turbo"
-  else:
-    model = "gpt-3.5-turbo"
 
   prompt_1 = 'I will give you a sentence in ' + lang + ' (#1) and a sentence in English (#2). If the English sentence is a correct translation of the ' + lang + ' sentence, output "1". Otherwise, output "0". Your task is to assess whether the English sentence is a correct translation; you do not need to assess whether the sentences make sense.'
   #prompt_1 += "Please be strict in grading translations; if a translation is merely partially correct, output "0". You are not to output anything besides the numbers 0 or 1.' # leave this commented out - causes half-sentence translations to be marked as incorrect even when they are right
@@ -130,6 +127,7 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French", 
   elif lang == "Spanish":
     prompt_2 = 'For example:\n1. Soy Victor\n2. I am Victor\n\n = 1'
 
+  print(f"ASKING {model} the following prompt: {prompt_1} \n {prompt_2} \n {original_sentence} \n {translated_sentence}")
   completion = client.chat.completions.create(model = model,
   messages = [ # Change the prompt parameter to the messages parameter
     {'role': 'system', 'content': prompt_1 + "\n" + prompt_2},
@@ -152,11 +150,10 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French", 
     print("ERROR: GPT returned an unexpected response:[" + response_text+']')
     return -1
 
-def get_wrong_words(original_sentence, translated_sentence, use_gpt_4=False):
-  if use_gpt_4:
-    model = "gpt-4-turbo"
-  else:
-    model = "gpt-3.5-turbo"
+def get_wrong_words(original_sentence, translated_sentence):
+  '''
+  Given a sentence in French and an attempted translation of that sentence in English, return a list of words that were not translated correctly
+  '''
 
   prompt_1 = 'You are an expert in professional translation. I will give you a sentence in French (#1) and a sentence in English (#2). The English sentence will be an incorrect attempted translation of the French sentence. Please output, as a Python list, all the words in the French sentence which are not correctly translated.\n\nFor example:\n1. Je suis triste et\n 2. I am happy\nShould result in the output:\n["triste", "et"]'
 
@@ -186,7 +183,7 @@ def get_sentence_starter():
   sentence_starters = [
     "Le", "Le", "L'", "Les", "De", "Au", "Après", "Son", "Par", "De plus", "La", "La", "En", "En", "En",
     "En_INSERT_RANDOM_YEAR", # see below for explanation (ctrl+f this file for other instances of this string)
-    "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En septembre", "En octobre", "En novembre", "En décembre", "En janvier", "En février", "En mars", "En avril", "En mai", "En juin", "Créée par", "Considérée comme", "Cette", "Avec", "Pour", "Une", "Si", "Un", "L'actuelle", "Une", "Je" "Vous", "Tu", "Elle", "Nous", "Ils", "Elles" ]
+    "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En septembre", "En octobre", "En novembre", "En décembre", "En janvier", "En février", "En mars", "En avril", "En mai", "En juin", "Créée par", "Considérée comme", "Cette", "Avec", "Pour", "Une", "Si", "Un", "L'actuelle", "Une", "Je", "Vous", "Tu", "Elle", "Nous", "Ils", "Elles" ]
 
   sentence_starter = choice(sentence_starters)
   if sentence_starter == "En_INSERT_RANDOM_YEAR":

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
 from openai_beam_search import run_beam_search, init_beam_search, get_cognates, score_sentence
 from random import choice
-from gpt_scored_search import evaluate_translation, gpt_extend_sentence, gpt_generate_new_sentence
+from gpt_scored_search import evaluate_translation, gpt_extend_sentence, gpt_generate_new_sentence, get_wrong_words
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -34,6 +34,7 @@ def index():
 @app.route('/evaluate_translation', methods=['POST'])
 def eval_translation():
   # Get the user's input
+  print("Evaluating translation...")
   data = request.get_json()
   print(data)
   user_translation = data['user_translation']
@@ -41,10 +42,20 @@ def eval_translation():
 
   # Check whether the two are equal
   is_correct = evaluate_translation(original_sentence, user_translation)
-  print("is_correct=", is_correct)
-  # Return a response
-  return jsonify(is_correct)
+  print("Is correct:", is_correct)
+  wrong_words = []
 
+  if (not bool(is_correct)):
+    print("Getting wrong words...")
+    wrong_words = get_wrong_words(original_sentence, user_translation)
+
+  output = {
+    'is_correct': is_correct,
+    'wrong_words': wrong_words
+  }
+  print("Returning" + str(output))
+  # Return a response
+  return jsonify(output)
 
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():

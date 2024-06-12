@@ -8,10 +8,10 @@ from random import choice, sample, randint
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
-#model = "gpt-3.5-turbo-instruct"
-model = "gpt-3.5-turbo"
+model = "gpt-3.5-turbo-instruct"
+#model = "gpt-3.5-turbo"
 #model = "ft:gpt-3.5-turbo-0125:personal:cognateful1:9SYtWhZp"
-#model = "gpt-4" # too expensive. and requires different API endpoints. But maybe worth trying in the future
+#model = "gpt-4-turbo" # too expensive. and requires different API endpoints. But maybe worth trying in the future
 beam_size = 4
 
 # Seed words to help with cognate generation. These don't have to be used
