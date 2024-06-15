@@ -12,8 +12,12 @@
     <section>
       <div id='original-sentence' style="text-align:center; display: none;">
         <div>
-          <p id='original-sentence-text'>
-          </p>
+					<p>
+						<span id='original-sentence-text'>
+						</span>
+						<span id='original-sentence-score'>
+						</span>
+					</p>
         <br />
         </div>
 
@@ -70,6 +74,9 @@
             console.log('Success:', data);
             document.getElementById('generate-buttons').style.display = 'none';
             document.getElementById('original-sentence-text').innerHTML = data['sentence'];
+
+						// Uncomment this line if you want the score to be visible next to the sentence
+            document.getElementById('original-sentence-score').innerHTML = "(Score = " + data['score'] + ")";
             document.getElementById('original-sentence').style.display = 'block';
         })
       };

@@ -12,8 +12,12 @@ from openai_beam_search import score_sentence
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
+
+# model is for the v1/completions endpoint
 model = "gpt-3.5-turbo-instruct"
-#model = "gpt-4-turbo" # too expensive. But worth trying in the future
+# model_2 is for the v1/chat/completions endpoint
+#model_2 = "gpt-3.5-turbo"
+model_2 = "gpt-4-turbo"
 
 # Seed words to help with cognate generation. These don't have to be used
 use_seed_words = False
@@ -61,7 +65,7 @@ def call_gpt(prompt, num_choices=4):
   # this API call requires gpt-3.5-turbo (doesn't work with 4)
   # TODO: Refactor this to use the new completions API
 
-  response = client.completions.create(model='gpt-3.5-turbo-instruct',
+  response = client.completions.create(model = model,
   prompt=prompt,
   max_tokens=8,
   n=num_choices,
@@ -85,10 +89,10 @@ def gpt_rank(choices):
 
   pre_prompt += "Please output a number between 1 and " + str(len(choices)) + ". Output nothing else."
 
-  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
+  completion = client.chat.completions.create(model = model_2,
   messages = [ # Change the prompt parameter to the messages parameter
     {'role': 'system', 'content': pre_prompt},
-    {'role': 'user', 'content': prompt},
+    {'role': 'user', 'content': prompt}
   ],
   temperature = 1.0
   )
@@ -116,68 +120,111 @@ def gpt_rank(choices):
 
 def evaluate_translation(original_sentence, translated_sentence, lang="French"):
   '''
-  Given an original sentence and a translated sentence, evaluate the quality of the translation
+  Given an original sentence and a translated sentence, evaluate the quality of the translation.
   '''
 
-  prompt_1 = 'I will give you a sentence in ' + lang + ' (#1) and a sentence in English (#2). If the English sentence is a correct translation of the ' + lang + ' sentence, output "1". Otherwise, output "0". Your task is to assess whether the English sentence is a correct translation; you do not need to assess whether the sentences make sense.'
-  #prompt_1 += "Please be strict in grading translations; if a translation is merely partially correct, output "0". You are not to output anything besides the numbers 0 or 1.' # leave this commented out - causes half-sentence translations to be marked as incorrect even when they are right
-
-  if lang == "French":
-    prompt_2 = 'For example:\n1. Je suis Victor\n2. I am Victor\n\n = 1'
-  elif lang == "Spanish":
-    prompt_2 = 'For example:\n1. Soy Victor\n2. I am Victor\n\n = 1'
-
-  print(f"ASKING {model} the following prompt: {prompt_1} \n {prompt_2} \n {original_sentence} \n {translated_sentence}")
-  completion = client.chat.completions.create(model = model,
-  messages = [ # Change the prompt parameter to the messages parameter
-    {'role': 'system', 'content': prompt_1 + "\n" + prompt_2},
-    {'role': 'user', 'content': "1. " + original_sentence + "\n2. " + translated_sentence}
-  ],
-  temperature = 0.8
+  prompt_1 = f'I will give you a sentence in {lang} (#1) and a sentence in English (#2). If the English sentence is a correct translation of the {lang} sentence, output "1". Otherwise, output "0". Your task is to assess whether the English sentence is a correct translation; you do not need to assess whether the sentences make sense.'
+  
+  prompt_2 = (
+    'Here are two examples:\n'
+    "1. J'ai regardé le livre et \n"
+    '2. I looked at the book \n'
+    'Reasoning: The English sentence correctly translates the French sentence. Though both sentences are incomplete, the English mirrors the French accurately in the part provided. \n'
+    'Final Answer: 1\n\n'
+    '1. Je suis triste et\n'
+    '2. I am happy\n'
+    'Reasoning: The English sentence does not correctly translate the French sentence. "Je suis triste" means "I am sad." Therefore, "I am happy" is not a correct translation. Also, the word "et" is left untranslated. \n'
+    'Final Answer: 0'
   )
 
-  # Extract the actual output
-  response_text = completion.choices[0].message.content
-  response_text = response_text.replace("\n", "")
-  response_text = response_text.replace("\t", "")
-  response_text = response_text.replace("\r", "")
-  response_text = response_text.replace(" ", "")
+  full_prompt = f"{prompt_1}\n{prompt_2}\n\n1. {original_sentence}\n2. {translated_sentence}\nReasoning:"
 
-  #print("Acceptable responses: ", acceptable_responses)
-  if response_text in ["0", "1"]:
-    return int(response_text)
+  print(f"ASKING {model_2} the following prompt: {full_prompt}")
+
+  completion = client.chat.completions.create(
+      model=model_2,
+      messages=[
+          {'role': 'system', 'content': full_prompt},
+      ],
+      temperature=0.8
+  )
+
+  # Extract the reasoning and final answer from the response
+  response_text = completion.choices[0].message.content.strip()
+  print("Got a response from chatgpt!", response_text)
+
+  # Separate reasoning and final answer
+  try:
+      reasoning_part = response_text.split("Final Answer:")[0].strip()
+      final_answer_part = response_text.split("Final Answer:")[1].strip()
+  except IndexError:
+      print(f"ERROR: GPT returned an unexpected response: [{response_text}]")
+      return -1
+
+  print(f"Reasoning: {reasoning_part}")
+  print(f"Final Answer: {final_answer_part}")
+
+  # Clean and parse the final answer
+  final_answer_part = final_answer_part.replace("\n", "").replace("\t", "").replace("\r", "").replace(" ", "")
+
+  if final_answer_part in ["0", "1"]:
+      return int(final_answer_part)
   else:
-    print("ERROR: GPT returned an unexpected response:[" + response_text+']')
-    return -1
+      print(f"ERROR: GPT returned an unexpected response: [{final_answer_part}]")
+      return -1
 
 def get_wrong_words(original_sentence, translated_sentence):
-  '''
-  Given a sentence in French and an attempted translation of that sentence in English, return a list of words that were not translated correctly
-  '''
+    '''
+    Given a sentence in French and an attempted translation of that sentence in English, return a list of words that were not translated correctly.
+    '''
 
-  prompt_1 = 'You are an expert in professional translation. I will give you a sentence in French (#1) and a sentence in English (#2). The English sentence will be an incorrect attempted translation of the French sentence. Please output, as a Python list, all the words in the French sentence which are not correctly translated.\n\nFor example:\n1. Je suis triste et\n 2. I am happy\nShould result in the output:\n["triste", "et"]'
+    # Initial prompt with an example
+    prompt_1 = """
+    You are an expert in professional translation. I will give you a sentence in French (#1) and a sentence in English (#2). The English sentence will be an incorrect attempted translation of the French sentence. Please output, as a Python list, all the words in the French sentence which are not correctly translated. Provide your reasoning step-by-step, and then give the final answer as a Python list.
 
-  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
-  messages = [ # Change the prompt parameter to the messages parameter
-    {'role': 'system', 'content': prompt_1},
-    {'role': 'user', 'content': "1. " + original_sentence + "\n2. " + translated_sentence}
-  ],
-  temperature = 0.8
-  )
+    For example:
+    1. Je suis triste et
+    2. I am happy
+    Reasoning: 
+    "triste" means "sad" in English, but it is translated as "happy", which is incorrect.
+    "et" means "and" in English, but it is not translated.
+    Therefore, the words not correctly translated are ["triste", "et"].
+    Final Answer: ["triste", "et"]
+    """
 
-  # Extract the actual output
-  response_text = completion.choices[0].message.content
-  response_text = response_text.replace("\n", "")
-  response_text = response_text.replace("\t", "")
-  response_text = response_text.replace("\r", "")
+    # Create the completion request
+    completion = client.chat.completions.create(
+        model=model_2,  # Use the appropriate model engine
+        messages=[
+            {'role': 'system', 'content': prompt_1},
+            {'role': 'user', 'content': f"1. {original_sentence}\n2. {translated_sentence}\nReasoning:"}
+        ],
+        temperature=0.8
+    )
 
-  # Parse the response into a python list
-  try:
-    lst = eval(response_text)
-    return lst
-  except Exception as e:
-    print("ERROR: GPT returned an unexpected response:[" + response_text+']')
-    print(e)
+    # Extract the reasoning and final answer from the response
+    response_text = completion.choices[0].message.content
+
+    print("response received!", response_text)
+    # Separate reasoning and final answer
+    try:
+        reasoning_part = response_text.split("Final Answer:")[0]
+        final_answer_part = response_text.split("Final Answer:")[1]
+    except IndexError:
+        print(f"ERROR: GPT returned an unexpected response: [{response_text}]")
+        return []
+
+    print(f"Reasoning: {reasoning_part}")
+    print(f"Final Answer: {final_answer_part}")
+
+    # Parse the final answer part into a python list
+    try:
+        lst = eval(final_answer_part)
+        return lst
+    except Exception as e:
+        print(f"ERROR: GPT returned an unexpected response: [{final_answer_part}]")
+        print(e)
+        return []
 
 def get_sentence_starter():
   sentence_starters = [

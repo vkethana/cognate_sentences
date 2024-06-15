@@ -56,8 +56,12 @@ h4 {
 }
 
 .center {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center; 
+	  margin-left: auto;
+	  margin-right: auto;
+		text-align: center; 
 }
 
+#original-sentence-score {
+		font-size: 0.5em; /* You can adjust this value as needed */
+    color: gray;
+}
