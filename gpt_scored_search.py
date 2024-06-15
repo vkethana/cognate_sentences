@@ -85,7 +85,7 @@ def gpt_rank(choices):
 
   pre_prompt += "Please output a number between 1 and " + str(len(choices)) + ". Output nothing else."
 
-  completion = client.chat.completions.create(model = model,
+  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
   messages = [ # Change the prompt parameter to the messages parameter
     {'role': 'system', 'content': pre_prompt},
     {'role': 'user', 'content': prompt},
@@ -157,7 +157,7 @@ def get_wrong_words(original_sentence, translated_sentence):
 
   prompt_1 = 'You are an expert in professional translation. I will give you a sentence in French (#1) and a sentence in English (#2). The English sentence will be an incorrect attempted translation of the French sentence. Please output, as a Python list, all the words in the French sentence which are not correctly translated.\n\nFor example:\n1. Je suis triste et\n 2. I am happy\nShould result in the output:\n["triste", "et"]'
 
-  completion = client.chat.completions.create(model = model,
+  completion = client.chat.completions.create(model = 'gpt-3.5-turbo',
   messages = [ # Change the prompt parameter to the messages parameter
     {'role': 'system', 'content': prompt_1},
     {'role': 'user', 'content': "1. " + original_sentence + "\n2. " + translated_sentence}
