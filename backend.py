@@ -5,8 +5,8 @@ from random import choice, sample, randint
 from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms, word_in_wordnet
 from deep_translator import GoogleTranslator
 
-SENTENCE_GENERATION_MODEL = 'gpt-3.5-turbo'
 SENTENCE_SCORING_MODEL = 'gpt-4-turbo'
+SENTENCE_GENERATION_MODEL = 'gpt-3.5-turbo-instruct'
 INCORRECT_MORPHEME_DETECTION_MODEL = 'gpt-4-turbo'
 
 src_lang = 'fr'    # Language that the model will generate in
@@ -62,25 +62,31 @@ def get_target_lang_translation(word, src_lang, target_lang):
 
   return translation
 
-def init_beam_search(first_sentence, beam_size):
+def init_beam_search(first_node, beam_size):
   '''
   Given a starting sentence (the root node of the beam search tree), generate beam_size "candidate" sentences to start the beam search
   '''
 
   #print("Starting sentence:", first_sentence)
   # run first iteration of for loop manually (this gets the beam search going by generating the first node of the tree)
-  first_cognates = identify_cognates(decompose_sentence(first_sentence))
-  first_node = Node(first_sentence, first_cognates, get_score_breakdown(decompose_sentence(first_sentence), first_cognates))
+
+  #first_cognates = identify_cognates(decompose_sentence(first_sentence))
+  #first_node = Node(first_sentence, first_cognates, get_score_breakdown(decompose_sentence(first_sentence), first_cognates))
   candidates = get_candidates_from_node(first_node)
   candidates = sorted(candidates, key=lambda x: x.score, reverse=True)
   candidates = candidates[0:beam_size]
+
   return candidates
 
-def run_beam_search(candidates, beam_size):
+def run_search(candidates, beam_size=3):
   '''
   Run the beam search algorithm for one iteration
   Assumes that a list which contains beam_size nodes ("candidates") has already been generated
   '''
+
+  assert(type(candidates) == list)
+  # assert that each eleement of the list is a Node object
+  assert(all([type(c) == Node for c in candidates]))
 
   new_candidates = []
   for c in candidates:
@@ -155,10 +161,12 @@ def gpt_extend_sentence(sentence, num_choices=6):
       system_prompt += " Please include at least one of the following seed words in your response: " + random_sample[0] + ", " + random_sample[1] + ". Please include the actual word instead of substituting it with underscores. "
       print("Using seed words: ", random_sample)
 
+    system_prompt += "Do not include the existing sentence in your response, just include the newly-added portion. "
     system_prompt += "You may include additional sentences afterward, but make sure all the sentences are related to each other. Please try to generate human-like text.\n\n"
 
     sentence = sentence.replace("  ", " ")
 
+    '''
     possible_extensions = client.chat.completions.create(
       model = SENTENCE_GENERATION_MODEL,
       messages = [ # Change the prompt parameter to the messages parameter
@@ -177,6 +185,21 @@ def gpt_extend_sentence(sentence, num_choices=6):
     print(possible_extensions)
     possible_extensions = [i.message.content for i in possible_extensions.choices]
     possible_extensions = [i.strip().replace("\n", " ").replace("_", "").replace("  ", "") for i in possible_extensions]
+    '''
+
+    response = client.completions.create(
+    model=SENTENCE_GENERATION_MODEL,
+    prompt=system_prompt + sentence,
+    max_tokens=8,
+    n=num_choices,
+    stop=None,
+    temperature=1.3,
+    top_p=0.9,
+    frequency_penalty=0,
+    presence_penalty=0.6)
+
+    print(response.choices)
+    possible_extensions = [c.text for c in response.choices]
 
     choices = []
     for text in possible_extensions:
@@ -201,19 +224,16 @@ def get_candidates_from_node(currNode):
   Node that the Node object requires a sentence, a set of cognates, and a score
   '''
 
-  choices = gpt_extend_sentence(currNode.sentence)
-  print("choices=", choices)
+  possible_extensions = gpt_extend_sentence(currNode.sentence)
+  #print("choices=", choices)
 
-  if min([len(choice) for choice in choices]) < 2:
+  if min([len(possible_extensions) for choice in possible_extensions]) < 2:
     print("WARNING: Empty response detected\n" * 3)
 
   i = 0
-  print("Number of choices: ", len(choices))
-  print("Choices: ", choices)
-  print([type(text) for text in choices])
-  for text in choices:
-      print(type(text))
-      print("text", text)
+  choices = []
+
+  for text in possible_extensions:
       assert(type(text) == str)
 
       text = text.replace(currNode.sentence, "") # remove the old part of the sentence temporarily
@@ -239,6 +259,10 @@ def get_candidates_from_node(currNode):
         continue
       else:
         choices.append(newNode)
+
+  if len(choices) == 0:
+    print("WARNING: No choices were generated\n" * 3)
+
   return choices
 
 def gpt_rank(choices):
@@ -484,6 +508,10 @@ def get_score_breakdown(words, cognates):
   }
   return breakdown
 
+def make_sentence_object(sentence):
+  cognates = identify_cognates(decompose_sentence(sentence)) # we don't want to run cognate analysis on the old part of the sentence bc we've already done that before
+  node = Node(sentence, cognates, get_score_breakdown(decompose_sentence(sentence), cognates))
+  return node
 
 def sliding_window_helper(sentence, word_set):
   '''

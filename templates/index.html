@@ -38,15 +38,35 @@
         <button class="friendly-button" id="generate-button" onclick="generateButtonOnClick()">Generate New Sentence</button>
         <button class="friendly-button" id="extend-button" onclick="extendButtonOnClick()" style="display: none;">Extend Sentence</button>
       </div>
+      <div class="center" id="loading-div">Generating (takes 10-15 secs)<span id="ellipsis">.</span></div>
+      <div class="center" id="loading-div-2">Scoring (takes 10-15 secs)<span id="ellipsis-2">.</span></div>
     </section>
 
     <script>
+      let ellipsisInterval;
+
+      function startEllipsisAnimation(id) {
+        const ellipsisElement = document.getElementById(id);
+        let dotCount = 1;
+        ellipsisInterval = setInterval(() => {
+            dotCount = (dotCount + 1) % 4;
+            ellipsisElement.innerHTML = '.'.repeat(dotCount);
+        }, 500);
+      }
+
+      function stopEllipsisAnimation(id) {
+        clearInterval(ellipsisInterval);
+        document.getElementById(id).innerHTML = '...';
+      }
+
       function generateButtonOnClick() {
+        document.getElementById('loading-div').style.display = 'block';
+        startEllipsisAnimation('ellipsis');
         sendSentenceToServer(false);
       }
 
       function extendButtonOnClick() {
-        console.log('Extend button clicked');
+        startEllipsisAnimation();
         sendSentenceToServer(true);
       }
 
@@ -71,6 +91,9 @@
         })
         .then(response => response.json())
         .then(data => {
+            stopEllipsisAnimation('ellipsis');
+            document.getElementById('loading-div').style.display = 'none';
+
             console.log('Success:', data);
             document.getElementById('generate-buttons').style.display = 'none';
             document.getElementById('original-sentence-text').innerHTML = data['sentence'];
@@ -79,20 +102,28 @@
             document.getElementById('original-sentence-score').innerHTML = "(Score = " + data['score'] + ")";
             document.getElementById('original-sentence').style.display = 'block';
         })
+				.catch(error => {
+            stopEllipsisAnimation('ellipsis');
+            document.getElementById('loading-div').style.display = 'none';
+						console.error('Error:', error);
+				});
       };
 
       function updatePageAfterTranslationCorrect() {
-            alert("Translation is correct");
-            document.getElementById('generate-buttons').style.display = 'block';
-            // check if the extend button is visible
-            if (document.getElementById('extend-button').style.display === 'none') {
-                document.getElementById('extend-button').style.display = 'inline';
-            }
-            // clear the input
-            document.getElementById('user-translation').value = '';
+          alert("Translation is correct");
+          document.getElementById('generate-buttons').style.display = 'block';
+          // check if the extend button is visible
+          if (document.getElementById('extend-button').style.display === 'none') {
+              document.getElementById('extend-button').style.display = 'inline';
+          }
+          // clear the input
+          document.getElementById('user-translation').value = '';
       }
 
       function sendTranslationToServer() {
+          startEllipsisAnimation('ellipsis-2');
+          document.getElementById('loading-div-2').style.display = 'block';
+
           console.log('Sending translation to server');
           let user_translation = document.getElementById('user-translation').value;
           let original_sentence = document.getElementById('original-sentence-text');
@@ -120,6 +151,9 @@
           })
           .then(response => response.json())
           .then(data => {
+              stopEllipsisAnimation('ellipsis-2');
+              document.getElementById('loading-div-2').style.display = 'none';
+
               console.log('Success evaluating translation:', data);
               // Case data into int
               num = parseInt(data['is_correct']);
@@ -151,6 +185,8 @@
               }
           })
           .catch(error => {
+              stopEllipsisAnimation('ellipsis-2');
+              document.getElementById('loading-div-2').style.display= 'none';
               console.error('Error:', error);
           });
       };

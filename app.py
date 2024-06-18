@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
 from random import choice
-from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_beam_search, gpt_rank, identify_cognates, score_sentence, init_beam_search
+from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_search, gpt_rank, identify_cognates, score_sentence, init_beam_search, make_sentence_object
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -58,28 +58,33 @@ def eval_translation():
   return jsonify(output)
 
 def one_step_forward(curr_sentence):
-    new_beams = run_beam_search(sentence_starter)
-    best_sentence = gpt_rank(new_beams)
+    new_beams = run_search(curr_sentence)
+    best_sentence_index = gpt_rank([i.sentence for i in new_beams]) - 1
+    best_sentence_object = new_beams[best_sentence_index]
 
-    cognate_list = identify_cognates(best_sentence.split(" "))
-    highlighted_sentence = get_highlighted(best_sentence, cognate_list)
+    highlighted_sentence = get_highlighted(best_sentence_object.sentence, best_sentence_object.cognates)
     print("highlighted_sentence=", highlighted_sentence)
 
     output = {
       'sentence': highlighted_sentence,
-      'score': score_sentence(highlighted_sentence)
+      'score': best_sentence_object.score_breakdown['total_score']
     }
     return output
 
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
-    beams = init_beam_search(get_sentence_starter(), 3)
+    sentence_starter = get_sentence_starter()
+    sentence_object = make_sentence_object(sentence_starter)
+
+    beams = init_beam_search(sentence_object, 3)
     return jsonify(one_step_forward(beams))
 
 @app.route('/extend_sentence', methods=['POST'])
 def extend_sentence():
     data = request.get_json()
-    beams = run_beam_search([data['sentence']], 3)
+    sentence_object = make_sentence_object(data['original_sentence'])
+
+    beams = init_beam_search(sentence_object, 3)
     return jsonify(one_step_forward(beams))
 
 if __name__ == '__main__':
