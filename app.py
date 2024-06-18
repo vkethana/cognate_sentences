@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
-from openai_beam_search import run_beam_search, init_beam_search, get_cognates, score_sentence
 from random import choice
-from gpt_scored_search import evaluate_translation, gpt_extend_sentence, gpt_generate_new_sentence, get_wrong_words
+from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_beam_search, gpt_rank, identify_cognates, score_sentence, init_beam_search
 
 app = Flask(__name__, static_folder="templates/static")
 
@@ -45,7 +44,7 @@ def eval_translation():
   print("Is correct:", is_correct)
   wrong_words = []
 
-  if (not bool(is_correct)):
+  if (not is_correct):
     print("Getting wrong words...")
     wrong_words = get_wrong_words(original_sentence, user_translation)
 
@@ -53,38 +52,35 @@ def eval_translation():
     'is_correct': is_correct,
     'wrong_words': wrong_words
   }
+
   print("Returning" + str(output))
   # Return a response
   return jsonify(output)
 
-@app.route('/generate_sentence', methods=['POST'])
-def generate_sentence():
-    sentence = gpt_generate_new_sentence()
-    cognate_list = get_cognates(sentence.split(" "))
-    highlighted_sentence = get_highlighted(sentence, cognate_list)
+def one_step_forward(curr_sentence):
+    new_beams = run_beam_search(sentence_starter)
+    best_sentence = gpt_rank(new_beams)
+
+    cognate_list = identify_cognates(best_sentence.split(" "))
+    highlighted_sentence = get_highlighted(best_sentence, cognate_list)
     print("highlighted_sentence=", highlighted_sentence)
+
     output = {
       'sentence': highlighted_sentence,
       'score': score_sentence(highlighted_sentence)
     }
+    return output
 
-    return jsonify(output)
+@app.route('/generate_sentence', methods=['POST'])
+def generate_sentence():
+    beams = init_beam_search(get_sentence_starter(), 3)
+    return jsonify(one_step_forward(beams))
 
 @app.route('/extend_sentence', methods=['POST'])
 def extend_sentence():
     data = request.get_json()
-    extended_sentence = gpt_extend_sentence(data['original_sentence'])
-    output = {
-      'sentence': extended_sentence,
-      'score': score_sentence(extended_sentence)
-    }
-    return jsonify(output)
-
-# Handle requests to /generate_sentence without POST method
-@app.route('/generate_sentence', methods=['GET'])
-@app.route('/extend_sentence', methods=['GET'])
-def generate_sentence_redirect():
-    return redirect(url_for('index'))
+    beams = run_beam_search([data['sentence']], 3)
+    return jsonify(one_step_forward(beams))
 
 if __name__ == '__main__':
     app.run(debug=True)

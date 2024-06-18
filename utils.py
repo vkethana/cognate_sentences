@@ -61,6 +61,7 @@ class Node:
   '''
 
   def __init__(self, sentence, cognates, score_breakdown, prompt_that_generated_me = None, seed_words = None, parent_sentence = None):
+    assert(type(sentence) == str), "ERROR: sentence should be a string. What was passed in is: " + str(sentence) + 'of type ' + str(type(sentence))
     self.sentence = sentence
     self.cognates = cognates
     self.score_breakdown = score_breakdown
