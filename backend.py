@@ -62,6 +62,59 @@ def get_target_lang_translation(word, src_lang, target_lang):
 
   return translation
 
+def identify_cognates(words):
+  '''
+  Given a list of words, return all the words that are cognate. A "cognate" is defined as < 40% edit distance between the word and its translation (might make the rule stricter later)
+
+  TODO: Use GPT-4 judgements to determine whether a word is cognate instead of edit distance comparison
+  '''
+
+  cognates = set()
+  for w in words:
+    w_cleaned = clean_word(w) # remove all punctuation and lowercase the word
+    if (src_lang =='fr' and (w[:2].lower() == "l'" or w[:2].lower() == "d'")): # remove l' and d' from any words if french
+      w_cleaned = clean_word(w[2:])
+
+    translation = get_target_lang_translation(w_cleaned, src_lang, target_lang)
+    synonyms = get_synonyms(translation) # these are English synonyms
+    synonyms.append(translation) # add the translation itself to the set of synonyms
+
+    '''
+    Reason why we iterate thru synonyms in addition to the English translation:
+    Some words (e.g. "assure" = "ensures") have a very low edit distance with their synonyms
+    But these words are clearly cognate. If we compare against the top 10 synonyms, we can catch these cases
+    '''
+    for s in synonyms:
+      edit_ratio = get_edit_ratio(w_cleaned, s)
+      if edit_ratio < 0.35:
+        cognates.add(w)
+        break
+  return cognates
+
+def get_sentence_starter():
+  '''
+  When we first init beam search, we need some sentence starters to get the search process started
+  TODO: Figure out a way to generate these programmatically
+  TODO: Figure out what kind of sentence starters are more likely to lead to cognateful sentences
+  There is room for improvement
+  '''
+  sentence_starters = [
+    "Le", "Le", "L'", "Les", "De", "Au", "Après", "Son", "Par",
+    "De plus", "La", "La", "En", "En", "En",
+    "En_INSERT_RANDOM_YEAR", # see below for explanation
+    "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR",
+    "En septembre", "En octobre", "En novembre", "En décembre", "En janvier",
+    "En février", "En mars", "En avril", "En mai", "En juin", "Créée par",
+    "Considérée comme", "Cette", "Avec", "Pour", "Une", "Si", "Un",
+    "L'actuelle", "Une", "Je", "Vous", "Tu", "Elle", "Nous", "Ils", "Elles"
+  ]
+
+  sentence_starter = choice(sentence_starters)
+  if sentence_starter == "En_INSERT_RANDOM_YEAR":
+    sentence_starter = "En " + str(randint(1700, 2050))
+
+  return sentence_starter
+
 def init_beam_search(first_node, beam_size):
   '''
   Given a starting sentence (the root node of the beam search tree), generate beam_size "candidate" sentences to start the beam search
@@ -95,59 +148,6 @@ def run_search(candidates, beam_size=3):
 
   candidates = new_candidates[0:beam_size]
   return candidates
-
-def get_sentence_starter():
-  '''
-  When we first init beam search, we need some sentence starters to get the search process started
-  TODO: Figure out a way to generate these programmatically
-  TODO: Figure out what kind of sentence starters are more likely to lead to cognateful sentences
-  There is room for improvement
-  '''
-  sentence_starters = [
-    "Le", "Le", "L'", "Les", "De", "Au", "Après", "Son", "Par",
-    "De plus", "La", "La", "En", "En", "En",
-    "En_INSERT_RANDOM_YEAR", # see below for explanation
-    "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR", "En_INSERT_RANDOM_YEAR",
-    "En septembre", "En octobre", "En novembre", "En décembre", "En janvier",
-    "En février", "En mars", "En avril", "En mai", "En juin", "Créée par",
-    "Considérée comme", "Cette", "Avec", "Pour", "Une", "Si", "Un",
-    "L'actuelle", "Une", "Je", "Vous", "Tu", "Elle", "Nous", "Ils", "Elles"
-  ]
-
-  sentence_starter = choice(sentence_starters)
-  if sentence_starter == "En_INSERT_RANDOM_YEAR":
-    sentence_starter = "En " + str(randint(1700, 2050))
-
-  return sentence_starter
-
-def identify_cognates(words):
-  '''
-  Given a list of words, return all the words that are cognate. A "cognate" is defined as < 40% edit distance between the word and its translation (might make the rule stricter later)
-
-  TODO: Use GPT-4 judgements to determine whether a word is cognate instead of edit distance comparison
-  '''
-
-  cognates = set()
-  for w in words:
-    w_cleaned = clean_word(w) # remove all punctuation and lowercase the word
-    if (src_lang =='fr' and (w[:2].lower() == "l'" or w[:2].lower() == "d'")): # remove l' and d' from any words if french
-      w_cleaned = clean_word(w[2:])
-
-    translation = get_target_lang_translation(w_cleaned, src_lang, target_lang)
-    synonyms = get_synonyms(translation) # these are English synonyms
-    synonyms.append(translation) # add the translation itself to the set of synonyms
-
-    '''
-    Reason why we iterate thru synonyms in addition to the English translation:
-    Some words (e.g. "assure" = "ensures") have a very low edit distance with their synonyms
-    But these words are clearly cognate. If we compare against the top 10 synonyms, we can catch these cases
-    '''
-    for s in synonyms:
-      edit_ratio = get_edit_ratio(w_cleaned, s)
-      if edit_ratio < 0.35:
-        cognates.add(w)
-        break
-  return cognates
 
 def gpt_extend_sentence(sentence, num_choices=6):
     '''
@@ -368,20 +368,25 @@ def gpt_scored_rubric(sentence):
     '''
     Given an atbirary French sentence, let GPT-4 score it based on a rubric that assigns points between 0 and 2
     '''
-
+    # TODO: Add third example, "Lors du repas, la famille royale a été accompagnée de musiciens venus de différentes régions pour divertir"
+    # This would be helpful bc it would help the model reason about what distinguishes a score of 2 from a score of 3
+    # Both of the current examples dont add much because they are quite clear cut
     system_prompt = (
-    'You are an expert in French to English translation. I will give you a sentence in French and I want you to assign one of the following scores to it:\n'
-    '0 (lowest score): Totally unintelligible to an English speaker\n'
-    '1: Contains some cognate words, but still mostly unintelligible to an English speaker\n'
-    '2: Contains many cognate words. An English speaker could understand the sentence but they may miss some details\n'
-    '3 (highest score): An English speaker can reasonably guess the meaning of the sentence.\n\n'
-    'For example, the following sentence would receive a score of 3:\n'
-    '“Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”\n\n'
-    'Another example is the following sentence which would receive a score of 0:\n'
-    '"Veux-tu déjeuner avec moi?"\n'
-    'Please only output a number between 0 and 3.'
+      'You are an expert in French to English translation. I will give you a sentence in French and I want you to assign one of the following scores to it:\n'
+      '0 (lowest score): Totally unintelligible to an English speaker\n'
+      '1: Contains some cognate words, but still mostly unintelligible to an English speaker\n'
+      '2: Contains many cognate words. An English speaker could understand the sentence but they may miss some details\n'
+      '3 (highest score): An English speaker can reasonably guess the meaning of the sentence.\n\n'
+      'As an example, consider the following sentence:\n'
+      '“Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”\n'
+      'Reasoning: An English speaker can make out the sentence through the cognate words, and the noncognate words are small enough that they can be ignored.\n'
+      'Final Score: 3\n'
+      'Another example is the following sentence which would receive a score of 0:\n'
+      '"Veux-tu déjeuner avec moi?"\n'
+      'Reasoning: The sentence does not contain a single cognate and is totally unintelligible to a monolingual English speaker.\n'
+      'Final Score: 0\n'
+      'Please format your responses like the examples above.'
     )
-
 
     print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}\n{sentence}")
 

@@ -7,4 +7,7 @@
   - MIght not yield super impressive results
 	- 
 4) Try using gpt as a scoring function
-4)		
+
+2024-06-18
+- Get rid of openai_beam_search.py and make a new file called generate_sentences_without_gui.py
+- Add more logging capability (not a super urgent feature)
