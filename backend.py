@@ -326,14 +326,16 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French"):
     'Final Answer: 0'
   )
 
-  full_prompt = f"{prompt_1}\n{prompt_2}\n\n1. {original_sentence}\n2. {translated_sentence}\nReasoning:"
+  system_prompt = f"{prompt_1}\n{prompt_2}"
+  user_prompt = f"1. {original_sentence}\n2. {translated_sentence}\nReasoning:"
 
-  print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {full_prompt}")
+  print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}\n{user_prompt}")
 
   completion = client.chat.completions.create(
       model=SENTENCE_SCORING_MODEL,
       messages=[
-          {'role': 'system', 'content': full_prompt},
+          {'role': 'system', 'content': system_prompt},
+          {'role': 'user', 'content': user_prompt}
       ],
       temperature=0.8
   )
@@ -361,6 +363,60 @@ def evaluate_translation(original_sentence, translated_sentence, lang="French"):
   else:
       print(f"ERROR: GPT returned an unexpected response: [{final_answer_part}]")
       return -1
+
+def gpt_scored_rubric(sentence):
+    '''
+    Given an atbirary French sentence, let GPT-4 score it based on a rubric that assigns points between 0 and 2
+    '''
+
+    system_prompt = (
+    'You are an expert in French to English translation. I will give you a sentence in French and I want you to assign one of the following scores to it:\n'
+    '0 (lowest score): Totally unintelligible to an English speaker\n'
+    '1: Contains some cognate words, but still mostly unintelligible to an English speaker\n'
+    '2: Contains many cognate words. An English speaker could understand the sentence but they may miss some details\n'
+    '3 (highest score): An English speaker can reasonably guess the meaning of the sentence.\n\n'
+    'For example, the following sentence would receive a score of 3:\n'
+    '“Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”\n\n'
+    'Another example is the following sentence which would receive a score of 0:\n'
+    '"Veux-tu déjeuner avec moi?"\n'
+    'Please only output a number between 0 and 3.'
+    )
+
+
+    print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}\n{sentence}")
+
+    completion = client.chat.completions.create(
+        model=SENTENCE_SCORING_MODEL,
+        messages=[
+            {'role': 'system', 'content': system_prompt},
+            {'role': 'user', 'content': sentence}
+        ],
+        temperature=0.8
+    )
+
+    # Extract the reasoning and final answer from the response
+    response_text = completion.choices[0].message.content.strip()
+    print("Got a response from chatgpt!", response_text)
+
+    # Separate reasoning and final answer
+    try:
+        reasoning_part = response_text.split("Final Answer:")[0].strip()
+        final_answer_part = response_text.split("Final Answer:")[1].strip()
+    except IndexError:
+        print(f"ERROR: GPT returned an unexpected response: [{response_text}]")
+        return -1
+
+    print(f"Reasoning: {reasoning_part}")
+    print(f"Final Answer: {final_answer_part}")
+
+    # Clean and parse the final answer
+    final_answer_part = final_answer_part.replace("\n", "").replace("\t", "").replace("\r", "").replace(" ", "")
+
+    if final_answer_part in ["0", "1"]:
+        return int(final_answer_part)
+    else:
+        print(f"ERROR: GPT returned an unexpected response: [{final_answer_part}]")
+        return -1
 
 def get_wrong_words(original_sentence, translated_sentence):
     '''
