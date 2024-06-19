@@ -502,6 +502,9 @@ def get_score_breakdown(sentence, words, cognates):
     assert False, "ERROR: words should be a list of words, not a string"
 
   # check if any of the words have underscores in them
+  if any(['_' in w for w in words]):
+    early_rejection = True
+
   # auto-reject sentence that don't have at least three cognates in the first 5 words
   # this heuristic is a little too strict so currently not used
   '''
