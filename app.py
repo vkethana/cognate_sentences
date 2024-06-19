@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
 from random import choice
-from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_search, gpt_rank, identify_cognates, score_sentence, init_beam_search, make_sentence_object
+from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_search, gpt_rank, identify_cognates, init_beam_search, make_sentence_object
 
 app = Flask(__name__, static_folder="templates/static")
 

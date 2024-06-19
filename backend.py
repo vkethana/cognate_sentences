@@ -13,6 +13,7 @@ src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 use_seed_words = False
+use_gpt_scoring = False
 
 seed_words = [
     'symbole', 'France', 'unique', 'orchidées', 'caractérisé', 'Paris', 'précipitations',
@@ -242,7 +243,7 @@ def get_candidates_from_node(currNode):
 
       text = currNode.sentence + " " + text # at this point, we reattach the earlier part of the sentence
 
-      newNode = Node(text, cognates, get_score_breakdown(decompose_sentence(text), cognates))
+      newNode = Node(text, cognates, get_score_breakdown(currNode.sentence, decompose_sentence(text), cognates))
       newNode.parent_sentence = currNode.sentence
 
       # Check if either of the seed words are in the text
@@ -477,19 +478,7 @@ def get_wrong_words(original_sentence, translated_sentence):
         print(e)
         return []
 
-def score_sentence(sentence):
-  '''
-  Given an arbitrary sentence, assign it a score between 0 and 1
-  Most important function in the scoring.py file
-  '''
-  sentence = sentence.split(" " )
-  cognates = identify_cognates(sentence)
-  score_breakdown = get_score_breakdown(sentence, cognates)
-  # the score_breakdown has a bunch of other metrics 
-  # but the one we care about is total_score
-  return score_breakdown['total_score']
-
-def get_score_breakdown(words, cognates):
+def get_score_breakdown(sentence, words, cognates):
   '''
   Heuristic function that returns the ratio of cognates to total words in a sentence
   Note that the sentence has to be passed in as a list of words, not a string
@@ -558,20 +547,35 @@ def get_score_breakdown(words, cognates):
   else:
     total_score = round(max(0.60 * ratio + 0.40 * avg_gap_normalized, 0.0), 2)
     total_score -= 0.05 * avg_non_cognate_length
-  breakdown = {
-    "cognate_ratio": round(ratio, 2),
-    "avg_gap_between_consecutive_cognates": round(gap_analysis['avg_gap'], 2),
-    "avg_gap_normalized": round(avg_gap_normalized, 2),
-    "biggest_gap": biggest_gap,
-    "avg_non_cognate_length": avg_non_cognate_length,
-    "was_sentence_rejected_early": early_rejection,
-    "total_score": round(total_score, 2)
-  }
+
+
+  if use_gpt_scoring:
+    gpt_score_normalized = gpt_scored_rubric(sentence) / 3
+    breakdown = {
+      "cognate_ratio": round(ratio, 2),
+      "avg_gap_between_consecutive_cognates": round(gap_analysis['avg_gap'], 2),
+      "avg_gap_normalized": round(avg_gap_normalized, 2),
+      "biggest_gap": biggest_gap,
+      "avg_non_cognate_length": avg_non_cognate_length,
+      "was_sentence_rejected_early": early_rejection,
+      "gpt_rubric_score_normalized": gpt_score_normalized,
+      "total_score": round(0.5 * total_score + 0.5 * gpt_score_normalized, 2)
+    }
+  else:
+    breakdown = {
+      "cognate_ratio": round(ratio, 2),
+      "avg_gap_between_consecutive_cognates": round(gap_analysis['avg_gap'], 2),
+      "avg_gap_normalized": round(avg_gap_normalized, 2),
+      "biggest_gap": biggest_gap,
+      "avg_non_cognate_length": avg_non_cognate_length,
+      "was_sentence_rejected_early": early_rejection,
+      "total_score": round(total_score, 2)
+    }
   return breakdown
 
 def make_sentence_object(sentence):
   cognates = identify_cognates(decompose_sentence(sentence)) # we don't want to run cognate analysis on the old part of the sentence bc we've already done that before
-  node = Node(sentence, cognates, get_score_breakdown(decompose_sentence(sentence), cognates))
+  node = Node(sentence, cognates, get_score_breakdown(sentence, decompose_sentence(sentence), cognates))
   return node
 
 def sliding_window_helper(sentence, word_set):

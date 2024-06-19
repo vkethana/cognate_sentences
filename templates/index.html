@@ -38,8 +38,13 @@
         <button class="friendly-button" id="generate-button" onclick="generateButtonOnClick()">Generate New Sentence</button>
         <button class="friendly-button" id="extend-button" onclick="extendButtonOnClick()" style="display: none;">Extend Sentence</button>
       </div>
-      <div class="center" id="loading-div">Generating (takes 10-15 secs)<span id="ellipsis">.</span></div>
-      <div class="center" id="loading-div-2">Scoring (takes 10-15 secs)<span id="ellipsis-2">.</span></div>
+
+      <div class="center" id="loading-div">
+        Generating (takes 10-15 secs)<span id="ellipsis">.</span>
+      </div>
+      <div class="center" id="loading-div-2">
+        Scoring (takes 10-15 secs)<span id="ellipsis-2">.</span>
+      </div>
     </section>
 
     <script>
@@ -120,6 +125,11 @@
           document.getElementById('user-translation').value = '';
       }
 
+      // helper function for later
+      function hasWhiteSpace(s) {
+          return s.indexOf(' ') >= 0;
+      }
+
       function sendTranslationToServer() {
           startEllipsisAnimation('ellipsis-2');
           document.getElementById('loading-div-2').style.display = 'block';
@@ -153,6 +163,12 @@
           .then(data => {
               stopEllipsisAnimation('ellipsis-2');
               document.getElementById('loading-div-2').style.display = 'none';
+              
+              // Remove all instances of <b> and </b> from the original sentence
+              let original_sentence = document.getElementById('original-sentence-text').innerHTML;
+              original_sentence = original_sentence.replace(/<b>/g, "");
+              original_sentence = original_sentence.replace(/<\/b>/g, "");
+              document.getElementById('original-sentence-text').innerHTML = original_sentence;
 
               console.log('Success evaluating translation:', data);
               // Case data into int
@@ -166,10 +182,21 @@
                   let original_sentence = document.getElementById('original-sentence-text').innerHTML;
                   let bolded_word = "<b>" + word + "</b>";
                   // Only match when there a word boundary
-                  let re = new RegExp("\\b" + word + "\\b", "g");
-                  original_sentence = original_sentence.replace(re, bolded_word);
 
-                  document.getElementById('original-sentence-text').innerHTML = original_sentence;
+                  // If the word contains a space in it...
+                  if (hasWhiteSpace(word)) {
+                    // naively replace all instances of the word with the bolded word
+                    console.log("Word contains a space. Replacing all instances of " + word + " with " + bolded_word + " in the sentence.");
+                    original_sentence = original_sentence.replace(word, bolded_word);
+                    document.getElementById('original-sentence-text').innerHTML = original_sentence;
+                  } else {
+                    // otherwise check for word boundaries
+                    console.log("Running naive check for word boundaries")
+                    let re = new RegExp("\\b" + word + "\\b", "g");
+                    original_sentence = original_sentence.replace(re, bolded_word);
+
+                    document.getElementById('original-sentence-text').innerHTML = original_sentence;
+                  }
                 });
 
                 console.log('Wrong words: ' + wrong_words);
