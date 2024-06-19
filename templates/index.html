@@ -49,6 +49,7 @@
 
     <script>
       let ellipsisInterval;
+			let generateButtonClickCount = 0;
 
       function startEllipsisAnimation(id) {
         const ellipsisElement = document.getElementById(id);
@@ -78,6 +79,11 @@
 
       // When the user clicks on the button...
       function sendSentenceToServer(extend) {
+				generateButtonClickCount++;
+				if (generateButtonClickCount > 20) {
+						alert("Warning: you have made over 20 sentence generation calls. Please be mindful of your usage because OpenAI bills are expensive and this is a free service.");
+						generateButtonClickCount = 0;
+				}
         let route = "";
 
         if (extend) {
