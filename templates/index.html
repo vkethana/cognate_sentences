@@ -40,10 +40,10 @@
       </div>
 
       <div class="center" id="loading-div">
-        Generating (takes 10-15 secs)<span id="ellipsis">.</span>
+        Generating (takes 5-15 secs)<span id="ellipsis">.</span>
       </div>
       <div class="center" id="loading-div-2">
-        Scoring (takes 10-15 secs)<span id="ellipsis-2">.</span>
+        Scoring (takes 5-10 secs)<span id="ellipsis-2">.</span>
       </div>
     </section>
 
@@ -71,7 +71,8 @@
       }
 
       function extendButtonOnClick() {
-        startEllipsisAnimation();
+        document.getElementById('loading-div').style.display = 'block';
+        startEllipsisAnimation('ellipsis');
         sendSentenceToServer(true);
       }
 
@@ -130,6 +131,48 @@
           return s.indexOf(' ') >= 0;
       }
 
+			function boldSequence(innerHTML, sequence) {
+					// Create a temporary element to manipulate the innerHTML
+					let tempElement = document.createElement('div');
+					tempElement.innerHTML = innerHTML;
+					
+					// Split the sequence into words
+					let words = sequence.split(' ');
+
+					// Function to wrap specific text in a node with a <b> tag
+					function wrapText(node, text) {
+							let nodeText = node.textContent;
+							let startIndex = nodeText.indexOf(text);
+							if (startIndex !== -1) {
+									let beforeText = nodeText.substring(0, startIndex);
+									let middleText = nodeText.substring(startIndex, startIndex + text.length);
+									let afterText = nodeText.substring(startIndex + text.length);
+									
+									let newHTML = beforeText + "<b>" + middleText + "</b>" + afterText;
+									let tempSpan = document.createElement('span');
+									tempSpan.innerHTML = newHTML;
+									
+									node.replaceWith(...tempSpan.childNodes);
+							}
+					}
+
+					// Function to process a node and its children
+					function processNode(node, words) {
+							if (node.nodeType === Node.TEXT_NODE) {
+									// Wrap each word in the text node
+									words.forEach(word => wrapText(node, word));
+							} else if (node.nodeType === Node.ELEMENT_NODE) {
+									// Recursively process child nodes
+									Array.from(node.childNodes).forEach(child => processNode(child, words));
+							}
+					}
+
+					// Start processing the temporary element
+					processNode(tempElement, words);
+
+					return tempElement.innerHTML;
+			}
+
       function sendTranslationToServer() {
           startEllipsisAnimation('ellipsis-2');
           document.getElementById('loading-div-2').style.display = 'block';
@@ -187,7 +230,8 @@
                   if (hasWhiteSpace(word)) {
                     // naively replace all instances of the word with the bolded word
                     console.log("Word contains a space. Replacing all instances of " + word + " with " + bolded_word + " in the sentence.");
-                    original_sentence = original_sentence.replace(word, bolded_word);
+                    original_sentence = boldSequence(original_sentence, word)
+										console.log("New HTML is", original_sentence)
                     document.getElementById('original-sentence-text').innerHTML = original_sentence;
                   } else {
                     // otherwise check for word boundaries
