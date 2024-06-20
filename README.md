@@ -1,5 +1,9 @@
 # cognate_sentences
-The goal of this project is to generate mutually-intellgible sentences for language pairs with high lexical similarity, e.g. French-English or Spanish-Portuguese. The project uses GPT-3.5-Turbo along with a heuristic function and beam search to filter for sentences that are both grammatically correct and have a high "interpretability" score.
+Consider the following French sentence:
+> “Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”
+
+Any English speaker can make sense of this even if they don't know any French. My goal with this project is to generate these sorts of sentences automatically. Furthermore, I provide a [gamified interface](app.vkethana.com) where the user can attempt to translate the provided sentences and receive feedback in near real time.
+Currently, I'm using GPT-3.5-Turbo along with a heuristic function and beam search to filter for sentences that are both grammatically correct and have a high "interpretability" score.
 ## How the interpretability heuristic works
 It takes into account:
 - *cognate_ratio*: The ratio of cognates to total words in a sentence. Any sentence with a low cognate ratio (< 0.20) is automatically given a score of 0.
