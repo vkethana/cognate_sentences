@@ -10,7 +10,7 @@
 </head>
 <body>
     <section>
-      <div id='original-sentence' style="text-align:center; display: none;">
+      <div id='original-sentence' style="display: none;">
         <div>
 					<p>
 						<span id='original-sentence-text'>
@@ -21,7 +21,9 @@
         <br />
         </div>
 
-        <div>
+        <br />
+        <hr />
+        <div class="center">
           <form id="inputForm">
               <label for="inputBox"></label>
               <input type="text" id="user-translation" name="user-translation" placeholder="Enter English translation here..." required />
@@ -92,17 +94,36 @@
           route = "/generate_sentence";
         }
 
+        let story_index = localStorage.getItem('story_index');
+        if ((story_index !== null) && (route === "/extend_sentence")) {
+          console.log("Sending POST request with story_index: " + story_index);
+          post_request_data = {
+            original_sentence: document.getElementById('original-sentence-text').textContent, 
+            story_index: story_index,
+            sentence_index: localStorage.getItem('sentence_index')
+          }
+        } else {
+          post_request_data = {
+            original_sentence: document.getElementById('original-sentence-text').textContent
+          }
+        }
+
         fetch(route, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 
-              original_sentence: document.getElementById('original-sentence-text').textContent
-            })
+            body: JSON.stringify(post_request_data)
         })
         .then(response => response.json())
         .then(data => {
+            // Check if the data contains the attribute sentence_index
+            if (data['sentence_index'] !== undefined) {
+              // If it does, then the sentence was pregenerated
+              // Save the index for use later
+              localStorage.setItem('sentence_index', data['sentence_index']);
+              localStorage.setItem('story_index', data['story_index']);
+            }
             stopEllipsisAnimation('ellipsis');
             document.getElementById('loading-div').style.display = 'none';
 

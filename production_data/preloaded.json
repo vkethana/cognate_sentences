@@ -1,0 +1,49 @@
+{
+  "stories": [
+    {
+      "difficulty": 0.5,
+      "sentences": [
+        {
+          "raw_text": "Il était une fois un petit village.",
+          "score": 0.7,
+          "cognates": ["village"]
+        },
+        {
+          "raw_text": "Il était une fois un petit village. Le village était connu pour ses beaux paysages.",
+          "score": 0.8,
+          "cognates": ["village", "paysages"]
+        }
+      ]
+    },
+    {
+      "difficulty": 0.3,
+      "sentences": [
+        {
+          "raw_text": "Dans une forêt dense vivait un jeune garçon nommé Jack.",
+          "score": 0.6,
+          "cognates": ["forêt", "vivait"]
+        },
+        {
+          "raw_text": "Dans une forêt dense vivait un jeune garçon nommé Jack. Jack aimait explorer la forêt et découvrir de nouveaux chemins.",
+          "score": 0.9,
+          "cognates": ["explorer", "forêt", "chemins"]
+        }
+      ]
+    },
+    {
+      "difficulty": 0.7,
+      "sentences": [
+        {
+          "raw_text": "Un puissant dragon gardait un trésor caché au fond des montagnes.",
+          "score": 0.85,
+          "cognates": ["dragon", "trésor", "montagnes"]
+        },
+        {
+          "raw_text": "Un puissant dragon gardait un trésor caché au fond des montagnes. De nombreux chevaliers courageux ont essayé de vaincre le dragon mais ont échoué.",
+          "score": 0.75,
+          "cognates": ["chevaliers", "dragon", "vaincre"]
+        }
+      ]
+    }
+  ]
+}
