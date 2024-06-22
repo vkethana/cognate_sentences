@@ -1,6 +1,6 @@
 {
-  "stories": [
-    {
+  "stories": {
+    "0": {
       "difficulty": 0.5,
       "sentences": [
         {
@@ -15,7 +15,7 @@
         }
       ]
     },
-    {
+    "1": {
       "difficulty": 0.3,
       "sentences": [
         {
@@ -30,7 +30,7 @@
         }
       ]
     },
-    {
+    "2": {
       "difficulty": 0.7,
       "sentences": [
         {
@@ -45,5 +45,5 @@
         }
       ]
     }
-  ]
+  }
 }

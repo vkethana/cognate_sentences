@@ -5,7 +5,12 @@ import json
 import nltk
 from nltk.corpus import wordnet
 
-nltk.download('wordnet') # Need this for synonym checking
+try:
+    # Attempt to use wordnet, which will raise a LookupError if not downloaded
+    wordnet.synsets('example')
+except:
+    # If wordnet is not found, download it
+    nltk.download('wordnet')
 
 def clean_word(word):
    word = re.sub(r'[^\w\s]', '', word).lower() # strip all punctuation and lowercase the word
@@ -97,3 +102,14 @@ def word_in_wordnet(word):
       return True
   else:
       return False
+
+def get_highlighted(sentence, cognate_list):
+    if (sentence == None or sentence == ""):
+      return ""
+    highlighted_sentence = sentence
+    if (cognate_list == None or len(cognate_list) == 0):
+      return highlighted_sentence
+    for word in cognate_list:
+        highlighted_sentence = re.sub(r'\b({})\b'.format(re.escape(word)), r'<span class="highlight">\1</span>', highlighted_sentence)
+    return highlighted_sentence
+

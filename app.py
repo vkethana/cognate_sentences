@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import re
-from random import choice, randint
-from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_search, gpt_rank, identify_cognates, init_beam_search, make_sentence_object
 import json
+from random import choice, randint
+
+from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_search, gpt_rank, identify_cognates, init_beam_search, make_sentence_object, one_step_forward, get_sentence_as_json
 
 app = Flask(__name__, static_folder="templates/static")
 USE_PREGENERATED_DATA = True
+
+if USE_PREGENERATED_DATA:
+  with open('data/test2.json', 'r') as f:
+      stories = json.load(f)
 
 # it's helpful to not hard-code the lang codes
 lang_codes = {
@@ -17,20 +22,6 @@ lang_codes = {
 src_lang = 'en'
 target_lang = 'fr'
 candidates = []
-
-# read production_data/ui_mockup.json
-with open('production_data/preloaded.json', 'r') as f:
-    stories = json.load(f)['stories']
-
-def get_highlighted(sentence, cognate_list):
-    if (sentence == None or sentence == ""):
-      return ""
-    highlighted_sentence = sentence
-    if (cognate_list == None or len(cognate_list) == 0):
-      return highlighted_sentence
-    for word in cognate_list:
-        highlighted_sentence = re.sub(r'\b({})\b'.format(re.escape(word)), r'<span class="highlight">\1</span>', highlighted_sentence)
-    return highlighted_sentence
 
 @app.route('/')
 def index():
@@ -63,28 +54,14 @@ def eval_translation():
   # Return a response
   return jsonify(output)
 
-def one_step_forward(curr_sentence):
-    new_beams = run_search(curr_sentence)
-    best_sentence_index = gpt_rank([i.sentence for i in new_beams]) - 1
-    best_sentence_object = new_beams[best_sentence_index]
-
-    highlighted_sentence = get_highlighted(best_sentence_object.sentence, best_sentence_object.cognates)
-    print("highlighted_sentence=", highlighted_sentence)
-
-    output = {
-      'sentence': highlighted_sentence,
-      'score': best_sentence_object.score_breakdown['total_score'],
-      "is_pregenerated": False
-    }
-    return output
-
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
     if USE_PREGENERATED_DATA:
       index = randint(0, len(stories) - 1)
-      sentence_list = stories[index]['sentences']
-      sentence = sentence_list[0]['raw_text']
+      sentence_list = stories[str(index)]['sentences']
+      sentence = sentence_list[0]['sentence']
       score = sentence_list[0]['score']
+
       output = {
         'sentence': sentence,
         'score': score,
@@ -98,18 +75,18 @@ def generate_sentence():
       sentence_object = make_sentence_object(sentence_starter)
 
       beams = init_beam_search(sentence_object, 3)
-      return jsonify(one_step_forward(beams))
+      return jsonify(get_sentence_as_json(one_step_forward(beams)))
 
 @app.route('/extend_sentence', methods=['POST'])
 def extend_sentence():
     data = request.get_json()
     if ('story_index' in data.keys()):
 
-      story_index = int(data['story_index'])
-      sentence_index = (int(data['sentence_index']) + 1 ) % len(stories[story_index]['sentences'])
+      story_index = data['story_index'] # this is an str, not an int
+      sentence_index = (int(data['sentence_index']) + 1)  % len(stories[story_index]['sentences'])
 
       sentence_list = stories[story_index]['sentences']
-      sentence = sentence_list[sentence_index]['raw_text']
+      sentence = sentence_list[sentence_index]['sentence']
       score = sentence_list[sentence_index]['score']
 
       output = {
@@ -125,7 +102,7 @@ def extend_sentence():
       sentence_object = make_sentence_object(data['original_sentence'])
 
       beams = init_beam_search(sentence_object, 3)
-      return jsonify(one_step_forward(beams))
+      return jsonify(get_sentence_as_json(one_step_forward(beams)))
 
 if __name__ == '__main__':
     app.run(debug=True)
