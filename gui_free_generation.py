@@ -1,4 +1,4 @@
-from backend import one_step_forward, get_sentence_starter, make_sentence_object, init_beam_search, get_sentence_as_json
+from backend import one_step_forward, get_sentence_starter, make_sentence_object, get_sentence_as_json
 from collections import defaultdict
 import json
 '''
@@ -26,15 +26,15 @@ story_set = defaultdict(lambda: {"difficulty": 0.5, "sentences": []})
 num_sentences_processed = 0
 num_stories_processed = 0
 i = 0
-curr_node = one_step_forward(init_beam_search(make_sentence_object(get_sentence_starter()), 3))
+curr_node = one_step_forward(make_sentence_object(get_sentence_starter()))
 
 while num_sentences_processed < 500:
   if ((i > 30) or (i > 10 and curr_node.score_breakdown["total_score"] < 0.3)): # fail conditions
     num_stories_processed += 1
-    curr_node = one_step_forward(init_beam_search(make_sentence_object(get_sentence_starter()), 3))
+    curr_node = one_step_forward(make_sentence_object(get_sentence_starter()))
     i = 0
   else:
-    curr_node = one_step_forward(init_beam_search(curr_node, 3))
+    curr_node = one_step_forward(curr_node)
     i += 1
 
   story_set[num_stories_processed]["sentences"].append(get_sentence_as_json(curr_node))
