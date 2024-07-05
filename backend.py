@@ -188,7 +188,7 @@ def gpt_extend_sentence(sentence, num_choices=6):
 
     #print(f"Sentence {sentence} got the following choices from GPT: {choices}")
     return possible_extensions
-
+# 
 def get_candidates_from_node(currNode):
   '''
   Given a sentence starter, finish the sentence using GPT-3.5 or GPT-4 completion
@@ -658,7 +658,8 @@ def get_sentence_as_json(node_object):
     print("highlighted_sentence=", highlighted_sentence)
 
     output = {
-      'sentence': highlighted_sentence,
+      'unhighlighted_sentence': node_object.sentence,
+      'cognates': list(node_object.cognates),
       'score': node_object.score_breakdown['total_score'],
       "is_pregenerated": False
     }

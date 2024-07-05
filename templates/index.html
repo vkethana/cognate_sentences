@@ -78,48 +78,20 @@
         sendSentenceToServer(true);
       }
 
-			function streamText(container, html, delay = 20) {
-					container.innerHTML = ''; // Clear any existing content
-					let tempDiv = document.createElement('div');
-					tempDiv.innerHTML = html;
-					let textNodes = [];
-
-					// Extract text nodes and elements
-					function extractNodes(node) {
-							if (node.nodeType === Node.TEXT_NODE) {
-									textNodes.push({type: 'text', content: node.textContent});
-							} else if (node.nodeType === Node.ELEMENT_NODE) {
-									textNodes.push({type: 'element', content: node.outerHTML});
-									Array.from(node.childNodes).forEach(extractNodes);
-							}
-					}
-					Array.from(tempDiv.childNodes).forEach(extractNodes);
-
-					let index = 0;
-					return new Promise((resolve) => {
-							function addContent() {
-									if (index < textNodes.length) {
-											let node = textNodes[index];
-											if (node.type === 'element') {
-													container.insertAdjacentHTML('beforeend', node.content);
-													index++;
-													setTimeout(addContent, 0);
-											} else {
-													if (node.content.length > 0) {
-															container.insertAdjacentHTML('beforeend', node.content[0]);
-															node.content = node.content.slice(1);
-													} else {
-															index++;
-													}
-													setTimeout(addContent, delay);
-											}
-									} else {
-											resolve(); // Resolve the promise when streaming is complete
-									}
-							}
-							
-							addContent();
-					});
+			function highlightWords(sentence, wordsToHighlight, elementId) {
+				// Create a regular expression to match the words to highlight
+				const regex = new RegExp(`\\b(${wordsToHighlight.join('|')})\\b`, 'gi');
+				
+				// Replace matching words with highlighted versions
+				const highlightedSentence = sentence.replace(regex, '<span class="highlight">$1</span>');
+				
+				// Update the inner HTML of the element with the provided ID
+				const element = document.getElementById(elementId);
+				if (element) {
+					element.innerHTML = highlightedSentence;
+				} else {
+					console.error(`Element with ID "${elementId}" not found.`);
+				}
 			}
 
       // When the user clicks on the button...
@@ -172,13 +144,9 @@
 
             console.log('Success:', data);
             document.getElementById('generate-buttons').style.display = 'none';
-						//document.getElementById('original-sentence-text').innerHTML = data['sentence'];
 
             const sentenceContainer = document.getElementById('original-sentence-text');
-            streamText(sentenceContainer, data['sentence']).then(() => {
-                // This code will run after the streaming is complete
-                console.log('Streaming complete');
-            });
+            highlightWords(data['sentence'], data['cognates'], 'original-sentence-text');
 
 						// Uncomment this line if you want the score to be visible next to the sentence
             document.getElementById('original-sentence-score').innerHTML = "(Score = " + data['score'] + ")";
