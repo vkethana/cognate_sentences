@@ -78,17 +78,25 @@
         sendSentenceToServer(true);
       }
 
-			function highlightWords(sentence, wordsToHighlight, elementId) {
+			function highlightWords(paragraph, wordsToHighlight, elementId) {
 				// Create a regular expression to match the words to highlight
 				const regex = new RegExp(`\\b(${wordsToHighlight.join('|')})\\b`, 'gi');
 				
 				// Replace matching words with highlighted versions
-				const highlightedSentence = sentence.replace(regex, '<span class="highlight">$1</span>');
+				let highlightedParagraph = paragraph.replace(regex, '<span class="highlight">$1</span>');
+
+        let sentences = highlightedParagraph.match(/[^.!?]+[.!?]+/g) || [];
+        
+        // If there's more than one sentence, separate the last one
+        if (sentences.length > 1) {
+          let lastSentence = sentences.pop();
+          highlightedParagraph = sentences.join(' ') + '<br><strong>' + lastSentence.trim() + '</strong>';
+        } 
 				
 				// Update the inner HTML of the element with the provided ID
 				const element = document.getElementById(elementId);
 				if (element) {
-					element.innerHTML = highlightedSentence;
+					element.innerHTML = highlightedParagraph;
 				} else {
 					console.error(`Element with ID "${elementId}" not found.`);
 				}

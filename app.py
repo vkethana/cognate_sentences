@@ -70,7 +70,6 @@ def turn_sentence_index_into_data_to_show_to_user(story_index, sentence_index):
     }
     return output
 
-
 @app.route('/generate_sentence', methods=['POST'])
 def generate_sentence():
     if USE_PREGENERATED_DATA:
