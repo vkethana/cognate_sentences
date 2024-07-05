@@ -3,7 +3,7 @@ import re
 import json
 from random import choice, randint
 
-from backend import evaluate_translation, get_wrong_words, get_sentence_starter, run_search, gpt_rank, identify_cognates, init_beam_search, make_sentence_object, one_step_forward, get_sentence_as_json
+from backend import *
 
 app = Flask(__name__, static_folder="templates/static")
 USE_PREGENERATED_DATA = True
@@ -60,6 +60,7 @@ def generate_sentence():
       index = randint(0, len(stories) - 1)
       sentence_list = stories[str(index)]['sentences']
       sentence = sentence_list[0]['sentence']
+      sentence = re.sub(r'(\.)(\s*Le\s+[^.]*\.)', r'\1<br><b>\2</b>', sentence, 1)
       score = sentence_list[0]['score']
 
       output = {

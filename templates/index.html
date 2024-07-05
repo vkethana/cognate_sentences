@@ -18,16 +18,15 @@
 						<span id='original-sentence-score'>
 						</span>
 					</p>
-        <br />
         </div>
 
-        <br />
-        <hr />
-        <div class="center">
+        <div>
           <form id="inputForm">
               <label for="inputBox"></label>
+              Translate the bolded sentence above:
               <input type="text" id="user-translation" name="user-translation" placeholder="Enter English translation here..." required />
           </form>
+          <br />
           <div style="text-align:center" id="check-translation">
             <button class="friendly-button-small" onclick="sendTranslationToServer()">Check</button>
             <button class="friendly-button-small" onclick="updatePageAfterTranslationCorrect()">Force Skip</button>
@@ -79,6 +78,50 @@
         sendSentenceToServer(true);
       }
 
+			function streamText(container, html, delay = 20) {
+					container.innerHTML = ''; // Clear any existing content
+					let tempDiv = document.createElement('div');
+					tempDiv.innerHTML = html;
+					let textNodes = [];
+
+					// Extract text nodes and elements
+					function extractNodes(node) {
+							if (node.nodeType === Node.TEXT_NODE) {
+									textNodes.push({type: 'text', content: node.textContent});
+							} else if (node.nodeType === Node.ELEMENT_NODE) {
+									textNodes.push({type: 'element', content: node.outerHTML});
+									Array.from(node.childNodes).forEach(extractNodes);
+							}
+					}
+					Array.from(tempDiv.childNodes).forEach(extractNodes);
+
+					let index = 0;
+					return new Promise((resolve) => {
+							function addContent() {
+									if (index < textNodes.length) {
+											let node = textNodes[index];
+											if (node.type === 'element') {
+													container.insertAdjacentHTML('beforeend', node.content);
+													index++;
+													setTimeout(addContent, 0);
+											} else {
+													if (node.content.length > 0) {
+															container.insertAdjacentHTML('beforeend', node.content[0]);
+															node.content = node.content.slice(1);
+													} else {
+															index++;
+													}
+													setTimeout(addContent, delay);
+											}
+									} else {
+											resolve(); // Resolve the promise when streaming is complete
+									}
+							}
+							
+							addContent();
+					});
+			}
+
       // When the user clicks on the button...
       function sendSentenceToServer(extend) {
 				generateButtonClickCount++;
@@ -129,7 +172,13 @@
 
             console.log('Success:', data);
             document.getElementById('generate-buttons').style.display = 'none';
-            document.getElementById('original-sentence-text').innerHTML = data['sentence'];
+						//document.getElementById('original-sentence-text').innerHTML = data['sentence'];
+
+            const sentenceContainer = document.getElementById('original-sentence-text');
+            streamText(sentenceContainer, data['sentence']).then(() => {
+                // This code will run after the streaming is complete
+                console.log('Streaming complete');
+            });
 
 						// Uncomment this line if you want the score to be visible next to the sentence
             document.getElementById('original-sentence-score').innerHTML = "(Score = " + data['score'] + ")";
