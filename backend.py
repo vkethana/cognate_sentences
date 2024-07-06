@@ -5,15 +5,15 @@ from random import choice, sample, randint
 from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms, word_in_wordnet, get_highlighted
 from deep_translator import GoogleTranslator
 
-SENTENCE_SCORING_MODEL = 'gpt-4-turbo'
+SENTENCE_SCORING_MODEL = 'gpt-4o'
 #SENTENCE_GENERATION_MODEL = 'gpt-3.5-turbo-instruct'
-SENTENCE_GENERATION_MODEL = "gpt-4-turbo"
-INCORRECT_MORPHEME_DETECTION_MODEL = 'gpt-4-turbo'
+SENTENCE_GENERATION_MODEL = "gpt-4o"
+INCORRECT_MORPHEME_DETECTION_MODEL = 'gpt-4o'
 
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-use_seed_words = False
+use_seed_words = True
 use_gpt_scoring = False
 
 seed_words = [
@@ -94,7 +94,7 @@ def identify_cognates(words):
         break
   return cognates
 
-def get_sentence_starter():
+def get_sentence_starter(temperature=1.3):
   '''
   When we first init beam search, we need some sentence starters to get the search process started
   TODO: Figure out a way to generate these programmatically
@@ -102,13 +102,23 @@ def get_sentence_starter():
   There is room for improvement
   '''
   pre_prompt = "You are a helpful AI assistant that speaks both French and English fluently."
-  prompt = "Please write one (1) sentence in French that can be reasonably understood by an English speaker, bearing in mind the following constraints:\n\n- In your sentence, try to include cognate words, words that an English speaker can easily identify the meaning of.\n- When possible, use proper nouns that an English speaker can recognize."
+  random_sample = sample(seed_words, 2)
+  prompt = (
+    "Please write one (1) sentence in French that can be reasonably understood by an English speaker. "
+    "Please adhere to the following constraints, which will guide you through the generation process:\n\n"
+    "- In your sentence, try to include many cognate words, words that an English speaker can easily identify the meaning of.\n"
+    "- You are encouraged, but not required, to include proper nouns that an English speaker may recognize.\n"
+    "- Please include at least one of the two seed words in your response: " + random_sample[0] + ", " + random_sample[1] + ". Please include the actual word instead of substituting it with underscores. Do not include underscores in your response."
+   )
+  #print("Prompt: ", pre_prompt + "\n" + prompt)
+
+
   completion = client.chat.completions.create(model = "gpt-4-turbo",
   messages = [ # Change the prompt parameter to the messages parameter
     {'role': 'system', 'content': pre_prompt},
     {'role': 'user', 'content': prompt},
   ],
-  temperature = 1.4,
+  temperature = temperature,
   max_tokens = 100
   )
 
@@ -353,20 +363,24 @@ def gpt_scored_rubric(sentence):
       'You are an expert in French to English translation. I will give you a sentence in French and I want you to assign one of the following scores to it:\n'
       '0 (lowest score): Totally unintelligible to an English speaker\n'
       '1: Contains some cognate words, but still mostly unintelligible to an English speaker\n'
-      '2: Contains many cognate words. An English speaker could understand the sentence but they may miss some details\n'
-      '3 (highest score): An English speaker can reasonably guess the meaning of the sentence.\n\n'
+      '2: Contains many cognate words. An English speaker could partially understand the sentence but they would probably miss a few important words or phrases.\n'
+      '3 (highest score): Nearly every word in the sentence is cognate. All non-cognate words can be guessed from context. An English speaker could guess the meaning of the sentence with ease.\n\n'
       'As an example, consider the following sentence:\n'
-      '“Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”\n'
+      '"Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."\n'
       'Reasoning: An English speaker can make out the sentence through the cognate words, and the noncognate words are small enough that they can be ignored.\n'
       'Final Score: 3\n'
       'Another example is the following sentence which would receive a score of 0:\n'
       '"Veux-tu déjeuner avec moi?"\n'
       'Reasoning: The sentence does not contain a single cognate and is totally unintelligible to a monolingual English speaker.\n'
       'Final Score: 0\n'
+      'A final example is the following sentence which would receive a score of 2:\n'
+      '"Le chef prépare un steak exquis pour le repas."\n'
+      'Reasoning: The sentence contains several cognate words (steak, exquis), but the word "repas" is not readily understandable to an English speaker.\n'
+      'Final Score: 2\n'
       'Please format your responses like the examples above.'
     )
 
-    print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}\n{sentence}")
+    #print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}\n{sentence}")
 
     completion = client.chat.completions.create(
         model=SENTENCE_SCORING_MODEL,
@@ -381,25 +395,76 @@ def gpt_scored_rubric(sentence):
     response_text = completion.choices[0].message.content.strip()
     print("Got a response from chatgpt!", response_text)
 
-    # Separate reasoning and final answer
-    try:
-        reasoning_part = response_text.split("Final Answer:")[0].strip()
-        final_answer_part = response_text.split("Final Answer:")[1].strip()
-    except IndexError:
-        print(f"ERROR: GPT returned an unexpected response: [{response_text}]")
-        return -1
+    # Process the response to extract scores
+    score = -1
+    lines = response_text.split('\n')
 
-    print(f"Reasoning: {reasoning_part}")
-    print(f"Final Answer: {final_answer_part}")
+    for line in lines:
+        if line.startswith('Final Score:'):
+            print("Processing line:", line)
+            try:
+                score = int(line.split(':')[1].strip())
+            except ValueError:
+                print(f"Warning: Could not parse score from line: {line}")
+    return score
 
-    # Clean and parse the final answer
-    final_answer_part = final_answer_part.replace("\n", "").replace("\t", "").replace("\r", "").replace(" ", "")
+def gpt_scored_rubric_batch(sentences):
+    '''
+    Given a list of three arbitrary French sentences, let GPT-4 score them based on a rubric that assigns points between 0 and 3
+    '''
+    if len(sentences) != 3:
+        raise ValueError("This function requires exactly three sentences.")
 
-    if final_answer_part in ["0", "1"]:
-        return int(final_answer_part)
-    else:
-        print(f"ERROR: GPT returned an unexpected response: [{final_answer_part}]")
-        return -1
+    system_prompt = (
+        'You are an expert in French to English translation. I will give you three sentences in French and I want you to assign one of the following scores to each of them:\n'
+        '0 (lowest score): Totally unintelligible to an English speaker\n'
+        '1: Contains some cognate words, but is largely unintelligible to an English speaker\n'
+        '2: Contains many cognate words. An English speaker could partially understand the sentence but they would probably miss a few important words or phrases.\n'
+        '3 (highest score): An English speaker can reasonably guess the meaning of the sentence.\n\n'
+        'As an example, consider the following set of sentences:\n'
+        '1. “Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”\n'
+        'Reasoning: An English speaker can make out the sentence through the cognate words, and the noncognate words are small enough that they can be ignored.\n'
+        'Final Score: 3\n'
+        '2. "Veux-tu déjeuner avec moi?"\n'
+        'Reasoning: The sentence does not contain a single cognate and is totally unintelligible to a monolingual English speaker.\n'
+        'Final Score: 0\n'
+        '3. "Lors du repas, la famille royale a été accompagnée de musiciens venus de différentes régions pour divertir."\n'
+        'Reasoning: The sentence contains several cognate words and an English speaker can understand the general idea, although some details might be missed.\n'
+        'Final Score: 2\n\n'
+        'Please format your responses with reasoning and final score for each sentence, like the example above.\n\n'
+        'Here are the three sentences:\n'
+        f'1. {sentences[0]}\n'
+        f'2. {sentences[1]}\n'
+        f'3. {sentences[2]}\n'
+    )
+
+    print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}")
+
+    completion = client.chat.completions.create(
+        model=SENTENCE_SCORING_MODEL,
+        messages=[
+            {'role': 'system', 'content': system_prompt}
+        ],
+        temperature=0.8
+    )
+
+    # Extract the reasoning and final answer from the response
+    response_text = completion.choices[0].message.content.strip()
+    print("Got a response from chatgpt!", response_text)
+
+    # Process the response to extract scores
+    scores = []
+    lines = response_text.split('\n')
+    for line in lines:
+        print("Processing line:", line)
+        if line.startswith('Final Score:'):
+            try:
+                score = int(line.split(':')[1].strip())
+                scores.append(score)
+            except ValueError:
+                print(f"Warning: Could not parse score from line: {line}")
+    print("Scores=", scores)
+    return scores
 
 def get_wrong_words(original_sentence, translated_sentence):
     '''
