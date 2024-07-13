@@ -90,7 +90,7 @@
         // If there's more than one sentence, separate the last one
         if (sentences.length > 1) {
           let lastSentence = sentences.pop();
-          highlightedParagraph = sentences.join(' ') + '<br><strong>' + lastSentence.trim() + '</strong>';
+          highlightedParagraph = sentences.join(" ") + '<br><span id="final-sentence">' + lastSentence.trim() + '</span>';
         } 
 				
 				// Update the inner HTML of the element with the provided ID
@@ -231,7 +231,7 @@
 
           console.log('Sending translation to server');
           let user_translation = document.getElementById('user-translation').value;
-          let original_sentence = document.getElementById('original-sentence-text');
+          let original_sentence = document.getElementById('final-sentence');
           console.log(original_sentence);
           original_sentence = original_sentence.textContent;
           console.log(original_sentence);
@@ -259,10 +259,10 @@
               stopEllipsisAnimation('ellipsis-2');
               document.getElementById('loading-div-2').style.display = 'none';
               
-              // Remove all instances of <b> and </b> from the original sentence
+              // Remove all instances of <u> and </u> from the original sentence
               let original_sentence = document.getElementById('original-sentence-text').innerHTML;
-              original_sentence = original_sentence.replace(/<b>/g, "");
-              original_sentence = original_sentence.replace(/<\/b>/g, "");
+              original_sentence = original_sentence.replace(/<u>/g, "");
+              original_sentence = original_sentence.replace(/<\/u>/g, "");
               document.getElementById('original-sentence-text').innerHTML = original_sentence;
 
               console.log('Success evaluating translation:', data);
@@ -275,7 +275,7 @@
                 // Iterate through each wrong word and bold it
                 wrong_words.forEach(function(word) {
                   let original_sentence = document.getElementById('original-sentence-text').innerHTML;
-                  let bolded_word = "<b>" + word + "</b>";
+                  let bolded_word = "<u>" + word + "</u>";
                   // Only match when there a word boundary
 
                   // If the word contains a space in it...

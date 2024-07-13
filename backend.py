@@ -5,10 +5,10 @@ from random import choice, sample, randint
 from utils import get_edit_ratio, get_aux_dict, Node, decompose_sentence, clean_word, get_synonyms, word_in_wordnet, get_highlighted
 from deep_translator import GoogleTranslator
 
-SENTENCE_SCORING_MODEL = 'gpt-4o'
+SENTENCE_SCORING_MODEL = 'gpt-4-turbo'
 #SENTENCE_GENERATION_MODEL = 'gpt-3.5-turbo-instruct'
-SENTENCE_GENERATION_MODEL = "gpt-4o"
-INCORRECT_MORPHEME_DETECTION_MODEL = 'gpt-4o'
+SENTENCE_GENERATION_MODEL = "gpt-4-turbo"
+INCORRECT_MORPHEME_DETECTION_MODEL = 'gpt-4-turbo'
 
 src_lang = 'fr'    # Language that the model will generate in
 target_lang = 'en' # Language that we will translate to for cognate detection

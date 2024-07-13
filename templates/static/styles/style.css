@@ -74,3 +74,8 @@ h4 {
 		display: none;
     color: gray;
 }
+
+#final-sentence {
+    /* Underline text */
+    font-weight: bold;
+}
