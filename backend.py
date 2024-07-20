@@ -103,12 +103,14 @@ def get_sentence_starter(temperature=1.3):
   '''
   pre_prompt = "You are a helpful AI assistant that speaks both French and English fluently."
   random_sample = sample(seed_words, 2)
+  print("Using seedwords ", random_sample)
   prompt = (
-    "Please write one (1) sentence in French that can be reasonably understood by an English speaker. "
-    "Please adhere to the following constraints, which will guide you through the generation process:\n\n"
-    "- In your sentence, try to include many cognate words, words that an English speaker can easily identify the meaning of.\n"
-    "- You are encouraged, but not required, to include proper nouns that an English speaker may recognize.\n"
-    "- Please include at least one of the two seed words in your response: " + random_sample[0] + ", " + random_sample[1] + ". Please include the actual word instead of substituting it with underscores. Do not include underscores in your response."
+    "Please write one (1) sentence in French. "
+    #"Please adhere to the following constraints, which will guide you through the generation process:\n\n"
+    #"- In your sentence, try to include many cognate words, words that an English speaker can easily identify the meaning of.\n"
+    #"- You are encouraged, but not required, to include proper nouns that an English speaker may recognize.\n"
+    #"- Please include at least one of the two seed words in your response: " + random_sample[0] + ", " + random_sample[1] + ". Please include the actual word instead of substituting it with underscores. Do not include underscores in your response."
+    #"Please include at least one of the two seed words in your response: " + random_sample[0] + ", " + random_sample[1] + ". Please include the actual word instead of substituting it with underscores. Do not include underscores in your response."
    )
   #print("Prompt: ", pre_prompt + "\n" + prompt)
 
@@ -362,8 +364,8 @@ def gpt_scored_rubric(sentence):
     system_prompt = (
       'You are an expert in French to English translation. I will give you a sentence in French and I want you to assign one of the following scores to it:\n'
       '0 (lowest score): Totally unintelligible to an English speaker\n'
-      '1: Contains some cognate words, but still mostly unintelligible to an English speaker\n'
-      '2: Contains many cognate words. An English speaker could partially understand the sentence but they would probably miss a few important words or phrases.\n'
+      '1: Contains at least one cognate word. But largely unintelligible to an English speaker\n'
+      '2: Contains many cognate words. An English speaker could partially understand the sentence but they may miss a few important words or phrases.\n'
       '3 (highest score): Nearly every word in the sentence is cognate. All non-cognate words can be guessed from context. An English speaker could guess the meaning of the sentence with ease.\n\n'
       'As an example, consider the following sentence:\n'
       '"Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."\n'

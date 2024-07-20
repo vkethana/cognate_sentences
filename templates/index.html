@@ -79,27 +79,51 @@
       }
 
 			function highlightWords(paragraph, wordsToHighlight, elementId) {
-				// Create a regular expression to match the words to highlight
-				const regex = new RegExp(`\\b(${wordsToHighlight.join('|')})\\b`, 'gi');
-				
-				// Replace matching words with highlighted versions
-				let highlightedParagraph = paragraph.replace(regex, '<span class="highlight">$1</span>');
-
-        let sentences = highlightedParagraph.match(/[^.!?]+[.!?]+/g) || [];
-        
-        // If there's more than one sentence, separate the last one
-        if (sentences.length > 1) {
-          let lastSentence = sentences.pop();
-          highlightedParagraph = sentences.join(" ") + '<br><span id="final-sentence">' + lastSentence.trim() + '</span>';
-        } 
-				
-				// Update the inner HTML of the element with the provided ID
 				const element = document.getElementById(elementId);
-				if (element) {
-					element.innerHTML = highlightedParagraph;
-				} else {
+				if (!element) {
 					console.error(`Element with ID "${elementId}" not found.`);
-				}
+				}        
+        // Make elementID's text equal paragraph, but stream it gradually
+        let index = 0;
+
+        function displayTextGradually() {
+            return new Promise((resolve) => {
+                function addNextCharacter() {
+                    if (index < paragraph.length) {
+                        element.textContent += paragraph[index];
+                        index++;
+                        setTimeout(addNextCharacter, 20);
+                    } else {
+                        resolve(); // Resolve the promise when done
+                    }
+                }
+
+                addNextCharacter();
+            });
+        }
+        displayTextGradually().then(() => {
+            // Wait for 20 ms before continuing
+            return new Promise((resolve) => {
+                setTimeout(resolve, 300);
+            });
+        }).then(() => {
+          // Create a regular expression to match the words to highlight
+          const regex = new RegExp(`\\b(${wordsToHighlight.join('|')})\\b`, 'gi');
+          
+          // Replace matching words with highlighted versions
+          paragraph = paragraph.replace(regex, '<span class="highlight">$1</span>');
+
+          let sentences = paragraph.match(/[^.!?]+[.!?]+/g) || [];
+          
+          // If there's more than one sentence, separate the last one
+          if (sentences.length > 1) {
+            let lastSentence = sentences.pop();
+            paragraph = sentences.join(" ") + '<br><span id="final-sentence">' + lastSentence.trim() + '</span>';
+          } 
+
+          // Update the inner HTML of the element with the provided ID
+          element.innerHTML = paragraph;
+        });
 			}
 
       // When the user clicks on the button...
@@ -140,6 +164,9 @@
         })
         .then(response => response.json())
         .then(data => {
+            // Clear existing text
+            document.getElementById('original-sentence-text').innerHTML = '';
+
             // Check if the data contains the attribute sentence_index
             if (data['sentence_index'] !== undefined) {
               // If it does, then the sentence was pregenerated
