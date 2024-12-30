@@ -1,0 +1,172 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Paris est célèbre pour sa culture riche et ses musées extraordinaires.",
+      "score": 3,
+      "cognate_words": [
+        "Paris",
+        "célèbre",
+        "culture",
+        "riche",
+        "musées",
+        "extraordinaires"
+      ],
+      "reasoning": "The sentence contains numerous cognate words, and an English speaker can easily understand the entire meaning without missing any details."
+    },
+    {
+      "sentence": "Les visiteurs peuvent admirer des chefs-d'œuvre impressionnants au Louvre et profiter des expositions innovantes au Centre Pompidou.",
+      "score": 2,
+      "cognate_words": [
+        "visiteurs",
+        "admirer",
+        "impressionnants",
+        "Louvre",
+        "profiter",
+        "expositions",
+        "innovantes",
+        "Centre Pompidou"
+      ],
+      "reasoning": "The sentence has several cognate words such as 'visiteurs', 'admirer', 'impressionnants', 'Louvre', 'profiter', 'expositions', 'innovantes', and 'Centre Pompidou'. However, terms like 'peuvent' and 'chefs-d'œuvre' may not be understood by an English speaker, leading to partial comprehension."
+    },
+    {
+      "sentence": "De plus, la tour Eiffel offre une vue panoramique spectaculaire de la ville, attirant des millions de touristes chaque année.",
+      "score": 3,
+      "cognate_words": [
+        "tour",
+        "Eiffel",
+        "offre",
+        "vue",
+        "panoramique",
+        "spectaculaire",
+        "ville",
+        "millions",
+        "touristes",
+        "année"
+      ],
+      "reasoning": "The sentence contains many cognate words that allow an English speaker to understand the entire meaning. The cognate words convey that the Eiffel Tower offers a spectacular panoramic view of the city, attracting millions of tourists each year. Noncognate words like 'De plus' and 'attirant' are minor and do not hinder comprehension."
+    },
+    {
+      "sentence": "La cuisine parisienne, avec ses restaurants renommés et ses pâtisseries délicieuses comme Ladurée, enchante les gourmets du monde entier.",
+      "score": 3,
+      "cognate_words": [
+        "cuisine",
+        "parisienne",
+        "restaurants",
+        "renommés",
+        "pâtisseries",
+        "délicieuses",
+        "comme",
+        "Ladurée",
+        "enchante",
+        "gourmets",
+        "monde",
+        "entier"
+      ],
+      "reasoning": "An English speaker with zero French knowledge can guess, with ease, the entire meaning of the sentence. The cognate words convey the full meaning without significant loss of nuances."
+    },
+    {
+      "sentence": "Enfin, les promenades le long de la Seine offrent une atmosphère romantique, rendant Paris une destination inoubliable pour tous les amoureux d'art et de beauté.",
+      "score": 3,
+      "cognate_words": [
+        "promenades",
+        "long",
+        "Seine",
+        "offrent",
+        "atmosphère",
+        "romantique",
+        "rendant",
+        "Paris",
+        "destination",
+        "inoubliable",
+        "amoureux",
+        "art",
+        "beauté"
+      ],
+      "reasoning": "The sentence contains many cognate words, and an English speaker can easily understand the entire meaning of the sentence."
+    },
+    {
+      "sentence": "Les visiteurs peuvent également explorer les boutiques de luxe des Champs-Élysées pour une expérience de shopping incomparable.",
+      "score": 3,
+      "cognate_words": [
+        "visiteurs",
+        "explorer",
+        "boutiques",
+        "luxe",
+        "Champs-Élysées",
+        "expérience",
+        "shopping",
+        "incomparable"
+      ],
+      "reasoning": "This sentence contains several cognate words, making it easy for an English speaker to understand the full meaning without missing any important details."
+    },
+    {
+      "sentence": "De nombreux festivals annuels comme la Fashion Week de Paris et le Festival du Film de Cannes ajoutent à l'attrait international de la ville.",
+      "score": 3,
+      "cognate_words": [
+        "nombreux",
+        "festivals",
+        "annuels",
+        "Fashion Week",
+        "Paris",
+        "Festival",
+        "Film",
+        "Cannes",
+        "ajoutent",
+        "attrait",
+        "international",
+        "ville"
+      ],
+      "reasoning": "The sentence is filled with cognate words and familiar proper nouns such as 'festivals', 'annuels', 'Fashion Week', 'Paris', 'Festival', 'Film', 'Cannes', 'ajoutent', 'attrait', 'international', and 'ville'. An English speaker with zero French knowledge can easily grasp the entire meaning of the sentence."
+    },
+    {
+      "sentence": "Les amateurs de littérature peuvent découvrir la magie de la célèbre librairie Shakespeare and Company, située près de Notre-Dame.",
+      "score": 3,
+      "cognate_words": [
+        "amateurs",
+        "littérature",
+        "découvrir",
+        "magie",
+        "célèbre",
+        "librairie",
+        "Shakespeare and Company",
+        "située",
+        "près",
+        "Notre-Dame"
+      ],
+      "reasoning": "This sentence contains many cognate words such as 'amateurs', 'littérature', 'découvrir', 'magie', 'célèbre', 'librairie', 'située', 'près', and 'Notre-Dame'. The inclusion of 'Shakespeare and Company' also aids understanding. An English speaker can easily grasp the entire meaning."
+    },
+    {
+      "sentence": "En explorant les quartiers pittoresques comme le Marais, on peut découvrir des galeries d'art captivantes et des cafés charmants.",
+      "score": 3,
+      "cognate_words": [
+        "explorant",
+        "quartiers",
+        "pittoresques",
+        "galeries",
+        "art",
+        "captivantes",
+        "cafés",
+        "charmants"
+      ],
+      "reasoning": "The sentence contains many cognate words, including 'explorant', 'quartiers', 'pittoresques', 'galeries', 'art', 'captivantes', 'cafés', and 'charmants'. An English speaker with zero French knowledge can easily guess the entire meaning of the sentence without missing any nuances."
+    },
+    {
+      "sentence": "La proximité de Disneyland Paris offre une aventure familiale fantastique avec ses attractions captivantes et spectacles enchantés.",
+      "score": 3,
+      "cognate_words": [
+        "proximité",
+        "Disneyland Paris",
+        "offre",
+        "aventure",
+        "familiale",
+        "fantastique",
+        "attractions",
+        "captivantes",
+        "spectacles",
+        "enchantés"
+      ],
+      "reasoning": "The sentence contains many cognate words, and an English speaker can easily grasp the entire meaning without missing any nuances."
+    }
+  ]
+}

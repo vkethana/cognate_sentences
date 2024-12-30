@@ -1,0 +1,145 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "La musique de Beethoven est très populaire dans le monde entier.",
+      "score": 3,
+      "cognate_words": [
+        "musique",
+        "Beethoven",
+        "populaire",
+        "monde"
+      ],
+      "reasoning": "An English speaker can understand this sentence primarily through cognate words. The concepts of \"music,\" \"Beethoven,\" \"very,\" \"popular,\" and \"world\" are easily grasped despite a few noncognate words that can be overlooked."
+    },
+    {
+      "sentence": "De nombreux concerts et festivals célèbrent son œuvre exceptionnelle chaque année.",
+      "score": 2,
+      "cognate_words": [
+        "nombreux",
+        "concerts",
+        "festivals",
+        "célèbrent",
+        "œuvre",
+        "exceptionnelle",
+        "année"
+      ],
+      "reasoning": "Similar to the first sentence, there are numerous cognate words that help convey the meaning. An English speaker can understand the essence of many concerts and festivals celebrating an exceptional work each year, although finer details may elude them."
+    },
+    {
+      "sentence": "Les auditeurs de différents pays se réunissent pour apprécier la symphonie de cet artiste remarquable.",
+      "score": 2,
+      "cognate_words": [
+        "auditeurs",
+        "différents",
+        "pays",
+        "réunissent",
+        "apprécier",
+        "symphonie",
+        "artiste",
+        "remarquable"
+      ],
+      "reasoning": "The sentence is filled with cognate words that can help an English speaker to comprehend the overall meaning effectively. The meaning of the sentence is relatively clear, though there could be slight misunderstandings regarding the finer details."
+    },
+    {
+      "sentence": "Les interprètes rendent hommage à sa créativité et son influence durable dans la culture musicale.",
+      "score": 2,
+      "cognate_words": [
+        "interprètes",
+        "hommage",
+        "créativité",
+        "influence",
+        "durable",
+        "culture",
+        "musicale"
+      ],
+      "reasoning": "This sentence contains several cognate words that an English speaker might recognize, allowing them to grasp the overall meaning, though some finer details may be missed. Words such as 'interprètes', 'hommage', 'créativité', 'influence', 'durable', 'culture', and 'musicale' are cognates."
+    },
+    {
+      "sentence": "Des œuvres comme la Neuvième Symphonie continuent d'inspirer des générations de musiciens et d'amateurs de musique.",
+      "score": 2,
+      "cognate_words": [
+        "œuvres",
+        "Neuvième",
+        "Symphonie",
+        "inspirer",
+        "générations",
+        "musiciens",
+        "musique"
+      ],
+      "reasoning": "An English speaker can recognize several cognate words and discern the general meaning of the sentence, even if some details may be missed. The use of words like 'œuvres', 'Neuvième', 'Symphonie', 'inspirer', 'générations', 'musiciens', and 'musique' allows for a fair understanding."
+    },
+    {
+      "sentence": "Son utilisation innovante de la mélodie et du rythme a transformé la composition classique.",
+      "score": 2,
+      "cognate_words": [
+        "utilisation",
+        "innovante",
+        "mélodie",
+        "rythme",
+        "transformé",
+        "composition",
+        "classique"
+      ],
+      "reasoning": "The sentence includes clear cognate words like 'utilisation,' 'innovante,' 'mélodie,' 'rythme,' 'transformé,' and 'composition classique,' making it relatively easy for an English speaker to grasp the overall meaning, while some subtleties might still be lost."
+    },
+    {
+      "sentence": "Les chefs d'orchestre, tels que Leonard Bernstein, interprètent souvent ses compositions avec passion.",
+      "score": 3,
+      "cognate_words": [
+        "chefs",
+        "orchestre",
+        "tels",
+        "interprètent",
+        "souvent",
+        "compositions",
+        "passion"
+      ],
+      "reasoning": "An English speaker can identify numerous cognate terms related to orchestras and musical interpretation, leading to a clear understanding of the sentence's meaning. The presence of names and the overall structure aids comprehension."
+    },
+    {
+      "sentence": "Sa musique transcende les frontières culturelles et unit les gens à travers l'émotion.",
+      "score": 2,
+      "cognate_words": [
+        "musique",
+        "transcende",
+        "frontières",
+        "culturelles",
+        "unit",
+        "gens",
+        "à travers",
+        "émotion"
+      ],
+      "reasoning": "This sentence features several cognate words which allow an English speaker to grasp the general meaning. Words like 'musique', 'transcende', 'frontières', 'culturelles', 'unit', and 'émotion' can convey the main idea effectively, though nuances may be missed."
+    },
+    {
+      "sentence": "Les performances de ses œuvres dans des salles prestigieuses, comme le Carnegie Hall, attirent des foules enthousiastes.",
+      "score": 2,
+      "cognate_words": [
+        "performances",
+        "œuvres",
+        "prestigieuses",
+        "Carnegie Hall",
+        "enthousiastes"
+      ],
+      "reasoning": "This sentence contains several cognate words such as 'performances,' 'œuvres,' 'prestigieuses,' 'Carnegie Hall,' and 'enthousiastes,' making it understandable to an English speaker, but some details might still be obscured."
+    },
+    {
+      "sentence": "L'impact de Beethoven sur la musique contemporaine est indéniable, car ses idées novatrices continuent d'influencer les compositeurs modernes.",
+      "score": 2,
+      "cognate_words": [
+        "impact",
+        "Beethoven",
+        "musique",
+        "contemporaine",
+        "indéniable",
+        "idées",
+        "novatrices",
+        "influencer",
+        "compositeurs",
+        "modernes"
+      ],
+      "reasoning": "An English speaker can recognize several cognates in the sentence and grasp the overall meaning about Beethoven's undeniable impact on contemporary music, although some details might be lost."
+    }
+  ]
+}

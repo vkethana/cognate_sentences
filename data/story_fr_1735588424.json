@@ -1,0 +1,137 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Le restaurant français à Paris sert une délicieuse cuisine.",
+      "score": 3,
+      "cognate_words": [
+        "restaurant",
+        "français",
+        "Paris",
+        "sert",
+        "délicieuse",
+        "cuisine"
+      ],
+      "reasoning": "This sentence includes multiple cognate words, making it relatively easy for an English speaker to understand the meaning, even if they do not know the full contexts of 'délicieuse' or 'cuisine'. They will likely grasp that it's about a French restaurant in Paris serving delicious food."
+    },
+    {
+      "sentence": "Les chefs utilisent des ingrédients frais pour créer des plats authentiques.",
+      "score": 2,
+      "cognate_words": [
+        "chefs",
+        "utilisent",
+        "ingrédients",
+        "frais",
+        "créer",
+        "plats",
+        "authentiques"
+      ],
+      "reasoning": "Similar to the first sentence, an English speaker can grasp the meaning due to the presence of several cognate words. However, the word 'authentiques' might introduce slight ambiguity compared to 'exceptionnels'. Overall, the sentence is mostly understandable."
+    },
+    {
+      "sentence": "De nombreux touristes visitent ce restaurant pour savourer l'expérience culinaire.",
+      "score": 2,
+      "cognate_words": [
+        "nombreux",
+        "touristes",
+        "visitez",
+        "restaurant",
+        "savourer",
+        "expérience",
+        "culinaire"
+      ],
+      "reasoning": "This sentence contains several cognate words like 'nombreux', 'touristes', 'visitent', 'restaurant', 'savourer', and 'expérience', giving an English speaker a decent grasp of the meaning while possibly missing some subtleties."
+    },
+    {
+      "sentence": "Ils apprécient également l'ambiance élégante qui caractérise ce lieu renommé.",
+      "score": 3,
+      "cognate_words": [
+        "apprécient",
+        "également",
+        "ambiance",
+        "élégante",
+        "caractérise",
+        "renommé"
+      ],
+      "reasoning": "This sentence features many cognate words such as 'apprécient', 'également', 'ambiance', 'élégante', 'caractérise', and 'renommé'. An English speaker can understand the primary message without significant confusion."
+    },
+    {
+      "sentence": "Les visiteurs peuvent aussi participer à des ateliers de cuisine pour apprendre des techniques gastronomiques.",
+      "score": 2,
+      "cognate_words": [
+        "visiteurs",
+        "participer",
+        "ateliers",
+        "cuisine",
+        "techniques",
+        "gastronomiques"
+      ],
+      "reasoning": "The sentence contains several cognate words which allow an English speaker to grasp the overall meaning, although some specific details may be missed. Words like 'visiteurs', 'participer', 'ateliers', 'cuisine', and 'techniques' are recognizable."
+    },
+    {
+      "sentence": "Ces ateliers sont dirigés par des chefs célèbres qui partagent leur expertise avec passion.",
+      "score": 2,
+      "cognate_words": [
+        "ateliers",
+        "dirigés",
+        "chefs",
+        "célèbres",
+        "partagent",
+        "expertise",
+        "passion"
+      ],
+      "reasoning": "This sentence consists of several cognate words including 'ateliers', 'dirigés', 'chefs', 'célébres', 'partagent', 'expertise', and 'passion'. An English speaker could likely understand that these workshops are led by famous chefs who share their knowledge passionately, capturing the primary meaning of the sentence."
+    },
+    {
+      "sentence": "Cette expérience unique attire les amateurs de gastronomie du monde entier.",
+      "score": 3,
+      "cognate_words": [
+        "expérience",
+        "unique",
+        "attire",
+        "amateurs",
+        "gastronomie",
+        "monde",
+        "entier"
+      ],
+      "reasoning": "Most of the sentence can be understood by an English speaker due to the presence of numerous cognate words such as 'expérience', 'unique', 'attire', 'amateurs', 'gastronomie', 'monde', and 'entier'. The overall meaning is clear, though some nuances might be missed."
+    },
+    {
+      "sentence": "Ils peuvent également déguster des vins raffinés qui complètent parfaitement les plats proposés.",
+      "score": 2,
+      "cognate_words": [
+        "vins",
+        "raffinés",
+        "plats"
+      ],
+      "reasoning": "An English speaker might recognize some cognate words in this sentence, such as 'vins' (wines), 'raffinés' (refined), and 'plats' (dishes), which will help them grasp the overall meaning. However, some important nuances may still be missed."
+    },
+    {
+      "sentence": "La sélection de vins inclut des crus prestigieux de Bordeaux et de Bourgogne.",
+      "score": 2,
+      "cognate_words": [
+        "sélection",
+        "vins",
+        "inclut",
+        "crus",
+        "prestigieux",
+        "Bordeaux",
+        "Bourgogne"
+      ],
+      "reasoning": "There are cognates such as 'sélection', 'vins', 'inclut', and 'prestigieux'. An English speaker could understand that the selection includes prestigious wines from Bordeaux and Burgundy, although they might not know what 'crus' means without context."
+    },
+    {
+      "sentence": "Ces vins sont souvent recommandés par des sommeliers réputés pour leur qualité exceptionnelle.",
+      "score": 2,
+      "cognate_words": [
+        "vins",
+        "recommandés",
+        "sommeliers",
+        "réputés",
+        "qualité",
+        "exceptionnelle"
+      ],
+      "reasoning": "This sentence contains a good number of cognate words such as 'vins', 'recommandés', 'sommeliers', 'réputés', 'qualité', and 'exceptionnelle', allowing an English speaker to understand the general context of wine recommendations and quality, though some finer points may not be clear."
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Les étudiants ont une grande passion pour la science.",
+      "score": 2,
+      "cognate_words": [
+        "étudiants",
+        "grande",
+        "passion",
+        "science"
+      ],
+      "reasoning": "An English speaker can identify cognate words such as 'étudiants', 'grande', 'passion', and 'science'. This allows them to understand the fundamental message of the sentence quite well, even though they might not catch every detail."
+    },
+    {
+      "sentence": "Cette passion les pousse à explorer des concepts fascinants et à réaliser des expériences innovantes.",
+      "score": 2,
+      "cognate_words": [
+        "passion",
+        "pousse",
+        "explorer",
+        "concepts",
+        "fascinants",
+        "réaliser",
+        "expériences",
+        "innovantes"
+      ],
+      "reasoning": "The sentence contains several cognate words which help an English speaker grasp the overall meaning. However, without knowledge of certain noncognate words like 'Cette' and 'les', some subtleties might be lost."
+    },
+    {
+      "sentence": "Ils développent ainsi des compétences précieuses qui les prépareront à une carrière prometteuse.",
+      "score": 2,
+      "cognate_words": [
+        "développent",
+        "compétences",
+        "précieuses",
+        "prépareront",
+        "carrière",
+        "prometteuse"
+      ],
+      "reasoning": "This sentence also contains a considerable number of cognate words, making the overall message understandable for an English speaker. Noncognate words might cause some minor confusion, meaning finer details could be lost."
+    },
+    {
+      "sentence": "Ils sont motivés par le désir de comprendre les phénomènes naturels et d'appliquer leurs connaissances dans des projets concrets.",
+      "score": 2,
+      "cognate_words": [
+        "motivé",
+        "désir",
+        "comprendre",
+        "phénomènes",
+        "naturels",
+        "appliquer",
+        "connaissances",
+        "projets",
+        "concrets"
+      ],
+      "reasoning": "This sentence contains many cognate words, which would allow an English speaker to grasp the general meaning, though some specific terms may be challenging without prior knowledge of French."
+    },
+    {
+      "sentence": "En conséquence, ils participent à des compétitions scientifiques et collaborent avec des chercheurs expérimentés.",
+      "score": 2,
+      "cognate_words": [
+        "conséquence",
+        "participent",
+        "compétitions",
+        "scientifiques",
+        "collaborent",
+        "chercheurs",
+        "expérimentés"
+      ],
+      "reasoning": "This sentence contains several cognates like 'participent' (participate), 'compétitions' (competitions), 'scientifiques' (scientific), and 'collaborent' (collaborate), making it relatively easy for an English speaker to understand the general context. However, some subtleties might be lost, as the connection between the parts of the sentence might not be clear enough."
+    },
+    {
+      "sentence": "Ces opportunités leur permettent d'élargir leurs horizons et d'acquérir une expérience significative.",
+      "score": 2,
+      "cognate_words": [
+        "opportunités",
+        "permettent",
+        "élargir",
+        "horizons",
+        "acquérir",
+        "expérience",
+        "significative"
+      ],
+      "reasoning": "The sentence has multiple cognates which allow for an understanding of the main idea. However, the nuances might be lost on an English speaker who is not familiar with French."
+    },
+    {
+      "sentence": "Cela renforce leur engagement envers l'éducation et les incite à poursuivre des études supérieures.",
+      "score": 2,
+      "cognate_words": [
+        "renforce",
+        "engagement",
+        "éducation",
+        "incite",
+        "poursuivre",
+        "études"
+      ],
+      "reasoning": "This sentence features several cognate words like 'renforce', 'engagement', 'éducation', 'incite', 'poursuivre', and 'études'. An English speaker can mostly understand the message but may miss some subtleties related to education levels and commitment."
+    },
+    {
+      "sentence": "Ils s'efforcent également de contribuer à des découvertes qui pourraient bénéficier à la société.",
+      "score": 2,
+      "cognate_words": [
+        "contribuer",
+        "découvertes",
+        "bénéficier"
+      ],
+      "reasoning": "This sentence also contains cognate words that allow for partial understanding. Words like 'contribuer', 'découvertes', and 'bénéficier' convey important aspects of the message. However, the meaning of 's'efforcent', 'également', and 'société' might not be clear to an English speaker."
+    },
+    {
+      "sentence": "Cette dynamique les inspire à innover et à transformer leurs idées en solutions pratiques.",
+      "score": 2,
+      "cognate_words": [
+        "dynamique",
+        "inspire",
+        "innover",
+        "transformer",
+        "idées",
+        "solutions",
+        "pratiques"
+      ],
+      "reasoning": "The sentence contains a number of cognate words that allow for partial understanding. An English speaker might recognize key concepts like 'dynamique', 'inspire', 'innover', 'transformer', 'idées', 'solutions', and 'pratiques'. However, some nuances may still be lost."
+    },
+    {
+      "sentence": "En outre, ils utilisent les technologies avancées pour faciliter leur recherche et optimiser leurs résultats.",
+      "score": 2,
+      "cognate_words": [
+        "outre",
+        "utilisent",
+        "technologies",
+        "avancées",
+        "faciliter",
+        "recherche",
+        "optimiser",
+        "résultats"
+      ],
+      "reasoning": "This sentence includes multiple cognate words, making it relatively understandable to an English speaker. However, words like 'faciliter' and 'optimiser' could pose minor challenges for comprehension."
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Le musée de Paris est une destination populaire pour les touristes.",
+      "score": 3,
+      "cognate_words": [
+        "musée",
+        "Paris",
+        "destination",
+        "populaire",
+        "touristes"
+      ],
+      "reasoning": "An English speaker can understand the sentence through cognate words such as musée, Paris, destination, populaire, and touristes. The sentence structure is simple, making it easy to infer the meaning."
+    },
+    {
+      "sentence": "Les visiteurs peuvent admirer des œuvres célèbres de Picasso et de Monet.",
+      "score": 3,
+      "cognate_words": [
+        "visiteurs",
+        "admirer",
+        "œuvres",
+        "célèbres",
+        "Picasso",
+        "Monet"
+      ],
+      "reasoning": "The sentence contains several cognate words that allow an English speaker to reasonably guess the meaning. The inclusion of famous names like Picasso and Monet also aids in comprehension."
+    },
+    {
+      "sentence": "En outre, le café adjacent offre des pâtisseries délicieuses et une vue magnifique sur la Seine.",
+      "score": 3,
+      "cognate_words": [
+        "café",
+        "adjacent",
+        "offre",
+        "pâtisseries",
+        "délicieuses",
+        "vue",
+        "magnifique",
+        "Seine"
+      ],
+      "reasoning": "The sentence contains many cognate words, allowing an English speaker to understand the general idea, though minor details might be missed."
+    },
+    {
+      "sentence": "Les expositions temporaires présentent souvent des artistes contemporains, ce qui attire un public diversifié.",
+      "score": 3,
+      "cognate_words": [
+        "expositions",
+        "temporaires",
+        "présentent",
+        "artistes",
+        "contemporains",
+        "attire",
+        "public",
+        "diversifié"
+      ],
+      "reasoning": "The sentence includes numerous cognate words involving exhibitions and artists, making it easy for an English speaker to understand the main idea."
+    },
+    {
+      "sentence": "L'architecture du bâtiment elle-même est impressionnante, combinant des éléments classiques et modernes qui captivent les amateurs d'art et d'histoire.",
+      "score": 3,
+      "cognate_words": [
+        "architecture",
+        "bâtiment",
+        "impressionnante",
+        "combinant",
+        "éléments",
+        "classiques",
+        "modernes",
+        "captivent",
+        "amateurs",
+        "art",
+        "histoire"
+      ],
+      "reasoning": "The sentence has many cognate words and an English speaker could reasonably grasp that it's about impressive architecture combining classical and modern elements that captivate art and history enthusiasts."
+    },
+    {
+      "sentence": "La galerie abrite également des événements culturels, tels que des concerts et des conférences sur l'art, qui enrichissent l'expérience des visiteurs.",
+      "score": 3,
+      "cognate_words": [
+        "galerie",
+        "événements",
+        "culturels",
+        "concerts",
+        "conférences",
+        "art",
+        "expérience",
+        "visiteurs"
+      ],
+      "reasoning": "There are numerous cognate words that help in understanding the sentence, and an English speaker can grasp the general meaning."
+    },
+    {
+      "sentence": "Des ateliers créatifs sont régulièrement organisés pour encourager l'exploration artistique et stimuler l'inspiration chez les participants.",
+      "score": 2,
+      "cognate_words": [
+        "ateliers",
+        "créatifs",
+        "régulièrement",
+        "encourager",
+        "exploration",
+        "artistique",
+        "stimulater",
+        "inspiration",
+        "participants"
+      ],
+      "reasoning": "The sentence contains several cognate words, allowing an English speaker to understand the general idea, though some parts may be less clear."
+    },
+    {
+      "sentence": "Le musée propose également une boutique de souvenirs où les visiteurs peuvent acheter des reproductions et des livres sur l'histoire de l'art.",
+      "score": 3,
+      "cognate_words": [
+        "musée",
+        "propose",
+        "également",
+        "boutique",
+        "souvenirs",
+        "visiteurs",
+        "acheter",
+        "reproductions",
+        "livres",
+        "histoire",
+        "art"
+      ],
+      "reasoning": "This sentence has many cognate words, making it quite understandable to an English speaker, though some nuances could be lost."
+    },
+    {
+      "sentence": "Enfin, la proximité de célèbres monuments comme la Tour Eiffel et Notre-Dame renforce l'attrait du musée pour ceux qui souhaitent explorer davantage les merveilles de Paris.",
+      "score": 2,
+      "cognate_words": [
+        "proximité",
+        "célèbres",
+        "monuments",
+        "Tour Eiffel",
+        "attrait",
+        "musée",
+        "explorer",
+        "merveilles",
+        "Paris"
+      ],
+      "reasoning": "The sentence contains many cognate words and an English speaker can understand the general idea, although some details might be missed."
+    },
+    {
+      "sentence": "Les visiteurs peuvent profiter de promenades guidées qui illustrent l'évolution artistique au fil des siècles.",
+      "score": 3,
+      "cognate_words": [
+        "visiteurs",
+        "profiter",
+        "promenades",
+        "guidées",
+        "illustrent",
+        "évolution",
+        "artistique",
+        "siècles"
+      ],
+      "reasoning": "The sentence contains several cognate words, and an English speaker can understand the general idea that visitors can enjoy guided walks illustrating artistic evolution over centuries."
+    },
+    {
+      "sentence": "Ces promenades incluent des anecdotes fascinantes sur les maîtres de la Renaissance et leurs influences internationales.",
+      "score": 3,
+      "cognate_words": [
+        "promenades",
+        "incluent",
+        "anecdotes",
+        "fascinantes",
+        "maîtres",
+        "Renaissance",
+        "influences",
+        "internationales"
+      ],
+      "reasoning": "The sentence contains many cognate words, and the overall meaning can be reasonably guessed by an English speaker."
+    },
+    {
+      "sentence": "Le musée offre aussi un espace interactif où les visiteurs peuvent utiliser des technologies modernes pour découvrir l'art d'une manière innovante.",
+      "score": 2,
+      "cognate_words": [
+        "musée",
+        "offre",
+        "espace",
+        "interactif",
+        "visiteurs",
+        "technologies",
+        "modernes",
+        "découvrir",
+        "art",
+        "manière",
+        "innovante"
+      ],
+      "reasoning": "The sentence contains many cognate words that relate to context about a museum and technology, allowing an English speaker to understand the general idea, though some details might be missed."
+    },
+    {
+      "sentence": "Un programme éducatif pour les enfants inclut des activités ludiques et pédagogiques, permettant d'explorer l'art de manière engageante.",
+      "score": 3,
+      "cognate_words": [
+        "programme",
+        "éducatif",
+        "enfants",
+        "activités",
+        "ludiques",
+        "pédagogiques",
+        "explorer",
+        "art",
+        "engageante"
+      ],
+      "reasoning": "The sentence contains many cognate words, allowing an English speaker to understand that it's about an educational program for children including fun and educational activities to explore art in an engaging way."
+    },
+    {
+      "sentence": "Les installations virtuelles permettent aux curieux de tous âges d'expérimenter les chefs-d'œuvre célèbres à travers des perspectives immersives.",
+      "score": 2,
+      "cognate_words": [
+        "installations",
+        "virtuelles",
+        "permettent",
+        "curieux",
+        "âges",
+        "expérimenter",
+        "chefs-d'œuvre",
+        "célèbres",
+        "perspectives",
+        "immersives"
+      ],
+      "reasoning": "While the sentence has several cognate words, it also contains non-cognate words that could make it slightly challenging to understand completely, but the general concept is likely clear."
+    },
+    {
+      "sentence": "Des visites thématiques sont proposées, permettant d'explorer des périodes spécifiques telles que le baroque ou l'impressionnisme.",
+      "score": 2,
+      "cognate_words": [
+        "visites",
+        "thématiques",
+        "explorer",
+        "périodes",
+        "spécifiques",
+        "baroque",
+        "impressionnisme"
+      ],
+      "reasoning": "The sentence contains many cognate words, which allows an English speaker to partially understand the sentence. However, they may miss some details."
+    },
+    {
+      "sentence": "De plus, le musée collabore régulièrement avec des institutions internationales comme le Louvre et le Metropolitan Museum of Art pour des expositions exclusives.",
+      "score": 3,
+      "cognate_words": [
+        "musée",
+        "collabore",
+        "régulièrement",
+        "institutions",
+        "internationales",
+        "Louvre",
+        "Metropolitan Museum of Art",
+        "expositions",
+        "exclusives"
+      ],
+      "reasoning": "The sentence contains many cognate words and specific names that an English speaker would likely recognize, providing a clear understanding of the basic meaning."
+    },
+    {
+      "sentence": "Des initiatives de partenariat avec des universités célèbres comme la Sorbonne offrent des conférences captivantes pour approfondir la compréhension des mouvements artistiques.",
+      "score": 3,
+      "cognate_words": [
+        "initiatives",
+        "partenariat",
+        "universités",
+        "célèbres",
+        "Sorbonne",
+        "offrent",
+        "conférences",
+        "captivantes",
+        "approfondir",
+        "compréhension",
+        "mouvements",
+        "artistiques"
+      ],
+      "reasoning": "The sentence includes several cognate words, helping an English speaker grasp that it discusses partnership initiatives with famous universities like the Sorbonne offering captivating lectures to deepen understanding of artistic movements."
+    },
+    {
+      "sentence": "Les collaborations avec des académies renommées fournissent un forum pour des dialogues sur l'art et la culture qui sont accessibles au grand public.",
+      "score": 3,
+      "cognate_words": [
+        "collaborations",
+        "académies",
+        "forum",
+        "dialogues",
+        "art",
+        "culture",
+        "accessibles",
+        "public"
+      ],
+      "reasoning": "The sentence contains many cognates related to art and culture, making it fairly understandable to an English speaker."
+    },
+    {
+      "sentence": "De surcroît, le jardin adjacent accueille des sculptures modernes qui complètent harmonieusement l'ambiance du musée et attirent les photographes passionnés.",
+      "score": 2,
+      "cognate_words": [
+        "jardin",
+        "adjacent",
+        "sculptures",
+        "modernes",
+        "complètent",
+        "harmonieusement",
+        "ambiance",
+        "musée",
+        "photographes",
+        "passionnés"
+      ],
+      "reasoning": "This sentence contains several cognate words that indicate it is about a garden with modern sculptures that enhance the museum's atmosphere and attract photographers. However, an English speaker might miss some nuances."
+    },
+    {
+      "sentence": "Le centre d'information offre des brochures multilingues pour guider les visiteurs à travers les nombreuses galeries et événements du musée.",
+      "score": 3,
+      "cognate_words": [
+        "centre",
+        "information",
+        "offre",
+        "brochures",
+        "multilingues",
+        "visiteurs",
+        "galeries",
+        "événements",
+        "musée"
+      ],
+      "reasoning": "An English speaker can make out the sentence due to several cognate words, and the overall structure is similar to English. Some non-cognate words might slightly hinder full comprehension, but the main idea is clear."
+    }
+  ]
+}

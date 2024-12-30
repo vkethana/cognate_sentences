@@ -1,0 +1,129 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Le professeur a expliqué le concept avec beaucoup de clarté.",
+      "score": 2,
+      "cognate_words": [
+        "professeur",
+        "expliqué",
+        "concept",
+        "beaucoup",
+        "clarté"
+      ],
+      "reasoning": "This sentence includes cognate words like 'professor', 'expliqué', 'concept', and 'clarté', allowing an English speaker to grasp the general meaning. However, important details could still be missed without knowing the full structure."
+    },
+    {
+      "sentence": "Les étudiants ont montré un intérêt exceptionnel pour le sujet.",
+      "score": 2,
+      "cognate_words": [
+        "étudiants",
+        "montré",
+        "intérêt",
+        "exceptionnel"
+      ],
+      "reasoning": "In this sentence, cognate words like 'étudiants', 'montré', 'intérêt', and 'exceptionnel' provide enough context for an English speaker to understand the sentence's main idea. The noncognate words like 'Les', 'pour', and 'le' may not be as recognizable but do not hinder overall comprehension significantly."
+    },
+    {
+      "sentence": "Cela a permis d'initier une discussion approfondie et interactive parmi les participants.",
+      "score": 2,
+      "cognate_words": [
+        "permis",
+        "initier",
+        "discussion",
+        "approfondie",
+        "interactive",
+        "participants"
+      ],
+      "reasoning": "This sentence features cognate words such as 'permis', 'initier' (initiate), 'discussion', 'approfondie' (deep), and 'interactive'. An English speaker could likely understand the main points, though they may miss some subtleties inherent in the phrasing."
+    },
+    {
+      "sentence": "Cette dynamique a favorisé un environnement d'apprentissage enrichissant et collaboratif.",
+      "score": 2,
+      "cognate_words": [
+        "dynamique",
+        "favorisé",
+        "environnement",
+        "apprentissage",
+        "enrichissant",
+        "collaboratif"
+      ],
+      "reasoning": "This sentence contains several cognates such as 'dynamique', 'favorisé', 'environnement', 'apprentissage', 'enrichissant', and 'collaboratif'. An English speaker could grasp the main idea about a positive learning environment through these recognizable words while possibly missing some subtleties from non-cognate words."
+    },
+    {
+      "sentence": "En conséquence, les élèves ont développé des compétences critiques et analytiques importantes.",
+      "score": 2,
+      "cognate_words": [
+        "conséquence",
+        "élèves",
+        "développé",
+        "compétences",
+        "critiques",
+        "analytiques"
+      ],
+      "reasoning": "There are multiple cognate words in this sentence, such as 'conséquence', 'élèves', 'développé', 'compétences', 'critiques', and 'analytiques', which allow an English speaker to grasp the main ideas. However, slight nuances could be missed without knowledge of the French language."
+    },
+    {
+      "sentence": "Ils ont ainsi acquis une compréhension approfondie de la matière.",
+      "score": 2,
+      "cognate_words": [
+        "acquis",
+        "compréhension",
+        "approfondie"
+      ],
+      "reasoning": "Similar to the first sentence, this one contains cognate words like 'acquis', 'compréhension', and 'approfondie', which help convey the meaning. An English speaker could understand the main idea but might not catch the complete context of 'de la matière'."
+    },
+    {
+      "sentence": "Cette compréhension a renforcé leur capacité à résoudre des problèmes complexes dans divers contextes.",
+      "score": 2,
+      "cognate_words": [
+        "compréhension",
+        "renforcé",
+        "capacité",
+        "résoudre",
+        "problèmes",
+        "complexes",
+        "divers",
+        "contextes"
+      ],
+      "reasoning": "The sentence has various cognate words which make it easier for an English speaker to understand the general message about strengthening the ability to solve complex problems in different contexts, though some subtleties may be missed."
+    },
+    {
+      "sentence": "Ils se sont sentis plus confiants pour aborder des projets futurs avec créativité.",
+      "score": 2,
+      "cognate_words": [
+        "confiants",
+        "projets",
+        "futurs",
+        "créativité"
+      ],
+      "reasoning": "This sentence includes cognates like 'confiants,' 'projets,' and 'créativité,' allowing an English speaker to understand the general idea. However, nuances might be lost, particularly with reflexive verbs like 'se sont sentis.'"
+    },
+    {
+      "sentence": "Cette expérience positive a motivé les étudiants à s'engager davantage dans leurs études.",
+      "score": 2,
+      "cognate_words": [
+        "expérience",
+        "positive",
+        "motivé",
+        "étudiants",
+        "engager"
+      ],
+      "reasoning": "An English speaker can deduce the meaning of the sentence through cognate words like 'expérience', 'positive', 'motivé', 'étudiants', and 'engager'. However, some smaller words ('cette', 'à', 'dans', 'leurs') might create some confusion, but the overall meaning can still be understood."
+    },
+    {
+      "sentence": "Ils ont également commencé à explorer des sujets connexes qui pourraient enrichir leur parcours académique.",
+      "score": 2,
+      "cognate_words": [
+        "commencé",
+        "explorer",
+        "sujets",
+        "connexes",
+        "enrichir",
+        "parcours",
+        "académique"
+      ],
+      "reasoning": "The sentence is rich in cognate words, making it quite approachable for an English speaker. Key terms like 'commencé', 'explorer', 'sujets', 'connexes', 'enrichir', and 'parcours académique' aid in conveying the overall message clearly, even if some nuances are not captured."
+    }
+  ]
+}

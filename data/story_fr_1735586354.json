@@ -1,0 +1,161 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Le concert de jazz au Théâtre Apollo était incroyable.",
+      "score": 3,
+      "cognate_words": [
+        "concert",
+        "jazz",
+        "Théâtre",
+        "Apollo",
+        "incroyable"
+      ],
+      "reasoning": "The sentence is filled with cognate words and proper nouns that closely resemble their English counterparts. An English speaker can easily grasp the entire meaning without missing any nuances."
+    },
+    {
+      "sentence": "Les musiciens talentueux ont joué des classiques de Duke Ellington et Miles Davis avec une passion remarquable.",
+      "score": 3,
+      "cognate_words": [
+        "musiciens",
+        "talentueux",
+        "joué",
+        "classiques",
+        "Duke Ellington",
+        "et",
+        "Miles Davis",
+        "passion",
+        "remarquable"
+      ],
+      "reasoning": "An English speaker can understand the sentence through the cognate words, which include 'musiciens', 'talentueux', 'joué', 'classiques', 'Duke Ellington', 'Miles Davis', 'passion', and 'remarquable'. Noncognate words are minimal and do not hinder the overall understanding. Therefore, the entire meaning can be guessed with ease."
+    },
+    {
+      "sentence": "Le public enthousiaste a applaudi avec admiration après chaque performance virtuose.",
+      "score": 3,
+      "cognate_words": [
+        "public",
+        "enthousiaste",
+        "applaudi",
+        "admiration",
+        "après",
+        "chaque",
+        "performance",
+        "virtuose"
+      ],
+      "reasoning": "An English speaker can make out the sentence through the cognate words. The noncognate words are minimal and do not hinder understanding."
+    },
+    {
+      "sentence": "La soirée s'est terminée par une ovation lorsque le chef d'orchestre a remercié les artistes pour leur magnifique contribution à l'événement.",
+      "score": 2,
+      "cognate_words": [
+        "soirée",
+        "terminée",
+        "ovation",
+        "chef",
+        "orchestre",
+        "artistes",
+        "magnifique",
+        "contribution",
+        "événement"
+      ],
+      "reasoning": "The sentence contains several cognate words, allowing an English speaker to understand the general idea, although some details might be missed."
+    },
+    {
+      "sentence": "Les spectateurs ont quitté le théâtre en discutant de l'incroyable énergie et créativité des artistes.",
+      "score": 3,
+      "cognate_words": [
+        "spectateurs",
+        "quitté",
+        "théâtre",
+        "discutant",
+        "incroyable",
+        "énergie",
+        "créativité",
+        "artistes"
+      ],
+      "reasoning": "The sentence is filled with cognate words such as \"spectateurs\", \"quitté\", \"théâtre\", \"discutant\", \"incroyable\", \"énergie\", \"créativité\", and \"artistes\". An English speaker with zero French knowledge can guess, with ease, the entire meaning of the sentence because the key words are recognizable and convey the full message."
+    },
+    {
+      "sentence": "De nombreux spectateurs ont promis de revenir pour le prochain événement musical au Théâtre Apollo.",
+      "score": 3,
+      "cognate_words": [
+        "spectateurs",
+        "promis",
+        "revenir",
+        "prochain",
+        "événement",
+        "musical",
+        "Théâtre",
+        "Apollo"
+      ],
+      "reasoning": "This sentence contains many cognate words: 'spectateurs', 'promis', 'revenir', 'prochain', 'événement', 'musical', 'Théâtre', and 'Apollo'. An English speaker could likely understand the entire meaning—that numerous spectators promised to return for the next musical event at the Apollo Theatre. Since the meaning can be easily grasped with little to no nuance lost, this warrants a score of 3."
+    },
+    {
+      "sentence": "La popularité grandissante des événements au Théâtre Apollo a attiré l'attention de critiques musicaux renommés de Paris.",
+      "score": 3,
+      "cognate_words": [
+        "popularité",
+        "grandissante",
+        "événements",
+        "Théâtre",
+        "Apollo",
+        "attention",
+        "critiques",
+        "musicaux",
+        "renommés",
+        "Paris"
+      ],
+      "reasoning": "An English speaker can make out the sentence through the cognate words. There are noncognate words, but they are small enough that they can be ignored without missing the meaning of the sentence.\n\nFinal Score: 3"
+    },
+    {
+      "sentence": "Les critiques ont écrit des articles élogieux dans des publications telles que Le Monde et Rolling Stone, soulignant l'impact culturel du théâtre.",
+      "score": 2,
+      "cognate_words": [
+        "critiques",
+        "écrit",
+        "articles",
+        "publications",
+        "Le Monde",
+        "Rolling Stone",
+        "impact",
+        "culturel",
+        "théâtre"
+      ],
+      "reasoning": "The sentence contains several cognate words and an English speaker can understand the general idea, although some details might be missed."
+    },
+    {
+      "sentence": "Cette reconnaissance médiatique a inspiré des musiciens internationaux à envisager des collaborations futures au Théâtre Apollo.",
+      "score": 3,
+      "cognate_words": [
+        "reconnaissance",
+        "médiatique",
+        "inspiré",
+        "musiciens",
+        "internationaux",
+        "envisager",
+        "collaborations",
+        "futures",
+        "Théâtre Apollo"
+      ],
+      "reasoning": "The sentence contains many cognate words, and an English speaker can guess, with ease, the entire meaning of the sentence. Noncognate words are minimal and do not hinder understanding."
+    },
+    {
+      "sentence": "De telles collaborations pourraient inclure des artistes légendaires comme Herbie Hancock ou Norah Jones, promettant des soirées inoubliables.",
+      "score": 3,
+      "cognate_words": [
+        "collaborations",
+        "pourraient",
+        "inclure",
+        "artistes",
+        "légendaires",
+        "comme",
+        "Herbie Hancock",
+        "Norah Jones",
+        "promettant",
+        "soirées",
+        "inoubliables"
+      ],
+      "reasoning": "The sentence contains many cognate words and phrases such as 'collaborations', 'inclure', 'artistes légendaires', 'promettant', 'soirées inoubliables', and includes names familiar to English speakers. An English speaker with zero French knowledge can guess the entire meaning of the sentence with ease."
+    }
+  ]
+}

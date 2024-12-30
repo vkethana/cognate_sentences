@@ -1,0 +1,151 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Paris est célèbre pour ses musées impressionnants.",
+      "score": 3,
+      "cognate_words": [
+        "Paris",
+        "célèbre",
+        "musées",
+        "impressionnants"
+      ],
+      "reasoning": "The sentence includes several cognate words, and an English speaker can understand that it's about Paris being famous for its impressive museums, though some small words may not be clear."
+    },
+    {
+      "sentence": "Les visiteurs adorent explorer le Louvre et admirer des chefs-d'œuvre historiques.",
+      "score": 2,
+      "cognate_words": [
+        "visiteurs",
+        "adorent",
+        "explorer",
+        "Louvre",
+        "admirer",
+        "historiques"
+      ],
+      "reasoning": "The sentence contains several cognate words. An English speaker can understand the general idea that visitors love exploring the Louvre and admiring historical masterpieces, though some specifics might be missed."
+    },
+    {
+      "sentence": "De plus, la ville offre de nombreuses expositions temporaires captivantes dans le musée d'Orsay.",
+      "score": 2,
+      "cognate_words": [
+        "ville",
+        "offre",
+        "expositions",
+        "temporaires",
+        "captivantes",
+        "musée",
+        "d'Orsay"
+      ],
+      "reasoning": "The sentence has many cognates, providing substantial clues to its meaning, but words like 'De plus', 'offre', and 'nombreuses' can make it partially difficult to fully grasp."
+    },
+    {
+      "sentence": "Les amateurs d'art peuvent également apprécier l'architecture spectaculaire du Centre Pompidou.",
+      "score": 2,
+      "cognate_words": [
+        "amateurs",
+        "art",
+        "apprécier",
+        "architecture",
+        "spectaculaire",
+        "Centre Pompidou"
+      ],
+      "reasoning": "The sentence contains several cognate words such as 'amateurs', 'art', 'apprécier', 'architecture', 'spectaculaire', and 'Centre Pompidou'. An English speaker can understand the general idea, though some smaller words might be missed."
+    },
+    {
+      "sentence": "Enfin, les touristes ne manquent jamais de visiter le charmant quartier de Montmartre avec ses artistes et ses cafés pittoresques.",
+      "score": 2,
+      "cognate_words": [
+        "touristes",
+        "visiter",
+        "charmant",
+        "quartier",
+        "artistes",
+        "cafés",
+        "pittoresques"
+      ],
+      "reasoning": "This sentence contains several cognate words and an English speaker can understand the general idea, but some nuances or small details may be lost."
+    },
+    {
+      "sentence": "Il est également fascinant de découvrir la tour Eiffel illuminée le soir, symbole emblématique de la ville.",
+      "score": 2,
+      "cognate_words": [
+        "également",
+        "fascinant",
+        "découvrir",
+        "tour",
+        "Eiffel",
+        "illuminée",
+        "symbole",
+        "emblématique",
+        "ville"
+      ],
+      "reasoning": "The sentence contains many cognate words that allow an English speaker to partially understand the sentence. However, some nuances and details about the context might be lost."
+    },
+    {
+      "sentence": "Les visiteurs peuvent terminer leur journée par une croisière romantique sur la Seine, admirant les vues panoramiques des monuments illuminés.",
+      "score": 2,
+      "cognate_words": [
+        "visiteurs",
+        "terminer",
+        "journée",
+        "croisière",
+        "romantique",
+        "panoramiques",
+        "monuments",
+        "illuminés"
+      ],
+      "reasoning": "An English speaker can understand the general idea due to many cognates. However, some noncognates are present which may obscure more nuanced understanding."
+    },
+    {
+      "sentence": "La cathédrale Notre-Dame, malgré les rénovations, reste un point d'intérêt crucial pour ceux qui souhaitent plonger dans l'histoire gothique de Paris.",
+      "score": 2,
+      "cognate_words": [
+        "cathédrale",
+        "Notre-Dame",
+        "rénovations",
+        "point",
+        "crucial",
+        "histoire",
+        "gothique",
+        "Paris"
+      ],
+      "reasoning": "The sentence contains several cognate words that allow an English speaker to grasp the general meaning, but words like 'malgré' and 'souhaitent' may hinder full comprehension of nuances."
+    },
+    {
+      "sentence": "Les passionnés de mode peuvent aussi explorer les boutiques de luxe sur les Champs-Élysées, une expérience unique pour découvrir les dernières tendances parisiennes.",
+      "score": 2,
+      "cognate_words": [
+        "passionnés",
+        "mode",
+        "explorer",
+        "boutiques",
+        "luxe",
+        "Champs-Élysées",
+        "expérience",
+        "unique",
+        "découvrir",
+        "dernières",
+        "tendances",
+        "parisiennes"
+      ],
+      "reasoning": "The sentence contains many cognate words that allow an English speaker to partially understand it, but they may miss some specific nuances. Words like 'passionnés', 'mode', 'explorer', 'boutiques', 'luxe', 'expérience', 'unique', 'découvrir', 'tendances', and 'parisiennes' are identifiable."
+    },
+    {
+      "sentence": "Les gourmets peuvent déguster des spécialités françaises dans les restaurants renommés comme Le Meurice et savourer la cuisine gastronomique.",
+      "score": 3,
+      "cognate_words": [
+        "gourmets",
+        "déguster",
+        "spécialités",
+        "françaises",
+        "restaurants",
+        "renommés",
+        "savourer",
+        "cuisine",
+        "gastronomique"
+      ],
+      "reasoning": "The sentence is highly intelligible due to the cognate words. An English speaker would understand that it talks about gourmets enjoying French specialties in famous restaurants like Le Meurice and savoring gourmet cuisine."
+    }
+  ]
+}

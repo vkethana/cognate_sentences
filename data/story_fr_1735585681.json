@@ -1,0 +1,142 @@
+{
+  "language": "fr",
+  "sentences": [
+    {
+      "sentence": "Le musée est près de l'université et organise des expositions d'art moderne.",
+      "score": 2,
+      "cognate_words": [
+        "musée",
+        "université",
+        "organise",
+        "expositions",
+        "art",
+        "moderne"
+      ],
+      "reasoning": "The sentence contains several cognate words, allowing an English speaker to grasp that the museum is near the university and organizes modern art exhibitions. A few noncognate words may hinder full comprehension."
+    },
+    {
+      "sentence": "Les artistes célèbres comme Picasso et Monet sont souvent exposés ici.",
+      "score": 3,
+      "cognate_words": [
+        "artistes",
+        "célèbres",
+        "Picasso",
+        "Monet",
+        "exposés",
+        "ici"
+      ],
+      "reasoning": "An English speaker can recognize many cognate words, such as 'artistes', 'célèbres', 'Picasso', 'Monet', 'exposés', and 'ici'. They can understand the general idea that famous artists like Picasso and Monet are often displayed here."
+    },
+    {
+      "sentence": "Il y a aussi des conférences et des ateliers sur l'histoire de l'art.",
+      "score": 2,
+      "cognate_words": [
+        "conférences",
+        "ateliers",
+        "histoire",
+        "art"
+      ],
+      "reasoning": "The sentence contains several cognate words such as 'conférences', 'ateliers', 'histoire', and 'art', which an English speaker can recognize. While an English speaker can grasp that the sentence is about conferences and workshops on art history, small words like 'aussi', 'des', 'et', 'sur', 'l’' might be less clear."
+    },
+    {
+      "sentence": "Les visiteurs apprécient la galerie dédiée aux sculptures impressionnantes de Rodin.",
+      "score": 2,
+      "cognate_words": [
+        "visiteurs",
+        "apprécient",
+        "galerie",
+        "dédiée",
+        "sculptures",
+        "impressionnantes"
+      ],
+      "reasoning": "The sentence contains many cognate words that make the general idea understandable to an English speaker. However, some nuances might be missed, such as the exact nature of the gallery's dedication."
+    },
+    {
+      "sentence": "La boutique de souvenirs vend des catalogues illustrés et des reproductions célèbres.",
+      "score": 2,
+      "cognate_words": [
+        "boutique",
+        "souvenirs",
+        "catalogues",
+        "illustrés",
+        "reproductions",
+        "célèbres"
+      ],
+      "reasoning": "The sentence contains several cognate words which help in understanding the overall context. Words like 'boutique', 'souvenirs', 'catalogues', 'illustrés', 'reproductions', and 'célèbres' provide significant hints, but some non-cognate words might obscure full comprehension."
+    },
+    {
+      "sentence": "En été, le musée propose des visites guidées qui explorent l'influence du surréalisme en Europe.",
+      "score": 2,
+      "cognate_words": [
+        "été",
+        "musée",
+        "propose",
+        "visites",
+        "explorent",
+        "influence",
+        "surréalisme",
+        "Europe"
+      ],
+      "reasoning": "The sentence contains several cognate words, providing a good understanding of the sentence's meaning. However, certain non-cognate words might lead to missing some nuances."
+    },
+    {
+      "sentence": "Le café adjacent au musée sert des spécialités locales et est un lieu populaire pour les touristes.",
+      "score": 2,
+      "cognate_words": [
+        "café",
+        "adjacent",
+        "musée",
+        "sert",
+        "spécialités",
+        "locales",
+        "populaire",
+        "touristes"
+      ],
+      "reasoning": "The sentence is quite clear due to the many cognate words, indicating that the cafe adjacent to the museum serves local specialties and is a popular spot for tourists. The overall meaning is understandable, though minor details could be missed."
+    },
+    {
+      "sentence": "La bibliothèque du musée offre une vaste collection de livres sur les mouvements artistiques internationaux.",
+      "score": 3,
+      "cognate_words": [
+        "bibliothèque",
+        "musée",
+        "offre",
+        "vaste",
+        "collection",
+        "livres",
+        "mouvements",
+        "artistiques",
+        "internationaux"
+      ],
+      "reasoning": "This sentence contains many cognate words that are similar to English, helping an English speaker to understand that it is about a museum library offering a large collection of books on international artistic movements."
+    },
+    {
+      "sentence": "Les événements saisonniers incluent des festivals de musique et de danse, attirant un public diversifié.",
+      "score": 2,
+      "cognate_words": [
+        "événements",
+        "saisonniers",
+        "festivals",
+        "musique",
+        "danse",
+        "public",
+        "diversifié"
+      ],
+      "reasoning": "The sentence contains several cognate words that allow an English speaker to grasp the main idea. However, there are some non-cognate words that may obscure the full meaning."
+    },
+    {
+      "sentence": "Des collaborations avec des institutions comme le Louvre permettent d'enrichir l'offre culturelle du musée.",
+      "score": 2,
+      "cognate_words": [
+        "collaborations",
+        "institutions",
+        "Louvre",
+        "enrichir",
+        "offre",
+        "culturelle",
+        "musée"
+      ],
+      "reasoning": "The sentence contains several cognate words that allow an English speaker to partially understand the meaning. However, some details and smaller words might be unfamiliar, making the full sentence not completely obvious."
+    }
+  ]
+}
