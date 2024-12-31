@@ -1,2 +1,12 @@
 __pycache__
 .DS_Store
+data/*
+data0/*
+data1/*
+data2/*
+data3/*
+data4/*
+data_safe/*
+logs/*
+*.json
+*.log

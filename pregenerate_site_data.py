@@ -3,9 +3,9 @@ import datetime
 import random
 import json
 import os
-from sentence_generator import generate_sentence_no_context, generate_next_sentence, gpt_scored_rubric_batch
+from sentence_generator import *
 
-num_stories = 100
+num_stories = 20
 num_sentences_per_story = 10
 lang_code = 'fr'
 num_choices = 3  # Number of choices per generation step
@@ -40,9 +40,12 @@ for _ in range(num_stories):
 
     # Generate the first sentence
     first_sentence_options = [opt["sentence"] for opt in generate_sentence_no_context(lang_code)]
-    print(first_sentence_options)
-    first_sentence_scores = gpt_scored_rubric_batch(first_sentence_options)
     logger.info(f"Generated first sentence options: {first_sentence_options}")
+
+    # Score each first sentence individually
+    first_sentence_scores = [
+        gpt_scored_rubric_individual(sentence) for sentence in first_sentence_options
+    ]
     logger.info(f"First sentence scores: {first_sentence_scores}")
 
     # Select the best first sentence
@@ -55,7 +58,8 @@ for _ in range(num_stories):
 
     # Generate additional sentences
     for __ in range(num_sentences_per_story - 1):
-        print("CURRENTLY ON ITERATION", __)
+        logger.info(f"Currently on iteration: {__}")
+        
         # Generate three candidate sentences
         next_sentence_options = generate_next_sentence(lang_code, [s['sentence'] for s in sentence_list])
         logger.info(f"Generated next sentence options: {next_sentence_options}")
@@ -63,8 +67,10 @@ for _ in range(num_stories):
         # Extract the sentences from the options
         candidate_sentences = [opt["sentence"] for opt in next_sentence_options]
 
-        # Score the three candidates as a batch
-        next_sentence_scores = gpt_scored_rubric_batch(candidate_sentences)
+        # Score each candidate sentence individually
+        next_sentence_scores = [
+            gpt_scored_rubric_individual(sentence) for sentence in candidate_sentences
+        ]
         logger.info(f"Next sentence scores: {next_sentence_scores}")
 
         # Select the best sentence based on the highest score
@@ -76,7 +82,6 @@ for _ in range(num_stories):
 
         # Add the best sentence to the sentence list
         sentence_list.append(best_next_sentence)
-
 
     # Create story dictionary
     story_dict = {

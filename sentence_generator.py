@@ -7,7 +7,7 @@ language_codes = {
     'fr': 'French'
 }
 SENTENCE_GENERATION_MODEL = 'gpt-4o-mini'
-SENTENCE_SCORING_MODEL = 'gpt-4o-mini'
+SENTENCE_SCORING_MODEL = 'gpt-4o'
 num_choices = 3
 
 def generate_sentence_no_context(lang_code):
@@ -15,98 +15,115 @@ def generate_sentence_no_context(lang_code):
     Generate one cognate sentence in the specified language using chosen_llm, without any prior context.
     Returns JSON with the generated sentence and reasoning.
     '''
-
-    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. Your task is to output one (1) {language_codes[lang_code]} sentence. The output must be in JSON format with the following structure:
+    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. Your task is to output one (1) {language_codes[lang_code]} sentence that an English speaker could understand through cognates. The output must be in JSON format with the following structure:
 
     {{
         "sentence": "<The generated sentence>",
-        "reasoning": "<Explanation of why this sentence uses cognates and is suitable as an independent example>"
+        "reasoning": "<Explanation of why this sentence uses cognates and is suitable as an independent example>",
+        "english_gloss": "<Word-for-word English meanings of cognate words used>"
     }}
 
-    Please keep in mind the following constraints:
-    - Try to use cognate words, words that an English speaker can easily identify the meaning of.
-    - When possible, use proper nouns that an English speaker would be able to recognize.
-    - Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
+    Please follow these guidelines to create highly cognate-rich sentences:
+    1. Maximize use of cognate words that share these patterns between {language_codes[lang_code]} and English:
+       - Words ending in -tion/-sion (e.g. French 'nation'/'décision')
+       - Words ending in -ment (e.g. French 'gouvernement')
+       - Academic/technical terms (e.g. 'université', 'télévision')
+       - International vocabulary (e.g. 'radio', 'internet')
+       - Proper nouns of well-known people, places, or organizations
+    
+    2. Keep non-cognate words to a minimum and use them only for:
+       - Articles (le, la, les)
+       - Prepositions (de, à)
+       - Basic conjunctions (et, ou)
+       - Common verbs when necessary (est, a, va)
+
+    3. Aim for sentences that would score 3 on this rubric:
+       0: Totally unintelligible to English speakers
+       1: Contains some cognates but meaning unclear
+       2: Main idea clear but important details missed
+       3: Full meaning clear through cognates despite small connecting words
+
+    Example of an excellent cognate sentence:
+    "Le président Emmanuel Macron confirme que la délégation internationale va participer à la conférence importante sur la situation économique européenne."
+    (Almost every content word is a recognizable cognate)
+
+    Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
     """
 
-    # Ensure compatibility with the chosen model
-    assert SENTENCE_GENERATION_MODEL not in ["gpt-3.5-turbo", "gpt-3.5-turbo-instruct"], "ERROR: GPT-3.5 does not support the completions endpoint"
-
-    # Call the OpenAI API to generate the completion
     response = client.chat.completions.create(
         model=SENTENCE_GENERATION_MODEL,
         messages=[
-            {'role': 'system', 'content': system_prompt},
+            {'role': 'system', 'content': system_prompt}
         ],
         max_tokens=300,
         n=num_choices,
-        temperature=1.4,
+        temperature=1.2,  # Slightly lower temperature for more focused outputs
         top_p=0.9,
-        frequency_penalty=0,
-        presence_penalty=0.6
+        frequency_penalty=0.2,  # Increased to encourage more diverse vocabulary
+        presence_penalty=0.8    # Increased to discourage repetitive patterns
     )
 
-    # Extract the JSON outputs
-    outputs = []
-    for choice in response.choices:
-        try:
-            output = json.loads(choice.message.content)
-            outputs.append(output)
-        except json.JSONDecodeError:
-            print(f"Invalid JSON output: {choice.message.content}")
-
-    return outputs
+    return [json.loads(choice.message.content) for choice in response.choices 
+            if is_valid_json(choice.message.content)]
 
 def generate_next_sentence(lang_code, existing_sentences):
     '''
-    Given a list of existing sentences, we want to generate one additional cognate sentence in that language using chosen_llm.
+    Given a list of existing sentences, generate one additional cognate sentence that continues the narrative.
     Returns JSON with the generated sentence and reasoning.
     '''
+    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. You will receive some {language_codes[lang_code]} text. Your task is to generate one (1) additional sentence that:
+    1. Continues the narrative naturally
+    2. Uses many cognate words that English speakers can recognize
+    3. Maintains topical and tonal consistency with the previous text
 
-    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. You are about to receive some text in {language_codes[lang_code]}. Your task is to output one (1) additional {language_codes[lang_code]} sentence that continues where the provided sentence leaves off. The output must be in JSON format with the following structure:
-    
+    Output format:
     {{
         "sentence": "<The generated sentence>",
-        "reasoning": "<Explanation of why this sentence is a suitable continuation and uses cognates>"
+        "reasoning": "<Explanation of narrative continuity and cognate usage>",
+        "english_gloss": "<Word-for-word English meanings of cognate words used>",
+        "connection": "<How this sentence follows from the previous content>"
     }}
-    
-    Please keep in mind the following constraints:
-    - Try to use cognate words, words that an English speaker can easily identify the meaning of.
-    - When possible, use proper nouns that an English speaker would be able to recognize.
-    - Don't include the existing sentence(s) in your response. Your output should consist of one (1) sentence in JSON format. Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
+
+    Guidelines for cognate-rich continuation:
+    1. Reuse cognates from previous sentences when relevant
+    2. Introduce new cognates that relate to the established topic
+    3. Maintain the same level of formality/style
+    4. Use similar sentence structures when appropriate
+    5. Connect ideas using cognate transition words where possible
+       (e.g. 'finalement', 'généralement', 'naturellement')
+
+    Important: Generate only ONE new sentence. Do not repeat or modify the existing sentences.
+    Please do not include Markdown formatting tags (```) in your response.
     """
 
-    # Ensure compatibility with the chosen model
-    assert SENTENCE_GENERATION_MODEL not in ["gpt-3.5-turbo", "gpt-3.5-turbo-instruct"], "ERROR: GPT-3.5 does not support the completions endpoint"
+    # Format existing sentences into the prompt
+    narrative_context = "\nContext provided:\n" + "\n".join(existing_sentences)
 
-    # Format the existing sentences into the user prompt
-    user_prompt = "\n".join(existing_sentences)
-
-    # Call the OpenAI API to generate the completion
     response = client.chat.completions.create(
         model=SENTENCE_GENERATION_MODEL,
         messages=[
             {'role': 'system', 'content': system_prompt},
-            {'role': 'user', 'content': user_prompt},
+            {'role': 'user', 'content': narrative_context}
         ],
         max_tokens=300,
         n=num_choices,
-        temperature=1.4,
+        temperature=1.3,  # Slightly higher for creative continuation
         top_p=0.9,
-        frequency_penalty=0,
-        presence_penalty=0.6
+        frequency_penalty=0.3,  # Encourage vocabulary variation
+        presence_penalty=0.7    # Discourage repetition while maintaining coherence
     )
 
-    # Extract the JSON outputs
-    outputs = []
-    for choice in response.choices:
-        try:
-            output = json.loads(choice.message.content)
-            outputs.append(output)
-        except json.JSONDecodeError:
-            print(f"Invalid JSON output: {choice.message.content}")
+    return [json.loads(choice.message.content) for choice in response.choices 
+            if is_valid_json(choice.message.content)]
 
-    return outputs
+def is_valid_json(content):
+    """Helper function to validate JSON output"""
+    try:
+        json.loads(content)
+        return True
+    except json.JSONDecodeError:
+        print(f"Invalid JSON output: {content}")
+        return False
 
 def gpt_scored_rubric_batch(sentences):
     '''
@@ -177,3 +194,62 @@ def gpt_scored_rubric_batch(sentences):
 
     return result
 
+def gpt_scored_rubric_individual(sentence):
+    '''
+    Given a single French sentence, let GPT-4 score it based on a rubric that assigns points between 0 and 3.
+    Returns JSON output with the score, reasoning, and a list of cognate words for the sentence.
+    '''
+    system_prompt = (
+        'You are an expert in French to English translation. I will give you one sentence in French, '
+        'and I want you to assign one of the following scores to it:\n'
+        '0 (lowest score): Totally unintelligible to an English speaker. Example: "Veux-tu déjeuner avec moi?"\n'
+        
+        '1: Contains some cognate words, but is largely unintelligible to an English speaker. The cognates might allow them '
+        'to guess the general topic but not the actual meaning. Example: "Le professeur universitaire présente son document '
+        'important à ses étudiants." An English speaker would recognize "professor", "university", "presents", "document", '
+        'and "important" but would miss that he is presenting it to his students, making the actual meaning unclear.\n'
+        
+        '2: Contains many cognate words. An English speaker could understand the main idea but would miss important details '
+        'or nuances that change the meaning. Example: "Le patient refuse absolument de prendre ses médicaments malgré les '
+        'protestations constantes du docteur." An English speaker would get "patient refuses absolutely to take medications" '
+        'and "constant protestations doctor" but might miss "his" and "despite", changing their understanding of whose '
+        'medications and the relationship between the refusal and protestations.\n'
+        
+        '3 (highest score): An English speaker with zero French knowledge can guess, with ease, the entire meaning of '
+        'the sentence. Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va '
+        'continuer à défendre le Canada contre la menace américain." The small connecting words (le, que, etc.) can be '
+        'ignored without losing meaning.\n'
+        '\n'
+        'Important scoring notes:\n'
+        '- Score 1 sentences have cognates but leave major meaning gaps\n'
+        '- Score 2 sentences are mostly understandable but have subtle meaning changes due to missed words\n'
+        '- Score 3 should be assigned sparingly - only when missed words don\'t change meaning\n'
+        '\n'
+        'Please format your response in JSON format as follows:\n'
+        '{\n'
+        '  "sentence": "<Sentence>",\n'
+        '  "reasoning": "<Reasoning for the sentence>",\n'
+        '  "cognate_words": [<List of Cognate Words>],\n'
+        '  "score": <Score for the Sentence>\n'
+        '}\n\n'
+        'Here is the sentence:\n'
+        f'{sentence}\n'
+        'Note: Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.'
+    )
+    print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}")
+    completion = client.chat.completions.create(
+        model=SENTENCE_SCORING_MODEL,
+        messages=[
+            {'role': 'user', 'content': system_prompt}
+        ],
+        temperature=1
+    )
+    # Extract and parse the JSON response
+    response_text = completion.choices[0].message.content.strip()
+    print("Got a response from chatgpt!", response_text)
+    try:
+        result = json.loads(response_text)
+    except json.JSONDecodeError:
+        print("Error: Failed to decode JSON from the response.")
+        raise
+    return result

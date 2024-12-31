@@ -2,7 +2,7 @@ import os
 import json
 from collections import defaultdict
 
-def calculate_cognate_word_scores(data_dir='data/'):
+def calculate_cognate_word_scores(data_dir):
     # Initialize dictionaries to track total scores and occurrences of each cognate word
     cognate_scores = defaultdict(int)
     cognate_counts = defaultdict(int)
@@ -35,6 +35,13 @@ def save_cognate_averages(cognate_averages, output_file='cognate_averages.json')
         json.dump(cognate_averages, f, indent=4)
     print(f"Cognate averages saved to {output_file}")
 
+def print_sorted_cognate_averages(cognate_averages):
+    # Sort the words by their average score in descending order and print them
+    sorted_cognates = sorted(cognate_averages.items(), key=lambda x: x[1], reverse=True)
+    print("\nCognate Words Sorted by Average Score:")
+    for word, avg_score in sorted_cognates:
+        print(f"{word}: {avg_score:.2f}")
+
 if __name__ == "__main__":
     # Directory containing the JSON story files
     data_directory = 'data/'
@@ -42,4 +49,6 @@ if __name__ == "__main__":
     averages = calculate_cognate_word_scores(data_directory)
     # Save the results to a JSON file
     save_cognate_averages(averages)
+    # Print the sorted averages to the terminal
+    print_sorted_cognate_averages(averages)
 

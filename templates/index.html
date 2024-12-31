@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Story Display</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="story-container">
+        <div id="sentence-display">Press spacebar to begin</div>
+    </div>
+    
+    <div id="quiz-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Translation Exercise</h2>
+            <p id="sentence-to-translate"></p>
+            <textarea id="translation-input" placeholder="Enter your English translation..."></textarea>
+            <div class="button-group">
+                <button onclick="checkTranslation()">Submit</button>
+                <button onclick="forceSkip()" class="skip-button">Force Skip</button>
+            </div>
+            <p id="feedback" class="hidden"></p>
+        </div>
+    </div>
+    
+    <div class="instruction">Press spacebar to continue</div>
+    
+    <script>
+        let waitingForQuiz = false;
+        let currentSentence = '';
+        
+        function showQuiz(sentence) {
+            waitingForQuiz = true;
+            currentSentence = sentence;
+            document.getElementById('quiz-modal').classList.remove('hidden');
+            document.getElementById('sentence-to-translate').textContent = sentence;
+            document.getElementById('translation-input').value = '';
+            document.getElementById('feedback').classList.add('hidden');
+        }
+        
+        function hideQuiz() {
+            waitingForQuiz = false;
+            document.getElementById('quiz-modal').classList.add('hidden');
+            document.getElementById('feedback').classList.add('hidden');
+        }
+        
+        function forceSkip() {
+            hideQuiz();
+        }
+        
+        async function checkTranslation() {
+            const translation = document.getElementById('translation-input').value.trim();
+            if (!translation) return;
+            
+            const response = await fetch('/check-translation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    original: currentSentence,
+                    translation: translation
+                })
+            });
+            
+            const result = await response.json();
+            const feedback = document.getElementById('feedback');
+            feedback.classList.remove('hidden');
+            
+            if (result.correct) {
+                feedback.textContent = "Correct! Press space to continue.";
+                feedback.className = "feedback correct";
+                hideQuiz();
+            } else {
+                feedback.textContent = "Not quite right. Try again!";
+                feedback.className = "feedback incorrect";
+            }
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                event.preventDefault();
+                
+                if (waitingForQuiz) return;
+                
+                fetch('/next-sentence')
+                    .then(response => response.json())
+                    .then(data => {
+                        const display = document.getElementById('sentence-display');
+                        
+                        if (data.isNewStory) {
+                            display.innerHTML = `<div class="language-indicator">[${data.language}]</div>`;
+                        }
+                        
+                        const sentenceP = document.createElement('p');
+                        sentenceP.textContent = data.sentence;
+                        display.appendChild(sentenceP);
+                        
+                        display.scrollTop = display.scrollHeight;
+                        
+                        if (data.needsQuiz) {
+                            showQuiz(data.sentence);
+                        }
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
