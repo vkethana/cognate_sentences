@@ -9,24 +9,20 @@ language_codes = {
 }
 SENTENCE_GENERATION_MODEL = 'gpt-4o-mini'
 SENTENCE_SCORING_MODEL = 'o1-preview'
-num_choices = 3
+LLM_CALL_BATCH_SIZE = 5
 
-def is_valid_json(content):
-    """Helper function to validate JSON output"""
-    try:
-        json.loads(content)
-        return True
-    except json.JSONDecodeError:
-        print(f"Invalid JSON output: {content}")
-        return False
+def gpt_scored_rubric_batch(sentences):
+    '''
+    Score multiple French sentences at once using GPT-4.
+    
+    Args:
+        sentences: List of sentences to score
+    Returns:
+        List of scoring results
+    '''
 
-def gpt_scored_rubric_individual(sentence):
-    '''
-    Given a single French sentence, let GPT-4 score it based on a rubric that assigns points between 0 and 3.
-    Returns JSON output with the score, reasoning, and a list of cognate words for the sentence.
-    '''
     system_prompt = f"""
-    You are an expert in French to English translation. I will give you one sentence in French, and I want you to assign one of the following scores to it:
+    You are an expert in French to English translation. I will give you {LLM_CALL_BATCH_SIZE}sentences in French, and I want you to score each of them on a scale from 0-3 using the following rubric:
 
     0: Completely unintelligible to English speakers.
     Example: "Je veux manger du pain."
@@ -47,21 +43,21 @@ def gpt_scored_rubric_individual(sentence):
     - Score 2 sentences are mostly understandable but have subtle meaning changes due to missed words
     - Score 3 should be assigned sparingly - only when missed words don’t change meaning
 
-    Please format your response in JSON format as follows:
+    For each sentence, provide a JSON object with these fields:
     {{
       "sentence": "<Sentence>",
       "cognate_words": [<List of Cognate Words>],
-      "score": <Score for the Sentence>,
-      "reasoning": "<Reasoning for the score>"
+      "reasoning": "<Reasoning for the score>",
+      "score": <Numerical for the Sentence (0-3)>
     }}
 
-    Here is the sentence:
-    {sentence}
+    Please format your response as a JSON array of these objects. You should have {LLM_CALL_BATCH_SIZE} objects in your array.
 
+    Here are the sentences to score:
+    {json.dumps(sentences, ensure_ascii=False)}
     Note: Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
     """
 
-    print(f"ASKING {SENTENCE_SCORING_MODEL} the following prompt: {system_prompt}")
     completion = client.chat.completions.create(
         model=SENTENCE_SCORING_MODEL,
         messages=[
@@ -69,15 +65,107 @@ def gpt_scored_rubric_individual(sentence):
         ],
         temperature=1
     )
-    # Extract and parse the JSON response
+    
     response_text = completion.choices[0].message.content.strip()
-    print("Got a response from chatgpt!", response_text)
     try:
-        result = json.loads(response_text)
+        results = json.loads(response_text)
+        return results
     except json.JSONDecodeError:
         print("Error: Failed to decode JSON from the response.")
         raise
-    return result
+
+def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, output_file):
+    """
+    Generate multiple sentences at once targeting a specific difficulty level.
+    """
+    system_prompt = f"""
+    You are a fluent speaker of both {language_codes[lang_code]} and English. Generate {LLM_CALL_BATCH_SIZE} {language_codes[lang_code]} sentences aiming for difficulty level {target_difficulty} on this cognate difficulty scale:
+
+    0: Completely unintelligible to English speakers.
+    Example: "Je veux manger du pain."
+
+    1: Contains some cognate words, but is largely unintelligible to an English speaker. The cognates might allow them to guess the general topic but not the actual meaning.
+    Example: "Le maître savant utilise beaucoup de livres." (Has cognates like "savant" but key verbs/objects aren\'t cognates)
+
+    2: Contains many cognate words. An English speaker could understand the main idea but would miss important details or nuances that change the meaning.
+    Example: "Le patient refuse absolument de prendre ses médicaments malgré les protestations constantes du docteur."
+    An English speaker would get "patient refuses absolutely to take medications" and "constant protestations doctor" but might miss "his" and "despite", changing their understanding of whose medications and the relationship between the refusal and protestations.
+
+    3: Fully understandable through cognates. Use almost exclusively cognate words except for basic connectors.
+    Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."
+
+    DIFFICULTY TARGETING STRATEGIES:
+    Difficulty 0: Use basic, high-frequency native vocabulary, avoid international words
+    Difficulty 1: Use 25-30% cognates in non-crucial positions. Has cognates but leaves major meaning gaps.
+    Difficulty 2: Use 50-60% cognates in main concept positions. Sentence is mostly understandable but has subtle meaning changes due to missed words\n
+    Difficulty 3: Use 80-90% cognates, especially for key meaning-bearing words. Any small connecting words (le, que, etc.) can be ignored without losing meaning. Should be assigned sparingly - only when missed words don\'t change meaning\n
+
+    Output format:
+    Return a JSON array where each object has:
+    {{
+        "sentence": "<Generated sentence>",
+        "target_difficulty": {target_difficulty},
+        "reasoning": "<Why this should score {target_difficulty}>",
+        "cognate_words": [<List of cognates used>]
+    }}
+
+    Generate {LLM_CALL_BATCH_SIZE} different sentences meeting these criteria.
+    Note: Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
+    """
+
+    try:
+        # Generate batch of sentences
+        response = client.chat.completions.create(
+            model=SENTENCE_GENERATION_MODEL,
+            messages=[{'role': 'system', 'content': system_prompt}],
+            temperature=1.4 if target_difficulty in [0, 3] else 1.0,
+            max_tokens=400
+        )
+        
+        generated_batch = json.loads(response.choices[0].message.content)
+        timestamp = datetime.datetime.now().isoformat()
+        
+        # Extract just the sentences for batch scoring
+        sentences_to_score = [item['sentence'] for item in generated_batch]
+        
+        # Score all sentences in one batch
+        score_results = gpt_scored_rubric_batch(sentences_to_score)
+        
+        # Combine generation and scoring results
+        batch_sentences = []
+        for gen, score in zip(generated_batch, score_results):
+            sentence_data = {
+                'sentence': gen['sentence'],
+                'target_difficulty': target_difficulty,
+                'proposed_cognate_words': gen['cognate_words'],
+                'generation_reasoning': gen['reasoning'],
+                'actual_score': score['score'],
+                'actual_score_reasoning': score['reasoning'],
+                'actual_cognate_words': score['cognate_words'],
+                'generation_timestamp': timestamp
+            }
+            batch_sentences.append(sentence_data)
+        
+        save_sentences_batch(batch_sentences, output_file)
+        
+        for i, sentence in enumerate(batch_sentences):
+            print(f"Generated sentence {i+1}/{len(batch_sentences)} - Target: {target_difficulty}, Actual: {sentence['actual_score']}")
+            
+        return batch_sentences
+        
+    except Exception as e:
+        print(f"Error generating sentences: {e}")
+        return []
+
+
+def is_valid_json(content):
+    """Helper function to validate JSON output"""
+    try:
+        json.loads(content)
+        return True
+    except json.JSONDecodeError:
+        print(f"Invalid JSON output: {content}")
+        return False
 
 def save_sentences_batch(sentences, output_file):
     """
@@ -141,11 +229,10 @@ def build_adaptive_database(lang_code, target_counts={0: 1000, 1: 1000, 2: 1000,
         # Generate batch targeting the most-needed difficulty
         target_diff = needed_difficulties[0]
         
-        generate_difficulty_targeted_sentences(
+        generate_difficulty_targeted_sentences_batch(
             lang_code,
             target_diff,
-            output_file,
-            batch_size=50
+            output_file
         )
         
         # Update counts from file
@@ -162,161 +249,6 @@ def build_adaptive_database(lang_code, target_counts={0: 1000, 1: 1000, 2: 1000,
         except Exception as e:
             print(f"Error updating counts: {str(e)}")
             break
-
-def generate_difficulty_targeted_sentences(lang_code, target_difficulty, output_file, batch_size=10):
-    """
-    Generate sentences targeting a specific difficulty level (0-3).
-    Saves all valid sentences regardless of whether they hit the target difficulty.
-    """
-    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. Generate ONE {language_codes[lang_code]} sentence aiming for difficulty level {target_difficulty} on this cognate difficulty scale:
-
-    0: Completely unintelligible to English speakers.
-    Example: "Je veux manger du pain."
-
-    1: Contains some cognate words, but is largely unintelligible to an English speaker. The cognates might allow them to guess the general topic but not the actual meaning.
-    Example: "Le maître savant utilise beaucoup de livres." (Has cognates like "savant" but key verbs/objects aren\'t cognates)
-
-    2: Contains many cognate words. An English speaker could understand the main idea but would miss important details or nuances that change the meaning.
-    Example: "Le patient refuse absolument de prendre ses médicaments malgré les protestations constantes du docteur."
-    An English speaker would get "patient refuses absolutely to take medications" and "constant protestations doctor" but might miss "his" and "despite", changing their understanding of whose medications and the relationship between the refusal and protestations.
-
-    3: Fully understandable through cognates. Use almost exclusively cognate words except for basic connectors.
-    Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."
-
-    DIFFICULTY TARGETING STRATEGIES:
-    Difficulty 0: Use basic, high-frequency native vocabulary, avoid international words
-    Difficulty 1: Use 25-30% cognates in non-crucial positions. Has cognates but leaves major meaning gaps.
-    Difficulty 2: Use 50-60% cognates in main concept positions. Sentence is mostly understandable but has subtle meaning changes due to missed words\n
-    Difficulty 3: Use 80-90% cognates, especially for key meaning-bearing words. Any small connecting words (le, que, etc.) can be ignored without losing meaning. Should be assigned sparingly - only when missed words don\'t change meaning\n
-
-    Output format:
-    {{
-        "sentence": "<Generated sentence>",
-        "target_difficulty": {target_difficulty},
-        "reasoning": "<Why this should score {target_difficulty}>",
-        "cognate_words": [<List of cognates used>],
-        "generation_timestamp": "<Current timestamp>"
-    }}
-    """
-
-    batch_sentences = []
-    for i in range(batch_size):
-        try:
-            # Adjust temperature based on difficulty
-            temp = 1.4 if target_difficulty in [0, 3] else 1.0
-            
-            response = client.chat.completions.create(
-                model=SENTENCE_GENERATION_MODEL,
-                messages=[{'role': 'system', 'content': system_prompt}],
-                temperature=temp,
-                max_tokens=200
-            )
-            
-            generated = json.loads(response.choices[0].message.content)
-            generated['generation_timestamp'] = datetime.datetime.now().isoformat()
-            
-            # Score the generated sentence
-            score = gpt_scored_rubric_individual(generated['sentence'])
-            
-            sentence_data = {
-                'sentence': generated['sentence'],
-                'target_difficulty': target_difficulty,
-                'proposed_cognate_words': generated['cognate_words'],
-                'generation_reasoning': generated['reasoning'],
-                'actual_score': score['score'],
-                'actual_score_reasoning': score['reasoning'],
-                'actual_cognate_words': score['cognate_words'],
-                'generation_timestamp': generated['generation_timestamp']
-            }
-            
-            batch_sentences.append(sentence_data)
-            
-            # Save every 5 sentences to avoid losing data
-            if len(batch_sentences) % 5 == 0:
-                save_sentences_batch(batch_sentences, output_file)
-                batch_sentences = []
-                
-            print(f"Generated sentence {i+1}/{batch_size} - Target: {target_difficulty}, Actual: {score['score']}")
-            
-        except Exception as e:
-            print(f"Error generating sentence: {e}")
-            continue
-    
-    # Save any remaining sentences
-    if batch_sentences:
-        save_sentences_batch(batch_sentences, output_file)
-
-def resume_adaptive_database(input_file, target_counts={0: 1000, 1: 1000, 2: 1000, 3: 1000}, 
-                           output_file=None, lang_code='fr'):
-    """
-    Resume sentence generation from an existing JSON file.
-    
-    Args:
-        input_file (str): Path to existing JSON file to resume from
-        target_counts (dict): Target number of sentences for each difficulty level
-        output_file (str, optional): New output file path. If None, will modify input file
-        lang_code (str): Language code for generation
-    """
-    # Convert target_counts keys to strings for JSON compatibility
-    target_counts = {str(k): v for k, v in target_counts.items()}
-    
-    # If no output file specified, use input file
-    if output_file is None:
-        output_file = input_file
-    elif input_file != output_file:
-        # If using new output file, copy existing data
-        with open(input_file, 'r', encoding='utf-8') as f:
-            existing_data = json.load(f)
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(existing_data, f, ensure_ascii=False, indent=2)
-    
-    try:
-        # Load existing progress
-        with open(input_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            current_counts = data['metadata']['difficulty_counts']
-        
-        print("\nResuming from existing file:")
-        print(f"Total sentences so far: {len(data['sentences'])}")
-        for diff, count in current_counts.items():
-            target = target_counts[diff]
-            print(f"Difficulty {diff}: {count}/{target} ({count/target*100:.1f}%)")
-        print("\n")
-        
-        # Continue generation
-        while True:
-            # Find difficulty levels that need more sentences
-            needed_difficulties = [int(d) for d, count in current_counts.items() 
-                                 if count < target_counts[d]]
-            
-            if not needed_difficulties:
-                print("All targets reached! Generation complete.")
-                break
-            
-            # Generate batch targeting the most-needed difficulty
-            target_diff = needed_difficulties[0]
-            
-            generate_difficulty_targeted_sentences(
-                lang_code,
-                target_diff,
-                output_file,
-                batch_size=50
-            )
-            
-            # Update counts from file
-            with open(output_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                current_counts = data['metadata']['difficulty_counts']
-            
-            print("\nCurrent progress:")
-            for diff, count in current_counts.items():
-                target = target_counts[diff]
-                print(f"Difficulty {diff}: {count}/{target} ({count/target*100:.1f}%)")
-            print("\n")
-            
-    except Exception as e:
-        print(f"Error resuming generation: {str(e)}")
-        raise
 
 def analyze_sentence_distribution(json_file):
     """
