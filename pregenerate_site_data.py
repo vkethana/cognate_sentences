@@ -98,7 +98,7 @@ for _ in range(num_stories):
     }
 
     # Include current date in filename
-    data_dir = 'data'
+    data_dir = 'data_hi_variance_fair_scoring'
     os.makedirs(data_dir, exist_ok=True)
 
     # Get exact UNIX timestamp for the filename

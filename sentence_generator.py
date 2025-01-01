@@ -12,42 +12,38 @@ num_choices = 3
 
 def generate_sentence_no_context(lang_code):
     '''
-    Generate one cognate sentence in the specified language using chosen_llm, without any prior context.
-    Returns JSON with the generated sentence and reasoning.
+    Generate one cognate sentence with high variance - aiming for more perfect (3) scores
+    while accepting occasional low scores.
     '''
-    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. Your task is to output one (1) {language_codes[lang_code]} sentence that an English speaker could understand through cognates. The output must be in JSON format with the following structure:
+    system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. Your task is to output one (1) {language_codes[lang_code]} sentence that an English speaker could understand completely through cognates. The output must be in JSON format.
 
+    MOST IMPORTANT: Your primary goal is to create sentences that an English speaker can understand ENTIRELY through cognates. Don't worry about sounding natural in {language_codes[lang_code]} - it's better to sound a bit artificial and be completely understandable than to sound natural but use non-cognate words.
+
+    Output format:
     {{
         "sentence": "<The generated sentence>",
-        "reasoning": "<Explanation of why this sentence uses cognates and is suitable as an independent example>",
-        "english_gloss": "<Word-for-word English meanings of cognate words used>"
+        "reasoning": "<Explanation of cognate choices>",
+        "english_gloss": "<Word-for-word English meanings>"
     }}
 
-    Please follow these guidelines to create highly cognate-rich sentences:
-    1. Maximize use of cognate words that share these patterns between {language_codes[lang_code]} and English:
-       - Words ending in -tion/-sion (e.g. French 'nation'/'décision')
-       - Words ending in -ment (e.g. French 'gouvernement')
-       - Academic/technical terms (e.g. 'université', 'télévision')
-       - International vocabulary (e.g. 'radio', 'internet')
-       - Proper nouns of well-known people, places, or organizations
-    
-    2. Keep non-cognate words to a minimum and use them only for:
-       - Articles (le, la, les)
-       - Prepositions (de, à)
-       - Basic conjunctions (et, ou)
-       - Common verbs when necessary (est, a, va)
+    STRATEGY FOR CREATING PERFECT COGNATE SENTENCES:
+    1. Start with an English sentence using mainly Latin/Greek-derived words
+    2. Convert it nearly word-for-word to {language_codes[lang_code]}
+    3. Use only these types of words:
+       - Direct cognates (-tion, -ment, -able endings)
+       - International terms (télévision, internet, radio)
+       - Academic/technical vocabulary (université, médical)
+       - Famous proper nouns
+       - Minimal connecting words (le, la, de)
 
-    3. Aim for sentences that would score 3 on this rubric:
-       0: Totally unintelligible to English speakers
-       1: Contains some cognates but meaning unclear
-       2: Main idea clear but important details missed
-       3: Full meaning clear through cognates despite small connecting words
+    EXAMPLE PERFECT (SCORE 3) SENTENCES:
+    "Le professeur présente sa publication scientifique à la conférence internationale de médecine."
+    "La situation politique américaine cause une grande frustration pour la population européenne."
+    "Le président confirme que son administration va continuer les opérations militaires."
 
-    Example of an excellent cognate sentence:
-    "Le président Emmanuel Macron confirme que la délégation internationale va participer à la conférence importante sur la situation économique européenne."
-    (Almost every content word is a recognizable cognate)
+    Remember: Don't compromise understandability for naturalness. An awkward but perfectly cognate sentence is better than a natural one with even one crucial non-cognate word.
 
-    Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
+    Please do not include Markdown formatting tags (```) in your response.
     """
 
     response = client.chat.completions.create(
@@ -57,10 +53,10 @@ def generate_sentence_no_context(lang_code):
         ],
         max_tokens=300,
         n=num_choices,
-        temperature=1.2,  # Slightly lower temperature for more focused outputs
-        top_p=0.9,
-        frequency_penalty=0.2,  # Increased to encourage more diverse vocabulary
-        presence_penalty=0.8    # Increased to discourage repetitive patterns
+        temperature=1.8,  # Much higher temperature for more variance
+        top_p=0.95,      # Allow more diverse token selection
+        frequency_penalty=0.3,
+        presence_penalty=1.0    # Maximum presence penalty to force diverse patterns
     )
 
     return [json.loads(choice.message.content) for choice in response.choices 
@@ -253,3 +249,138 @@ def gpt_scored_rubric_individual(sentence):
         print("Error: Failed to decode JSON from the response.")
         raise
     return result
+
+
+def generate_difficulty_targeted_sentences(lang_code, target_difficulty, batch_size=10):
+    """
+    Generate sentences targeting a specific difficulty level (0-3).
+    Returns a list of sentences with their scores and metadata.
+    """
+    system_prompt = f"""
+    You are a fluent speaker of both {language_codes[lang_code]} and English. Generate ONE {language_codes[lang_code]} sentence that would score {target_difficulty} on this cognate difficulty scale:
+
+    0: Completely unintelligible to English speakers. Use common words with no cognates.
+    Example: "Je veux manger du pain." (Uses basic vocabulary with no cognates)
+
+    1: Some cognates but meaning unclear. Mix 1-2 cognates with non-cognate essential words.
+    Example: "Le professeur intelligent utilise beaucoup de livres." (Has cognates but key verbs/objects aren\'t cognates)
+
+    2: Main idea clear but missing details. Use cognates for main concepts but non-cognates for important details.
+    Example: "La décision politique cause des problèmes sérieux." (Core meaning clear but specifics unclear)
+
+    3: Fully understandable through cognates. Use almost exclusively cognate words except for basic connectors.
+    Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."
+
+    DIFFICULTY TARGETING STRATEGIES:
+    Difficulty 0: Use basic, high-frequency native vocabulary, avoid international words
+    Difficulty 1: Use 25-30% cognates in non-crucial positions. Has cognates but leaves major meaning gaps.
+    Difficulty 2: Use 50-60% cognates in main concept positions. Sentence is mostly understandable but has subtle meaning changes due to missed words\n
+    Difficulty 3: Use 80-90% cognates, especially for key meaning-bearing words. Any small connecting words (le, que, etc.) can be ignored without losing meaning. Should be assigned sparingly - only when missed words don\'t change meaning\n
+
+    Output format:
+    {{
+        "sentence": "<Generated sentence>",
+        "target_difficulty": {target_difficulty},
+        "reasoning": "<Why this should score {target_difficulty}>",
+        "cognate_words": [<List of cognates used>]
+    }}
+    """
+
+    sentences = []
+    for _ in range(batch_size):
+        # Adjust temperature based on difficulty - higher for extreme scores
+        temp = 1.4 if target_difficulty in [0, 3] else 1.0
+        
+        response = client.chat.completions.create(
+            model=SENTENCE_GENERATION_MODEL,
+            messages=[{'role': 'system', 'content': system_prompt}],
+            temperature=temp,
+            max_tokens=200
+        )
+        
+        try:
+            generated = json.loads(response.choices[0].message.content)
+            # Score the generated sentence
+            score = gpt_scored_rubric_individual(generated['sentence'])
+            
+            sentences.append({
+                'sentence': generated['sentence'],
+                'target_difficulty': target_difficulty,
+                'actual_score': score['score'],
+                'cognate_words': generated['cognate_words'],
+                'reasoning': generated['reasoning']
+            })
+        except json.JSONDecodeError:
+            print(f"Failed to parse response: {response.choices[0].message.content}")
+            continue
+            
+    return sentences
+
+def build_difficulty_database(lang_code, sentences_per_difficulty=1000):
+    """
+    Build a database of sentences across all difficulty levels.
+    Includes validation and balancing steps.
+    """
+    database = []
+    difficulties = [0, 1, 2, 3]
+    
+    for difficulty in difficulties:
+        print(f"Generating difficulty {difficulty} sentences...")
+        sentences = []
+        
+        while len(sentences) < sentences_per_difficulty:
+            batch = generate_difficulty_targeted_sentences(
+                lang_code, 
+                difficulty,
+                batch_size=min(50, sentences_per_difficulty - len(sentences))
+            )
+            
+            # Filter for sentences that matched their target difficulty
+            matched = [s for s in batch if s['actual_score'] == s['target_difficulty']]
+            sentences.extend(matched)
+            
+            print(f"Progress: {len(sentences)}/{sentences_per_difficulty} for difficulty {difficulty}")
+        
+        database.extend(sentences)
+        # Print the database out so I can see what's going on
+        print(database)
+    
+    
+    return database
+
+def validate_sentence_distribution(database):
+    """
+    Analyze the distribution of sentences across difficulty levels
+    and provide statistics about the dataset.
+    """
+    stats = {
+        'total_sentences': len(database),
+        'by_difficulty': {},
+        'average_length': {},
+        'cognate_counts': {}
+    }
+    
+    for difficulty in [0, 1, 2, 3]:
+        difficulty_sentences = [s for s in database if s['actual_score'] == difficulty]
+        stats['by_difficulty'][difficulty] = len(difficulty_sentences)
+        stats['average_length'][difficulty] = sum(len(s['sentence'].split()) 
+                                                for s in difficulty_sentences) / len(difficulty_sentences)
+        stats['cognate_counts'][difficulty] = sum(len(s['cognate_words']) 
+                                                for s in difficulty_sentences) / len(difficulty_sentences)
+    
+    return stats
+
+if __name__ == "__main__":
+    # Generate a set of sentences for each difficulty level
+    lang_code = 'fr'
+    sentences_per_difficulty = 10
+    database = build_difficulty_database(lang_code, sentences_per_difficulty)
+    
+    # Validate the distribution and characteristics of the generated sentences
+    stats = validate_sentence_distribution(database)
+    
+    print(f"Total sentences: {stats['total_sentences']}")
+    print("Sentences by difficulty:", stats['by_difficulty'])
+    print("Average sentence length by difficulty:", stats['average_length'])
+    print("Average cognate count by difficulty:", stats['cognate_counts'])
+    print("Sample sentence:", database[0])
