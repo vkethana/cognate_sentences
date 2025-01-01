@@ -416,34 +416,3 @@ def start_new_database(lang_code='fr', sentences_per_difficulty=1000):
 if __name__ == "__main__":
     # Start a new database with 1000 sentences per difficulty level
     start_new_database(lang_code='fr', sentences_per_difficulty=10)
-
-'''
-# Example usage:
-if __name__ == "__main__":
-    import sys
-    
-    if len(sys.argv) < 2:
-        print("Usage: python script.py <input_json_file> [output_json_file]")
-        sys.exit(1)
-    
-    input_file = sys.argv[1]
-    output_file = sys.argv[2] if len(sys.argv) > 2 else None
-    
-    # Analyze existing distribution
-    print("Analyzing existing dataset...")
-    stats = analyze_sentence_distribution(input_file)
-    print("\nCurrent dataset statistics:")
-    print(json.dumps(stats, indent=2))
-    
-    # Ask user if they want to continue generation
-    response = input("\nDo you want to continue generating sentences? (y/n): ")
-    if response.lower() == 'y':
-        resume_adaptive_database(
-            input_file,
-            target_counts={0: 1000, 1: 1000, 2: 1000, 3: 1000},
-            output_file=output_file,
-            lang_code='fr'
-        )
-    else:
-        print("Exiting without generating more sentences.")
-'''

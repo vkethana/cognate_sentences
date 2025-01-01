@@ -7,7 +7,7 @@ language_codes = {
     'fr': 'French'
 }
 SENTENCE_GENERATION_MODEL = 'gpt-4o-mini'
-SENTENCE_SCORING_MODEL = 'gpt-4o'
+SENTENCE_SCORING_MODEL = 'o1-preview'
 num_choices = 3
 
 def generate_sentence_no_context(lang_code):
@@ -132,10 +132,10 @@ def gpt_scored_rubric_individual(sentence):
     0: Completely unintelligible to English speakers.
     Example: "Je veux manger du pain."
 
-    1: Contains some cognate words, but is largely unintelligible to an English speaker. The cognates might allow them to guess the general topic but not the actual meaning.
+    1: Contains some cognate words, but contains words unintelligible to an English speaker. The cognates might allow them to guess the general topic but not the main idea or actual meaning.
     Example: "Le maître savant utilise beaucoup de livres." (Has cognates like "savant" but key verbs/objects aren\'t cognates)
 
-    2: Contains many cognate words. An English speaker could understand the main idea but would miss important details or nuances that change the meaning.
+    2: Contains many cognate words. An English speaker might guess the main idea but would miss important details or nuances that change the meaning.
     Example: "Le patient refuse absolument de prendre ses médicaments malgré les protestations constantes du docteur."
     An English speaker would get "patient refuses absolutely to take medications" and "constant protestations doctor" but might miss "his" and "despite", changing their understanding of whose medications and the relationship between the refusal and protestations.
 
