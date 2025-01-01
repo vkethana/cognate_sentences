@@ -10,6 +10,7 @@ language_codes = {
 SENTENCE_GENERATION_MODEL = 'gpt-4o-mini'
 SENTENCE_SCORING_MODEL = 'o1-preview'
 LLM_CALL_BATCH_SIZE = 5
+SENTENCES_PER_DIFF_LEVEL = 10
 
 def gpt_scored_rubric_batch(sentences):
     '''
@@ -104,7 +105,7 @@ def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, o
     Return a JSON array where each object has:
     {{
         "sentence": "<Generated sentence>",
-        "target_difficulty": {target_difficulty},
+        "target_difficulty": {str(target_difficulty)},
         "reasoning": "<Why this should score {target_difficulty}>",
         "cognate_words": [<List of cognates used>]
     }}
@@ -118,9 +119,11 @@ def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, o
         response = client.chat.completions.create(
             model=SENTENCE_GENERATION_MODEL,
             messages=[{'role': 'system', 'content': system_prompt}],
-            temperature=1.4 if target_difficulty in [0, 3] else 1.0,
-            max_tokens=400
+            temperature=1.0,
+            max_tokens=600
         )
+        print("Got back this from the LLM")
+        print(response.choices[0].message.content)
         
         generated_batch = json.loads(response.choices[0].message.content)
         timestamp = datetime.datetime.now().isoformat()
@@ -155,6 +158,10 @@ def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, o
         
     except Exception as e:
         print(f"Error generating sentences: {e}")
+        # Make traceback detailed
+        import traceback
+        traceback.print_exc()
+
         return []
 
 
@@ -209,7 +216,7 @@ def save_sentences_batch(sentences, output_file):
         with open(backup_file, 'w', encoding='utf-8') as f:
             json.dump(sentences, f, ensure_ascii=False, indent=2)
 
-def build_adaptive_database(lang_code, target_counts={0: 1000, 1: 1000, 2: 1000, 3: 1000}, output_file='sentence_database.json'):
+def build_adaptive_database(lang_code, target_counts={0: SENTENCES_PER_DIFF_LEVEL, 1: SENTENCES_PER_DIFF_LEVEL, 2: SENTENCES_PER_DIFF_LEVEL, 3: SENTENCES_PER_DIFF_LEVEL}, output_file='sentence_database.json'):
     """
     Build database of sentences, continuing until we have enough at each difficulty level.
     Saves all generated sentences, even if they don't match their target difficulty.
@@ -228,6 +235,7 @@ def build_adaptive_database(lang_code, target_counts={0: 1000, 1: 1000, 2: 1000,
             
         # Generate batch targeting the most-needed difficulty
         target_diff = needed_difficulties[0]
+        print("Currently targeting difficulty level:", target_diff)
         
         generate_difficulty_targeted_sentences_batch(
             lang_code,
@@ -311,7 +319,7 @@ def analyze_sentence_distribution(json_file):
         print(f"Error analyzing file: {str(e)}")
         raise
 
-def start_new_database(lang_code='fr', sentences_per_difficulty=1000):
+def start_new_database(lang_code='fr', sentences_per_difficulty=SENTENCES_PER_DIFF_LEVEL):
     """
     Start a fresh sentence database generation.
     Creates a timestamped file and generates sentences until targets are reached.
@@ -344,7 +352,86 @@ def start_new_database(lang_code='fr', sentences_per_difficulty=1000):
         output_file=output_file
     )
 
+def resume_adaptive_database(input_file, target_counts={0: SENTENCES_PER_DIFF_LEVEL, 1: SENTENCES_PER_DIFF_LEVEL, 2: SENTENCES_PER_DIFF_LEVEL, 3: SENTENCES_PER_DIFF_LEVEL},
+                           output_file=None, lang_code='fr'):
+    """
+    Resume sentence generation from an existing JSON file.
+    
+    Args:
+        input_file (str): Path to existing JSON file to resume from
+        target_counts (dict): Target number of sentences for each difficulty level
+        output_file (str, optional): New output file path. If None, will modify input file
+        lang_code (str): Language code for generation
+    """
+    # Convert target_counts keys to strings for JSON compatibility
+    target_counts = {str(k): v for k, v in target_counts.items()}
+    
+    # If no output file specified, use input file
+    if output_file is None:
+        output_file = input_file
+    elif input_file != output_file:
+        # If using new output file, copy existing data
+        with open(input_file, 'r', encoding='utf-8') as f:
+            existing_data = json.load(f)
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(existing_data, f, ensure_ascii=False, indent=2)
+    
+    try:
+        # Load existing progress
+        with open(input_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            current_counts = data['metadata']['difficulty_counts']
+        
+        print("\nResuming from existing file:")
+        print(f"Total sentences so far: {len(data['sentences'])}")
+        for diff, count in current_counts.items():
+            target = target_counts[diff]
+            print(f"Difficulty {diff}: {count}/{target} ({count/target*100:.1f}%)")
+        print("\n")
+        
+        # Continue generation
+        while True:
+            # Find difficulty levels that need more sentences
+            print("Current counts:", current_counts)
+            needed_difficulties = [(int(d), count) for d, count in current_counts.items() 
+                                 if count < target_counts[d]]
+            needed_difficulties = sorted(needed_difficulties, key=lambda x: x[1])
+            needed_difficulties = [d for d, _ in needed_difficulties]
+
+            # make needed_difficulties sorted in ascending order based on the count of sentneces
+            # in other words, the first element should be the difficulty with the leastn umber of sentences associated with it
+
+            if not needed_difficulties:
+                print("All targets reached! Generation complete.")
+                break
+            
+            # Generate batch targeting the most-needed difficulty
+            target_diff = needed_difficulties[0]
+            print("Currently targeting difficulty level:", target_diff)
+            
+            generate_difficulty_targeted_sentences_batch(
+                lang_code,
+                target_diff,
+                output_file
+            )
+            
+            # Update counts from file
+            with open(output_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                current_counts = data['metadata']['difficulty_counts']
+            
+            print("\nCurrent progress:")
+            for diff, count in current_counts.items():
+                target = target_counts[diff]
+                print(f"Difficulty {diff}: {count}/{target} ({count/target*100:.1f}%)")
+            print("\n")
+            
+    except Exception as e:
+        print(f"Error resuming generation: {str(e)}")
+        raise
+
 # Simple usage example:
 if __name__ == "__main__":
     # Start a new database with 1000 sentences per difficulty level
-    start_new_database(lang_code='fr', sentences_per_difficulty=10)
+    #start_new_database(lang_code='fr', sentences_per_difficulty=SENTENCES_PER_DIFF_LEVEL)
+    resume_adaptive_database('fr_sentences_20241231_185934.json')
