@@ -8,10 +8,10 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 language_codes = {
     'fr': 'French'
 }
-SENTENCE_GENERATION_MODEL = 'gpt-4o-mini'
+SENTENCE_GENERATION_MODEL = 'o1-preview'
 SENTENCE_SCORING_MODEL = 'o1-preview'
 LLM_CALL_BATCH_SIZE = 5
-SENTENCES_PER_DIFF_LEVEL = 10
+SENTENCES_PER_DIFF_LEVEL = 11
 
 def gpt_scored_rubric_batch(sentences):
     '''
@@ -76,12 +76,12 @@ def gpt_scored_rubric_batch(sentences):
         print("Error: Failed to decode JSON from the response.")
         raise
 
-def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, output_file):
+def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, output_file, batch_size):
     """
     Generate multiple sentences at once targeting a specific difficulty level.
     """
     system_prompt = f"""
-    You are a fluent speaker of both {language_codes[lang_code]} and English. Generate {LLM_CALL_BATCH_SIZE} {language_codes[lang_code]} sentences aiming for difficulty level {target_difficulty} on this cognate difficulty scale:
+    You are a fluent speaker of both {language_codes[lang_code]} and English. Generate {batch_size} {language_codes[lang_code]} sentences aiming for difficulty level {target_difficulty} on this cognate difficulty scale:
 
     0: Completely unintelligible to English speakers.
     Example: "Je veux manger du pain."
@@ -111,7 +111,7 @@ def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, o
         "cognate_words": [<List of cognates used>]
     }}
 
-    Generate {LLM_CALL_BATCH_SIZE} different sentences meeting these criteria.
+    Generate {batch_size} different sentences meeting these criteria.
     Note: Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
     """
 
@@ -119,9 +119,9 @@ def generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, o
         # Generate batch of sentences
         response = client.chat.completions.create(
             model=SENTENCE_GENERATION_MODEL,
-            messages=[{'role': 'system', 'content': system_prompt}],
-            temperature=1.0,
-            max_tokens=600
+            messages=[{'role': 'user', 'content': system_prompt}],
+            temperature=1.0
+            #max_tokens=600
         )
         print("Got back this from the LLM")
         print(response.choices[0].message.content)
@@ -241,7 +241,8 @@ def build_adaptive_database(lang_code, target_counts={0: SENTENCES_PER_DIFF_LEVE
         generate_difficulty_targeted_sentences_batch(
             lang_code,
             target_diff,
-            output_file
+            output_file,
+            LLM_CALL_BATCH_SIZE
         )
         
         # Update counts from file
@@ -413,7 +414,8 @@ def resume_adaptive_database(input_file, target_counts={0: SENTENCES_PER_DIFF_LE
             generate_difficulty_targeted_sentences_batch(
                 lang_code,
                 target_diff,
-                output_file
+                output_file,
+                LLM_CALL_BATCH_SIZE
             )
             
             # Update counts from file
@@ -431,13 +433,13 @@ def resume_adaptive_database(input_file, target_counts={0: SENTENCES_PER_DIFF_LE
         print(f"Error resuming generation: {str(e)}")
         raise
 
-def generate_story_continuation(lang_code, target_difficulty, previous_sentences, output_file):
+def generate_story_continuation(lang_code, target_difficulty, previous_sentences, batch_size, output_file):
     """
     Generate a batch of sentences that continue a story, targeting a specific difficulty level.
     Returns the sentence closest to target difficulty.
     """
     system_prompt = f"""You are a fluent speaker of both {language_codes[lang_code]} and English. 
-    Generate {LLM_CALL_BATCH_SIZE} different {language_codes[lang_code]} sentences that:
+    Generate {batch_size} different {language_codes[lang_code]} sentences that:
     1. Continue this story naturally: {json.dumps(previous_sentences, ensure_ascii=False)}
     2. Target difficulty level {target_difficulty} using these criteria:
 
@@ -468,7 +470,7 @@ def generate_story_continuation(lang_code, target_difficulty, previous_sentences
         "reasoning": "<Why this continues the story AND matches difficulty>",
         "cognate_words": [<List of cognates used>]
     }}
-    Generate {LLM_CALL_BATCH_SIZE} different sentences meeting these criteria (difficulty level and story continuation).
+    Generate {batch_size} different sentences meeting these criteria (difficulty level and story continuation).
     Note: Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
     """
 
@@ -476,9 +478,9 @@ def generate_story_continuation(lang_code, target_difficulty, previous_sentences
         # Generate continuation options
         response = client.chat.completions.create(
             model=SENTENCE_GENERATION_MODEL,
-            messages=[{'role': 'system', 'content': system_prompt}],
-            temperature=1.0,
-            max_tokens=600
+            messages=[{'role': 'user', 'content': system_prompt}],
+            temperature=1.0
+            #max_tokens=600
         )
         
         # Parse and score the generated sentences
@@ -513,7 +515,7 @@ def generate_story_continuation(lang_code, target_difficulty, previous_sentences
         traceback.print_exc()
         return None
 
-def generate_story(lang_code='fr', story_length=10):
+def generate_story(lang_code, story_length):
     """
     Generate a complete story with consistent difficulty level.
     """
@@ -538,8 +540,12 @@ def generate_story(lang_code='fr', story_length=10):
     
     print(f"Generating story with target difficulty: {target_difficulty}")
     
-    # Generate first sentence using existing batch generator
-    initial_batch = generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, output_file)
+    # Generate seed sentence using existing batch generator
+    initial_batch = generate_difficulty_targeted_sentences_batch(lang_code, target_difficulty, output_file, 3)
+    # sort initial batch to get the sentence closest to the target difficulty
+    # 0th element should be the one clsoest to the target difficulty
+    initial_batch = sorted(initial_batch, key=lambda x: abs(x['actual_score'] - target_difficulty))
+
     if initial_batch:
         story_data['story'].append(initial_batch[0])
         
@@ -552,6 +558,7 @@ def generate_story(lang_code='fr', story_length=10):
                 lang_code, 
                 target_difficulty,
                 previous_sentences,
+                LLM_CALL_BATCH_SIZE,
                 output_file
             )
             
@@ -569,9 +576,179 @@ def generate_story(lang_code='fr', story_length=10):
     
     return story_data, output_file
 
+
+def generate_story_batch(lang_code, story_length, seed_sentence=None):
+    """
+    Generate a story in batches of LLM_CALL_BATCH_SIZE sentences at a time.
+    Each batch continues from the last sentence of the previous batch.
+    
+    Args:
+        lang_code (str): Language code ('fr' for French)
+        story_length (int): Target number of sentences in the story
+        seed_sentence (dict, optional): Initial sentence to start the story
+        
+    Returns:
+        tuple: (story_data dictionary, output_filename)
+    """
+
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_file = f'batch_stories/{lang_code}_batch_story_{timestamp}.json'
+    
+    # Initialize story data structure
+    story_data = {
+        'story': [],
+        'metadata': {
+            'language': lang_code,
+            'target_difficulty': None,
+            'actual_difficulty_mean': None,
+            'creation_date': datetime.datetime.now().isoformat(),
+            'sentence_count': 0
+        }
+    }
+    
+    # If no seed sentence provided, generate one with random difficulty
+    if not seed_sentence:
+        target_difficulty = random.randint(0, 3)
+        story_data['metadata']['target_difficulty'] = target_difficulty
+        
+        print(f"Generating seed sentence with difficulty: {target_difficulty}")
+        initial_batch = generate_difficulty_targeted_sentences_batch(
+            lang_code, 
+            target_difficulty, 
+            output_file,
+            1
+        )
+        if initial_batch:
+            initial_batch = sorted(initial_batch, key=lambda x: abs(x['actual_score'] - target_difficulty))
+            seed_sentence = initial_batch[0]
+    
+    if seed_sentence:
+        print("Seed sentence found!", seed_sentence)
+        story_data['story'].append(seed_sentence)
+        target_difficulty = seed_sentence['target_difficulty']
+        story_data['metadata']['target_difficulty'] = target_difficulty
+        
+        # Calculate how many full batches we need
+        remaining_sentences = story_length - 1  # -1 for seed sentence
+        num_full_batches = remaining_sentences // LLM_CALL_BATCH_SIZE
+        final_batch_size = remaining_sentences % LLM_CALL_BATCH_SIZE
+        
+        try:
+            # Generate full batches
+            for batch_num in range(num_full_batches):
+                print(f"Generating batch {batch_num + 1}/{num_full_batches}")
+                
+                # Get the latest sentence in the story
+                latest_sentence = story_data['story'][-1]['sentence']
+                
+                # Generate batch of continuation sentences
+                system_prompt = f"""
+                You are a fluent speaker of both {language_codes[lang_code]} and English.
+                Generate exactly {LLM_CALL_BATCH_SIZE} {language_codes[lang_code]} sentences that:
+                1. Continue this story that started with: {latest_sentence}
+                2. Form a coherent narrative where each sentence follows from the previous one
+                3. Target difficulty level {target_difficulty} using these criteria:
+
+                    Level 0: Completely unintelligible to English speakers.
+                    Example: "Je veux manger du pain."
+
+                    Level 1: Contains some cognate words, but is largely unintelligible to an English speaker. The cognates might allow them to guess the general topic but not the actual meaning.
+                    Example: "Le maître savant utilise beaucoup de livres." (Has cognates like "savant" but key verbs/objects aren\'t cognates)
+
+                    Level 2: Contains many cognate words. An English speaker could understand the main idea but would miss important details or nuances that change the meaning.
+                    Example: "Le patient refuse absolument de prendre ses médicaments malgré les protestations constantes du docteur."
+                    An English speaker would get "patient refuses absolutely to take medications" and "constant protestations doctor" but might miss "his" and "despite", changing their understanding of whose medications and the relationship between the refusal and protestations.
+
+                    Level 3: Fully understandable through cognates. Use almost exclusively cognate words except for basic connectors.
+                    Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."
+
+                    DIFFICULTY TARGETING STRATEGIES:
+                    Difficulty 0: Use basic, high-frequency native vocabulary, avoid international words
+                    Difficulty 1: Use 25-30% cognates in non-crucial positions. Has cognates but leaves major meaning gaps.
+                    Difficulty 2: Use 50-60% cognates in main concept positions. Sentence is mostly understandable but has subtle meaning changes due to missed words\n
+                    Difficulty 3: Use 80-90% cognates, especially for key meaning-bearing words. Any small connecting words (le, que, etc.) can be ignored without losing meaning. Should be assigned sparingly - only when missed words don\'t change meaning\n
+
+                Format your response as a JSON array of {LLM_CALL_BATCH_SIZE} objects:
+                {{
+                    "sentence": "<Generated sentence>",
+                    "target_difficulty": {target_difficulty},
+                    "reasoning": "<Why this continues the story from the previous sentence in this JSON array AND why this sentence matches difficulty>",
+                    "cognate_words": [<List of cognates used>]
+                }}
+
+                Important: Each sentence must directly follow from the previous one to form a coherent story.
+                Generate {LLM_CALL_BATCH_SIZE} sentences meeting these criteria (difficulty level and story continuation).
+                Note: Please do not include Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
+                """
+                
+                response = client.chat.completions.create(
+                    model=SENTENCE_GENERATION_MODEL,
+                    messages=[{'role': 'user', 'content': system_prompt}],
+                    temperature=1.0
+                )
+                
+                # Parse generated sentences
+                generated_batch = json.loads(response.choices[0].message.content)
+                
+                # Score the batch
+                sentences_to_score = [item['sentence'] for item in generated_batch]
+                score_results = gpt_scored_rubric_batch(sentences_to_score)
+                
+                # Combine generation and scoring data
+                timestamp = datetime.datetime.now().isoformat()
+                for gen, score in zip(generated_batch, score_results):
+                    sentence_data = {
+                        'sentence': gen['sentence'],
+                        'target_difficulty': target_difficulty,
+                        'proposed_cognate_words': gen['cognate_words'],
+                        'generation_reasoning': gen['reasoning'],
+                        'actual_score': score['score'],
+                        'actual_score_reasoning': score['reasoning'],
+                        'actual_cognate_words': score['cognate_words'],
+                        'generation_timestamp': timestamp
+                    }
+                    story_data['story'].append(sentence_data)
+                
+                # Update metadata and save after each batch
+                story_data['metadata']['sentence_count'] = len(story_data['story'])
+                story_data['metadata']['actual_difficulty_mean'] = sum(
+                    s['actual_score'] for s in story_data['story']
+                ) / len(story_data['story'])
+                
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(story_data, f, ensure_ascii=False, indent=2)
+            
+            # Handle final partial batch if needed
+            if final_batch_size > 0:
+                print(f"Generating final batch of {final_batch_size} sentences")
+                # Similar logic as above, but with final_batch_size instead of LLM_CALL_BATCH_SIZE
+                # [Implementation similar to above, adjusted for final_batch_size]
+                pass
+                
+        except Exception as e:
+            print(f"Error generating story: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        return story_data, output_file
+    
+    return None, None
+
 # New main function for story generation
 if __name__ == "__main__":
+    '''
     story_data, output_file = generate_story(lang_code='fr', story_length=10)
     print(f"\nStory generated and saved to: {output_file}")
     print(f"Target difficulty: {story_data['metadata']['target_difficulty']}")
     print(f"Actual mean difficulty: {story_data['metadata']['actual_difficulty_mean']:.2f}")
+    '''
+    # Repeat this story generation process over and over
+
+    for _ in range(40):
+        print("Generating new story batch...")
+        story_data, output_file = generate_story_batch(
+            lang_code='fr',
+            story_length=SENTENCES_PER_DIFF_LEVEL  # Will generate in batches of LLM_CALL_BATCH_SIZE
+        )
+        print(f"\nStory batch generated and saved to: {output_file}")
+        print(f"Target difficulty: {story_data['metadata']['target_difficulty']}")
