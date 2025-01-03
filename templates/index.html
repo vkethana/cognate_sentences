@@ -3,8 +3,53 @@
 <head>
     <title>Story Display</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .stats {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 0 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .stats.visible {
+            transform: translateX(0);
+        }
+
+        .stats h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .stats p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+    <div class="hamburger-menu" onclick="toggleStats()">
+        ☰
+    </div>
+   
+        <!-- Replace the existing stats div with this -->
+    <div id="stats" class="stats">
+        <div class="stats-panel">
+            <div class="stats-content">
+                <h3>Statistics</h3>
+                <p>Your Level: <span id="user-difficulty">3.00</span></p>
+                <p>Story Difficulty: <span id="story-difficulty">0.00</span></p>
+                <p>Current Sentence: <span id="sentence-difficulty">0.00</span></p>
+            </div>
+        </div>
+    </div>
+    
     <div id="story-container">
         <div id="sentence-display">Press spacebar to begin</div>
     </div>
@@ -19,6 +64,7 @@
                 <button onclick="forceSkip()" class="skip-button">Force Skip</button>
             </div>
             <p id="feedback" class="hidden"></p>
+            <p id="attempts-left" class="hidden"></p>
         </div>
     </div>
     
@@ -27,7 +73,36 @@
     <script>
         let waitingForQuiz = false;
         let currentSentence = '';
+        let statsVisible = false;
+        let currentStoryDifficulty = 0;
+        let currentSentenceDifficulty = 0;
         
+        function toggleStats() {
+            statsVisible = !statsVisible;
+            const stats = document.getElementById('stats');
+            if (statsVisible) {
+                stats.classList.add('visible');
+            } else {
+                stats.classList.remove('visible');
+            }
+            updateStats();
+        }
+        
+        async function updateStats() {
+            if (!statsVisible) return;
+            
+            const response = await fetch('/get-stats');
+            const stats = await response.json();
+            
+            // Update the stats display
+            document.getElementById('user-difficulty').textContent = 
+                stats.userDifficulty.toFixed(2);
+            document.getElementById('story-difficulty').textContent = 
+                currentStoryDifficulty.toFixed(2);
+            document.getElementById('sentence-difficulty').textContent = 
+                currentSentenceDifficulty.toFixed(2);
+        } 
+
         function showQuiz(sentence) {
             waitingForQuiz = true;
             currentSentence = sentence;
@@ -35,12 +110,14 @@
             document.getElementById('sentence-to-translate').textContent = sentence;
             document.getElementById('translation-input').value = '';
             document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('attempts-left').classList.add('hidden');
         }
         
         function hideQuiz() {
             waitingForQuiz = false;
             document.getElementById('quiz-modal').classList.add('hidden');
             document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('attempts-left').classList.add('hidden');
         }
         
         function forceSkip() {
@@ -64,7 +141,10 @@
             
             const result = await response.json();
             const feedback = document.getElementById('feedback');
+            const attemptsLeft = document.getElementById('attempts-left');
+            
             feedback.classList.remove('hidden');
+            attemptsLeft.classList.remove('hidden');
             
             if (result.correct) {
                 feedback.textContent = "Correct! Press space to continue.";
@@ -73,7 +153,15 @@
             } else {
                 feedback.textContent = "Not quite right. Try again!";
                 feedback.className = "feedback incorrect";
+                if (result.attemptsLeft > 0) {
+                    attemptsLeft.textContent = `Attempts left: ${result.attemptsLeft}`;
+                } else {
+                    attemptsLeft.textContent = "No attempts left. Press space to continue.";
+                    hideQuiz();
+                }
             }
+            
+            updateStats();
         }
         
         document.addEventListener('keydown', function(event) {
@@ -89,10 +177,14 @@
                         
                         if (data.isNewStory) {
                             display.innerHTML = `<div class="language-indicator">[${data.language}]</div>`;
+                            currentStoryDifficulty = data.storyDifficulty;
                         }
+                        
+                        currentSentenceDifficulty = data.sentenceDifficulty;
                         
                         const sentenceP = document.createElement('p');
                         sentenceP.textContent = data.sentence;
+                        sentenceP.innerHTML += `<span class="difficulty-indicator">(Difficulty: ${data.sentenceDifficulty.toFixed(1)})</span>`;
                         display.appendChild(sentenceP);
                         
                         display.scrollTop = display.scrollHeight;
@@ -100,9 +192,14 @@
                         if (data.needsQuiz) {
                             showQuiz(data.sentence);
                         }
+                        
+                        updateStats();
                     });
             }
         });
+        
+        // Initial stats update
+        updateStats();
     </script>
 </body>
 </html>
