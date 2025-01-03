@@ -20,30 +20,28 @@ class StoryManager:
         self.current_file = None
         self.current_story = None
         self.current_index = 0
-        self.shown_stories = set()
-        self.translation_attempts = {}
+        self.translation_attempts = {}  # Only tracks attempts within current story
 
     def get_next_sentence(self) -> Dict:
-        # If there's no current story or we've reached the end, select a new one
-        if (self.current_story is None or 
-            self.current_index >= len(self.current_story['story'])):
-            self.current_index = 0
+        # Validate current index
+        if self.current_index < 0 or self.current_index >= len(self.current_story['story']):
+            self.current_index = 0  # Reset index if invalid
+
+        # Select a new story if needed
+        if self.current_story is None or self.current_index >= len(self.current_story['story']):
             return self.select_story(session.get('user_difficulty', 3.0))
-            
+
         current_sentence = self.current_story['story'][self.current_index]
         self.current_index += 1
 
-        result = {
+        return {
             'sentence': current_sentence['sentence'],
             'isNewStory': self.current_index == 1,
-            'current_index': self.current_index,
-            #'language': self.current_story['metadata']['language'],
-            'needsQuiz': True,  # We'll quiz on every sentence
+            'language': 'fr',
+            'needsQuiz': True,
             'sentenceDifficulty': current_sentence['actual_score'],
-            'storyDifficulty': self._calculate_story_difficulty(self.current_story)
+            'storyDifficulty': self._calculate_story_difficulty(self.current_story),
         }
-        print("returning result", result)
-        return result
 
     def _load_story(self, filepath: str) -> Dict:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -55,15 +53,10 @@ class StoryManager:
     def select_story(self, user_difficulty: float) -> Dict:
         # Get all available stories
         json_files = [f for f in os.listdir(self.data_dir) if f.endswith('.json')]
-        available_files = [f for f in json_files if f not in self.shown_stories]
         
-        if not available_files:
-            self.shown_stories.clear()  # Reset if all stories have been shown
-            available_files = json_files
-            
         # Calculate difficulties and distances from user_difficulty
         stories_with_scores = []
-        for filename in available_files:
+        for filename in json_files:
             story = self._load_story(os.path.join(self.data_dir, filename))
             difficulty = self._calculate_story_difficulty(story)
             distance = abs(difficulty - user_difficulty)
@@ -77,44 +70,9 @@ class StoryManager:
         self.current_file = selected[0]
         self.current_story = selected[1]
         self.current_index = 0
-        self.shown_stories.add(self.current_file)
-        self.translation_attempts = {}
+        self.translation_attempts = {}  # Reset attempts for new story
         
         return self.get_next_sentence()
-        
-        
-    def check_translation(self, original: str, translation: str) -> Dict:
-        if original not in self.translation_attempts:
-            self.translation_attempts[original] = TranslationAttempt()
-            
-        attempt = self.translation_attempts[original]
-        attempt.attempts += 1
-        
-        # TODO: Implement proper translation checking
-        is_correct = random.random() < 0.5  # Temporary random check
-        
-        if is_correct:
-            attempt.success = True
-            self._update_user_difficulty(attempt.attempts)
-            
-        return {
-            'correct': is_correct,
-            'attemptsLeft': self.num_tries - attempt.attempts if not is_correct else 0
-        }
-        
-    def _update_user_difficulty(self, attempts: int):
-        current_difficulty = session.get('user_difficulty', 3.0)
-        
-        # Adjust difficulty based on attempts needed
-        if attempts == 1:
-            adjustment = 0.2  # Big increase for getting it right first try
-        elif attempts == 2:
-            adjustment = 0.1  # Smaller increase for second try
-        else:
-            adjustment = 0.05  # Minimal increase for third try
-            
-        new_difficulty = min(max(current_difficulty + adjustment, 0), 3)
-        session['user_difficulty'] = new_difficulty
 
 # Create story manager instance
 story_manager = StoryManager('batch_stories', num_tries=3)
@@ -122,15 +80,48 @@ story_manager = StoryManager('batch_stories', num_tries=3)
 @app.route('/')
 def home():
     if 'user_difficulty' not in session:
+        print("Resetting everything")
+        # New session detected
         session['user_difficulty'] = 3.0
+        story_manager.current_file = None
+        story_manager.current_story = None
+        story_manager.current_index = 0
+        story_manager.translation_attempts = {}
     return render_template('index.html')
 
-@app.route('/next-sentence')
+@app.route('/next-sentence', methods=['POST'])
 def next_sentence():
-    return jsonify(story_manager.get_next_sentence())
+    data = request.get_json()
+    current_story_file = data.get('currentStory')
+    current_index = data.get('currentIndex', 0)
+
+    # If the client provides a story file, load it into the StoryManager
+    if current_story_file:
+        if current_story_file != story_manager.current_file:
+            # If the file is different, load the new story
+            story_manager.current_file = current_story_file
+            story_manager.current_story = story_manager._load_story(
+                os.path.join(story_manager.data_dir, current_story_file)
+            )
+            story_manager.current_index = current_index
+        else:
+            # If it's the same file, just update the index
+            story_manager.current_index = current_index
+    else:
+        # If no file is provided, select a new story
+        story_manager.select_story(session.get('user_difficulty', 3.0))
+    
+    # Get the next sentence
+    response = story_manager.get_next_sentence()
+    response.update({
+        'storyFile': story_manager.current_file,
+        'currentIndex': story_manager.current_index,
+    })
+    return jsonify(response)
 
 @app.route('/check-translation', methods=['POST'])
 def check_translation():
+    story_manager = StoryManager('batch_stories', num_tries=3)
     data = request.get_json()
     result = story_manager.check_translation(
         data.get('original', ''),
