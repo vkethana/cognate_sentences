@@ -11,6 +11,7 @@ def calculate_cognate_word_scores(data_dir):
     for filename in os.listdir(data_dir):
         if filename.endswith('.json'):
             file_path = os.path.join(data_dir, filename)
+            print("Currently considering", file_path)
             with open(file_path, 'r') as f:
                 story_data = json.load(f)
                 for sentence_data in story_data.get('sentences', []):
@@ -18,6 +19,7 @@ def calculate_cognate_word_scores(data_dir):
                     score = sentence_data.get('actual_score', 0)
                     # Updated to use actual_cognate_words instead of cognate_words
                     cognate_words = sentence_data.get('actual_cognate_words', [])
+                    print("Cognate words:", cognate_words)
                     
                     for word in cognate_words:
                         cognate_scores[word] += score
@@ -47,13 +49,10 @@ def print_sorted_cognate_averages(cognate_averages):
 
 if __name__ == "__main__":
     # Directory containing the JSON story files
-    data_directory = 'data/'
+    data_directory = 'batch_stories'
     
     # Calculate the averages
     averages = calculate_cognate_word_scores(data_directory)
-    
-    # Save the results to a JSON file
-    save_cognate_averages(averages)
     
     # Print the sorted averages to the terminal
     print_sorted_cognate_averages(averages)

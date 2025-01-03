@@ -1,4 +1,4 @@
-__pycache__
+__pycache__/*
 .DS_Store
 data/*
 data0/*
@@ -11,3 +11,5 @@ logs/*
 *.json
 *.log
 *.backup
+__pycache__/*.pyc
+*.pyc
