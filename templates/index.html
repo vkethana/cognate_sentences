@@ -1,201 +1,352 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Story Display</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reader</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #story-container {
+            width: 800px;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #sentence-display {
+            font-size: 20px;
+            padding: 30px;
+            //width: 100%;
+            //height: 100%;
+            text-align: left;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        #sentence-display p {
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            z-index: 1001;
+        }
+
+        .modal h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal button:hover {
+            background-color: #0056b3;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="settings-link" onclick="toggleStats()">
-        [settings]
-    </div>
-   
-    <div id="stats" class="stats">
-        <div class="stats-panel">
-            <div class="stats-content">
-                <h3>Statistics</h3>
-                <p>Your Level: <span id="user-difficulty">3.00</span></p>
-                <p>Story Difficulty: <span id="story-difficulty">0.00</span></p>
-                <p>Current Sentence: <span id="sentence-difficulty">0.00</span></p>
-            </div>
-        </div>
-    </div>
-    
-    <div id="story-container">
-        <div id="sentence-display" class="empty">Press spacebar to begin</div>
-    </div>
-    
-    <div id="quiz-modal" class="modal hidden">
-        <div class="modal-content">
+    <!-- Translation Exercise Modal -->
+    <div class="modal-overlay" id="translation-modal">
+        <div class="modal">
             <h2>Translation Exercise</h2>
-            <p id="sentence-to-translate"></p>
-            <textarea id="translation-input" placeholder="Enter your English translation..."></textarea>
-            <div class="button-group">
-                <button onclick="checkTranslation()">Submit</button>
-                <button onclick="forceSkip()" class="skip-button">Force Skip</button>
+            <div id="no-api-key-message" style="display: none;">
+                <p>Please set your OpenAI API key in settings first to continue with translation exercises.</p>
+                <button onclick="openSettings()">Go to Settings</button>
             </div>
-            <p id="feedback" class="hidden"></p>
-            <p id="attempts-left" class="hidden"></p>
+            <div id="translation-exercise" style="display: none;">
+                <p>Please translate this sentence to English:</p>
+                <div class="french-sentence"></div>
+                <textarea id="translation-input" rows="3" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
+                <div class="error-message" style="color: #dc3545; margin-bottom: 10px; display: none;"></div>
+                <button onclick="checkTranslation()">Check Translation</button>
+                <div class="attempts-remaining" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
+            </div>
         </div>
     </div>
-    
-    <div class="instruction">Press spacebar to continue</div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <h2>Settings</h2>
+            <div class="warning">
+                ⚠️ Important: After you're done trying out the application, remember to deactivate the API key you give us.
+                We will only use your API key to score your translations and promise not to use it for any other purpose.
+            </div>
+            <p>Please enter your OpenAI API key to enable translation verification:</p>
+            <input type="password" id="api-key-input" placeholder="sk-..." />
+            <button onclick="saveApiKey()">Save API Key</button>
+        </div>
+    </div>
+
+    <div id="story-container">
+        <a href="#" id="settings-link" style="position: absolute; top: 10px; right: 10px; font-size: 16px;">settings</a>
+        <div id="sentence-display">
+            press spacebar to begin
+        </div>
+    </div>
+
     <script>
-            let waitingForQuiz = false;
-            let currentSentence = '';
-            let statsVisible = false;
-            let currentStoryDifficulty = 0;
-            let currentSentenceDifficulty = 0;
+        // Settings modal functionality
+        const settingsModal = document.getElementById('settings-modal');
+        const settingsLink = document.getElementById('settings-link');
+        const apiKeyInput = document.getElementById('api-key-input');
 
-            // Initialize local storage variables if not set
-            if (!localStorage.getItem('currentStory')) {
-                localStorage.setItem('currentStory', '');
-                localStorage.setItem('currentIndex', '0');
+        let translationExercisePending = false;
+        let currentTranslationAttempts = 0;
+        const MAX_TRANSLATION_ATTEMPTS = 3;
+        const TRANSLATION_FREQUENCY = 3; // Show translation exercise every n sentences
+
+        settingsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            settingsModal.style.display = 'block';
+            const savedApiKey = localStorage.getItem('openai_api_key');
+            if (savedApiKey) {
+                apiKeyInput.value = savedApiKey;
             }
+        });
 
-            function toggleStats() {
-                statsVisible = !statsVisible;
-                const stats = document.getElementById('stats');
-                if (statsVisible) {
-                    stats.classList.add('visible');
-                } else {
-                    stats.classList.remove('visible');
-                }
-                updateStats();
+        settingsModal.addEventListener('click', function(e) {
+            if (e.target === settingsModal) {
+                settingsModal.style.display = 'none';
             }
+        });
 
-            async function updateStats() {
-                if (!statsVisible) return;
-
-                const response = await fetch('/get-stats');
-                const stats = await response.json();
-
-                document.getElementById('user-difficulty').textContent = 
-                    stats.userDifficulty.toFixed(2);
-                document.getElementById('story-difficulty').textContent = 
-                    currentStoryDifficulty.toFixed(2);
-                document.getElementById('sentence-difficulty').textContent = 
-                    currentSentenceDifficulty.toFixed(2);
+        function saveApiKey() {
+            const apiKey = apiKeyInput.value.trim();
+            if (apiKey) {
+                localStorage.setItem('openai_api_key', apiKey);
+                settingsModal.style.display = 'none';
+            } else {
+                alert('Please enter a valid API key');
             }
+        }
 
-            function showQuiz(sentence) {
-                waitingForQuiz = true;
-                currentSentence = sentence;
-                document.getElementById('quiz-modal').classList.remove('hidden');
-                document.getElementById('sentence-to-translate').textContent = sentence;
+        const translationModal = document.getElementById('translation-modal');
+        let currentSentenceToTranslate = '';
+
+        function showTranslationExercise(sentence) {
+            const apiKey = localStorage.getItem('openai_api_key');
+            translationExercisePending = true;
+            currentSentenceToTranslate = sentence;
+            currentTranslationAttempts = 0;
+            
+            const noApiKeyMessage = document.getElementById('no-api-key-message');
+            const translationExercise = document.getElementById('translation-exercise');
+            
+            if (!apiKey) {
+                noApiKeyMessage.style.display = 'block';
+                translationExercise.style.display = 'none';
+            } else {
+                noApiKeyMessage.style.display = 'none';
+                translationExercise.style.display = 'block';
+                document.querySelector('.french-sentence').textContent = sentence;
                 document.getElementById('translation-input').value = '';
-                document.getElementById('feedback').classList.add('hidden');
-                document.getElementById('attempts-left').classList.add('hidden');
+                document.querySelector('.error-message').style.display = 'none';
+                document.querySelector('.attempts-remaining').textContent = 
+                    `Attempts remaining: ${MAX_TRANSLATION_ATTEMPTS}`;
+            }
+            
+            translationModal.style.display = 'block';
+        }
+
+        async function checkTranslation() {
+            const translationInput = document.getElementById('translation-input').value.trim();
+            const apiKey = localStorage.getItem('openai_api_key');
+            
+            if (!translationInput) {
+                document.querySelector('.error-message').textContent = 'Please enter a translation';
+                document.querySelector('.error-message').style.display = 'block';
+                return;
             }
 
-            function hideQuiz() {
-                waitingForQuiz = false;
-                document.getElementById('quiz-modal').classList.add('hidden');
-                document.getElementById('feedback').classList.add('hidden');
-                document.getElementById('attempts-left').classList.add('hidden');
-            }
-
-            function forceSkip() {
-                hideQuiz();
-            }
-
-            async function checkTranslation() {
-                const translation = document.getElementById('translation-input').value.trim();
-                if (!translation) return;
-
-                const response = await fetch('/check-translation', {
+            try {
+                // Here we would normally call the actual API endpoint
+                const response = await fetch('/score_translation', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
                     },
                     body: JSON.stringify({
-                        original: currentSentence,
-                        translation: translation
+                        original: currentSentenceToTranslate,
+                        translation: translationInput
                     })
                 });
 
-                const result = await response.json();
-                const feedback = document.getElementById('feedback');
-                const attemptsLeft = document.getElementById('attempts-left');
-
-                feedback.classList.remove('hidden');
-                attemptsLeft.classList.remove('hidden');
-
-                if (result.correct) {
-                    feedback.textContent = "Correct! Press space to continue.";
-                    feedback.className = "feedback correct";
-                    hideQuiz();
+                const data = await response.json();
+                
+                if (data.isCorrect) {
+                    translationExercisePending = false;
+                    translationModal.style.display = 'none';
                 } else {
-                    feedback.textContent = "Not quite right. Try again!";
-                    feedback.className = "feedback incorrect";
-                    if (result.attemptsLeft > 0) {
-                        attemptsLeft.textContent = `Attempts left: ${result.attemptsLeft}`;
+                    currentTranslationAttempts++;
+                    if (currentTranslationAttempts >= MAX_TRANSLATION_ATTEMPTS) {
+                        translationExercisePending = false;
+                        translationModal.style.display = 'none';
                     } else {
-                        attemptsLeft.textContent = "No attempts left. Press space to continue.";
-                        hideQuiz();
+                        document.querySelector('.error-message').textContent = 
+                            'Translation needs improvement. Please try again.';
+                        document.querySelector('.error-message').style.display = 'block';
+                        document.querySelector('.attempts-remaining').textContent = 
+                            `Attempts remaining: ${MAX_TRANSLATION_ATTEMPTS - currentTranslationAttempts}`;
                     }
                 }
+            } catch (error) {
+                console.error('Error checking translation:', error);
+                document.querySelector('.error-message').textContent = 
+                    'Error checking translation. Please try again.';
+                document.querySelector('.error-message').style.display = 'block';
+            }
+        }
 
-                updateStats();
+        // Initialize client-side storage
+        localStorage.setItem('currentStoryFile', '');
+        localStorage.setItem('currentSentenceIndex', '0');
+
+        translationModal.addEventListener('click', function(e) {
+            if (e.target === translationModal && !translationExercisePending) {
+                translationModal.style.display = 'none';
+            }
+        });
+
+        const contentDiv = document.getElementById('sentence-display');
+
+        document.addEventListener('keydown', async function(event) {
+            if (event.code === 'Space') {
+                event.preventDefault();  // Prevent page scrolling
+                await handleSpacePress();
+            }
+        });
+
+        function openSettings() {
+            document.getElementById('translation-modal').style.display = 'none';
+            settingsModal.style.display = 'block';
+        }
+
+        async function handleSpacePress() {
+            const currentStoryFile = localStorage.getItem('currentStoryFile');
+            let currentSentenceIndex = parseInt(localStorage.getItem('currentSentenceIndex'));
+
+            const response = await fetch('/get-sentence', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                    currentStoryFile === '' ?
+                    { needNewStory: true } :
+                    { 
+                        storyFile: currentStoryFile,
+                        sentenceIndex: currentSentenceIndex
+                    }
+                )
+            });
+            console.log("current sentence index is", currentSentenceIndex)
+
+            const data = await response.json();
+
+            if (data.isLastSentence) {
+                // Reset for next story
+                localStorage.setItem('currentStoryFile', '');
+                localStorage.setItem('currentSentenceIndex', '0');
+                contentDiv.textContent = 'press spacebar to begin';
+                return;
             }
 
-            document.addEventListener('keydown', async function(event) {
-                if (event.code === 'Space') {
-                    event.preventDefault();
+            // Handle sentence display
+            if (currentSentenceIndex == 0) {
+                // This is the first sentence of a new story
+                console.log("First sentence")
+                // Put it in <p> tags
+                contentDiv.innerHTML = '<p>' + data.sentence + '</p>';
+            } else {
+                // Append the new sentence to existing story
+                // Show every sentence on a different line using distinct <p> tags
 
-                    if (waitingForQuiz) return;
-
-                    const currentStory = localStorage.getItem('currentStory');
-                    const currentIndex = parseInt(localStorage.getItem('currentIndex'), 10);
-
-                    const response = await fetch('/next-sentence', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            currentStory,
-                            currentIndex
-                        })
-                    });
-
-                    const data = await response.json();
-
-                    const display = document.getElementById('sentence-display');
-                    display.classList.remove('empty');
-
-                    if (data.isNewStory) {
-                        display.innerHTML = `<div class="language-indicator">[fr]</div>`;
-                        currentStoryDifficulty = data.storyDifficulty;
-                        localStorage.setItem('currentStory', data.storyFile); // Save new story
-                        localStorage.setItem('currentIndex', '0'); // Reset index
-                    } else {
-                        display.innerHTML = '';
-                    }
-
-                    currentSentenceDifficulty = data.sentenceDifficulty;
-
-                    const sentenceP = document.createElement('p');
-                    sentenceP.textContent = data.sentence;
-                    sentenceP.innerHTML += `<span class="difficulty-indicator">(Difficulty: ${data.sentenceDifficulty.toFixed(1)})</span>`;
-                    display.appendChild(sentenceP);
-
-                    display.scrollTop = display.scrollHeight;
-
-                    if (data.needsQuiz) {
-                        showQuiz(data.sentence);
-                    }
-
-                    // Update the index in localStorage
-                    localStorage.setItem('currentIndex', data.currentIndex.toString());
-
-                    updateStats();
+                contentDiv.innerHTML += '<p>' + data.sentence + '</p>';
+                // Check if we need to show translation exercise
+                if (currentSentenceIndex > 1 && (currentSentenceIndex - 1) % TRANSLATION_FREQUENCY === 0) {
+                    showTranslationExercise(data.sentence);
                 }
-            });
+            }
 
-            // Initial stats update
-            updateStats();
+            // Update client-side storage
+            if (data.storyFile) {
+                localStorage.setItem('currentStoryFile', data.storyFile);
+                localStorage.setItem('currentSentenceIndex', '1');
+            } else {
+                localStorage.setItem('currentSentenceIndex', (currentSentenceIndex + 1).toString());
+            }
+        }
     </script>
 </body>
 </html>
