@@ -6,7 +6,7 @@ from typing import List, Dict
 import numpy as np
 
 app = Flask(__name__)
-app.secret_key = 'vijayiscool123'  # Required for session management
+app.secret_key = 'ilikeicecream123'  # Required for session management
 
 class TranslationAttempt:
     def __init__(self):
@@ -27,26 +27,29 @@ class StoryManager:
         # If there's no current story or we've reached the end, select a new one
         if (self.current_story is None or 
             self.current_index >= len(self.current_story['story'])):
+            self.current_index = 0
             return self.select_story(session.get('user_difficulty', 3.0))
             
         current_sentence = self.current_story['story'][self.current_index]
         self.current_index += 1
-        
-        return {
+
+        result = {
             'sentence': current_sentence['sentence'],
             'isNewStory': self.current_index == 1,
+            'current_index': self.current_index,
             #'language': self.current_story['metadata']['language'],
             'needsQuiz': True,  # We'll quiz on every sentence
             'sentenceDifficulty': current_sentence['actual_score'],
             'storyDifficulty': self._calculate_story_difficulty(self.current_story)
-        }        
+        }
+        print("returning result", result)
+        return result
 
     def _load_story(self, filepath: str) -> Dict:
         with open(filepath, 'r', encoding='utf-8') as f:
             return json.load(f)
             
     def _calculate_story_difficulty(self, story: Dict) -> float:
-        print(story)
         return np.mean([sentence['actual_score'] for sentence in story['story']])
         
     def select_story(self, user_difficulty: float) -> Dict:
@@ -70,7 +73,6 @@ class StoryManager:
         stories_with_scores.sort(key=lambda x: x[2])
         selection_pool = stories_with_scores[:3]
         selected = random.choice(selection_pool)
-        print("Selected story", selected)
         
         self.current_file = selected[0]
         self.current_story = selected[1]
