@@ -1,346 +1,646 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensible Input Generator</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Story Reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #stats-panel {
+            position: fixed;  /* Fixed to window corner */
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 14px;
+            min-width: 200px;
+            z-index: 100;  /* Above story container but below modals */
+        }
+
+        #stats-panel.hidden {
+            display: none;
+        }
+
+        .sentence-difficulty {
+            font-size: 14px; 
+            color: gray;
+        }
+
+        .sentence-difficulty.hidden {
+            display: none;
+        }
+
+        #story-container {
+            width: 800px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;  /* For positioning the settings link */
+        }
+
+        #sentence-display {
+            font-size: 20px;
+            padding: 30px;
+            text-align: left;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        #sentence-display p {
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            z-index: 1001;
+        }
+
+        .modal h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal button:hover {
+            background-color: #0056b3;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .control-links {
+            position: absolute;
+            top: -30px;  /* Position above the container */
+            right: 0;
+            font-size: 16px;
+        }
+        .control-links a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .control-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <section>
-      <div id='original-sentence' style="display: none;">
-        <div>
-					<p>
-						<span id='original-sentence-text'>
-						</span>
-						<span id='original-sentence-score'>
-						</span>
-					</p>
+    <div id="stats-panel">
+        <p>Your Difficulty Level: <span class="stat-value" id="user-difficulty">2.5</span></p>
+        <p>Story Difficulty Level: <span class="stat-value" id="story-difficulty">-</span></p>
+        <p>Stories Seen: <span class="stat-value" id="stories-seen-count">0</span></p>
+    </div>
+    <div id="story-container">
+        <div class="control-links">
+            <a href="#" id="story-link">story list</a>
+            <a href="#" id="stats-link">hide stats</a>
+            <a href="#" id="settings-link">settings</a>
         </div>
-
-        <div>
-          <form id="inputForm">
-              <label for="inputBox"></label>
-              Translate the bolded sentence above:
-              <input type="text" id="user-translation" name="user-translation" placeholder="Enter English translation here..." required />
-          </form>
-          <br />
-          <div style="text-align:center" id="check-translation">
-            <button class="friendly-button-small" onclick="sendTranslationToServer()">Check</button>
-            <button class="friendly-button-small" onclick="updatePageAfterTranslationCorrect()">Force Skip</button>
-          </div>
+        <div id="sentence-display">
+            press spacebar to begin
         </div>
-      </div>
-      <br />
+    </div>
 
-      <div style="text-align:center" id="generate-buttons">
-        <button class="friendly-button" id="generate-button" onclick="generateButtonOnClick()">Generate New Sentence</button>
-        <button class="friendly-button" id="extend-button" onclick="extendButtonOnClick()" style="display: none;">Extend Sentence</button>
-      </div>
+    <!-- Story List Modal -->
+    <div class="modal-overlay" id="story-list-modal">
+        <div class="modal">
+            <h2>Available Stories</h2>
+            <div id="story-list-container" style="max-height: 400px; overflow-y: auto; font-size: 14px">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="position: sticky; top: 0; background: white;">
+                        <tr>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: left;">Title (Click arrow to see sentences)</th>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: center;">Avg. Difficulty</th>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: right;">Length</th>
+                        </tr>
+                    </thead>
+                    <tbody id="story-list-tbody">
+                        <!-- Stories will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-      <div class="center" id="loading-div">
-        Generating (takes 5-15 secs)<span id="ellipsis">.</span>
-      </div>
-      <div class="center" id="loading-div-2">
-        Scoring (takes 5-10 secs)<span id="ellipsis-2">.</span>
-      </div>
-    </section>
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <h2>Settings</h2>
+            <div class="warning">
+                ⚠️ Important: For your security, please remember to deactivate this API key after you're done using the application. 
+                We will only use your API key to verify translations and promise not to use it for any other purpose.
+            </div>
+            <p>Please enter your OpenAI API key to enable translation verification:</p>
+            <input type="password" id="api-key-input" placeholder="sk-..." />
+            <button onclick="saveApiKey()">Save API Key</button>
+            <!-- Add button to show / hide stats -->
+            
+        </div>
+    </div>
+
+    <!-- Translation Exercise Modal -->
+    <div class="modal-overlay" id="translation-modal">
+        <div class="modal">
+            <h2>Translation Exercise</h2>
+            <div id="no-api-key-message" style="display: none;">
+                <p>Please set your OpenAI API key in settings first to continue with translation exercises.</p>
+                <button onclick="openSettings()">Go to Settings</button>
+            </div>
+            <div id="translation-exercise" style="display: none;">
+                <p>Please translate this sentence to English:</p>
+                <div class="french-sentence"></div>
+                <textarea id="translation-input" rows="3" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
+                <div class="error-message" style="color: #dc3545; margin-bottom: 10px; display: none;"></div>
+                <button onclick="checkTranslation()">Check Translation</button>
+                <button onclick="skipTranslation()">Skip Translation</button>
+                <div class="attempts-remaining" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
-      let ellipsisInterval;
-			let generateButtonClickCount = 0;
-
-      function startEllipsisAnimation(id) {
-        const ellipsisElement = document.getElementById(id);
-        let dotCount = 1;
-        ellipsisInterval = setInterval(() => {
-            dotCount = (dotCount + 1) % 4;
-            ellipsisElement.innerHTML = '.'.repeat(dotCount);
-        }, 500);
-      }
-
-      function stopEllipsisAnimation(id) {
-        clearInterval(ellipsisInterval);
-        document.getElementById(id).innerHTML = '...';
-      }
-
-      function generateButtonOnClick() {
-        document.getElementById('loading-div').style.display = 'block';
-        startEllipsisAnimation('ellipsis');
-        sendSentenceToServer(false);
-      }
-
-      function extendButtonOnClick() {
-        document.getElementById('loading-div').style.display = 'block';
-        startEllipsisAnimation('ellipsis');
-        sendSentenceToServer(true);
-      }
-
-			function highlightWords(paragraph, wordsToHighlight, elementId) {
-				const element = document.getElementById(elementId);
-				if (!element) {
-					console.error(`Element with ID "${elementId}" not found.`);
-				}        
-        // Make elementID's text equal paragraph, but stream it gradually
-        let index = 0;
-
-        function displayTextGradually() {
-            return new Promise((resolve) => {
-                function addNextCharacter() {
-                    if (index < paragraph.length) {
-                        element.textContent += paragraph[index];
-                        index++;
-                        setTimeout(addNextCharacter, 20);
-                    } else {
-                        resolve(); // Resolve the promise when done
-                    }
-                }
-
-                addNextCharacter();
-            });
+        // Initialize client-side storage and state
+        localStorage.setItem('currentStoryFile', '');
+        localStorage.setItem('currentSentenceIndex', '0');
+        if (!localStorage.getItem('userDifficulty')) {
+            localStorage.setItem('userDifficulty', '2.5'); // Start at middle difficulty
         }
-        displayTextGradually().then(() => {
-            // Wait for 20 ms before continuing
-            return new Promise((resolve) => {
-                setTimeout(resolve, 300);
-            });
-        }).then(() => {
-          // Create a regular expression to match the words to highlight
-          const regex = new RegExp(`\\b(${wordsToHighlight.join('|')})\\b`, 'gi');
-          
-          // Replace matching words with highlighted versions
-          paragraph = paragraph.replace(regex, '<span class="highlight">$1</span>');
-
-          let sentences = paragraph.match(/[^.!?]+[.!?]+/g) || [];
-          
-          // If there's more than one sentence, separate the last one
-          if (sentences.length > 1) {
-            let lastSentence = sentences.pop();
-            paragraph = sentences.join(" ") + '<br><span id="final-sentence">' + lastSentence.trim() + '</span>';
-          } 
-
-          // Update the inner HTML of the element with the provided ID
-          element.innerHTML = paragraph;
-        });
-			}
-
-      // When the user clicks on the button...
-      function sendSentenceToServer(extend) {
-				generateButtonClickCount++;
-				if (generateButtonClickCount > 20) {
-						alert("Warning: you have made over 20 sentence generation calls. Please be mindful of your usage because OpenAI bills are expensive and this is a free service.");
-						generateButtonClickCount = 0;
-				}
-        let route = "";
-
-        if (extend) {
-          route = "/extend_sentence";
-        } else {
-          route = "/generate_sentence";
+        if (!localStorage.getItem('seenStories')) {
+            localStorage.setItem('seenStories', JSON.stringify([]));
+        }
+        if (!localStorage.getItem('showStats')) {
+            localStorage.setItem('showStats', 'true');
         }
 
-        let story_index = localStorage.getItem('story_index');
-        if ((story_index !== null) && (route === "/extend_sentence")) {
-          console.log("Sending POST request with story_index: " + story_index);
-          post_request_data = {
-            original_sentence: document.getElementById('original-sentence-text').textContent, 
-            story_index: story_index,
-            sentence_index: localStorage.getItem('sentence_index')
-          }
-        } else {
-          post_request_data = {
-            original_sentence: document.getElementById('original-sentence-text').textContent
-          }
-        }
+        // Update initial stats display
+        document.getElementById('user-difficulty').textContent = 
+            parseFloat(localStorage.getItem('userDifficulty')).toFixed(2);
+        document.getElementById('stories-seen-count').textContent = 
+            JSON.parse(localStorage.getItem('seenStories')).length;
 
-        fetch(route, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(post_request_data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Clear existing text
-            document.getElementById('original-sentence-text').innerHTML = '';
+        let translationExercisePending = false;
+        let currentTranslationAttempts = 0;
+        const MAX_TRANSLATION_ATTEMPTS = 3;
+        const TRANSLATION_FREQUENCY = 3; // Show translation exercise every n sentences
+        
+        // Difficulty adjustment parameters
+        const DIFFICULTY_STEP = 0.1;  // How much to adjust difficulty after each story
+        const MAX_DIFFICULTY = 3.0;
+        const MIN_DIFFICULTY = 0.0;
 
-            // Check if the data contains the attribute sentence_index
-            if (data['sentence_index'] !== undefined) {
-              // If it does, then the sentence was pregenerated
-              // Save the index for use later
-              localStorage.setItem('sentence_index', data['sentence_index']);
-              localStorage.setItem('story_index', data['story_index']);
+        // Settings modal functionality
+        const settingsModal = document.getElementById('settings-modal');
+        const settingsLink = document.getElementById('settings-link');
+        const storyModal = document.getElementById('story-list-modal');
+        const storyLink = document.getElementById('story-link');
+        const apiKeyInput = document.getElementById('api-key-input');
+
+        settingsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            settingsModal.style.display = 'block';
+            const savedApiKey = localStorage.getItem('openai_api_key');
+            if (savedApiKey) {
+                apiKeyInput.value = savedApiKey;
             }
-            stopEllipsisAnimation('ellipsis');
-            document.getElementById('loading-div').style.display = 'none';
+        });
 
-            console.log('Success:', data);
-            document.getElementById('generate-buttons').style.display = 'none';
+        storyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            storyModal.style.display = 'block';
+            showStoryList();
+        });
 
-            const sentenceContainer = document.getElementById('original-sentence-text');
-            highlightWords(data['sentence'], data['cognates'], 'original-sentence-text');
+        settingsModal.addEventListener('click', function(e) {
+            if (e.target === settingsModal) {
+                settingsModal.style.display = 'none';
+            }
+        });
 
-						// Uncomment this line if you want the score to be visible next to the sentence
-            document.getElementById('original-sentence-score').innerHTML = "(Score = " + data['score'] + ")";
-            document.getElementById('original-sentence').style.display = 'block';
-        })
-				.catch(error => {
-            stopEllipsisAnimation('ellipsis');
-            document.getElementById('loading-div').style.display = 'none';
-						console.error('Error:', error);
-				});
-      };
+        function saveApiKey() {
+            const apiKey = apiKeyInput.value.trim();
+            if (apiKey) {
+                localStorage.setItem('openai_api_key', apiKey);
+                settingsModal.style.display = 'none';
+            } else {
+                alert('Please enter a valid API key');
+            }
+        }
 
-      function updatePageAfterTranslationCorrect() {
-          alert("Translation is correct");
-          document.getElementById('generate-buttons').style.display = 'block';
-          // check if the extend button is visible
-          if (document.getElementById('extend-button').style.display === 'none') {
-              document.getElementById('extend-button').style.display = 'inline';
-          }
-          // clear the input
-          document.getElementById('user-translation').value = '';
-      }
+        // Stats toggle functionality
+        const statsLink = document.getElementById('stats-link');
+        statsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const showStats = localStorage.getItem('showStats') === 'true';
+            localStorage.setItem('showStats', (!showStats).toString());
+            document.getElementById('stats-panel').classList.toggle('hidden');
+            statsLink.textContent = showStats ? 'stats' : 'hide stats';
 
-      // helper function for later
-      function hasWhiteSpace(s) {
-          return s.indexOf(' ') >= 0;
-      }
+            // For all span elements with  sentence-difficulty class, toggle hidden class
+            const sentenceDifficulties = document.querySelectorAll('.sentence-difficulty');
+            sentenceDifficulties.forEach(function(span) {
+                span.classList.toggle('hidden');
+            });
+        });
 
-			function boldSequence(innerHTML, sequence) {
-					// Create a temporary element to manipulate the innerHTML
-					let tempElement = document.createElement('div');
-					tempElement.innerHTML = innerHTML;
-					
-					// Split the sequence into words
-					let words = sequence.split(' ');
+        function openSettings() {
+            document.getElementById('translation-modal').style.display = 'none';
+            settingsModal.style.display = 'block';
+        }
 
-					// Function to wrap specific text in a node with a <b> tag
-					function wrapText(node, text) {
-							let nodeText = node.textContent;
-							let startIndex = nodeText.indexOf(text);
-							if (startIndex !== -1) {
-									let beforeText = nodeText.substring(0, startIndex);
-									let middleText = nodeText.substring(startIndex, startIndex + text.length);
-									let afterText = nodeText.substring(startIndex + text.length);
-									
-									let newHTML = beforeText + "<b>" + middleText + "</b>" + afterText;
-									let tempSpan = document.createElement('span');
-									tempSpan.innerHTML = newHTML;
-									
-									node.replaceWith(...tempSpan.childNodes);
-							}
-					}
+        const translationModal = document.getElementById('translation-modal');
+        let currentSentenceToTranslate = '';
 
-					// Function to process a node and its children
-					function processNode(node, words) {
-							if (node.nodeType === Node.TEXT_NODE) {
-									// Wrap each word in the text node
-									words.forEach(word => wrapText(node, word));
-							} else if (node.nodeType === Node.ELEMENT_NODE) {
-									// Recursively process child nodes
-									Array.from(node.childNodes).forEach(child => processNode(child, words));
-							}
-					}
+        function showTranslationExercise() {
+            const apiKey = localStorage.getItem('openai_api_key');
+            translationExercisePending = true;
+            currentTranslationAttempts = 0;
+            
+            const noApiKeyMessage = document.getElementById('no-api-key-message');
+            const translationExercise = document.getElementById('translation-exercise');
+            
+            if (!apiKey) {
+                noApiKeyMessage.style.display = 'block';
+                translationExercise.style.display = 'none';
+            } else {
+                noApiKeyMessage.style.display = 'none';
+                translationExercise.style.display = 'block';
+                document.querySelector('.french-sentence').textContent = currentSentenceToTranslate;
+                document.getElementById('translation-input').value = '';
+                document.querySelector('.error-message').style.display = 'none';
+                document.querySelector('.attempts-remaining').textContent = 
+                    `Attempts remaining: ${MAX_TRANSLATION_ATTEMPTS}`;
+            }
+            
+            translationModal.style.display = 'block';
+        }
 
-					// Start processing the temporary element
-					processNode(tempElement, words);
+        async function skipTranslation() {
+            // Increase difficulty slightly for correct translations
+            let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
+            currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
+            localStorage.setItem('userDifficulty', currentDifficulty.toString());
+            document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
+                    
+            translationExercisePending = false;
+            translationModal.style.display = 'none';
+        }
 
-					return tempElement.innerHTML;
-			}
+        async function checkTranslation() {
+            const translationInput = document.getElementById('translation-input').value.trim();
+            const apiKey = localStorage.getItem('openai_api_key');
+            
+            if (!translationInput) {
+                document.querySelector('.error-message').textContent = 'Please enter a translation';
+                document.querySelector('.error-message').style.display = 'block';
+                return;
+            }
 
-      function sendTranslationToServer() {
-          startEllipsisAnimation('ellipsis-2');
-          document.getElementById('loading-div-2').style.display = 'block';
-
-          console.log('Sending translation to server');
-          let user_translation = document.getElementById('user-translation').value;
-          let original_sentence = document.getElementById('final-sentence');
-          console.log(original_sentence);
-          original_sentence = original_sentence.textContent;
-          console.log(original_sentence);
-          if (original_sentence === null || original_sentence === undefined || original_sentence === "") {
-            console.log("Original sentence is empty");
-            return;
-          }
-          original_sentence = original_sentence.trim().replace(/\s+/g, ' ');;
-          console.log("Original sentence: " + original_sentence);
-          const responseMessage = document.getElementById('responseMessage');
-
-          console.log('Sending translation to server');
-          fetch('/evaluate_translation', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ 
-                original_sentence: original_sentence,
-                user_translation: user_translation
-              })
-          })
-          .then(response => response.json())
-          .then(data => {
-              stopEllipsisAnimation('ellipsis-2');
-              document.getElementById('loading-div-2').style.display = 'none';
-              
-              // Remove all instances of <u> and </u> from the original sentence
-              let original_sentence = document.getElementById('original-sentence-text').innerHTML;
-              original_sentence = original_sentence.replace(/<u>/g, "");
-              original_sentence = original_sentence.replace(/<\/u>/g, "");
-              document.getElementById('original-sentence-text').innerHTML = original_sentence;
-
-              console.log('Success evaluating translation:', data);
-              // Case data into int
-              num = parseInt(data['is_correct']);
-              console.log("num=" + num);
-              if ((num == 0) && (user_translation != "")) {
-                // Bold the occurrances of data['wrong_words'] 
-                let wrong_words = data['wrong_words'];
-                // Iterate through each wrong word and bold it
-                wrong_words.forEach(function(word) {
-                  let original_sentence = document.getElementById('original-sentence-text').innerHTML;
-                  let bolded_word = "<u>" + word + "</u>";
-                  // Only match when there a word boundary
-
-                  // If the word contains a space in it...
-                  if (hasWhiteSpace(word)) {
-                    // naively replace all instances of the word with the bolded word
-                    console.log("Word contains a space. Replacing all instances of " + word + " with " + bolded_word + " in the sentence.");
-                    original_sentence = boldSequence(original_sentence, word)
-										console.log("New HTML is", original_sentence)
-                    document.getElementById('original-sentence-text').innerHTML = original_sentence;
-                  } else {
-                    // otherwise check for word boundaries
-                    console.log("Running naive check for word boundaries")
-                    let re = new RegExp("\\b" + word + "\\b", "g");
-                    original_sentence = original_sentence.replace(re, bolded_word);
-
-                    document.getElementById('original-sentence-text').innerHTML = original_sentence;
-                  }
+            try {
+                const response = await fetch('/score_translation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        original: currentSentenceToTranslate,
+                        translation: translationInput,
+                        api_key: apiKey
+                    })
                 });
 
-                console.log('Wrong words: ' + wrong_words);
-                let original_sentence = document.getElementById('original-sentence-text').innerHTML;
-                console.log('Original sentence: ' + original_sentence);
-              }
+                const data = await response.json();
+                
+                if (data.isCorrect) {
+                    // Increase difficulty slightly for correct translations
+                    let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
+                    currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
+                    localStorage.setItem('userDifficulty', currentDifficulty.toString());
+                    document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
+                    
+                    translationExercisePending = false;
+                    translationModal.style.display = 'none';
+                } else {
+                    currentTranslationAttempts++;
+                    if (currentTranslationAttempts >= MAX_TRANSLATION_ATTEMPTS) {
+                        // Decrease difficulty for failed translations
+                        let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
+                        currentDifficulty = Math.max(MIN_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP);
+                        localStorage.setItem('userDifficulty', currentDifficulty.toString());
+                        document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
+                        
+                        translationExercisePending = false;
+                        translationModal.style.display = 'none';
+                    } else {
+                        document.querySelector('.error-message').textContent = 
+                            'Translation needs improvement. Please try again.';
+                        document.querySelector('.error-message').style.display = 'block';
+                        document.querySelector('.attempts-remaining').textContent = 
+                            `Attempts remaining: ${MAX_TRANSLATION_ATTEMPTS - currentTranslationAttempts}`;
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking translation:', error);
+                document.querySelector('.error-message').textContent = 
+                    'Error checking translation. Please try again.';
+                document.querySelector('.error-message').style.display = 'block';
+            }
+        }
 
-              // Make sure the user didn't enter a blank "" response
-              if ((num == 1) && (user_translation != "")) {
-                  updatePageAfterTranslationCorrect();
-              } else {
-                  alert("Translation is incorrect");
-              }
-          })
-          .catch(error => {
-              stopEllipsisAnimation('ellipsis-2');
-              document.getElementById('loading-div-2').style.display= 'none';
-              console.error('Error:', error);
-          });
-      };
+        translationModal.addEventListener('click', function(e) {
+            if (e.target === translationModal) {
+                translationModal.style.display = 'none';
+            }
+        });
+
+        const contentDiv = document.getElementById('sentence-display');
+
+        document.addEventListener('keydown', async function(event) {
+            if (event.code === 'Space') {
+                const translationModalVisible = translationModal.style.display === 'block';
+                const settingsModalVisible = settingsModal.style.display === 'block';
+
+                // If any modal is visible, let space bar still work
+                if (translationModalVisible || settingsModalVisible) {
+                    return;
+                }
+
+                event.preventDefault();  // Prevent page scrolling
+                
+                await handleSpacePress();
+            }
+        });
+
+    async function handleSpacePress() {
+            // If there's a pending translation exercise, show the modal again
+            if (translationExercisePending) {
+                showTranslationExercise();
+                return;
+            }
+
+            const currentStoryFile = localStorage.getItem('currentStoryFile');
+            let currentSentenceIndex = parseInt(localStorage.getItem('currentSentenceIndex'));
+
+            const response = await fetch('/get-sentence', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                    currentStoryFile === '' ?
+                    { 
+                        needNewStory: true,
+                        userDifficulty: parseFloat(localStorage.getItem('userDifficulty')),
+                        seenStories: JSON.parse(localStorage.getItem('seenStories'))
+                    } :
+                    { 
+                        storyFile: currentStoryFile,
+                        sentenceIndex: currentSentenceIndex
+                    }
+                )
+            });
+            console.log("current sentence index is", currentSentenceIndex)
+
+            const data = await response.json();
+            currentSentenceToTranslate = data.sentence;
+
+            if (data.isLastSentence) {
+                // Update seen stories list
+                const seenStories = JSON.parse(localStorage.getItem('seenStories'));
+                seenStories.push(currentStoryFile);
+                localStorage.setItem('seenStories', JSON.stringify(seenStories));
+                document.getElementById('stories-seen-count').textContent = seenStories.length;
+                
+                // Log seen stories to console
+                console.log('Stories seen so far:', seenStories);
+                
+                // Reset for next story
+                localStorage.setItem('currentStoryFile', '');
+                localStorage.setItem('currentSentenceIndex', '0');
+                contentDiv.textContent = 'press spacebar to begin';
+                document.getElementById('story-difficulty').textContent = '-';
+                return;
+            }
+
+            // Handle sentence display
+            sentence_html = '<p>' + data.sentence +  '  <span class="sentence-difficulty">' + 'Difficulty: ' + parseFloat(data.sentenceDifficulty).toFixed(2) + '</span>' + '</p>';
+            if (currentSentenceIndex == 0) {
+                // This is the first sentence of a new story
+                console.log("First sentence")
+                contentDiv.innerHTML = sentence_html;
+                // Update story difficulty display if provided
+                if (data.storyDifficulty !== undefined) {
+                    document.getElementById('story-difficulty').textContent = 
+                        parseFloat(data.storyDifficulty).toFixed(2);
+                }
+            } else {
+                // Append the new sentence to existing story
+                // Show every sentence on a different line using distinct <p> tags
+                contentDiv.innerHTML += sentence_html
+                
+                // Check if we need to show translation exercise
+                if (currentSentenceIndex > 1 && (currentSentenceIndex - 1) % TRANSLATION_FREQUENCY === 0) {
+                    showTranslationExercise();
+                }
+            }
+
+            // Update client-side storage
+            if (data.storyFile) {
+                localStorage.setItem('currentStoryFile', data.storyFile);
+                localStorage.setItem('currentSentenceIndex', '1');
+            } else {
+                localStorage.setItem('currentSentenceIndex', (currentSentenceIndex + 1).toString());
+            }
+    }
+
+    async function showStoryList() {
+        const storyListModal = document.getElementById('story-list-modal');
+        const tbody = document.getElementById('story-list-tbody');
+        
+        try {
+            const response = await fetch('/story_list');
+            const stories = await response.json();
+            stories.sort((a, b) => a.difficulty - b.difficulty);
+            
+            tbody.innerHTML = '';
+            
+            stories.forEach((story, index) => {
+                // Create main story row
+                const mainRow = document.createElement('tr');
+                mainRow.innerHTML = `
+                    <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                        <button class="expand-btn" data-story="${story.title}" style="background: none; border: none; cursor: pointer; padding: 0 8px; color: black;">
+                            ▶  
+                        </button>
+                        ${story.title}.json
+                    </td>
+                    <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">
+                        ${parseFloat(story.difficulty).toFixed(2)}
+                    </td>
+                    <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right;">
+                        ${story.num_sentences} sentences
+                    </td>
+                `;
+                tbody.appendChild(mainRow);
+
+                // Create hidden sentences row
+                const sentencesRow = document.createElement('tr');
+                sentencesRow.className = `sentences-row story-${story.title}`;
+                sentencesRow.style.display = 'none';
+                sentencesRow.style.backgroundColor = '#f8f9fa';
+                
+                // Create a container for sentences with max height and scrolling
+                sentencesRow.innerHTML = `
+                    <td colspan="3" style="padding: 16px;">
+                        <div style="max-height: 200px; overflow-y: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding: 8px; text-align: left; position: sticky; top: 0; background: #f8f9fa;">Sentence</th>
+                                        <th style="padding: 8px; text-align: center; width: 100px; position: sticky; top: 0; background: #f8f9fa;">Difficulty</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sentences-${story.title}">
+                                    <tr>
+                                        <td colspan="2" style="text-align: center; padding: 20px;">
+                                            Loading sentences...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(sentencesRow);
+
+                // Add click handler for expand button
+                mainRow.querySelector('.expand-btn').addEventListener('click', async function(e) {
+                    const storyTitle = this.dataset.story;
+                    const sentencesRow = document.querySelector(`.story-${storyTitle}`);
+                    const button = this;
+                    // Make text color in button black not white
+                    button.style.color = 'black';
+                    
+                    // Toggle visibility
+                    if (sentencesRow.style.display === 'none') {
+                        sentencesRow.style.display = 'table-row';
+                        // Search and replace side arrow with down arrow
+                        button.textContent = button.textContent.replace('▶', '▼');
+
+                        
+                        // Load sentences if not already loaded
+                        const sentencesTbody = document.getElementById(`sentences-${storyTitle}`);
+                        if (sentencesTbody.firstElementChild.textContent.includes('Loading')) {
+                            try {
+                                const response = await fetch(`/story_list/${storyTitle}`);
+                                const storyDetails = await response.json();
+                                
+                                sentencesTbody.innerHTML = storyDetails.sentences.map((sentence, idx) => `
+                                    <tr>
+                                        <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                                            ${idx + 1}. ${sentence.text}
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">
+                                            ${parseFloat(sentence.difficulty).toFixed(2)}
+                                        </td>
+                                    </tr>
+                                `).join('');
+                            } catch (error) {
+                                sentencesTbody.innerHTML = `
+                                    <tr>
+                                        <td colspan="2" style="text-align: center; padding: 20px; color: red;">
+                                            Error loading sentences
+                                        </td>
+                                    </tr>
+                                `;
+                            }
+                        }
+                    } else {
+                        sentencesRow.style.display = 'none';
+                        button.textContent = button.textContent.replace('▼', '▶');
+                    }
+                });
+            });
+            
+            storyListModal.style.display = 'block';
+        } catch (error) {
+            console.error('Error fetching story list:', error);
+        }
+    }
+
+    // Add click listener to close modal when clicking outside
+    document.getElementById('story-list-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
     </script>
 </body>
 </html>
-
