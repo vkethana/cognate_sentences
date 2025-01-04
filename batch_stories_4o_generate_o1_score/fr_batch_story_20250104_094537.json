@@ -1,0 +1,248 @@
+{
+  "story": [
+    {
+      "sentence": "Un jeune artiste Parisien découvre un tableau magnifique dans une galerie célèbre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "tableau",
+        "magnifique",
+        "galerie",
+        "célèbre"
+      ],
+      "generation_reasoning": "This sentence uses several cognates like 'artiste', 'tableau', 'magnifique', 'galerie', and 'célèbre'. These words make the main concept clear to an English speaker.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognate words like 'artiste', 'Parisien', 'découvre', 'tableau', 'magnifique', 'galerie', and 'célèbre'. However, words like 'jeune' (young) and connectors such as 'dans une' (in a) might be missed by an English speaker, leading to missing important details. Therefore, the sentence is mostly understandable but some nuances might be lost.",
+      "actual_cognate_words": [
+        "artiste",
+        "Parisien",
+        "découvre",
+        "tableau",
+        "magnifique",
+        "galerie",
+        "célèbre"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "L'artiste est inspiré par les couleurs vives et décide de créer une œuvre similaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "inspiré",
+        "décide",
+        "couleurs",
+        "similaire"
+      ],
+      "generation_reasoning": "This sentence continues by explaining the artist's reaction and motivation. Words like 'artiste', 'inspiré', and 'décide' are cognates, making the main idea accessible.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Almost all words are cognates except basic connectors. An English speaker would understand the main idea without missing significant details, as the sentence uses cognates like 'artiste', 'inspiré', 'couleurs', 'décide', 'créer', 'œuvre', and 'similaire'.",
+      "actual_cognate_words": [
+        "artiste",
+        "inspiré",
+        "couleurs",
+        "décide",
+        "créer",
+        "œuvre",
+        "similaire"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "Il utilise des techniques modernes et ajoute un élément unique à la composition.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "techniques",
+        "modernes",
+        "ajoute",
+        "élément",
+        "composition"
+      ],
+      "generation_reasoning": "This follows logically with the artist starting the process of creation, using familiar terms such as 'techniques', 'modernes', 'ajoute', 'élément', and 'composition'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words such as 'utilise', 'techniques', 'modernes', 'ajoute', 'élément', 'unique', and 'composition'. Any missed words are basic connectors, so an English speaker can fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "utilise",
+        "techniques",
+        "modernes",
+        "ajoute",
+        "élément",
+        "unique",
+        "composition"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "Le résultat surprend ses amis et ils applaudissent son talent indéniable.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "résultat",
+        "surprend",
+        "applaudissent",
+        "talent",
+        "indéniable"
+      ],
+      "generation_reasoning": "The story progresses by describing the audience's reaction to his work. Words like 'résultat', 'surprend', 'applaudissent', 'talent', and 'indéniable' make this understandable.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates like 'résultat', 'surprend', 'amis', 'applaudissent', 'talent', and 'indéniable'. Missing words are basic connectors and do not change the overall meaning. The sentence is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "résultat",
+        "surprend",
+        "amis",
+        "applaudissent",
+        "talent",
+        "indéniable"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "Un collectionneur offre une fortune pour acheter l'œuvre remarquable.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "collectionneur",
+        "offre",
+        "fortune",
+        "acheter",
+        "remarquable"
+      ],
+      "generation_reasoning": "This builds on the success by introducing a collectionneur's offer, using cognates like 'collectionneur', 'offre', 'fortune', 'acheter', and 'remarquable'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While there are several cognate words such as 'collectionneur', 'offre', 'fortune', 'œuvre', and 'remarquable', the key verb 'acheter' (to buy) is not a cognate and may be missed by an English speaker, leading to missing important details.",
+      "actual_cognate_words": [
+        "collectionneur",
+        "offre",
+        "fortune",
+        "œuvre",
+        "remarquable"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "L'artiste hésite mais accepte finalement l'offre incroyable.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "hésite",
+        "accepte",
+        "offre",
+        "incroyable"
+      ],
+      "generation_reasoning": "Continues by portraying the artist's internal conflict and eventual decision. 'Hésite', 'accepte', and 'incroyable' are key cognates here.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence includes cognate words like 'artiste', 'hésite', 'accepte', 'finalement', 'offre', and 'incroyable'. The meaning is clear, and any missed words are basic connectors that do not change the overall understanding.",
+      "actual_cognate_words": [
+        "artiste",
+        "hésite",
+        "accepte",
+        "finalement",
+        "offre",
+        "incroyable"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "Il décide de voyager aux États-Unis pour explorer de nouvelles inspirations.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "décide",
+        "voyager",
+        "États-Unis",
+        "explorer",
+        "inspirations"
+      ],
+      "generation_reasoning": "This follows with the artist's next decision to seek more creative input. Words like 'décide', 'voyager', 'États-Unis', 'explorer', and 'inspirations' guide understanding.",
+      "actual_score": 3,
+      "actual_score_reasoning": "This sentence contains many cognate words such as 'décide', 'voyager', 'États-Unis', 'explorer', 'nouvelles', and 'inspirations'. Basic connectors might be missed, but they do not alter the main idea, making the sentence fully understandable through cognates.",
+      "actual_cognate_words": [
+        "décide",
+        "voyager",
+        "États-Unis",
+        "explorer",
+        "nouvelles",
+        "inspirations"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "À New York, il rencontre plusieurs artistes célèbres et partage ses idées innovantes.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "rencontre",
+        "plusieurs",
+        "artistes",
+        "célèbres",
+        "partage",
+        "idées",
+        "innovantes"
+      ],
+      "generation_reasoning": "The narrative continues with his arrival and interactions in New York, using cognates like 'rencontre', 'plusieurs', 'artistes', 'célèbres', 'partage', 'idées', and 'innovantes'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While there are cognate words like 'rencontre', 'artistes', 'célèbres', 'partage', 'idées', and 'innovantes', key words like 'rencontre' (meets) and 'plusieurs' (several) might not be recognized by an English speaker, leading to missing important details.",
+      "actual_cognate_words": [
+        "New York",
+        "rencontre",
+        "artistes",
+        "célèbres",
+        "partage",
+        "idées",
+        "innovantes"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "Son style unique attire l'attention des critiques renommés.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "style",
+        "unique",
+        "attire",
+        "attention",
+        "critiques",
+        "renommés"
+      ],
+      "generation_reasoning": "This sentence builds on his successful interactions and growing reputation. Words such as 'style', 'unique', 'attire', 'attention', and 'critiques' are accessible.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The word 'attire' might be misleading as a false cognate; in English, 'attire' refers to clothing, but in French, it means 'attracts'. This could cause confusion, leading an English speaker to misunderstand the sentence and miss important details.",
+      "actual_cognate_words": [
+        "style",
+        "unique",
+        "attire",
+        "attention",
+        "critiques",
+        "renommés"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    },
+    {
+      "sentence": "Finalement, il réalise que son art peut inspirer le monde entier.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "réalise",
+        "art",
+        "inspirer",
+        "monde",
+        "entier"
+      ],
+      "generation_reasoning": "The story concludes with his realization about the impact of his art. The explanation is assisted by terms like 'finalement', 'réalise', 'art', 'inspirer', and 'monde'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is almost entirely composed of cognate words like 'Finalement', 'réalise', 'art', 'peut', 'inspirer', 'monde', and 'entier'. An English speaker would understand the main idea without missing significant details.",
+      "actual_cognate_words": [
+        "Finalement",
+        "réalise",
+        "art",
+        "peut",
+        "inspirer",
+        "monde",
+        "entier"
+      ],
+      "generation_timestamp": "2025-01-04T09:46:32.331934"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.6,
+    "creation_date": "2025-01-04T09:45:37.357415",
+    "sentence_count": 10
+  }
+}

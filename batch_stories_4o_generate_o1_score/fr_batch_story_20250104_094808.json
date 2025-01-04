@@ -1,0 +1,241 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur organise une grande conférence internationale à Paris.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "organise",
+        "conférence",
+        "internationale",
+        "Paris"
+      ],
+      "generation_reasoning": "The sentence uses 80-90% cognates such as 'professeur', 'organise', 'conférence', 'internationale', and 'Paris' which are easily understandable to English speakers. It sets the scene for the narrative.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words that are easily recognizable to English speakers. The main idea is clear, and any missed words do not change the overall meaning.",
+      "actual_cognate_words": [
+        "professeur",
+        "organise",
+        "grande",
+        "conférence",
+        "internationale",
+        "Paris"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Des spécialistes du monde entier arrivent pour l'événement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "spécialistes",
+        "monde",
+        "entier",
+        "arrivent",
+        "événement"
+      ],
+      "generation_reasoning": "The sentence includes cognates 'spécialistes', 'monde', 'entier', 'arrivent', and 'événement', maintaining the high cognate density. It continues the narrative by explaining who is attending the conference set in the previous sentence.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed of cognate words that make the main idea understandable. An English speaker would grasp that specialists from around the world are arriving for the event.",
+      "actual_cognate_words": [
+        "spécialistes",
+        "monde",
+        "entier",
+        "arrivent",
+        "événement"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Le thème principal de cette conférence est le changement climatique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "thème",
+        "principal",
+        "conférence",
+        "changement",
+        "climatique"
+      ],
+      "generation_reasoning": "This sentence uses 80-90% cognates like 'thème', 'principal', 'conférence', 'changement', and 'climatique', making it understandable to English speakers. It introduces the topic of the conference that was previously mentioned in the story.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognates that convey the main idea clearly to an English speaker. The meaning is fully understandable through the cognate words.",
+      "actual_cognate_words": [
+        "thème",
+        "principal",
+        "conférence",
+        "changement",
+        "climatique"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Un célèbre climatologue présente une nouvelle étude sur les glaciers.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "célèbre",
+        "climatologue",
+        "présente",
+        "nouvelle",
+        "étude"
+      ],
+      "generation_reasoning": "The sentence continues the narrative with the presentation of a study, using cognates 'célèbre', 'climatologue', 'présente', 'nouvelle', and 'étude', making it easy for English speakers to follow.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates, and the sentence is understandable to an English speaker. They would understand that a famous climatologist is presenting a new study on glaciers.",
+      "actual_cognate_words": [
+        "célèbre",
+        "climatologue",
+        "présente",
+        "nouvelle",
+        "étude",
+        "glaciers"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Les résultats montrent une accélération significative de la fonte des glaciers.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "résultats",
+        "montrent",
+        "accélération",
+        "significative",
+        "fonte",
+        "glaciers"
+      ],
+      "generation_reasoning": "Featuring the cognates 'résultats', 'montrent', 'accélération', 'significative', 'fonte', and 'glaciers', this sentence is very accessible while furthering the story with the study's results.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognates, making it understandable. An English speaker can comprehend that the results show a significant acceleration of glacier melting.",
+      "actual_cognate_words": [
+        "résultats",
+        "montrent",
+        "accélération",
+        "significative",
+        "fonte",
+        "glaciers"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Le public exprime son inquiétude face à cette révélation inquiétante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "public",
+        "exprime",
+        "inquiétude",
+        "face",
+        "révélation",
+        "inquiétante"
+      ],
+      "generation_reasoning": "The sentence maintains the difficulty level with cognates 'public', 'exprime', 'inquiétude', 'face', 'révélation', and 'inquiétante'. It follows logically as the audience reacts to the alarming results.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is mostly composed of cognates, allowing an English speaker to understand that the public expresses concern over this worrisome revelation.",
+      "actual_cognate_words": [
+        "public",
+        "exprime",
+        "inquiétude",
+        "révélation",
+        "inquiétante"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Un débat intense s'ensuit entre les experts présents à la conférence.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "intense",
+        "débat",
+        "experts",
+        "présents",
+        "conférence"
+      ],
+      "generation_reasoning": "This continues the logical progression with an 'intense', 'débat' among 'experts', as previously they were reacting with concern. The use of 80-90% cognates like 'intense', 'débat', 'experts', 'présents' ensures difficulty level 3.",
+      "actual_score": 3,
+      "actual_score_reasoning": "This sentence includes cognates that make the meaning clear. An intense debate ensues between the experts present at the conference.",
+      "actual_cognate_words": [
+        "débat",
+        "intense",
+        "experts",
+        "présents",
+        "conférence"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Les solutions proposées incluent des initiatives globales pour réduire l'impact.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "solutions",
+        "proposées",
+        "incluent",
+        "initiatives",
+        "globales",
+        "réduire",
+        "impact"
+      ],
+      "generation_reasoning": "The sentence maintains the narrative that discusses solutions after the debate, with cognates 'solutions', 'proposées', 'incluent', 'initiatives', 'globales', 'réduire', and 'impact', which are clear to English speakers.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is filled with cognates, making it fully understandable. The proposed solutions include global initiatives to reduce the impact.",
+      "actual_cognate_words": [
+        "solutions",
+        "proposées",
+        "incluent",
+        "initiatives",
+        "globales",
+        "réduire",
+        "impact"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Le professeur clôt la conférence avec un appel urgent à l'action.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "clôt",
+        "conférence",
+        "appel",
+        "urgent",
+        "action"
+      ],
+      "generation_reasoning": "With a logical close to the conference mentioned in the first sentence, this uses cognates 'professeur', 'clôt', 'conférence', 'appel', and 'urgent', ensuring English speakers can follow the plot.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While the sentence has many cognates, the word \"clôt\" may not be recognized as \"close\" by an English speaker, potentially altering the understanding of the sentence. Therefore, important details might be missed.",
+      "actual_cognate_words": [
+        "professeur",
+        "clôt",
+        "conférence",
+        "appel",
+        "urgent",
+        "action"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    },
+    {
+      "sentence": "Les participants repartent inspirés pour faire une différence dans le monde.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "participants",
+        "inspirés",
+        "différence",
+        "monde"
+      ],
+      "generation_reasoning": "Concluding the narrative, the sentence uses cognate-heavy words 'participants', 'inspirés', 'différence', and 'monde', showing the impact of the conference. It effectively closes the story arc.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Although the sentence contains several cognates, the word \"repartent\" may not be understood as \"depart\" or \"leave\" by an English speaker, leading to a subtle change in meaning.",
+      "actual_cognate_words": [
+        "participants",
+        "inspirés",
+        "faire",
+        "différence",
+        "monde"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:48.965576"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.8,
+    "creation_date": "2025-01-04T09:48:08.281871",
+    "sentence_count": 10
+  }
+}

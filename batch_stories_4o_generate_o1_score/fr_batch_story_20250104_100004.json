@@ -1,0 +1,228 @@
+{
+  "story": [
+    {
+      "sentence": "Un célèbre artiste moderne organise une exposition à Paris.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "moderne",
+        "organise",
+        "exposition",
+        "Paris"
+      ],
+      "generation_reasoning": "This sentence is mostly cognates, allowing an English speaker to understand that a famous modern artist is organizing an exhibition in Paris.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains mostly cognate words that allow an English speaker to fully understand the meaning. Non-cognate words are basic connectors that do not hinder comprehension.",
+      "actual_cognate_words": [
+        "célèbre",
+        "artiste",
+        "moderne",
+        "organise",
+        "exposition",
+        "Paris"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "La galerie présente des œuvres innovantes et fascinantes.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "galerie",
+        "présente",
+        "œuvres",
+        "innovantes",
+        "fascinantes"
+      ],
+      "generation_reasoning": "The sentence follows the narrative by describing the gallery's presentation at the exhibition and continues to use cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Many cognate words allow an English speaker to understand that the gallery presents innovative and fascinating something. However, the word 'œuvres' may not be recognized, causing a loss of important detail.",
+      "actual_cognate_words": [
+        "galerie",
+        "présente",
+        "innovantes",
+        "fascinantes"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "Les visiteurs admirent particulièrement une sculpture célèbre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "visiteurs",
+        "admirent",
+        "particulièrement",
+        "sculpture",
+        "célèbre"
+      ],
+      "generation_reasoning": "It logically follows the previous sentence by describing the visitors' admiration for a particular sculpture, using easily recognizable cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognate words that allow an English speaker to fully understand the meaning. Non-cognate words are basic connectors that don't impede comprehension.",
+      "actual_cognate_words": [
+        "visiteurs",
+        "admirent",
+        "particulièrement",
+        "sculpture",
+        "célèbre"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "Un critique d'art célèbre écrit un article positif.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "critique",
+        "art",
+        "célèbre",
+        "écrit",
+        "article",
+        "positif"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by mentioning a famous art critic's positive review, with clear cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words that help understand the main idea about a famous art critic and a positive article. However, the verb 'écrit' may not be recognized, causing a loss of important action in the sentence.",
+      "actual_cognate_words": [
+        "critique",
+        "art",
+        "célèbre",
+        "article",
+        "positif"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "L'article inspire beaucoup de nouveaux visiteurs.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "Article",
+        "inspire",
+        "beaucoup",
+        "nouveaux",
+        "visiteurs"
+      ],
+      "generation_reasoning": "Following from the previous sentence, this explains the result of the article, with clear cognates used.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words that convey the idea that the article inspires visitors. However, words like 'beaucoup' and 'nouveaux' may not be understood, leading to missing details about 'many new' visitors.",
+      "actual_cognate_words": [
+        "article",
+        "inspire",
+        "visiteurs"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "L'artiste décide d'organiser des conférences sur son art.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "décide",
+        "organiser",
+        "conférences",
+        "art"
+      ],
+      "generation_reasoning": "The sentence logically follows by detailing the artist's decision to organize conferences, with clear cognate use.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words that allow understanding that the artist decides to organize conferences related to art. However, words like 'sur' and 'son' may not be recognized, leading to missing that the conferences are on his art.",
+      "actual_cognate_words": [
+        "artiste",
+        "décide",
+        "organiser",
+        "conférences",
+        "art"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "Les conférences suscitent un grand intérêt académique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "conférences",
+        "suscitent",
+        "grand",
+        "intérêt",
+        "académique"
+      ],
+      "generation_reasoning": "Continuing from the conferences, it describes the resulting academic interest, maintaining a high use of cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words indicating that the conferences have great academic interest. However, the verb 'suscitent' may not be understood, leading to missing the action that the conferences generate interest.",
+      "actual_cognate_words": [
+        "conférences",
+        "grand",
+        "intérêt",
+        "académique"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "Un célèbre professeur soutient les théories de l'artiste.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "célèbre",
+        "professeur",
+        "soutient",
+        "théories",
+        "artiste"
+      ],
+      "generation_reasoning": "This sentence builds on the academic interest by mentioning a famous professor's support, with high cognate usage.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognate words that allow an English speaker to fully understand that a famous professor supports the artist's theories. Non-cognate words are basic connectors.",
+      "actual_cognate_words": [
+        "célèbre",
+        "professeur",
+        "soutient",
+        "théories",
+        "artiste"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "Une collaboration internationale se développe grâce à cet événement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "collaboration",
+        "internationale",
+        "développe",
+        "grâce",
+        "événement"
+      ],
+      "generation_reasoning": "The narrative expands with an international collaboration due to the event, using mostly cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words that convey that an international collaboration develops due to this event. However, 'grâce à' may not be understood, leading to missing the causal relationship ('thanks to').",
+      "actual_cognate_words": [
+        "collaboration",
+        "internationale",
+        "développe",
+        "événement"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    },
+    {
+      "sentence": "Finalement, l'artiste gagne une reconnaissance mondiale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "artiste",
+        "gagne",
+        "reconnaissance",
+        "mondiale"
+      ],
+      "generation_reasoning": "The story concludes with the artist gaining worldwide recognition, using predominantly cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognate words that allow an English speaker to fully understand the meaning. Non-cognate words are minimal and do not impede comprehension.",
+      "actual_cognate_words": [
+        "finalement",
+        "artiste",
+        "gagne",
+        "reconnaissance",
+        "mondiale"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:51.185415"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.4,
+    "creation_date": "2025-01-04T10:00:04.802903",
+    "sentence_count": 10
+  }
+}

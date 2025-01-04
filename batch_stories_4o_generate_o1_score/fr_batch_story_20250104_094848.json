@@ -1,0 +1,243 @@
+{
+  "story": [
+    {
+      "sentence": "Un artiste célèbre a décidé d'exposer ses peintures dans une galerie prestigieuse.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "artiste",
+        "célèbre",
+        "décidé",
+        "exposer",
+        "galerie"
+      ],
+      "generation_reasoning": "The sentence contains cognates like 'artiste', 'célèbre', 'décidé', 'exposer', and 'galerie prestigieuse', which describe the main event and setting but maintain some complexity due to structure and specific non-cognate words like 'peintures.' The use of many cognates fulfills the criteria of main concept clarity with subtle nuances missed.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains mostly cognate words, and an English speaker could understand the main idea fully through the cognates. Non-cognate words are basic connectors and do not change the meaning.",
+      "actual_cognate_words": [
+        "artiste",
+        "célèbre",
+        "décidé",
+        "exposer",
+        "peintures",
+        "galerie",
+        "prestigieuse"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "La galerie est située au cœur de la ville, attirant de nombreux visiteurs curieux.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "galerie",
+        "située",
+        "ville",
+        "attirant",
+        "visiteurs"
+      ],
+      "generation_reasoning": "The follow-up sentence uses cognates 'galerie', 'située', 'ville', 'attirant', and 'visiteurs' to further detail the setting and its effect. However, words like 'cœur' and 'curieux' add nuance, meeting the difficulty criteria. This continues the narrative by describing the gallery's location and impact.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words except for basic connectors. An English speaker could fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "galerie",
+        "située",
+        "cœur",
+        "ville",
+        "attirant",
+        "nombreux",
+        "visiteurs",
+        "curieux"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "Parmi les œuvres exposées, une peinture mystérieuse captivait l'attention.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "œuvres",
+        "exposées",
+        "peinture",
+        "mystérieuse",
+        "attention"
+      ],
+      "generation_reasoning": "Cognates such as 'œuvres', 'exposées', 'peinture', 'mystérieuse', and 'attention' elucidate the focus of interest within the gallery. Non-cognate use with 'captivait' introduces subtlety without altering main comprehension, while linking back to the previous sentence's theme of gallery and art.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognate words, but the word 'Parmi' ('among') is not a cognate and may cause an English speaker to miss important context, affecting their understanding.",
+      "actual_cognate_words": [
+        "œuvres",
+        "exposées",
+        "peinture",
+        "mystérieuse",
+        "captivait",
+        "attention"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "Cette peinture représentait un paysage étrange sous un ciel tourmenté.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "peinture",
+        "représentait",
+        "paysage",
+        "ciel"
+      ],
+      "generation_reasoning": "The sentence uses cognates like 'peinture', 'représentait', 'paysage', and 'ciel' to describe the artwork's content, maintaining story progression by explaining why the painting is mysterious. Words such as 'étrange' and 'tourmenté' add nuance, appropriate for the difficulty level.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While the sentence contains many cognate words, the word 'sous' ('under') is not a cognate and its absence could lead to misunderstanding the relationship between the landscape and the sky.",
+      "actual_cognate_words": [
+        "peinture",
+        "représentait",
+        "paysage",
+        "étrange",
+        "ciel",
+        "tourmenté"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "De nombreux critiques d'art débattaient de son interprétation.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "critiques",
+        "d'art",
+        "interprétation"
+      ],
+      "generation_reasoning": "The cognates 'critiques', 'd'art', and 'interprétation' reveal the subject and context of discussion, integrated into the storyline by illustrating reactions to the painting. The inclusion of 'débattaient' introduces an element of complexity, keeping in line with level 2 difficulty.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words, but missing words like 'de' and 'son' ('of' and 'his') may cause an English speaker to miss important details about whose interpretation was being debated.",
+      "actual_cognate_words": [
+        "nombreux",
+        "critiques",
+        "art",
+        "débattaient",
+        "interprétation"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "Certains pensaient qu'il s'agissait d'un rêve, tandis que d'autres voyaient une scène apocalyptique.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "pensaient",
+        "rêve",
+        "scène",
+        "apocalyptique"
+      ],
+      "generation_reasoning": "Cognates such as 'pensaient', 'rêve', and 'scène apocalyptique' reveal differing opinions about the painting. The expressions 's'agissait' and 'tandis que' introduce subtleties in perspectives and contrast, maintaining flow by showing varying interpretations, in line with difficulty level 2.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While containing cognate words, crucial connectors like 'qu'il s'agissait' and 'tandis que' are not cognates and may cause an English speaker to miss important contrasts in the sentence.",
+      "actual_cognate_words": [
+        "certains",
+        "pensaient",
+        "rêve",
+        "tandis",
+        "voyaient",
+        "scène",
+        "apocalyptique"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "L'artiste restait silencieux, observant les réactions avec intérêt.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "artiste",
+        "silencieux",
+        "observant",
+        "réactions",
+        "intérêt"
+      ],
+      "generation_reasoning": "Using cognates 'artiste', 'silencieux', 'observant', and 'réactions', the sentence describes the artist's behavior amidst the discourse, connected to prior debates. Words such as 'restait' and 'intérêt' invite additional subtlety, enhancing the difficulty level.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words, and an English speaker can fully understand the meaning through cognates.",
+      "actual_cognate_words": [
+        "artiste",
+        "restait",
+        "silencieux",
+        "observant",
+        "réactions",
+        "intérêt"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "Finalement, il a choisi de révéler l'inspiration derrière son œuvre.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "révéler",
+        "inspiration",
+        "derrière",
+        "œuvre"
+      ],
+      "generation_reasoning": "Cognates 'révéler', 'inspiration', 'derrière', and 'œuvre' detail an important narrative turning point, where the artist divulges some insight. Non-cognate usage in 'finalement' and sentence structure adds subtle nuances that fit the difficulty criteria while advancing the plot.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words. An English speaker can fully understand the sentence through the cognates.",
+      "actual_cognate_words": [
+        "finalement",
+        "choisi",
+        "révéler",
+        "inspiration",
+        "derrière",
+        "œuvre"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "Il expliqua que le paysage était inspiré par ses souvenirs d'enfance passés au bord de la mer.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "paysage",
+        "inspiré",
+        "souvenirs",
+        "enfance",
+        "passés",
+        "mer"
+      ],
+      "generation_reasoning": "This sentence uses cognates 'paysage', 'inspiré', 'souvenirs', 'enfance', 'passés', and 'mer' to share the artist’s personal connection to the painting's theme, tying into the story development. Words like 'expliqua' provide a deeper layer, ensuring the targeted difficulty level.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While the sentence contains many cognate words, missing words like 'ses', 'd'enfance', and 'au' may lead an English speaker to miss important details, affecting understanding.",
+      "actual_cognate_words": [
+        "expliqua",
+        "paysage",
+        "inspiré",
+        "souvenirs",
+        "enfance",
+        "passés",
+        "bord",
+        "mer"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    },
+    {
+      "sentence": "Les visiteurs, touchés par cette révélation, ont vu la peinture sous un nouveau jour.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "visiteurs",
+        "touchés",
+        "révélation",
+        "peinture",
+        "nouveau",
+        "jour"
+      ],
+      "generation_reasoning": "Cognates 'visiteurs', 'touchés', 'révélation', 'peinture', and 'nouveau jour' describe the impact of the artist's disclosure, enhancing narrative coherence by illustrating transformed perspectives. Non-cognate expressions supply subtlety while closing the narrative, consistent with difficulty level.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words, but missing words like 'sous' and the idiomatic expression 'sous un nouveau jour' may cause an English speaker to misunderstand the intended meaning.",
+      "actual_cognate_words": [
+        "visiteurs",
+        "touchés",
+        "révélation",
+        "peinture",
+        "nouveau",
+        "jour"
+      ],
+      "generation_timestamp": "2025-01-04T09:49:50.607016"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 2.4,
+    "creation_date": "2025-01-04T09:48:48.967426",
+    "sentence_count": 10
+  }
+}

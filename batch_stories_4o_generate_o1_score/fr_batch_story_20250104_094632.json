@@ -1,0 +1,229 @@
+{
+  "story": [
+    {
+      "sentence": "Un directeur célèbre annonce une nouvelle production cinématographique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "directeur",
+        "célèbre",
+        "annonce",
+        "nouvelle",
+        "production",
+        "cinématographique"
+      ],
+      "generation_reasoning": "The sentence is fully understandable to an English speaker due to the use of cognates like 'directeur', 'célèbre', 'annonce', 'nouvelle', and 'production'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains numerous cognates that convey the complete meaning without significant gaps. An English speaker can understand that a famous director announces a new cinematographic production.",
+      "actual_cognate_words": [
+        "directeur",
+        "célèbre",
+        "annonce",
+        "nouvelle",
+        "production",
+        "cinématographique"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Le projet international réunit des acteurs talentueux d'Europe et d'Amérique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "projet",
+        "international",
+        "acteurs",
+        "talentueux",
+        "Europe",
+        "Amérique"
+      ],
+      "generation_reasoning": "The sentence contains many cognates such as 'projet', 'international', 'acteurs', 'talentueux', 'Europe', and 'Amérique'. It logically follows from the previous sentence by elaborating on the production.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, the verb 'réunit' may not be understood by an English speaker. Therefore, they might miss that the project brings together actors, leading to incomplete understanding.",
+      "actual_cognate_words": [
+        "projet",
+        "international",
+        "acteurs",
+        "talentueux",
+        "Europe",
+        "Amérique"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Les acteurs visitent des lieux historiques pour s'inspirer.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "acteurs",
+        "visiter",
+        "lieux",
+        "historiques"
+      ],
+      "generation_reasoning": "Cognates like 'acteurs', 'visiter', 'lieux', and 'historiques' make the sentence readily understandable. It continues from the previous sentence by describing the actors' activities.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognates like 'acteurs', 'visitent', and 'historiques'. However, 's'inspirer' may not be understood by an English speaker, so they might miss that the actors are seeking inspiration.",
+      "actual_cognate_words": [
+        "acteurs",
+        "visitent",
+        "lieux",
+        "historiques",
+        "pour"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Une scène dramatique est filmée dans un château célèbre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scène",
+        "dramatique",
+        "filmée",
+        "château",
+        "célèbre"
+      ],
+      "generation_reasoning": "Includes words like 'scène', 'dramatique', 'filmée', 'château', and 'célèbre', which are cognates. This continues the narrative by focusing on a specific part of the film production.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognates throughout, and an English speaker can understand the full meaning that a dramatic scene is filmed in a famous castle.",
+      "actual_cognate_words": [
+        "scène",
+        "dramatique",
+        "est",
+        "filmée",
+        "château",
+        "célèbre"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Le réalisateur organise une conférence de presse mondiale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "réalisateur",
+        "organise",
+        "conférence",
+        "presse",
+        "mondiale"
+      ],
+      "generation_reasoning": "Cognates such as 'réalisateur', 'organise', 'conférence', 'presse', and 'mondiale' ensure comprehension. The sentence develops the story by describing a related event in the film's promotion.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, 'réalisateur' may not be recognized by an English speaker, causing them to miss that it's the director who is organizing the world press conference.",
+      "actual_cognate_words": [
+        "organise",
+        "conférence",
+        "presse",
+        "mondiale"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Les journalistes posent des questions sur le budget et le casting.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "journalistes",
+        "questions",
+        "budget",
+        "casting"
+      ],
+      "generation_reasoning": "Utilizes cognates 'journalistes', 'questions', 'budget', and 'casting'. Continues the narrative by outlining what happens at the press conference.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Key words like 'journalistes', 'questions', 'budget', and 'casting' are cognates. However, 'posent' may not be understood, so the full action of journalists asking questions might be missed.",
+      "actual_cognate_words": [
+        "journalistes",
+        "questions",
+        "budget",
+        "casting"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "La critique initiale des médias est extrêmement positive.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "critique",
+        "initiale",
+        "médias",
+        "extrêmement",
+        "positive"
+      ],
+      "generation_reasoning": "Cognates such as 'critique', 'initiale', 'médias', 'extrêmement', and 'positive' aid understanding. This follows the story by showing the media's reaction to the film.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed of cognates that convey the full meaning, allowing an English speaker to understand that the initial media critique is extremely positive.",
+      "actual_cognate_words": [
+        "critique",
+        "initiale",
+        "médias",
+        "est",
+        "extrêmement",
+        "positive"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "La distribution du film commence dans les salles françaises.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "distribution",
+        "film",
+        "commence",
+        "françaises"
+      ],
+      "generation_reasoning": "Comprised of cognates 'distribution', 'film', 'commence', and 'françaises', making it clear. It logically follows the narrative progression with the film's release.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While key words are cognates, 'salles' may not be understood by an English speaker, leading them to miss that the film is starting in French theaters.",
+      "actual_cognate_words": [
+        "distribution",
+        "film",
+        "commence",
+        "françaises"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Les spectateurs apprécient les performances exceptionnelles.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "spectateurs",
+        "apprécient",
+        "performances",
+        "exceptionnelles"
+      ],
+      "generation_reasoning": "Cognates like 'spectateurs', 'apprécient', and 'performances', provide understanding. Continues the narrative by describing audience reactions.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognates throughout, and an English speaker can understand that the spectators appreciate the exceptional performances.",
+      "actual_cognate_words": [
+        "spectateurs",
+        "apprécient",
+        "performances",
+        "exceptionnelles"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    },
+    {
+      "sentence": "Le film devient rapidement un succès mondial.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "film",
+        "devient",
+        "rapidement",
+        "succès",
+        "mondial"
+      ],
+      "generation_reasoning": "The sentence has cognates such as 'film', 'devient', 'rapidement', 'succès', 'mondial', which clarify its meaning. It concludes the narrative with the film's success.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses several cognates, allowing an English speaker to understand that the film quickly becomes a global success.",
+      "actual_cognate_words": [
+        "film",
+        "devient",
+        "rapidement",
+        "succès",
+        "mondial"
+      ],
+      "generation_timestamp": "2025-01-04T09:47:21.617141"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.5,
+    "creation_date": "2025-01-04T09:46:32.333799",
+    "sentence_count": 10
+  }
+}

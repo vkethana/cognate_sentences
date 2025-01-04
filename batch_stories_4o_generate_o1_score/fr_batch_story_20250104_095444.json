@@ -1,0 +1,239 @@
+{
+  "story": [
+    {
+      "sentence": "Le président décide de voyager à Londres pour une conférence important.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "décide",
+        "voyager",
+        "conférence",
+        "important"
+      ],
+      "generation_reasoning": "The sentence uses cognates such as 'président', 'décide', 'voyager', 'conférence', and 'important', which are mostly understandable to English speakers.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, and an English speaker can fully understand the meaning through the cognates.",
+      "actual_cognate_words": [
+        "président",
+        "décide",
+        "voyager",
+        "Londres",
+        "conférence",
+        "important"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "À Londres, le président rencontre des diplomates pour discuter un projet économique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "rencontre",
+        "diplomates",
+        "discuter",
+        "projet",
+        "économique"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by placing the president in London for discussions. Cognates like 'rencontre', 'diplomates', 'discuter', 'projet', and 'économique' make the meaning clear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates, and any missed words do not change the meaning.",
+      "actual_cognate_words": [
+        "Londres",
+        "président",
+        "rencontre",
+        "diplomates",
+        "discuter",
+        "projet",
+        "économique"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "Les discussions sont très complexes et les diplomates partagent leurs idées.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "discussions",
+        "complexes",
+        "diplomates",
+        "partagent",
+        "idées"
+      ],
+      "generation_reasoning": "The sentence builds on the previous discussion theme. Cognates like 'discussions', 'complexes', 'diplomates', 'partagent', and 'idées' are easily understood.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, the verb 'partagent' (share) is not a cognate, and an English speaker might miss that the diplomats are sharing their ideas, altering the understanding.",
+      "actual_cognate_words": [
+        "discussions",
+        "sont",
+        "très",
+        "complexes",
+        "diplomates",
+        "idées"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "Le président propose un plan stratégique pour améliorer la situation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "propose",
+        "plan",
+        "stratégique",
+        "améliorer",
+        "situation"
+      ],
+      "generation_reasoning": "This continues the story with the president taking action by proposing a plan. Cognates like 'président', 'propose', 'plan', 'stratégique', 'améliorer', and 'situation' convey clear meaning.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The word 'améliorer' (improve) is not a cognate, so an English speaker might not grasp that the plan is to improve the situation, missing an important detail.",
+      "actual_cognate_words": [
+        "président",
+        "propose",
+        "plan",
+        "stratégique",
+        "situation"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "Les diplomates acceptent l'idée et décident de collaborer activement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "diplomates",
+        "acceptent",
+        "idée",
+        "décident",
+        "collaborer"
+      ],
+      "generation_reasoning": "This follows logically with the diplomats' acceptance and collaboration. Cognates like 'diplomates', 'acceptent', 'idée', 'décident', and 'collaborer' ensure the sentence is clear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognates throughout, and an English speaker can understand the meaning without missing important details.",
+      "actual_cognate_words": [
+        "diplomates",
+        "acceptent",
+        "idée",
+        "décident",
+        "collaborer",
+        "activement"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "L'équipe organise une série de réunions pour finaliser les détails.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "équipe",
+        "organise",
+        "série",
+        "réunions",
+        "finaliser",
+        "détails"
+      ],
+      "generation_reasoning": "This sentence shows the progression of the plan with meetings to finalize details. Cognates like 'équipe', 'organise', 'série', 'réunions', 'finaliser', and 'détails' are clear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognates, allowing full comprehension by an English speaker.",
+      "actual_cognate_words": [
+        "équipe",
+        "organise",
+        "série",
+        "réunions",
+        "finaliser",
+        "détails"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "Pendant les réunions, les experts analysent les données économiques.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "réunions",
+        "experts",
+        "analysent",
+        "données",
+        "économiques"
+      ],
+      "generation_reasoning": "The story continues with experts analyzing data, a logical extension of meetings to finalize the plan. Cognates like 'réunions', 'experts', 'analysent', 'données', and 'économiques' are straightforward.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The word 'Pendant' (during) is not a cognate, so an English speaker might miss when the experts are analyzing the data, affecting the context.",
+      "actual_cognate_words": [
+        "réunions",
+        "experts",
+        "analysent",
+        "données",
+        "économiques"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "Le président est satisfait des progrès et exprime sa gratitude.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "satisfait",
+        "progrès",
+        "exprime",
+        "gratitude"
+      ],
+      "generation_reasoning": "This follows by showing the president's satisfaction with the progress. Cognates like 'président', 'satisfait', 'progrès', and 'exprime', 'gratitude' make the meaning transparent.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, 'satisfait' (satisfied) and 'exprime' (expresses) may not be immediately recognized, causing subtle changes in understanding.",
+      "actual_cognate_words": [
+        "président",
+        "satisfait",
+        "progrès",
+        "exprime",
+        "gratitude"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "La conférence se termine avec une déclaration positive pour l'avenir.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "conférence",
+        "termine",
+        "déclaration",
+        "positive",
+        "avenir"
+      ],
+      "generation_reasoning": "The conference ends on a positive note, a logical conclusion to previous events. Cognates like 'conférence', 'termine', 'déclaration', 'positive', and 'avenir' convey the end of the narrative.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The phrase 'se termine' (ends) is not a cognate, so an English speaker might miss that the conference is ending, altering the meaning.",
+      "actual_cognate_words": [
+        "conférence",
+        "déclaration",
+        "positive",
+        "avenir"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    },
+    {
+      "sentence": "Les médias rapportent le succès de la conférence internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "médias",
+        "rapportent",
+        "succès",
+        "conférence",
+        "internationale"
+      ],
+      "generation_reasoning": "This final sentence reflects the media's reporting on the conference's success, tying back to the initial setting. Cognates like 'médias', 'rapportent', 'succès', 'conférence', and 'internationale' ensure comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence consists of cognates, enabling full understanding by an English speaker.",
+      "actual_cognate_words": [
+        "médias",
+        "rapportent",
+        "succès",
+        "conférence",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-04T09:55:30.220961"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.5,
+    "creation_date": "2025-01-04T09:54:44.552557",
+    "sentence_count": 10
+  }
+}

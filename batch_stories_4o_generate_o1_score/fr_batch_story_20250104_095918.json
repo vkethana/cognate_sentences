@@ -1,0 +1,127 @@
+{
+  "story": [
+    {
+      "sentence": "Lila marche dans la forêt.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The sentence uses basic vocabulary with no cognates, making it unintelligible to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'forêt' (forest), allowing an English speaker to guess it's about a forest, but lacks other cognates to convey the main idea.",
+      "actual_cognate_words": [
+        "forêt"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Elle trouve un chaton perdu.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence follows Lila's walk by introducing a new character, a lost kitten, using basic French vocabulary that is not recognizable to English speakers.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognate words; English speakers would not understand the sentence.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Lila décide d'aider le chaton.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The narrative continues as Lila takes action to help the kitten. The vocabulary remains simple and non-intelligible to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'décide' (decides), which may let an English speaker know that Lila decides something, but missing key details to understand the full meaning.",
+      "actual_cognate_words": [
+        "décide"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Elle cherche la maison du chaton.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Lila's intention to find the kitten's home is expressed without cognates, maintaining the unintelligibility for English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates 'cherche' (search) and 'maison' (mansion/house), suggesting someone is searching for a house, but missing important details, so the main idea is unclear.",
+      "actual_cognate_words": [
+        "cherche",
+        "maison"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Lila demande aux voisins.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The story progresses as Lila seeks help from neighbors, using vocabulary that would not be understood by English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'demande' (demands), but key words like 'voisins' are unintelligible, and the actual meaning ('asks the neighbors') is lost.",
+      "actual_cognate_words": [
+        "demande"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Les voisins ne connaissent pas le chaton.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The narrative complicates when neighbors don't recognize the kitten. The sentence remains unintelligible due to the lack of cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognate words; the sentence is unintelligible to an English speaker.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Lila décide de garder le chaton.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Lila's decision to keep the kitten is logically consistent with previous sentences and uses vocabulary that is not understandable to English speakers.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates 'décide' (decides) and 'garder' (guard), allowing an English speaker to guess that Lila decides to guard something, but the nuance that 'garder' means 'to keep' is missed, changing the meaning.",
+      "actual_cognate_words": [
+        "décide",
+        "garder"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Elle appelle le chaton Minou.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The story continues with Lila naming the kitten, but remains unintelligible due to the use of common French vocabulary and no cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognate words; the sentence is unintelligible to an English speaker.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Lila et Minou deviennent amis.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence develops the relationship between Lila and the kitten, maintaining the narrative flow without using recognizably English words.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains the cognate 'amis' (friends), allowing an English speaker to guess that Lila and Minou become friends, but may miss the verb 'deviennent' (become), affecting understanding of how they became friends.",
+      "actual_cognate_words": [
+        "amis"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    },
+    {
+      "sentence": "Ils jouent ensemble tous les jours.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The story concludes with Lila and Minou playing together daily. The sentence uses basic French vocabulary that is not intelligible to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'ensemble' (ensemble), but without sufficient context or additional cognates, an English speaker would not grasp the main idea.",
+      "actual_cognate_words": [
+        "ensemble"
+      ],
+      "generation_timestamp": "2025-01-04T10:00:04.801409"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 0.9,
+    "creation_date": "2025-01-04T09:59:18.903272",
+    "sentence_count": 10
+  }
+}

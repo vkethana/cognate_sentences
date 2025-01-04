@@ -1,0 +1,173 @@
+{
+  "story": [
+    {
+      "sentence": "La soirée commença avec une musique douce.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "musique"
+      ],
+      "generation_reasoning": "The sentence includes 'musique' which is a cognate, indicating a topic related to music or events, but the actions 'commença' and 'douce' are not cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates like 'commença' (commenced) and 'musique' (music), but key words like 'soirée' (evening/party) and 'douce' (soft) might be unintelligible to an English speaker, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "commença",
+        "musique"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Les invités admiraient les lumières scintillantes.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "lumières"
+      ],
+      "generation_reasoning": "The sentence contains the cognate 'lumières', suggesting something to do with lights but 'invités' and 'scintillantes' are non-cognate, preserving some mystery. It follows the story by describing the setting of the event.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates. An English speaker might understand 'invités' (invited/guests), 'admiraient' (admired), 'lumières' (lights), and 'scintillantes' (scintillating), making the sentence fully understandable.",
+      "actual_cognate_words": [
+        "invités",
+        "admiraient",
+        "lumières",
+        "scintillantes"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Un jeune homme s'approcha de la scène pour chanter.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "scène"
+      ],
+      "generation_reasoning": "The sentence uses 'scène' as a cognate, continuing the event narrative with a performance aspect, but the actions include non-cognates. It naturally follows as participants interact with the event.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates like 'approcha' (approached), 'scène' (scene/stage), and 'chanter' (chant/sing). However, missing words like 'jeune' (young) and 'homme' (man) may cause an English speaker to miss important details.",
+      "actual_cognate_words": [
+        "approcha",
+        "scène",
+        "chanter"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Son talent surprit tout le monde.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "talent"
+      ],
+      "generation_reasoning": "The word 'talent' is a cognate suggesting a performance aspect, while 'surprit' and 'monde' are not, making the results less predictable. It follows as a reaction to the young man's performance.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates: 'talent' (talent), 'surprit' (surprised), 'monde' (world). An English speaker would grasp the main idea without significant loss of meaning.",
+      "actual_cognate_words": [
+        "talent",
+        "surprit",
+        "monde"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Le public applaudit avec enthousiasme.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "public"
+      ],
+      "generation_reasoning": "The cognate 'public' helps identify the setting, with 'applaudit' suggesting a positive response yet being less transparent without deeper context. This shows audience's approval post-performance.",
+      "actual_score": 3,
+      "actual_score_reasoning": "All main words are cognates: 'public' (public), 'applaudit' (applauded), 'enthousiasme' (enthusiasm). An English speaker would understand the sentence fully.",
+      "actual_cognate_words": [
+        "public",
+        "applaudit",
+        "enthousiasme"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Un invité mystère offrit un cadeau.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "mystère"
+      ],
+      "generation_reasoning": "'Mystère' is a cognate giving clues about mystery, while 'offrit' and 'cadeau' are not as easily understood without context. This introduces intrigue as another action after the applause.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates like 'invité' (invited/guest), 'mystère' (mystery), and 'offrit' (offered). However, 'cadeau' (gift) might be unintelligible, leading to major gaps in understanding.",
+      "actual_cognate_words": [
+        "invité",
+        "mystère",
+        "offrit"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Les gens étaient curieux du contenu du paquet.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "curieux"
+      ],
+      "generation_reasoning": "The sentence's 'curieux' provides insight into people's reactions but 'contenu' and 'paquet' enhance the mystery. This follows the mysterious offering by creating suspense.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates: 'étaient' (were), 'curieux' (curious), 'contenu' (content), 'paquet' (packet). An English speaker might understand the main idea.",
+      "actual_cognate_words": [
+        "étaient",
+        "curieux",
+        "contenu",
+        "paquet"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Le cadeau contenait un message secret.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "cadeau",
+        "message"
+      ],
+      "generation_reasoning": "Including 'cadeau' again relates back to the prior gift, providing partial context through the cognate 'message', but retaining key narrative elements as secrets.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like 'contenait' (contained), 'message' (message), 'secret' (secret), but 'cadeau' (gift) may be unintelligible, causing a missing detail about what contained the message.",
+      "actual_cognate_words": [
+        "contenait",
+        "message",
+        "secret"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Une aventure incroyable était sur le point de commencer.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "aventure",
+        "incroyable"
+      ],
+      "generation_reasoning": "The sentence moves the narrative into new territory by using 'aventure', understandable in part, paired with 'incroyable' to set tone, while keeping suspense about upcoming actions.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Cognates like 'aventure' (adventure), 'incroyable' (incredible), 'point' (point), and 'commencer' (commence) make the sentence fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "aventure",
+        "incroyable",
+        "point",
+        "commencer"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    },
+    {
+      "sentence": "Tous attendirent avec impatience le lendemain.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "impatience"
+      ],
+      "generation_reasoning": "The use of the cognate 'impatience' gives a basic understanding of eagerness among non-cognate terms like 'attendirent', which suggests anticipation, closing by weighting the story edge on the next day's promises.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains very few cognates, with 'impatience' (impatience) being the main one. Key words like 'attendirent' (waited) and 'lendemain' (next day) are likely unintelligible, leaving major gaps in meaning.",
+      "actual_cognate_words": [
+        "impatience"
+      ],
+      "generation_timestamp": "2025-01-04T09:54:44.550945"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 2.2,
+    "creation_date": "2025-01-04T09:53:56.194472",
+    "sentence_count": 10
+  }
+}

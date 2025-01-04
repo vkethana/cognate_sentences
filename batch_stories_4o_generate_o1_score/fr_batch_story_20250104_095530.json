@@ -1,0 +1,241 @@
+{
+  "story": [
+    {
+      "sentence": "Une réunion importante commence dans le bureau central.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "réunion",
+        "importante",
+        "commence",
+        "bureau",
+        "central"
+      ],
+      "generation_reasoning": "The sentence is easily understandable with cognates like 'réunion', 'importante', 'commence', 'bureau', and 'central'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words except for basic connectors. An English speaker could understand it as 'An important meeting commences in the central bureau/office.' There are no major words missing that would change the meaning.",
+      "actual_cognate_words": [
+        "réunion",
+        "importante",
+        "commence",
+        "bureau",
+        "central"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "Le directeur présente un projet innovant pour le développement économique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "directeur",
+        "présente",
+        "projet",
+        "innovant",
+        "développement",
+        "économique"
+      ],
+      "generation_reasoning": "The sentence follows the previous one by describing the content of the meeting. Cognates like 'directeur', 'présente', 'projet', 'innovant', 'développement', and 'économique' make it understandable.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates, and the sentence is fully understandable through them. An English speaker would understand it as 'The director presents an innovative project for economic development.'",
+      "actual_cognate_words": [
+        "directeur",
+        "présente",
+        "projet",
+        "innovant",
+        "développement",
+        "économique"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "Les collègues applaudissent l'idée et reconnaissent son potentiel énorme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "collègues",
+        "applaudissent",
+        "idée",
+        "reconnaissent",
+        "potentiel",
+        "énorme"
+      ],
+      "generation_reasoning": "This continues by showing the team's reaction with cognates 'collègues', 'applaudissent', 'idée', 'reconnaissent', 'potentiel', and 'énorme'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses mostly cognate words, and an English speaker could understand it as 'The colleagues applaud the idea and recognize its enormous potential.' Missing words are basic connectors that do not change the meaning.",
+      "actual_cognate_words": [
+        "collègues",
+        "applaudissent",
+        "idée",
+        "reconnaissent",
+        "potentiel",
+        "énorme"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "La presse couvre immédiatement l'événement avec enthousiasme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "presse",
+        "couvre",
+        "immédiatement",
+        "événement",
+        "enthousiasme"
+      ],
+      "generation_reasoning": "This sentence follows by showing media involvement, with cognates like 'presse', 'couvre', 'immédiatement', 'événement', and 'enthousiasme'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates, and an English speaker could understand it as 'The press covers immediately the event with enthusiasm.' The verb 'couvre' is similar to 'cover,' aiding comprehension.",
+      "actual_cognate_words": [
+        "presse",
+        "couvre",
+        "immédiatement",
+        "événement",
+        "enthousiasme"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "Le public montre un intérêt croissant pour ce plan ambitieux.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "public",
+        "montre",
+        "intérêt",
+        "croissant",
+        "plan",
+        "ambitieux"
+      ],
+      "generation_reasoning": "The story progresses as the public reacts, with cognates 'public', 'montre', 'intérêt', 'croissant', 'plan', and 'ambitieux'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While there are several cognate words, key verbs like 'montre' (shows) and adjectives like 'croissant' (growing) may not be understood, leading to missed nuances. An English speaker might get 'The public ____ an interest ____ for this ambitious plan.' Missing words affect understanding.",
+      "actual_cognate_words": [
+        "public",
+        "intérêt",
+        "plan",
+        "ambitieux"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "Un partenariat entre entreprises locales et internationales est signé.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "partenariat",
+        "entreprises",
+        "locales",
+        "internationales",
+        "signé"
+      ],
+      "generation_reasoning": "Progression indicates a formal alliance, with cognates 'partenariat', 'entreprises', 'locales', 'internationales', 'signé'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence consists of cognate words and basic connectors. An English speaker would understand it as 'A partnership between local and international enterprises is signed.' No significant words are missing.",
+      "actual_cognate_words": [
+        "partenariat",
+        "entreprises",
+        "locales",
+        "internationales",
+        "signé"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "Les investissements sont considérables et stimulent l'économie régionale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "investissements",
+        "considérables",
+        "stimulant",
+        "économie",
+        "régionale"
+      ],
+      "generation_reasoning": "Continues the narrative by detailing economic effects, using cognates 'investissements', 'considérables', 'stimulant', 'économie', 'régionale'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Mostly cognate words are used. An English speaker would understand it as 'The investments are considerable and stimulate the regional economy.' The meaning is clear.",
+      "actual_cognate_words": [
+        "investissements",
+        "considérables",
+        "stimulent",
+        "économie",
+        "régionale"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "Les résultats positifs inspirent d'autres projets similaires dans le pays.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "résultats",
+        "positifs",
+        "inspirent",
+        "projets",
+        "similaires",
+        "pays"
+      ],
+      "generation_reasoning": "The impact spreads to further initiatives, highlighted by cognates 'résultats', 'positifs', 'inspirent', 'projets', 'similaires', 'pays'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many cognate words are present, words like 'd'autres' (others) and 'dans' (in) may not be known, potentially changing the meaning. An English speaker might miss that the positive results inspire other similar projects in the country.",
+      "actual_cognate_words": [
+        "résultats",
+        "positifs",
+        "inspirent",
+        "projets",
+        "similaires"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "La prospérité générale transforme la qualité de vie des citoyens.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "prospérité",
+        "générale",
+        "transforme",
+        "qualité",
+        "vie",
+        "citoyens"
+      ],
+      "generation_reasoning": "Describes the broad societal effects of earlier actions using cognates 'prospérité', 'générale', 'transforme', 'qualité', 'vie', 'citoyens'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognates, but the word 'vie' (life) may not be recognized, leading to a slight change in meaning. An English speaker might understand 'The general prosperity transforms the quality of ___ of the citizens.'",
+      "actual_cognate_words": [
+        "prospérité",
+        "générale",
+        "transforme",
+        "qualité",
+        "citoyens"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    },
+    {
+      "sentence": "En conclusion, la vision du directeur change l'histoire économique nationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "conclusion",
+        "vision",
+        "directeur",
+        "change",
+        "histoire",
+        "économique",
+        "nationale"
+      ],
+      "generation_reasoning": "Wraps up the narrative summarizing impact, with cognates 'conclusion', 'vision', 'directeur', 'change', 'histoire', 'économique', 'nationale'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is comprised almost entirely of cognate words. An English speaker would understand it as 'In conclusion, the vision of the director changes the national economic history.' It is fully understandable.",
+      "actual_cognate_words": [
+        "en conclusion",
+        "vision",
+        "directeur",
+        "change",
+        "histoire",
+        "économique",
+        "nationale"
+      ],
+      "generation_timestamp": "2025-01-04T09:56:28.515480"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.7,
+    "creation_date": "2025-01-04T09:55:30.221686",
+    "sentence_count": 10
+  }
+}

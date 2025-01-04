@@ -1,0 +1,144 @@
+{
+  "story": [
+    {
+      "sentence": "Luc se réveille tôt le matin.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence uses simple native vocabulary, which makes it unintelligible to English speakers. It introduces the character and the start of his day.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The only cognate is 'Luc', a name. The rest of the sentence contains words that are not cognates, making it unintelligible to an English speaker.",
+      "actual_cognate_words": [
+        "Luc"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Il sort de son lit et va à la cuisine.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Follows from Luc waking up and continues his actions. Simple vocabulary is used, making it unintelligible to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'cuisine'. An English speaker might guess it involves the kitchen but would miss key verbs and objects.",
+      "actual_cognate_words": [
+        "cuisine"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Il prépare un café chaud.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Describes Luc's morning routine involving making coffee. The sentence maintains a level of unintelligibility due to the native vocabulary used.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates 'prépare' and 'café'. An English speaker might understand 'He prepares a coffee' but miss 'chaud' (hot), altering the full meaning.",
+      "actual_cognate_words": [
+        "prépare",
+        "café"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Ensuite, il met des céréales dans un bol.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Continuing Luc's breakfast preparations, this sentence remains at difficulty level 0 through the use of basic, non-cognate vocabulary.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates 'céréales' and 'bol'. An English speaker might grasp 'He puts cereals in a bowl' but might miss the connector 'Ensuite' (Then).",
+      "actual_cognate_words": [
+        "céréales",
+        "bol"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Luc s'assoit à la table pour manger.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence logically follows as Luc sits down to eat, maintaining unintelligibility by using basic native language.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate 'table'. An English speaker might identify 'Luc' and 'table' but miss important verbs, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "Luc",
+        "table"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Après le petit-déjeuner, il lit un livre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Follows the completion of breakfast, transitioning to Luc reading. The sentence uses simple vocabulary to stay unintelligible to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates 'Après', 'lit', and 'livre'. An English speaker might guess 'After something, he lit a livre', misunderstanding 'lit' (reads) and 'livre' (book).",
+      "actual_cognate_words": [
+        "Après",
+        "lit",
+        "livre"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "L'histoire dans le livre est captivante.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Describes Luc's engagement with the book, remaining at difficulty level 0 by using basic French vocabulary.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates. An English speaker might understand 'The history in the livre is captivating' but might not know 'livre' means 'book'.",
+      "actual_cognate_words": [
+        "histoire",
+        "livre",
+        "est",
+        "captivante"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Luc sourit en tournant les pages.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Naturally follows the captivating story by describing Luc's reaction, staying unintelligible with the use of basic French terms.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate 'pages'. An English speaker might recognize 'pages' but miss the verbs, leading to major gaps in understanding.",
+      "actual_cognate_words": [
+        "Luc",
+        "pages"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Il décide de finir le chapitre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Luc's decision to continue reading is the logical next step in the narrative. The simple vocabulary used keeps it at difficulty 0.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains cognates 'décide', 'finir', 'chapitre'. An English speaker would understand 'He decides to finish the chapter' fully through cognates.",
+      "actual_cognate_words": [
+        "décide",
+        "finir",
+        "chapitre"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    },
+    {
+      "sentence": "Heureux, il ferme le livre et se lève.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Concludes the activity of reading and describes Luc's content state without using any cognates, maintaining unintelligibility.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates 'livre' and 'ferme'. An English speaker might not grasp 'Heureux' (Happy) and 'se lève' (gets up), missing important details.",
+      "actual_cognate_words": [
+        "livre",
+        "ferme",
+        "et"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:46.646478"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 1.4,
+    "creation_date": "2025-01-04T09:57:07.329562",
+    "sentence_count": 10
+  }
+}

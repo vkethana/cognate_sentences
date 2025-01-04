@@ -1,0 +1,133 @@
+{
+  "story": [
+    {
+      "sentence": "Lucie se réveille tôt.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The sentence uses basic vocabulary that is completely unintelligible to English speakers without any cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognate words that an English speaker would recognize; the sentence is unintelligible.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Elle prépare un petit-déjeuner.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This continues the narrative by describing Lucie's morning routine after her waking up. It uses basic nouns and verbs.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'prépare', but key words 'petit-déjeuner' are unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "prépare"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Elle mange des croissants.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The narrative continues with Lucie consuming breakfast. The word 'croissants' could be inferred by an English speaker due to cultural knowledge, but it is not a true cognate.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'croissants', but key verbs like 'mange' are not cognates, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "croissants"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Puis, elle lit un livre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The story continues as Lucie moves on with her morning activities by reading. The vocabulary remains simple and unintelligible.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognate words that an English speaker would recognize; the sentence is unintelligible.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Le livre parle d'un voyage.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence introduces the content of the book Lucie is reading, continuing the narrative. The vocabulary remains at a basic level.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'voyage', but lacks understanding of the rest of the sentence, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "voyage"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Lucie rêve de visiter la France.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Lucie's interest in the book prompts her own dreams, providing a transition to this sentence. The vocabulary remains simple and unintelligible.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates like 'visiter' and 'France', allowing an English speaker to grasp the main idea, but missing words like 'rêve' may lead to missing nuances.",
+      "actual_cognate_words": [
+        "Lucie",
+        "visiter",
+        "France"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Elle décide de planifier un voyage.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The narrative progresses with Lucie making a decision prompted by her interest, keeping vocabulary simple and non-cognate.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words, making the sentence fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "décide",
+        "planifier",
+        "voyage"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Elle cherche des billets d'avion.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Lucie's plan leads her to action, searching for plane tickets, still with basic vocabulary and no cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'avion', but key words like 'cherche' and 'billets' are not cognates, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "avion"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Elle trouve une bonne offre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence follows from the previous by showing Lucie's success in finding tickets, continuing the story and maintaining difficulty level.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'offre', but key verbs like 'trouve' are not cognates, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "offre"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    },
+    {
+      "sentence": "Lucie est très contente.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Concluding the narrative, this sentence expresses Lucie's emotion after her successful planning. It remains devoid of cognates, keeping the difficulty low.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains multiple cognates like 'très' and 'contente', making the sentence fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "Lucie",
+        "très",
+        "contente"
+      ],
+      "generation_timestamp": "2025-01-04T09:57:07.327973"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 1.3,
+    "creation_date": "2025-01-04T09:56:28.516288",
+    "sentence_count": 10
+  }
+}

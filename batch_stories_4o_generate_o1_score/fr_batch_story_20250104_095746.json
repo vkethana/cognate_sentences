@@ -1,0 +1,233 @@
+{
+  "story": [
+    {
+      "sentence": "Un jour, le professeur célèbre décide de visiter le musée célèbre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "célèbre",
+        "décide",
+        "visiter",
+        "musée"
+      ],
+      "generation_reasoning": "This sentence is fully understandable due to the use of cognates. Words like 'professeur', 'célèbre', and 'musée' are easily recognizable to English speakers.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words except for basic connectors. An English speaker can understand that the famous professor decides to visit the famous museum. The missed words are basic connectors and do not change the overall meaning.",
+      "actual_cognate_words": [
+        "professeur",
+        "célèbre",
+        "décide",
+        "visiter",
+        "musée",
+        "célèbre"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Dans le musée, il observe une collection d'art impressionnante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "musée",
+        "observe",
+        "collection",
+        "art",
+        "impressionnante"
+      ],
+      "generation_reasoning": "The sentence continues the story by describing the professor’s actions in the museum and uses several cognates, making it understandable.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that in the museum, he observes an impressive art collection.",
+      "actual_cognate_words": [
+        "musée",
+        "observe",
+        "collection",
+        "art",
+        "impressionnante"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Une peinture particulière capte l'attention du professeur.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "peinture",
+        "particulière",
+        "capte",
+        "attention",
+        "professeur"
+      ],
+      "generation_reasoning": "The story progresses with the professor's attention focusing on a painting. The cognates effectively convey the message.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that a particular painting captures the professor's attention.",
+      "actual_cognate_words": [
+        "peinture",
+        "particulière",
+        "capte",
+        "attention",
+        "professeur"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Cette peinture montre une scène du fameux carnaval à Venise.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "peinture",
+        "scène",
+        "fameux",
+        "carnaval",
+        "Venise"
+      ],
+      "generation_reasoning": "Furthering the narrative, the sentence reveals the painting's subject. The use of cognates makes the sentence clear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that this painting shows a scene from the famous carnival in Venice.",
+      "actual_cognate_words": [
+        "peinture",
+        "montre",
+        "scène",
+        "fameux",
+        "carnaval",
+        "Venise"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Le professeur décide de faire des recherches sur l'artiste.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "décide",
+        "faire",
+        "recherches",
+        "artiste"
+      ],
+      "generation_reasoning": "The professor's decision to research continues the storyline, with cognates ensuring comprehension.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words such as 'professeur', 'décide', 'recherches', and 'artiste'. However, an English speaker might miss the verb 'faire' ('to do'), which is not a cognate, leading to missing important details about the action being taken.",
+      "actual_cognate_words": [
+        "professeur",
+        "décide",
+        "recherches",
+        "artiste"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Il découvre que l'artiste était un innovateur du style moderne.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découvre",
+        "artiste",
+        "innovateur",
+        "style",
+        "moderne"
+      ],
+      "generation_reasoning": "The discovery about the artist's influence advances the plot. The sentence is rich in easily recognized cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that he discovers that the artist was an innovator of modern style.",
+      "actual_cognate_words": [
+        "découvre",
+        "artiste",
+        "innovateur",
+        "style",
+        "moderne"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Le professeur écrit un article pour un journal académique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "écrit",
+        "article",
+        "journal",
+        "académique"
+      ],
+      "generation_reasoning": "The professor's actions in writing an article continue the story. The sentence remains accessible due to use of cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that the professor writes an article for an academic journal.",
+      "actual_cognate_words": [
+        "professeur",
+        "écrit",
+        "article",
+        "journal",
+        "académique"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "L'article reçoit une acclamation positive de la communauté universitaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "article",
+        "acclamation",
+        "positive",
+        "communauté",
+        "universitaire"
+      ],
+      "generation_reasoning": "The positive reception of the article contributes to the narrative progression, using cognates to ensure understanding.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that the article receives positive acclaim from the university community.",
+      "actual_cognate_words": [
+        "article",
+        "reçoit",
+        "acclamation",
+        "positive",
+        "communauté",
+        "universitaire"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "Encouragé, le professeur propose une conférence sur ce sujet.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "encouragé",
+        "professeur",
+        "propose",
+        "conférence",
+        "sujet"
+      ],
+      "generation_reasoning": "The professor's proposal for a conference indicates the next step in the story, with high cognate prevalence for clarity.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses almost exclusively cognate words except for basic connectors. An English speaker can understand that encouraged, the professor proposes a conference on this subject.",
+      "actual_cognate_words": [
+        "encouragé",
+        "professeur",
+        "propose",
+        "conférence",
+        "sujet"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    },
+    {
+      "sentence": "La conférence inspire beaucoup de nouvelles recherches en art.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "conférence",
+        "inspire",
+        "beaucoup",
+        "nouvelles",
+        "recherches",
+        "art"
+      ],
+      "generation_reasoning": "Concluding the story, the impact of the conference is described using cognates for full comprehension.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words such as 'conférence', 'inspire', 'recherches', and 'art'. However, an English speaker might miss words like 'beaucoup' ('many') and 'nouvelles' ('new'), which are important details affecting the meaning.",
+      "actual_cognate_words": [
+        "conférence",
+        "inspire",
+        "recherches",
+        "art"
+      ],
+      "generation_timestamp": "2025-01-04T09:58:34.838645"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.8,
+    "creation_date": "2025-01-04T09:57:46.647924",
+    "sentence_count": 10
+  }
+}

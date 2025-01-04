@@ -1,0 +1,235 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur international visite Paris pour une conférence.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "international",
+        "visite",
+        "conférence"
+      ],
+      "generation_reasoning": "The sentence uses many cognates like 'professeur', 'international', 'visite', and 'conférence', making it fully understandable to English speakers.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words that are similar to English, making it fully understandable through cognates.",
+      "actual_cognate_words": [
+        "professeur",
+        "international",
+        "visite",
+        "Paris",
+        "conférence"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Il rencontre des collègues scientifiques pour discuter de nouvelles technologies.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "rencontre",
+        "collègues",
+        "scientifiques",
+        "discuter",
+        "nouvelles",
+        "technologies"
+      ],
+      "generation_reasoning": "Contains cognates such as 'rencontre', 'collègues', 'scientifiques', 'discuter', 'nouvelles', and 'technologies'. Continues the story by describing what the professor does at the conference.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognate words, allowing an English speaker to grasp the main idea about colleagues, scientists, discussing new technologies. However, the verb 'rencontre' may not be readily understood, potentially causing them to miss some details.",
+      "actual_cognate_words": [
+        "collègues",
+        "scientifiques",
+        "discuter",
+        "nouvelles",
+        "technologies"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Le groupe assiste à une présentation sur l'innovation climatique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "groupe",
+        "assiste",
+        "présentation",
+        "innovation",
+        "climatique"
+      ],
+      "generation_reasoning": "Cognates include 'groupe', 'assiste', 'présentation', 'innovation', 'climatique'. It continues the story by detailing one specific activity the group engages in.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many cognate words are present, the verb 'assiste' could be misleading, as it resembles 'assist' in English but means 'attend' in French, potentially altering the perceived meaning.",
+      "actual_cognate_words": [
+        "groupe",
+        "assiste",
+        "présentation",
+        "innovation",
+        "climatique"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Après la session, les participants explorent les musées célèbres de la ville.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "session",
+        "participants",
+        "explorent",
+        "musées",
+        "célèbres",
+        "ville"
+      ],
+      "generation_reasoning": "Uses cognates like 'session', 'participants', 'explorent', 'musées', 'célèbres', 'ville'. This sentence transitions from the conference activities to leisure activities.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates, with most words similar to their English counterparts.",
+      "actual_cognate_words": [
+        "session",
+        "participants",
+        "explorent",
+        "musées",
+        "célèbres",
+        "ville"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Ils découvrent une galerie avec des œuvres d'art impressionnantes.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "galerie",
+        "œuvres",
+        "art",
+        "impressionnantes"
+      ],
+      "generation_reasoning": "Contains cognates such as 'galerie', 'œuvres', 'art', 'impressionnantes'. Continues the narrative by specifying what they discover in the museums.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognate words that make it fully understandable, as the words closely mirror English terms.",
+      "actual_cognate_words": [
+        "découvrent",
+        "galerie",
+        "œuvres",
+        "art",
+        "impressionnantes"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Le soir, ils dînent ensemble dans un restaurant élégante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "soir",
+        "dînent",
+        "restaurant",
+        "élégante"
+      ],
+      "generation_reasoning": "Includes cognates 'soir', 'dînent', 'restaurant', 'élégante'. This continues from their exploration by describing their evening activities.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates, and the sentence is fully understandable to an English speaker through these words.",
+      "actual_cognate_words": [
+        "soir",
+        "dînent",
+        "ensemble",
+        "restaurant",
+        "élégante"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "La cuisine traditionnelle française fascine le professeur.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "cuisine",
+        "traditionnelle",
+        "française",
+        "fascine",
+        "professeur"
+      ],
+      "generation_reasoning": "Use of cognates 'cuisine', 'traditionnelle', 'française', 'fascine', 'professeur'. This continues the story by focusing on the professor’s reaction to the dinner.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, making it fully understandable through cognates.",
+      "actual_cognate_words": [
+        "cuisine",
+        "traditionnelle",
+        "française",
+        "fascine",
+        "professeur"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Il décide d'écrire un article sur ses expériences à Paris.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "décide",
+        "écrire",
+        "article",
+        "expériences",
+        "Paris"
+      ],
+      "generation_reasoning": "Features cognates like 'décide', 'écrire', 'article', 'expériences', 'Paris'. The sentence logically follows by explaining what action the professor takes next.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains mostly cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "décide",
+        "écrire",
+        "article",
+        "expériences",
+        "Paris"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Son rapport académique reçoit beaucoup d'attention internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "rapport",
+        "académique",
+        "reçoit",
+        "attention",
+        "internationale"
+      ],
+      "generation_reasoning": "Includes cognates 'rapport', 'académique', 'reçoit', 'attention', 'internationale'. Continues the narrative by describing the reception of the professor's article.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates, with most words being similar to English.",
+      "actual_cognate_words": [
+        "rapport",
+        "académique",
+        "reçoit",
+        "beaucoup",
+        "attention",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    },
+    {
+      "sentence": "Encouragé, il planifie un nouveau voyage intellectuel l'année prochaine.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "encouragé",
+        "planifie",
+        "voyage",
+        "intellectuel",
+        "année",
+        "prochaine"
+      ],
+      "generation_reasoning": "Cognates used are 'encouragé', 'planifie', 'voyage', 'intellectuel', 'année', 'prochaine'. Concludes the narrative with the professor planning future activities.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses mostly cognate words, making it fully understandable through cognates.",
+      "actual_cognate_words": [
+        "encouragé",
+        "planifie",
+        "nouveau",
+        "voyage",
+        "intellectuel",
+        "année",
+        "prochaine"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:04.932947"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.8,
+    "creation_date": "2025-01-04T09:52:22.480823",
+    "sentence_count": 10
+  }
+}

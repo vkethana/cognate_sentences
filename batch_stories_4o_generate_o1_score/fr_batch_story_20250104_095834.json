@@ -1,0 +1,123 @@
+{
+  "story": [
+    {
+      "sentence": "Léa joue avec son chat.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Uses simple vocabulary in French without international words.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words; an English speaker would find it completely unintelligible.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Le chat saute sur le lit.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Continues the story with basic vocabulary describing the cat’s action after playing with Léa.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words; an English speaker would find it completely unintelligible.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Léa rit et court.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Simple sentence following Léa’s reaction to the cat jumping.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the word \"court\", which is an English word but with a different meaning; the overall sentence remains unintelligible.",
+      "actual_cognate_words": [
+        "court"
+      ],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "La mère de Léa arrive.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Introduces a new character into the story seamlessly.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate word \"arrive\"; an English speaker might guess someone arrives but miss key details.",
+      "actual_cognate_words": [
+        "arrive"
+      ],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Elle appelle Léa pour manger.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Relates to everyday family activities using basic verbs and nouns.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words; an English speaker would find it completely unintelligible.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Léa va dans la cuisine.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Describes Léa’s action in response to being called by her mother, continuing the narrative.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate word \"cuisine\"; an English speaker might guess it's about the kitchen but miss the main action.",
+      "actual_cognate_words": [
+        "cuisine"
+      ],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Le chat suit Léa.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The story maintains logical progression with the cat following Léa, described with simple vocabulary.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the word \"suit\", which is an English word but with a different meaning; the overall sentence remains unintelligible.",
+      "actual_cognate_words": [
+        "suit"
+      ],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Ils mangent ensemble.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Describes the shared activity of eating, continuing the family scene.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate word \"ensemble\"; an English speaker might guess it's about a group but miss the main action.",
+      "actual_cognate_words": [
+        "ensemble"
+      ],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Après, Léa joue encore.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Uses plain language to describe what Léa does after eating, maintaining the coherence of the story.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate word \"encore\"; an English speaker might guess it's about an additional performance but miss the main action.",
+      "actual_cognate_words": [
+        "encore"
+      ],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    },
+    {
+      "sentence": "Le soir, Léa dort.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Concludes the day in the narrative with simple vocabulary, providing closure.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words; an English speaker would find it completely unintelligible.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-04T09:59:18.901763"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 0.6,
+    "creation_date": "2025-01-04T09:58:34.839421",
+    "sentence_count": 10
+  }
+}

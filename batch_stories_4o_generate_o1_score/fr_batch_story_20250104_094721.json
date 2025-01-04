@@ -1,0 +1,231 @@
+{
+  "story": [
+    {
+      "sentence": "Marie décide de partir en vacances pour se relaxer.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "décide",
+        "partir",
+        "vacances",
+        "relaxer"
+      ],
+      "generation_reasoning": "This sentence contains cognates like 'décide' (decides), 'partir' (to leave), 'vacances' (vacation), and 'relaxer' (to relax), making the main concept understandable with missing details like 'pour' (for).",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable through cognates. Missing words are basic connectors and do not change the meaning.",
+      "actual_cognate_words": [
+        "Marie",
+        "décide",
+        "partir",
+        "vacances",
+        "relaxer"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Elle choisit un hôtel luxueux avec une belle vue sur la mer.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "choisit",
+        "hôtel",
+        "luxueux",
+        "belle",
+        "vue"
+      ],
+      "generation_reasoning": "Cognates such as 'choisit' (chooses), 'hôtel' (hotel), 'luxueux' (luxurious), 'belle' (beautiful), and 'vue' (view) make the main idea clear. Continuation: Marie's plan for a relaxing vacation.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognate words, making it fully understandable through cognates. The missing words are basic connectors and do not alter the overall meaning.",
+      "actual_cognate_words": [
+        "choisit",
+        "hôtel",
+        "luxueux",
+        "belle",
+        "vue",
+        "mer"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Le jour de son départ, elle rencontre un ami à la gare.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "jour",
+        "départ",
+        "rencontre",
+        "ami",
+        "gare"
+      ],
+      "generation_reasoning": "Contains cognates like 'jour' (day), 'départ' (departure), 'rencontre' (meets), 'ami' (friend), and 'gare' (station), allowing understanding of the interaction before her journey. Continuation: Elaborates on her travel.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words allowing an English speaker to grasp the main idea, but might miss 'gare' (station), which is not a cognate and thus miss details about where they met.",
+      "actual_cognate_words": [
+        "jour",
+        "départ",
+        "rencontre",
+        "ami"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Ils discutent des magnifiques plages qu'elle peut visiter.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "discutent",
+        "magnifiques",
+        "plages",
+        "visitent"
+      ],
+      "generation_reasoning": "Cognates such as 'discutent' (discuss), 'magnifiques' (magnificent), 'plages' (beaches), and 'visitent' (visit) help infer a discussion topic, though subtleties may be missed. Continuation: Deepens the conversation related to travel.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable to an English speaker. Missing words are basic connectors and pronouns that do not alter the meaning.",
+      "actual_cognate_words": [
+        "discutent",
+        "magnifiques",
+        "plages",
+        "peut",
+        "visiter"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Marie promet d'envoyer des cartes postales à tous ses amis.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "promet",
+        "envoyer",
+        "cartes",
+        "postales",
+        "amis"
+      ],
+      "generation_reasoning": "Cognates like 'promet' (promises), 'envoyer' (to send), 'cartes postales' (postcards), and 'amis' (friends). The promise indicates her intended actions on vacation. Continuation: Highlights her intentions of staying in touch.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable. Basic connectors and possessive pronouns do not alter the meaning.",
+      "actual_cognate_words": [
+        "Marie",
+        "promet",
+        "envoyer",
+        "cartes postales",
+        "tous",
+        "amis"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Elle monte dans le train avec une grande excitation.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "monte",
+        "train",
+        "grande",
+        "excitation"
+      ],
+      "generation_reasoning": "Cognates 'monte' (gets on), 'train' (train), 'grande' (great), and 'excitation' (excitement) reveal her emotional state during departure. Continuation: Describes her departure and emotional context.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words that help understand the main idea, but some words like 'monte' and 'excitation' might not be fully understood or could be misinterpreted, leading to missing nuances.",
+      "actual_cognate_words": [
+        "monte",
+        "train",
+        "grande",
+        "excitation"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Pendant le trajet, elle admire les paysages incroyables.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "trajet",
+        "admire",
+        "paysages",
+        "incroyables"
+      ],
+      "generation_reasoning": "Cognates 'trajet' (journey), 'admire' (admires), 'paysages' (landscapes), 'incroyables' (incredible) highlight her activity during travel. Continuation: Captures her experience during travel.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, allowing an English speaker to fully understand the meaning. Missing words are basic connectors.",
+      "actual_cognate_words": [
+        "Pendant",
+        "trajet",
+        "admire",
+        "paysages",
+        "incroyables"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Elle arrive finalement à l'hôtel et se repose immédiatement.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "arrive",
+        "finalement",
+        "hôtel",
+        "repose",
+        "immédiatement"
+      ],
+      "generation_reasoning": "The cognates 'arrive' (arrives), 'finalement' (finally), 'hôtel' (hotel), 'repose' (rests), 'immédiatement' (immediately) outline her arrival and initial action at the destination. Continuation: Describes her arrival and immediate actions.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable to an English speaker. Basic connectors and pronouns do not change the meaning.",
+      "actual_cognate_words": [
+        "arrive",
+        "finalement",
+        "hôtel",
+        "repose",
+        "immédiatement"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Le lendemain, elle explore le village voisin et dégustera des spécialités locales.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "lendemain",
+        "explore",
+        "village",
+        "dégustera",
+        "spécialités",
+        "locales"
+      ],
+      "generation_reasoning": "Cognates 'lendemain' (next day), 'explore' (explores), 'village' (village), 'dégustera' (will taste), 'spécialités' (specialties), 'locales' (local) describe her plans with subtle missed grammatical nuances. Continuation: Progresses to her first day of vacation activities.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words, but words like 'dégustera' might not be understood, causing an English speaker to miss important details about tasting local specialties.",
+      "actual_cognate_words": [
+        "lendemain",
+        "explore",
+        "village",
+        "voisin",
+        "spécialités",
+        "locales"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    },
+    {
+      "sentence": "Avec un grand sourire, Marie pense que ce voyage est parfait.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "grand",
+        "sourire",
+        "pense",
+        "voyage",
+        "parfait"
+      ],
+      "generation_reasoning": "Cognates like 'grand' (big), 'sourire' (smile), 'pense' (thinks), 'voyage' (trip), 'parfait' (perfect) convey her positive assessment, although subjective nuances might be missed. Continuation: Reflects on her positive perception of the trip.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable through cognates. Basic connectors do not alter the meaning.",
+      "actual_cognate_words": [
+        "Avec",
+        "grand",
+        "sourire",
+        "Marie",
+        "pense",
+        "voyage",
+        "parfait"
+      ],
+      "generation_timestamp": "2025-01-04T09:48:08.280900"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 2.7,
+    "creation_date": "2025-01-04T09:47:21.618612",
+    "sentence_count": 10
+  }
+}

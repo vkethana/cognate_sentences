@@ -1,0 +1,220 @@
+{
+  "story": [
+    {
+      "sentence": "Un artiste célèbre visite une galerie à Paris.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "célèbre",
+        "visite",
+        "galerie",
+        "Paris"
+      ],
+      "generation_reasoning": "The sentence is easy to understand due to the cognates. It sets the stage for the story, introducing the protagonist and location.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, allowing an English speaker to understand that a famous artist visits a gallery in Paris.",
+      "actual_cognate_words": [
+        "artiste",
+        "célèbre",
+        "visite",
+        "galerie",
+        "Paris"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Il admire les sculptures et peintures modernes.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "admire",
+        "sculptures",
+        "peintures",
+        "modernes"
+      ],
+      "generation_reasoning": "The sentence uses cognate words to show the artist's actions and interests, following the previous setup of being in an art gallery.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words, making the sentence fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "admire",
+        "sculptures",
+        "peintures",
+        "modernes"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Soudain, il aperçoit une œuvre mystérieuse près d'une fenêtre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "soudain",
+        "aperçoit",
+        "mystérieuse",
+        "fenêtre"
+      ],
+      "generation_reasoning": "The cognates communicate the narrative development of noticing a mysterious object, building curiosity from observing art.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains few cognates and key verbs like 'aperçoit' are not cognates, making it difficult for an English speaker to grasp the main idea.",
+      "actual_cognate_words": [
+        "mystérieuse"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "L'artiste décide d'étudier cette création intrigante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "décide",
+        "étudier",
+        "création",
+        "intrigante"
+      ],
+      "generation_reasoning": "The continuation involves the artist's decision, propelling the story forward by showing his intrigue about the mysterious piece.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses cognate words, allowing an English speaker to understand that the artist decides to study this intriguing creation.",
+      "actual_cognate_words": [
+        "artiste",
+        "décide",
+        "étudier",
+        "création",
+        "intrigante"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Il découvre que l'objet symbolise les rêves perdus.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découvre",
+        "objet",
+        "symbolise",
+        "rêves",
+        "perdus"
+      ],
+      "generation_reasoning": "The discovery of the art's symbolism advances the story, revealing an important theme of lost dreams.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognates, making the sentence fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "découvre",
+        "objet",
+        "symbolise",
+        "rêves",
+        "perdus"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Inspiré, l'artiste crée son propre chef-d'œuvre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "inspiré",
+        "artiste",
+        "crée",
+        "propre",
+        "chef-d'œuvre"
+      ],
+      "generation_reasoning": "The narrative progresses with the artist's inspiration and new creation, showing the impact of the mysterious object.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses cognate words and expressions like 'chef-d'œuvre', making it fully understandable.",
+      "actual_cognate_words": [
+        "Inspiré",
+        "artiste",
+        "crée",
+        "propre",
+        "chef-d'œuvre"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Son tableau fusionne l'imaginaire et la réalité.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "tableau",
+        "fusionne",
+        "imaginaire",
+        "réalité"
+      ],
+      "generation_reasoning": "The sentence continues the story by describing the nature of his artwork, demonstrating a blend of imagination and reality.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognates, allowing an English speaker to understand that his painting fuses the imaginary and reality.",
+      "actual_cognate_words": [
+        "tableau",
+        "fusionne",
+        "imaginaire",
+        "réalité"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Le public admire profondément son expression unique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "public",
+        "admire",
+        "profondément",
+        "expression",
+        "unique"
+      ],
+      "generation_reasoning": "The admiration of the audience ensures continuity by showing the reception of his creation, reinforcing its significance.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "public",
+        "admire",
+        "profondément",
+        "expression",
+        "unique"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Les critiques louent l'artiste pour son innovation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "critiques",
+        "louent",
+        "artiste",
+        "innovation"
+      ],
+      "generation_reasoning": "The critics' praise provides narrative closure and underscores the artist's success and recognition.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While it contains some cognates, the verb 'louent' may not be recognized as 'praise' by an English speaker, leading to potential misunderstanding.",
+      "actual_cognate_words": [
+        "critiques",
+        "artiste",
+        "pour",
+        "innovation"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    },
+    {
+      "sentence": "Finalement, il reçoit une invitation à exposer à New York.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "reçoit",
+        "invitation",
+        "exposer",
+        "New York"
+      ],
+      "generation_reasoning": "This sentence closes the story by emphasizing his achievement through the invitation, suggesting further success.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Uses cognate words, making it fully understandable that he receives an invitation to exhibit in New York.",
+      "actual_cognate_words": [
+        "Finalement",
+        "reçoit",
+        "invitation",
+        "exposer",
+        "New York"
+      ],
+      "generation_timestamp": "2025-01-04T09:45:37.355031"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.7,
+    "creation_date": "2025-01-04T09:44:54.124738",
+    "sentence_count": 10
+  }
+}

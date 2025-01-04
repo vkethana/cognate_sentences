@@ -1,0 +1,210 @@
+{
+  "story": [
+    {
+      "sentence": "Hier, le docteur visite un musée célèbre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "docteur",
+        "visite",
+        "musée",
+        "célèbre"
+      ],
+      "generation_reasoning": "The sentence uses cognates such as 'docteur', 'visite', 'musée', and 'célèbre', making it largely understandable even without knowing French. This is the first sentence, so there is no need for story continuation reasoning.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words that an English speaker can recognize: 'docteur', 'visite', 'musée', 'célèbre'. However, the word 'Hier' ('Yesterday') might not be understood, altering the timing of the event. Therefore, important details could be missed.",
+      "actual_cognate_words": [
+        "docteur",
+        "visite",
+        "musée",
+        "célèbre"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Il admire les antiques et les sculptures magnifiques.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "admire",
+        "antiques",
+        "sculptures",
+        "magnifiques"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by describing the doctor's activity in the museum. Cognates like 'admire', 'antiques', 'sculptures', and 'magnifiques' are used, ensuring comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words: 'admire', 'antiques', 'sculptures', 'magnifiques'. An English speaker could understand 'He admires the antiques and the magnificent sculptures.' The non-cognate words are basic connectors and articles that do not alter the meaning.",
+      "actual_cognate_words": [
+        "admire",
+        "antiques",
+        "sculptures",
+        "magnifiques"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Soudain, un alarme se déclenche dans la galerie.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "soudain",
+        "alarme",
+        "galerie"
+      ],
+      "generation_reasoning": "The story progresses with an unexpected event in the museum. The sentence uses cognates such as 'soudain', 'alarme', 'se', and 'galerie', providing clarity.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The sentence contains cognates 'alarme' and 'galerie'. However, key words like 'soudain' ('suddenly') and 'se déclenche' ('goes off') are unlikely to be understood by an English speaker, leaving major gaps in meaning.",
+      "actual_cognate_words": [
+        "alarme",
+        "galerie"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Une équipe de sécurité arrive rapidement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "équipe",
+        "sécurité",
+        "arrive",
+        "rapidement"
+      ],
+      "generation_reasoning": "Continuation of the story with the response to the alarm. 'Équipe', 'sécurité', 'arrive', and 'rapidement' are strong cognates, helping comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words: 'équipe', 'sécurité', 'arrive', 'rapidement'. An English speaker can understand 'A security team arrives rapidly.' Missed words are basic articles that don't change the meaning.",
+      "actual_cognate_words": [
+        "équipe",
+        "sécurité",
+        "arrive",
+        "rapidement"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Le directeur du musée explique la situation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "directeur",
+        "musée",
+        "explique",
+        "situation"
+      ],
+      "generation_reasoning": "This sentence continues with the director's actions, following the security team's arrival. Cognates like 'directeur', 'musée', 'explique', and 'situation' maintain understandability.",
+      "actual_score": 3,
+      "actual_score_reasoning": "All the main words are cognates: 'directeur', 'musée', 'explique', 'situation'. An English speaker can understand 'The director of the museum explains the situation.' The non-cognate words are basic connectors and articles that do not alter the meaning.",
+      "actual_cognate_words": [
+        "directeur",
+        "musée",
+        "explique",
+        "situation"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Un problème technique a causé l'alarme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "problème",
+        "technique",
+        "causé",
+        "alarme"
+      ],
+      "generation_reasoning": "The issue causing the alarm is explained, following from the director's clarification. Cognates used are 'problème', 'technique', 'causé', and 'alarme'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognates such as 'problème', 'technique', 'causé', 'alarme'. An English speaker can understand 'A technical problem caused the alarm.' Non-cognate words are basic articles or connectors that do not change the meaning.",
+      "actual_cognate_words": [
+        "problème",
+        "technique",
+        "causé",
+        "alarme"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Le docteur est soulagé et continue sa visite.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "docteur",
+        "soulagé",
+        "continue",
+        "visite"
+      ],
+      "generation_reasoning": "The doctor's reaction and consequent action after understanding the alarm issue continues the narrative. Cognates include 'docteur', 'soulagé', 'continue', and 'visite'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains cognates: 'docteur', 'est', 'continue', 'visite'. However, the word 'soulagé' ('relieved') may not be understood, leading to a missed important detail about the doctor's emotional state.",
+      "actual_cognate_words": [
+        "docteur",
+        "est",
+        "continue",
+        "visite"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Il découvre une exposition sur la médecine ancienne.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découvre",
+        "exposition",
+        "médecine",
+        "ancienne"
+      ],
+      "generation_reasoning": "The story progresses with the doctor's discovery of something relevant to his profession. Cognates such as 'découvre', 'exposition', 'médecine', and 'ancienne' support comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains several cognates: 'découvre', 'exposition', 'médecine', 'ancienne'. An English speaker could understand 'He discovers an exposition on ancient medicine.' The non-cognate words are basic articles or prepositions that do not affect the overall meaning.",
+      "actual_cognate_words": [
+        "découvre",
+        "exposition",
+        "médecine",
+        "ancienne"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "L'exposition inclut des documents et des instruments.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "exposition",
+        "inclut",
+        "documents",
+        "instruments"
+      ],
+      "generation_reasoning": "Further details on the exhibition follow from the previous sentence, using cognates like 'exposition', 'inclut', 'documents', and 'instruments'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed of cognates: 'exposition', 'inclut', 'documents', 'instruments'. An English speaker can understand 'The exposition includes documents and instruments.' Non-cognate words are articles and conjunctions that do not change the meaning.",
+      "actual_cognate_words": [
+        "exposition",
+        "inclut",
+        "documents",
+        "instruments"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    },
+    {
+      "sentence": "Le docteur quitte le musée avec beaucoup d'inspiration.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "docteur",
+        "quitte",
+        "musée",
+        "inspiration"
+      ],
+      "generation_reasoning": "The conclusion of the doctor's visit is described, featuring cognates such as 'docteur', 'quitte', 'musée', 'inspiration', aligning with previous events.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognates: 'docteur', 'quitte', 'musée', 'avec', 'beaucoup', 'inspiration'. An English speaker can understand 'The doctor leaves the museum with a lot of inspiration.' Non-cognate words are articles and prepositions that do not alter the meaning.",
+      "actual_cognate_words": [
+        "docteur",
+        "quitte",
+        "musée",
+        "avec",
+        "beaucoup",
+        "inspiration"
+      ],
+      "generation_timestamp": "2025-01-04T09:53:56.190843"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.6,
+    "creation_date": "2025-01-04T09:53:04.933721",
+    "sentence_count": 10
+  }
+}
