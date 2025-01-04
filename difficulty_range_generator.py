@@ -10,8 +10,9 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 language_codes = {
     'fr': 'French'
 }
-SENTENCE_GENERATION_MODEL = 'o1-preview'
+SENTENCE_GENERATION_MODEL = 'gpt-4o'
 SENTENCE_SCORING_MODEL = 'o1-preview'
+data_directory = 'batch_stories_4o_generate_o1_score'
 
 def gpt_scored_rubric_batch(sentences):
     '''
@@ -137,7 +138,7 @@ def generate_story_batch(lang_code, story_length):
     """
 
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = f'batch_stories/{lang_code}_batch_story_{timestamp}.json'
+    output_file = f'{data_directory}/{lang_code}_batch_story_{timestamp}.json'
 
     # Initialize story data structure
     #target_difficulty = random.randint(0, 3)
@@ -150,7 +151,9 @@ def generate_story_batch(lang_code, story_length):
             'actual_difficulty_mean': None,
             'creation_date': datetime.datetime.now().isoformat(),
             'sentence_count': 0,
-            'target_difficulty': target_difficulty
+            'target_difficulty': target_difficulty,
+            'generation_model': SENTENCE_GENERATION_MODEL,
+            'scoring_model': SENTENCE_SCORING_MODEL
         }
     }
 

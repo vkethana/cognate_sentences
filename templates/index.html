@@ -252,7 +252,8 @@
         const TRANSLATION_FREQUENCY = 3; // Show translation exercise every n sentences
         
         // Difficulty adjustment parameters
-        const DIFFICULTY_STEP = 0.1;  // How much to adjust difficulty after each story
+        const DIFFICULTY_STEP_DOWN = 0.1;  // How much to adjust difficulty after each story
+        const DIFFICULTY_STEP_UP = 0.05;  // How much to adjust difficulty after each story
         const MAX_DIFFICULTY = 3.0;
         const MIN_DIFFICULTY = 0.0;
 
@@ -347,7 +348,7 @@
         async function skipTranslation() {
             // Increase difficulty slightly for correct translations
             let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
-            currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP);
+            currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP_DOWN);
             localStorage.setItem('userDifficulty', currentDifficulty.toString());
             document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                     
@@ -391,7 +392,7 @@
                 if (data.isCorrect) {
                     // Reduce difficulty slightly for correct translations
                     let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
-                    currentDifficulty = Math.max(0.00, currentDifficulty - DIFFICULTY_STEP);
+                    currentDifficulty = Math.max(0.00, currentDifficulty - DIFFICULTY_STEP_DOWN);
                     localStorage.setItem('userDifficulty', currentDifficulty.toString());
                     document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                     
@@ -402,7 +403,7 @@
                     if (currentTranslationAttempts >= MAX_TRANSLATION_ATTEMPTS) {
                         // Bump up difficulty for failed translations
                         let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
-                        currentDifficulty = Math.min(3.00, currentDifficulty + DIFFICULTY_STEP);
+                        currentDifficulty = Math.min(3.00, currentDifficulty + DIFFICULTY_STEP_UP);
                         localStorage.setItem('userDifficulty', currentDifficulty.toString());
                         document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                         
