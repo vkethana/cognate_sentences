@@ -87,7 +87,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             z-index: 1001;
         }
 
@@ -179,6 +179,7 @@
                             <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: left;">Title (Click arrow to see sentences)</th>
                             <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: center;">Avg. Difficulty</th>
                             <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: right;">Length</th>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: right;">Already Seen?</th>
                         </tr>
                     </thead>
                     <tbody id="story-list-tbody">
@@ -199,8 +200,8 @@
             </div>
             <p>Please enter your OpenAI API key to enable translation verification:</p>
             <input type="password" id="api-key-input" placeholder="sk-..." />
+            <p>If you don't want to share your API key, you can enter a fake key and use the "force skip" feature to skip translation exercises.</p>
             <button onclick="saveApiKey()">Save API Key</button>
-            <!-- Add button to show / hide stats -->
             
         </div>
     </div>
@@ -212,7 +213,6 @@
             <div id="no-api-key-message" style="display: none;">
                 <p>Please set your OpenAI API key in settings first to continue with translation exercises.</p>
                 <button onclick="openSettings()">Go to Settings</button>
-                <button onclick="ignoreApiKeyWarning()">Ignore</button>
             </div>
             <div id="translation-exercise" style="display: none;">
                 <p>Please translate this sentence to English:</p>
@@ -299,11 +299,6 @@
             }
         }
 
-        function ignoreApiKeyWarning() {
-            document.getElementById('translation-modal').style.display = 'none';
-            showTranslationExercise();
-        }
-
         // Stats toggle functionality
         statsLink.addEventListener('click', function(e) {
             e.preventDefault();
@@ -352,7 +347,7 @@
         async function skipTranslation() {
             // Increase difficulty slightly for correct translations
             let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
-            currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
+            currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP);
             localStorage.setItem('userDifficulty', currentDifficulty.toString());
             document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                     
@@ -565,16 +560,19 @@
                 const mainRow = document.createElement('tr');
                 mainRow.innerHTML = `
                     <td style="padding: 8px; border-bottom: 1px solid #eee;">
-                        <button class="expand-btn" data-story="${story.title}" style="background: none; border: none; cursor: pointer; padding: 0 8px; color: black;">
-                            ▶  
-                        </button>
+                        <button class="expand-btn" data-story="${story.title}" style="background: none; border: none; cursor: pointer; padding: 0 8px; color: black; font-size: 12px;">
+                        ▶  
                         ${story.title}.json
+                        </button>
                     </td>
                     <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">
                         ${parseFloat(story.difficulty).toFixed(2)}
                     </td>
                     <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right;">
                         ${story.num_sentences} sentences
+                    </td>
+                    <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">
+                        ${JSON.parse(localStorage.getItem('seenStories')).includes(story.title+".json") ? '✅' : '❌'}
                     </td>
                 `;
                 tbody.appendChild(mainRow);
