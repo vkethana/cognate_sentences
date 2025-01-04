@@ -29,19 +29,25 @@
             z-index: 100;  /* Above story container but below modals */
         }
 
+        #stats-panel.hidden {
+            display: none;
+        }
+
+        .sentence-difficulty {
+            font-size: 14px; 
+            color: gray;
+        }
+
+        .sentence-difficulty.hidden {
+            display: none;
+        }
+
         #story-container {
             width: 800px;
             height: 80vh;
             display: flex;
             flex-direction: column;
             position: relative;  /* For positioning the settings link */
-        }
-
-        #settings-link {
-            position: absolute;
-            top: -30px;  /* Position above the container */
-            right: 0;
-            font-size: 16px;
         }
 
         #sentence-display {
@@ -129,18 +135,57 @@
             border-radius: 4px;
             margin-bottom: 20px;
         }
+        .control-links {
+            position: absolute;
+            top: -30px;  /* Position above the container */
+            right: 0;
+            font-size: 16px;
+        }
+        .control-links a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .control-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div id="stats-panel">
-        <p>Your Level: <span class="stat-value" id="user-difficulty">1.5</span></p>
-        <p>Story Level: <span class="stat-value" id="story-difficulty">-</span></p>
+        <p>Your Difficulty Level: <span class="stat-value" id="user-difficulty">2.5</span></p>
+        <p>Story Difficulty Level: <span class="stat-value" id="story-difficulty">-</span></p>
         <p>Stories Seen: <span class="stat-value" id="stories-seen-count">0</span></p>
     </div>
     <div id="story-container">
-        <a href="#" id="settings-link">settings</a>
+        <div class="control-links">
+            <a href="#" id="story-link">story list</a>
+            <a href="#" id="stats-link">hide stats</a>
+            <a href="#" id="settings-link">settings</a>
+        </div>
         <div id="sentence-display">
             press spacebar to begin
+        </div>
+    </div>
+
+    <!-- Story List Modal -->
+    <div class="modal-overlay" id="story-list-modal">
+        <div class="modal">
+            <h2>Available Stories</h2>
+            <div id="story-list-container" style="max-height: 400px; overflow-y: auto; font-size: 14px">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="position: sticky; top: 0; background: white;">
+                        <tr>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: left;">Title (Click arrow to see sentences)</th>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: center;">Avg. Difficulty</th>
+                            <th style="padding: 6px; border-bottom: 2px solid #ddd; text-align: right;">Length</th>
+                        </tr>
+                    </thead>
+                    <tbody id="story-list-tbody">
+                        <!-- Stories will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -155,6 +200,8 @@
             <p>Please enter your OpenAI API key to enable translation verification:</p>
             <input type="password" id="api-key-input" placeholder="sk-..." />
             <button onclick="saveApiKey()">Save API Key</button>
+            <!-- Add button to show / hide stats -->
+            
         </div>
     </div>
 
@@ -183,10 +230,13 @@
         localStorage.setItem('currentStoryFile', '');
         localStorage.setItem('currentSentenceIndex', '0');
         if (!localStorage.getItem('userDifficulty')) {
-            localStorage.setItem('userDifficulty', '1.5'); // Start at middle difficulty
+            localStorage.setItem('userDifficulty', '2.5'); // Start at middle difficulty
         }
         if (!localStorage.getItem('seenStories')) {
             localStorage.setItem('seenStories', JSON.stringify([]));
+        }
+        if (!localStorage.getItem('showStats')) {
+            localStorage.setItem('showStats', 'true');
         }
 
         // Update initial stats display
@@ -208,6 +258,8 @@
         // Settings modal functionality
         const settingsModal = document.getElementById('settings-modal');
         const settingsLink = document.getElementById('settings-link');
+        const storyModal = document.getElementById('story-list-modal');
+        const storyLink = document.getElementById('story-link');
         const apiKeyInput = document.getElementById('api-key-input');
 
         settingsLink.addEventListener('click', function(e) {
@@ -217,6 +269,12 @@
             if (savedApiKey) {
                 apiKeyInput.value = savedApiKey;
             }
+        });
+
+        storyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            storyModal.style.display = 'block';
+            showStoryList();
         });
 
         settingsModal.addEventListener('click', function(e) {
@@ -234,6 +292,22 @@
                 alert('Please enter a valid API key');
             }
         }
+
+        // Stats toggle functionality
+        const statsLink = document.getElementById('stats-link');
+        statsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const showStats = localStorage.getItem('showStats') === 'true';
+            localStorage.setItem('showStats', (!showStats).toString());
+            document.getElementById('stats-panel').classList.toggle('hidden');
+            statsLink.textContent = showStats ? 'stats' : 'hide stats';
+
+            // For all span elements with  sentence-difficulty class, toggle hidden class
+            const sentenceDifficulties = document.querySelectorAll('.sentence-difficulty');
+            sentenceDifficulties.forEach(function(span) {
+                span.classList.toggle('hidden');
+            });
+        });
 
         function openSettings() {
             document.getElementById('translation-modal').style.display = 'none';
@@ -297,7 +371,8 @@
                     },
                     body: JSON.stringify({
                         original: currentSentenceToTranslate,
-                        translation: translationInput
+                        translation: translationInput,
+                        api_key: apiKey
                     })
                 });
 
@@ -349,20 +424,21 @@
 
         document.addEventListener('keydown', async function(event) {
             if (event.code === 'Space') {
-                event.preventDefault();  // Prevent page scrolling
                 const translationModalVisible = translationModal.style.display === 'block';
                 const settingsModalVisible = settingsModal.style.display === 'block';
-                
-                // If any modal is visible, don't proceed with story
+
+                // If any modal is visible, let space bar still work
                 if (translationModalVisible || settingsModalVisible) {
                     return;
                 }
+
+                event.preventDefault();  // Prevent page scrolling
                 
                 await handleSpacePress();
             }
         });
 
-        async function handleSpacePress() {
+    async function handleSpacePress() {
             // If there's a pending translation exercise, show the modal again
             if (translationExercisePending) {
                 showTranslationExercise();
@@ -414,11 +490,11 @@
             }
 
             // Handle sentence display
+            sentence_html = '<p>' + data.sentence +  '  <span class="sentence-difficulty">' + 'Difficulty: ' + parseFloat(data.sentenceDifficulty).toFixed(2) + '</span>' + '</p>';
             if (currentSentenceIndex == 0) {
                 // This is the first sentence of a new story
                 console.log("First sentence")
-                // Put it in <p> tags
-                contentDiv.innerHTML = '<p>' + data.sentence + '</p>';
+                contentDiv.innerHTML = sentence_html;
                 // Update story difficulty display if provided
                 if (data.storyDifficulty !== undefined) {
                     document.getElementById('story-difficulty').textContent = 
@@ -427,7 +503,7 @@
             } else {
                 // Append the new sentence to existing story
                 // Show every sentence on a different line using distinct <p> tags
-                contentDiv.innerHTML += '<p>' + data.sentence + '</p>';
+                contentDiv.innerHTML += sentence_html
                 
                 // Check if we need to show translation exercise
                 if (currentSentenceIndex > 1 && (currentSentenceIndex - 1) % TRANSLATION_FREQUENCY === 0) {
@@ -442,7 +518,129 @@
             } else {
                 localStorage.setItem('currentSentenceIndex', (currentSentenceIndex + 1).toString());
             }
+    }
+
+    async function showStoryList() {
+        const storyListModal = document.getElementById('story-list-modal');
+        const tbody = document.getElementById('story-list-tbody');
+        
+        try {
+            const response = await fetch('/story_list');
+            const stories = await response.json();
+            stories.sort((a, b) => a.difficulty - b.difficulty);
+            
+            tbody.innerHTML = '';
+            
+            stories.forEach((story, index) => {
+                // Create main story row
+                const mainRow = document.createElement('tr');
+                mainRow.innerHTML = `
+                    <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                        <button class="expand-btn" data-story="${story.title}" style="background: none; border: none; cursor: pointer; padding: 0 8px; color: black;">
+                            ▶  
+                        </button>
+                        ${story.title}.json
+                    </td>
+                    <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">
+                        ${parseFloat(story.difficulty).toFixed(2)}
+                    </td>
+                    <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right;">
+                        ${story.num_sentences} sentences
+                    </td>
+                `;
+                tbody.appendChild(mainRow);
+
+                // Create hidden sentences row
+                const sentencesRow = document.createElement('tr');
+                sentencesRow.className = `sentences-row story-${story.title}`;
+                sentencesRow.style.display = 'none';
+                sentencesRow.style.backgroundColor = '#f8f9fa';
+                
+                // Create a container for sentences with max height and scrolling
+                sentencesRow.innerHTML = `
+                    <td colspan="3" style="padding: 16px;">
+                        <div style="max-height: 200px; overflow-y: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding: 8px; text-align: left; position: sticky; top: 0; background: #f8f9fa;">Sentence</th>
+                                        <th style="padding: 8px; text-align: center; width: 100px; position: sticky; top: 0; background: #f8f9fa;">Difficulty</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sentences-${story.title}">
+                                    <tr>
+                                        <td colspan="2" style="text-align: center; padding: 20px;">
+                                            Loading sentences...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(sentencesRow);
+
+                // Add click handler for expand button
+                mainRow.querySelector('.expand-btn').addEventListener('click', async function(e) {
+                    const storyTitle = this.dataset.story;
+                    const sentencesRow = document.querySelector(`.story-${storyTitle}`);
+                    const button = this;
+                    // Make text color in button black not white
+                    button.style.color = 'black';
+                    
+                    // Toggle visibility
+                    if (sentencesRow.style.display === 'none') {
+                        sentencesRow.style.display = 'table-row';
+                        // Search and replace side arrow with down arrow
+                        button.textContent = button.textContent.replace('▶', '▼');
+
+                        
+                        // Load sentences if not already loaded
+                        const sentencesTbody = document.getElementById(`sentences-${storyTitle}`);
+                        if (sentencesTbody.firstElementChild.textContent.includes('Loading')) {
+                            try {
+                                const response = await fetch(`/story_list/${storyTitle}`);
+                                const storyDetails = await response.json();
+                                
+                                sentencesTbody.innerHTML = storyDetails.sentences.map((sentence, idx) => `
+                                    <tr>
+                                        <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                                            ${idx + 1}. ${sentence.text}
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">
+                                            ${parseFloat(sentence.difficulty).toFixed(2)}
+                                        </td>
+                                    </tr>
+                                `).join('');
+                            } catch (error) {
+                                sentencesTbody.innerHTML = `
+                                    <tr>
+                                        <td colspan="2" style="text-align: center; padding: 20px; color: red;">
+                                            Error loading sentences
+                                        </td>
+                                    </tr>
+                                `;
+                            }
+                        }
+                    } else {
+                        sentencesRow.style.display = 'none';
+                        button.textContent = button.textContent.replace('▼', '▶');
+                    }
+                });
+            });
+            
+            storyListModal.style.display = 'block';
+        } catch (error) {
+            console.error('Error fetching story list:', error);
         }
+    }
+
+    // Add click listener to close modal when clicking outside
+    document.getElementById('story-list-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
     </script>
 </body>
 </html>
