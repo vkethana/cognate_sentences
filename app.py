@@ -27,7 +27,7 @@ def llm_score_translation(original: str, translation: str, api_key: str) -> Dict
     """
     client = OpenAI(api_key=api_key)
     system_prompt = f"""
-        You are an expert in French-English translation. I will give you a sentence in French and a sentence in English. (The input will be provided in JSON format as described below.) Your job is to tell me whether the English sentence is a correct translation of the French sentence. If it is not, please identify the incorrect morphemes. You will be using a JSON format to provide your response.
+        You are an expert in French-English translation. I will give you a sentence in French and a sentence in English. (The input will be provided in JSON format as described below.) Your job is to tell me whether the English sentence is a correct translation of the French sentence. If it is not, please identify words/morphemes that were incorrectly translated or are missing in the translation. You will be using a JSON format to provide your response.
         Here's the input format:
         {{
             "original": <The original French sentence>,
@@ -37,7 +37,7 @@ def llm_score_translation(original: str, translation: str, api_key: str) -> Dict
         Here's the output format:
         {{
           "is_correct": <a boolean indicating whether the translation is correct>,
-          "incorrect_morphemes": [a list of morphemes that were incorrectly translated or missing in the translation sentence. Make sure that anything you include in the list is a character-for-character match from the original sentence.],
+          "incorrect_morphemes": [A list of morphemes in the original French sentence that were incorrectly translated or are missing in the translation sentence. Make sure that anything you include in the list is a character-for-character match from the original French sentence. Do not include words that the translation got correct or words that are not in the `original` sentence.],
           "reasoning": "<Reasoning for your scoring. You may be brief if the translation is correct.>",
         }}
 
@@ -56,21 +56,23 @@ def llm_score_translation(original: str, translation: str, api_key: str) -> Dict
         But if I gave you the input:
         {{
             "original": "Voulez-vous aller manger avec moi",
-            "translation": "Does he want to go sing with me?"
+            "translation": "Does he want to go sing with me tomorrow?"
         }}
         You would respond with:
         {{
           "is_correct": false,
           "incorrect_morphemes": ["vous", "manger"],
-          "reasoning": "The translation has an incorrect pronoun and verb."
+          "reasoning": "The translation has an incorrect pronoun and verb. It also has an extra word."
         }}
+
+        Observe that in this last example, the user included extraneous words, but none of those extraneous words made it into the incorrect_morphemes field. 
 
         Now let's get started. Here's your input:
         {{
           "original": "{original}",
           "translation": "{translation}"
         }}
-        Please avoid including Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
+        Note: Please avoid including Markdown formatting tags (```) in your response, as my parser will not be able to interpret them.
     """
 
     completion = client.chat.completions.create(
@@ -84,6 +86,8 @@ def llm_score_translation(original: str, translation: str, api_key: str) -> Dict
     response_text = completion.choices[0].message.content.strip()
     try:
         results = json.loads(response_text)
+        print("Translation scoring results")
+        print(results)
         return results
     except json.JSONDecodeError:
         print("Error: Failed to decode JSON from the response.")

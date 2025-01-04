@@ -212,6 +212,7 @@
             <div id="no-api-key-message" style="display: none;">
                 <p>Please set your OpenAI API key in settings first to continue with translation exercises.</p>
                 <button onclick="openSettings()">Go to Settings</button>
+                <button onclick="ignoreApiKeyWarning()">Ignore</button>
             </div>
             <div id="translation-exercise" style="display: none;">
                 <p>Please translate this sentence to English:</p>
@@ -219,7 +220,7 @@
                 <textarea id="translation-input" rows="3" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
                 <div class="error-message" style="color: #dc3545; margin-bottom: 10px; display: none;"></div>
                 <button onclick="checkTranslation()">Check Translation</button>
-                <button onclick="skipTranslation()">Skip Translation</button>
+                <button onclick="skipTranslation()">Force Skip</button>
                 <div class="attempts-remaining" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
             </div>
         </div>
@@ -261,6 +262,10 @@
         const storyModal = document.getElementById('story-list-modal');
         const storyLink = document.getElementById('story-link');
         const apiKeyInput = document.getElementById('api-key-input');
+        const translationModal = document.getElementById('translation-modal');
+        let currentSentenceToTranslate = '';
+        const statsLink = document.getElementById('stats-link');
+        const contentDiv = document.getElementById('sentence-display');
 
         settingsLink.addEventListener('click', function(e) {
             e.preventDefault();
@@ -288,13 +293,18 @@
             if (apiKey) {
                 localStorage.setItem('openai_api_key', apiKey);
                 settingsModal.style.display = 'none';
+                console.log("Saved API key successfully.");
             } else {
                 alert('Please enter a valid API key');
             }
         }
 
+        function ignoreApiKeyWarning() {
+            document.getElementById('translation-modal').style.display = 'none';
+            showTranslationExercise();
+        }
+
         // Stats toggle functionality
-        const statsLink = document.getElementById('stats-link');
         statsLink.addEventListener('click', function(e) {
             e.preventDefault();
             const showStats = localStorage.getItem('showStats') === 'true';
@@ -314,8 +324,6 @@
             settingsModal.style.display = 'block';
         }
 
-        const translationModal = document.getElementById('translation-modal');
-        let currentSentenceToTranslate = '';
 
         function showTranslationExercise() {
             const apiKey = localStorage.getItem('openai_api_key');
@@ -355,7 +363,12 @@
         async function checkTranslation() {
             const translationInput = document.getElementById('translation-input').value.trim();
             const apiKey = localStorage.getItem('openai_api_key');
-            
+           
+            if (!apiKey) {
+                document.querySelector('.error-message').textContent = 'Please set your OpenAI API key in settings first';
+                document.querySelector('.error-message').style.display = 'block';
+                return;
+            }
             if (!translationInput) {
                 document.querySelector('.error-message').textContent = 'Please enter a translation';
                 document.querySelector('.error-message').style.display = 'block';
@@ -377,11 +390,13 @@
                 });
 
                 const data = await response.json();
+                // Remove all bolding from previous incorrect morphemes
+                document.querySelector('.french-sentence').innerHTML = currentSentenceToTranslate;
                 
                 if (data.isCorrect) {
-                    // Increase difficulty slightly for correct translations
+                    // Reduce difficulty slightly for correct translations
                     let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
-                    currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
+                    currentDifficulty = Math.max(0.00, currentDifficulty - DIFFICULTY_STEP);
                     localStorage.setItem('userDifficulty', currentDifficulty.toString());
                     document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                     
@@ -390,9 +405,9 @@
                 } else {
                     currentTranslationAttempts++;
                     if (currentTranslationAttempts >= MAX_TRANSLATION_ATTEMPTS) {
-                        // Decrease difficulty for failed translations
+                        // Bump up difficulty for failed translations
                         let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
-                        currentDifficulty = Math.max(MIN_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP);
+                        currentDifficulty = Math.min(3.00, currentDifficulty + DIFFICULTY_STEP);
                         localStorage.setItem('userDifficulty', currentDifficulty.toString());
                         document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                         
@@ -400,16 +415,31 @@
                         translationModal.style.display = 'none';
                     } else {
                         document.querySelector('.error-message').textContent = 
-                            'Translation needs improvement. Please try again.';
+                            'Translation needs improvement. Incorrect morphemes have been bolded. Please try again.';
                         document.querySelector('.error-message').style.display = 'block';
                         document.querySelector('.attempts-remaining').textContent = 
                             `Attempts remaining: ${MAX_TRANSLATION_ATTEMPTS - currentTranslationAttempts}`;
+
+                        // Show incorrect morphemes if available
+                        const morphemes = data.wrongMorphemes;
+                        
+                        // check whether morphemes exists and length of morphemes
+                        if (morphemes && morphemes.length > 0) {
+                            const frenchSentence = document.querySelector('.french-sentence');
+                            console.log("morphemes are", morphemes)
+                            morphemes.forEach(morpheme => {
+                                frenchSentence.innerHTML = frenchSentence.innerHTML.replace(
+                                    morpheme, `<b>${morpheme}</b>`
+                                );
+                            });
+                            console.log("inner HTML of french sentence is", frenchSentence.innerHTML)
+                        }
                     }
                 }
             } catch (error) {
                 console.error('Error checking translation:', error);
                 document.querySelector('.error-message').textContent = 
-                    'Error checking translation. Please try again.';
+                    'Error checking translation (double-check your API key). Please try again.';
                 document.querySelector('.error-message').style.display = 'block';
             }
         }
@@ -420,7 +450,6 @@
             }
         });
 
-        const contentDiv = document.getElementById('sentence-display');
 
         document.addEventListener('keydown', async function(event) {
             if (event.code === 'Space') {
