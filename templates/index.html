@@ -27,8 +27,6 @@
         #sentence-display {
             font-size: 20px;
             padding: 30px;
-            //width: 100%;
-            //height: 100%;
             text-align: left;
             background-color: white;
             border-radius: 8px;
@@ -114,6 +112,27 @@
     </style>
 </head>
 <body>
+    <div id="story-container">
+        <a href="#" id="settings-link" style="position: absolute; top: 10px; right: 10px; font-size: 16px;">settings</a>
+        <div id="sentence-display">
+            press spacebar to begin
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <h2>Settings</h2>
+            <div class="warning">
+                ⚠️ Important: For your security, please remember to deactivate this API key after you're done using the application. 
+                We will only use your API key to verify translations and promise not to use it for any other purpose.
+            </div>
+            <p>Please enter your OpenAI API key to enable translation verification:</p>
+            <input type="password" id="api-key-input" placeholder="sk-..." />
+            <button onclick="saveApiKey()">Save API Key</button>
+        </div>
+    </div>
+
     <!-- Translation Exercise Modal -->
     <div class="modal-overlay" id="translation-modal">
         <div class="modal">
@@ -128,42 +147,28 @@
                 <textarea id="translation-input" rows="3" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
                 <div class="error-message" style="color: #dc3545; margin-bottom: 10px; display: none;"></div>
                 <button onclick="checkTranslation()">Check Translation</button>
+                <button onclick="skipTranslation()">Force Skip</button>
                 <div class="attempts-remaining" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
             </div>
         </div>
     </div>
 
-    <!-- Settings Modal -->
-    <div class="modal-overlay" id="settings-modal">
-        <div class="modal">
-            <h2>Settings</h2>
-            <div class="warning">
-                ⚠️ Important: After you're done trying out the application, remember to deactivate the API key you give us.
-                We will only use your API key to score your translations and promise not to use it for any other purpose.
-            </div>
-            <p>Please enter your OpenAI API key to enable translation verification:</p>
-            <input type="password" id="api-key-input" placeholder="sk-..." />
-            <button onclick="saveApiKey()">Save API Key</button>
-        </div>
-    </div>
-
-    <div id="story-container">
-        <a href="#" id="settings-link" style="position: absolute; top: 10px; right: 10px; font-size: 16px;">settings</a>
-        <div id="sentence-display">
-            press spacebar to begin
-        </div>
-    </div>
-
     <script>
-        // Settings modal functionality
-        const settingsModal = document.getElementById('settings-modal');
-        const settingsLink = document.getElementById('settings-link');
-        const apiKeyInput = document.getElementById('api-key-input');
-
+        // Initialize client-side storage and state
+        localStorage.setItem('currentStoryFile', '');
+        localStorage.setItem('currentSentenceIndex', '0');
         let translationExercisePending = false;
         let currentTranslationAttempts = 0;
         const MAX_TRANSLATION_ATTEMPTS = 3;
         const TRANSLATION_FREQUENCY = 3; // Show translation exercise every n sentences
+
+        // Settings modal functionality
+        const settingsModal = document.getElementById('settings-modal');
+        const settingsLink = document.getElementById('settings-link');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const translationModal = document.getElementById('translation-modal');
+        let currentSentenceToTranslate = '';
+        const contentDiv = document.getElementById('sentence-display');
 
         settingsLink.addEventListener('click', function(e) {
             e.preventDefault();
@@ -180,6 +185,7 @@
             }
         });
 
+
         function saveApiKey() {
             const apiKey = apiKeyInput.value.trim();
             if (apiKey) {
@@ -190,17 +196,19 @@
             }
         }
 
-        const translationModal = document.getElementById('translation-modal');
-        let currentSentenceToTranslate = '';
+        function openSettings() {
+            document.getElementById('translation-modal').style.display = 'none';
+            settingsModal.style.display = 'block';
+        }
 
-        function showTranslationExercise(sentence) {
+
+        function showTranslationExercise() {
             const apiKey = localStorage.getItem('openai_api_key');
-            translationExercisePending = true;
-            currentSentenceToTranslate = sentence;
             currentTranslationAttempts = 0;
             
             const noApiKeyMessage = document.getElementById('no-api-key-message');
             const translationExercise = document.getElementById('translation-exercise');
+            console.log("api key is", apiKey)
             
             if (!apiKey) {
                 noApiKeyMessage.style.display = 'block';
@@ -208,7 +216,7 @@
             } else {
                 noApiKeyMessage.style.display = 'none';
                 translationExercise.style.display = 'block';
-                document.querySelector('.french-sentence').textContent = sentence;
+                document.querySelector('.french-sentence').textContent = currentSentenceToTranslate;
                 document.getElementById('translation-input').value = '';
                 document.querySelector('.error-message').style.display = 'none';
                 document.querySelector('.attempts-remaining').textContent = 
@@ -216,6 +224,11 @@
             }
             
             translationModal.style.display = 'block';
+        }
+
+        async function skipTranslation() {
+            translationExercisePending = false;
+            translationModal.style.display = 'none';
         }
 
         async function checkTranslation() {
@@ -268,31 +281,36 @@
             }
         }
 
-        // Initialize client-side storage
-        localStorage.setItem('currentStoryFile', '');
-        localStorage.setItem('currentSentenceIndex', '0');
-
         translationModal.addEventListener('click', function(e) {
-            if (e.target === translationModal && !translationExercisePending) {
+            if (e.target === translationModal) {
                 translationModal.style.display = 'none';
             }
         });
 
-        const contentDiv = document.getElementById('sentence-display');
 
         document.addEventListener('keydown', async function(event) {
             if (event.code === 'Space') {
+                const translationModalVisible = translationModal.style.display === 'block';
+                const settingsModalVisible = settingsModal.style.display === 'block';
+                
+                // If any modal is visible, don't proceed with story
+                if (translationModalVisible || settingsModalVisible) {
+                    return;
+                }
                 event.preventDefault();  // Prevent page scrolling
+                
                 await handleSpacePress();
             }
         });
 
-        function openSettings() {
-            document.getElementById('translation-modal').style.display = 'none';
-            settingsModal.style.display = 'block';
-        }
-
         async function handleSpacePress() {
+            // If there's a pending translation exercise, show the modal again
+            console.log("translation exercise pending is", translationExercisePending)
+            if (translationExercisePending) {
+                showTranslationExercise();
+                return;
+            }
+
             const currentStoryFile = localStorage.getItem('currentStoryFile');
             let currentSentenceIndex = parseInt(localStorage.getItem('currentSentenceIndex'));
 
@@ -313,6 +331,7 @@
             console.log("current sentence index is", currentSentenceIndex)
 
             const data = await response.json();
+            currentSentenceToTranslate = data.sentence;
 
             if (data.isLastSentence) {
                 // Reset for next story
@@ -331,11 +350,12 @@
             } else {
                 // Append the new sentence to existing story
                 // Show every sentence on a different line using distinct <p> tags
-
                 contentDiv.innerHTML += '<p>' + data.sentence + '</p>';
+                
                 // Check if we need to show translation exercise
                 if (currentSentenceIndex > 1 && (currentSentenceIndex - 1) % TRANSLATION_FREQUENCY === 0) {
-                    showTranslationExercise(data.sentence);
+                    translationExercisePending = true;
+                    showTranslationExercise();
                 }
             }
 
