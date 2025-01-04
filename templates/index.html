@@ -157,18 +157,26 @@
         // Initialize client-side storage and state
         localStorage.setItem('currentStoryFile', '');
         localStorage.setItem('currentSentenceIndex', '0');
+        if (!localStorage.getItem('userDifficulty')) {
+            localStorage.setItem('userDifficulty', '1.5'); // Start at middle difficulty
+        }
+        if (!localStorage.getItem('seenStories')) {
+            localStorage.setItem('seenStories', JSON.stringify([]));
+        }
         let translationExercisePending = false;
         let currentTranslationAttempts = 0;
         const MAX_TRANSLATION_ATTEMPTS = 3;
         const TRANSLATION_FREQUENCY = 3; // Show translation exercise every n sentences
+        
+        // Difficulty adjustment parameters
+        const DIFFICULTY_STEP = 0.1;  // How much to adjust difficulty after each story
+        const MAX_DIFFICULTY = 3.0;
+        const MIN_DIFFICULTY = 0.0;
 
         // Settings modal functionality
         const settingsModal = document.getElementById('settings-modal');
         const settingsLink = document.getElementById('settings-link');
         const apiKeyInput = document.getElementById('api-key-input');
-        const translationModal = document.getElementById('translation-modal');
-        let currentSentenceToTranslate = '';
-        const contentDiv = document.getElementById('sentence-display');
 
         settingsLink.addEventListener('click', function(e) {
             e.preventDefault();
@@ -185,7 +193,6 @@
             }
         });
 
-
         function saveApiKey() {
             const apiKey = apiKeyInput.value.trim();
             if (apiKey) {
@@ -201,14 +208,16 @@
             settingsModal.style.display = 'block';
         }
 
+        const translationModal = document.getElementById('translation-modal');
+        let currentSentenceToTranslate = '';
 
         function showTranslationExercise() {
             const apiKey = localStorage.getItem('openai_api_key');
+            translationExercisePending = true;
             currentTranslationAttempts = 0;
             
             const noApiKeyMessage = document.getElementById('no-api-key-message');
             const translationExercise = document.getElementById('translation-exercise');
-            console.log("api key is", apiKey)
             
             if (!apiKey) {
                 noApiKeyMessage.style.display = 'block';
@@ -242,7 +251,6 @@
             }
 
             try {
-                // Here we would normally call the actual API endpoint
                 const response = await fetch('/score_translation', {
                     method: 'POST',
                     headers: {
@@ -258,11 +266,21 @@
                 const data = await response.json();
                 
                 if (data.isCorrect) {
+                    // Increase difficulty slightly for correct translations
+                    let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
+                    currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
+                    localStorage.setItem('userDifficulty', currentDifficulty.toString());
+                    
                     translationExercisePending = false;
                     translationModal.style.display = 'none';
                 } else {
                     currentTranslationAttempts++;
                     if (currentTranslationAttempts >= MAX_TRANSLATION_ATTEMPTS) {
+                        // Decrease difficulty for failed translations
+                        let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
+                        currentDifficulty = Math.max(MIN_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP);
+                        localStorage.setItem('userDifficulty', currentDifficulty.toString());
+                        
                         translationExercisePending = false;
                         translationModal.style.display = 'none';
                     } else {
@@ -282,14 +300,22 @@
         }
 
         translationModal.addEventListener('click', function(e) {
+            // Prevent closing the modal if we're in the middle of a translation exercise
             if (e.target === translationModal) {
-                translationModal.style.display = 'none';
+                // Only allow closing if there's no API key and we need to go to settings
+                const apiKey = localStorage.getItem('openai_api_key');
+                if (!apiKey) {
+                    openSettings();
+                }
+                // Otherwise, do nothing - user must complete the exercise
             }
         });
 
+        const contentDiv = document.getElementById('sentence-display');
 
         document.addEventListener('keydown', async function(event) {
             if (event.code === 'Space') {
+                event.preventDefault();  // Prevent page scrolling
                 const translationModalVisible = translationModal.style.display === 'block';
                 const settingsModalVisible = settingsModal.style.display === 'block';
                 
@@ -297,7 +323,6 @@
                 if (translationModalVisible || settingsModalVisible) {
                     return;
                 }
-                event.preventDefault();  // Prevent page scrolling
                 
                 await handleSpacePress();
             }
@@ -305,7 +330,6 @@
 
         async function handleSpacePress() {
             // If there's a pending translation exercise, show the modal again
-            console.log("translation exercise pending is", translationExercisePending)
             if (translationExercisePending) {
                 showTranslationExercise();
                 return;
@@ -321,7 +345,11 @@
                 },
                 body: JSON.stringify(
                     currentStoryFile === '' ?
-                    { needNewStory: true } :
+                    { 
+                        needNewStory: true,
+                        userDifficulty: parseFloat(localStorage.getItem('userDifficulty')),
+                        seenStories: JSON.parse(localStorage.getItem('seenStories'))
+                    } :
                     { 
                         storyFile: currentStoryFile,
                         sentenceIndex: currentSentenceIndex
@@ -331,9 +359,13 @@
             console.log("current sentence index is", currentSentenceIndex)
 
             const data = await response.json();
-            currentSentenceToTranslate = data.sentence;
 
             if (data.isLastSentence) {
+                // Update seen stories list
+                const seenStories = JSON.parse(localStorage.getItem('seenStories'));
+                seenStories.push(currentStoryFile);
+                localStorage.setItem('seenStories', JSON.stringify(seenStories));
+                
                 // Reset for next story
                 localStorage.setItem('currentStoryFile', '');
                 localStorage.setItem('currentSentenceIndex', '0');
@@ -354,7 +386,6 @@
                 
                 // Check if we need to show translation exercise
                 if (currentSentenceIndex > 1 && (currentSentenceIndex - 1) % TRANSLATION_FREQUENCY === 0) {
-                    translationExercisePending = true;
                     showTranslationExercise();
                 }
             }
