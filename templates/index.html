@@ -16,12 +16,32 @@
             background-color: #f0f0f0;
         }
 
+        #stats-panel {
+            position: fixed;  /* Fixed to window corner */
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 14px;
+            min-width: 200px;
+            z-index: 100;  /* Above story container but below modals */
+        }
+
         #story-container {
             width: 800px;
             height: 80vh;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            flex-direction: column;
+            position: relative;  /* For positioning the settings link */
+        }
+
+        #settings-link {
+            position: absolute;
+            top: -30px;  /* Position above the container */
+            right: 0;
+            font-size: 16px;
         }
 
         #sentence-display {
@@ -112,8 +132,13 @@
     </style>
 </head>
 <body>
+    <div id="stats-panel">
+        <p>Your Level: <span class="stat-value" id="user-difficulty">1.5</span></p>
+        <p>Story Level: <span class="stat-value" id="story-difficulty">-</span></p>
+        <p>Stories Seen: <span class="stat-value" id="stories-seen-count">0</span></p>
+    </div>
     <div id="story-container">
-        <a href="#" id="settings-link" style="position: absolute; top: 10px; right: 10px; font-size: 16px;">settings</a>
+        <a href="#" id="settings-link">settings</a>
         <div id="sentence-display">
             press spacebar to begin
         </div>
@@ -147,7 +172,7 @@
                 <textarea id="translation-input" rows="3" style="width: 100%; margin: 10px 0; padding: 8px;"></textarea>
                 <div class="error-message" style="color: #dc3545; margin-bottom: 10px; display: none;"></div>
                 <button onclick="checkTranslation()">Check Translation</button>
-                <button onclick="skipTranslation()">Force Skip</button>
+                <button onclick="skipTranslation()">Skip Translation</button>
                 <div class="attempts-remaining" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
             </div>
         </div>
@@ -163,6 +188,13 @@
         if (!localStorage.getItem('seenStories')) {
             localStorage.setItem('seenStories', JSON.stringify([]));
         }
+
+        // Update initial stats display
+        document.getElementById('user-difficulty').textContent = 
+            parseFloat(localStorage.getItem('userDifficulty')).toFixed(2);
+        document.getElementById('stories-seen-count').textContent = 
+            JSON.parse(localStorage.getItem('seenStories')).length;
+
         let translationExercisePending = false;
         let currentTranslationAttempts = 0;
         const MAX_TRANSLATION_ATTEMPTS = 3;
@@ -236,6 +268,12 @@
         }
 
         async function skipTranslation() {
+            // Increase difficulty slightly for correct translations
+            let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
+            currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
+            localStorage.setItem('userDifficulty', currentDifficulty.toString());
+            document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
+                    
             translationExercisePending = false;
             translationModal.style.display = 'none';
         }
@@ -270,6 +308,7 @@
                     let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
                     currentDifficulty = Math.min(MAX_DIFFICULTY, currentDifficulty + DIFFICULTY_STEP);
                     localStorage.setItem('userDifficulty', currentDifficulty.toString());
+                    document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                     
                     translationExercisePending = false;
                     translationModal.style.display = 'none';
@@ -280,6 +319,7 @@
                         let currentDifficulty = parseFloat(localStorage.getItem('userDifficulty'));
                         currentDifficulty = Math.max(MIN_DIFFICULTY, currentDifficulty - DIFFICULTY_STEP);
                         localStorage.setItem('userDifficulty', currentDifficulty.toString());
+                        document.getElementById('user-difficulty').textContent = currentDifficulty.toFixed(2);
                         
                         translationExercisePending = false;
                         translationModal.style.display = 'none';
@@ -300,14 +340,8 @@
         }
 
         translationModal.addEventListener('click', function(e) {
-            // Prevent closing the modal if we're in the middle of a translation exercise
             if (e.target === translationModal) {
-                // Only allow closing if there's no API key and we need to go to settings
-                const apiKey = localStorage.getItem('openai_api_key');
-                if (!apiKey) {
-                    openSettings();
-                }
-                // Otherwise, do nothing - user must complete the exercise
+                translationModal.style.display = 'none';
             }
         });
 
@@ -359,17 +393,23 @@
             console.log("current sentence index is", currentSentenceIndex)
 
             const data = await response.json();
+            currentSentenceToTranslate = data.sentence;
 
             if (data.isLastSentence) {
                 // Update seen stories list
                 const seenStories = JSON.parse(localStorage.getItem('seenStories'));
                 seenStories.push(currentStoryFile);
                 localStorage.setItem('seenStories', JSON.stringify(seenStories));
+                document.getElementById('stories-seen-count').textContent = seenStories.length;
+                
+                // Log seen stories to console
+                console.log('Stories seen so far:', seenStories);
                 
                 // Reset for next story
                 localStorage.setItem('currentStoryFile', '');
                 localStorage.setItem('currentSentenceIndex', '0');
                 contentDiv.textContent = 'press spacebar to begin';
+                document.getElementById('story-difficulty').textContent = '-';
                 return;
             }
 
@@ -379,6 +419,11 @@
                 console.log("First sentence")
                 // Put it in <p> tags
                 contentDiv.innerHTML = '<p>' + data.sentence + '</p>';
+                // Update story difficulty display if provided
+                if (data.storyDifficulty !== undefined) {
+                    document.getElementById('story-difficulty').textContent = 
+                        parseFloat(data.storyDifficulty).toFixed(2);
+                }
             } else {
                 // Append the new sentence to existing story
                 // Show every sentence on a different line using distinct <p> tags
