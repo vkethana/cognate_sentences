@@ -10,7 +10,7 @@ import math
 app = Flask(__name__)
 
 STORIES_DIR = "batch_stories"
-SENTENCE_SCORING_MODEL = 'gpt-4o-mini'
+SENTENCE_SCORING_MODEL = 'gpt-4o'
 
 def llm_score_translation(original: str, translation: str, api_key: str) -> Dict:
     """
