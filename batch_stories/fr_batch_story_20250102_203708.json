@@ -1,0 +1,280 @@
+{
+  "story": [
+    {
+      "sentence": "Le gouvernement fédéral propose une nouvelle initiative pour améliorer l'éducation nationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernement",
+        "fédéral",
+        "propose",
+        "nouvelle",
+        "initiative",
+        "améliorer",
+        "éducation",
+        "nationale"
+      ],
+      "generation_reasoning": "This sentence uses almost exclusively cognate words, making it fully understandable to English speakers through cognates. Key meaning-bearing words like 'gouvernement', 'fédéral', 'propose', 'initiative', 'améliorer', 'éducation', and 'nationale' are cognates. Missing small connecting words would not significantly alter comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words that are easily recognizable to an English speaker. The few non-cognate words are basic connectors and articles that do not hinder understanding. An English speaker can comprehend the full meaning of the sentence through the cognates.",
+      "actual_cognate_words": [
+        "gouvernement",
+        "fédéral",
+        "propose",
+        "nouvelle",
+        "initiative",
+        "améliorer",
+        "éducation",
+        "nationale"
+      ],
+      "generation_timestamp": "2025-01-02T20:37:22.462863"
+    },
+    {
+      "sentence": "Le projet inclut des programmes innovants pour les étudiants.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "projet",
+        "inclut",
+        "programmes",
+        "innovants",
+        "étudiants"
+      ],
+      "generation_reasoning": "This sentence continues the story by specifying that the project includes innovative programs for students, following the government's initiative to improve national education. It matches difficulty level 3 by using predominantly cognate words, making it fully understandable through cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates. The words 'projet', 'inclut', 'programmes', 'innovants', and 'étudiants' are cognates, making the main idea clear.",
+      "actual_cognate_words": [
+        "projet",
+        "inclut",
+        "programmes",
+        "innovants",
+        "étudiants"
+      ],
+      "generation_timestamp": "2025-01-02T20:38:49.409577"
+    },
+    {
+      "sentence": "Les universités et les écoles collaborent pour appliquer les nouvelles stratégies.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "universités",
+        "écoles",
+        "collaborent",
+        "appliquer",
+        "nouvelles",
+        "stratégies"
+      ],
+      "generation_reasoning": "This sentence follows by stating that universities and schools collaborate to apply the new strategies, building on the innovative programs mentioned previously. It aligns with difficulty level 3 by using mainly cognate words.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but 'écoles' (schools) might not be recognized by an English speaker, possibly leading to missing details about who is collaborating.",
+      "actual_cognate_words": [
+        "universités",
+        "collaborent",
+        "appliquer",
+        "stratégies"
+      ],
+      "generation_timestamp": "2025-01-02T20:38:49.409577"
+    },
+    {
+      "sentence": "L'initiative reçoit le support des parents et des professeurs.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "initiative",
+        "reçoit",
+        "support",
+        "parents",
+        "professeurs"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by indicating that the initiative receives support from parents and teachers, which follows from the collaboration between educational institutions. It meets difficulty level 3 by using mostly cognate words.",
+      "actual_score": 1,
+      "actual_score_reasoning": "While there are cognate words, the verb 'reçoit' (receives) may not be understood, leaving a gap in understanding the action taking place.",
+      "actual_cognate_words": [
+        "initiative",
+        "support",
+        "parents",
+        "professeurs"
+      ],
+      "generation_timestamp": "2025-01-02T20:38:49.409577"
+    },
+    {
+      "sentence": "Le succès potentiel du plan inspire confiance dans le futur de l'éducation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "succès",
+        "potentiel",
+        "plan",
+        "inspire",
+        "confiance",
+        "futur",
+        "éducation"
+      ],
+      "generation_reasoning": "This sentence advances the story by expressing that the potential success of the plan inspires confidence in the future of education, following the support received. It fits difficulty level 3 through the use of mainly cognate words.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Almost all words are cognates, making the sentence fully understandable through cognates without missing any key information.",
+      "actual_cognate_words": [
+        "succès",
+        "potentiel",
+        "plan",
+        "inspire",
+        "confiance",
+        "futur",
+        "éducation"
+      ],
+      "generation_timestamp": "2025-01-02T20:38:49.409577"
+    },
+    {
+      "sentence": "Les autorités promettent de continuer les efforts pour moderniser le système éducatif.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "autorités",
+        "promettent",
+        "continuer",
+        "efforts",
+        "moderniser",
+        "système",
+        "éducatif"
+      ],
+      "generation_reasoning": "This sentence concludes the narrative by stating that the authorities promise to continue efforts to modernize the educational system, building upon the inspired confidence. It adheres to difficulty level 3 by predominantly using cognate words.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains numerous cognate words, allowing an English speaker to fully grasp the meaning through cognates.",
+      "actual_cognate_words": [
+        "autorités",
+        "promettent",
+        "continuer",
+        "efforts",
+        "moderniser",
+        "système",
+        "éducatif"
+      ],
+      "generation_timestamp": "2025-01-02T20:38:49.409577"
+    },
+    {
+      "sentence": "Le ministre de l'éducation propose un plan national pour introduire la technologie moderne dans les universités.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "ministre",
+        "éducation",
+        "propose",
+        "plan",
+        "national",
+        "introduire",
+        "technologie",
+        "moderne",
+        "universités"
+      ],
+      "generation_reasoning": "This sentence continues the story by detailing how the authorities are acting on their promise to modernize the educational system. The Minister of Education is proposing a national plan to introduce modern technology in universities. It matches difficulty level 3 because it uses a high percentage of cognate words, making it understandable to English speakers through cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words that are easily recognizable to English speakers. Any non-cognate words are basic connectors that do not change the overall meaning.",
+      "actual_cognate_words": [
+        "ministre",
+        "éducation",
+        "propose",
+        "plan",
+        "national",
+        "introduire",
+        "technologie",
+        "moderne",
+        "universités"
+      ],
+      "generation_timestamp": "2025-01-02T20:39:35.887640"
+    },
+    {
+      "sentence": "Les professeurs accueillent positivement cette initiative innovatrice.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeurs",
+        "accueillent",
+        "positivement",
+        "initiative",
+        "innovatrice"
+      ],
+      "generation_reasoning": "This sentence follows by showing the positive reaction of professors to the proposed plan, thus continuing the narrative. It matches difficulty level 3 as it consists mostly of cognate words that convey the main ideas clearly to English speakers.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While several cognate words are present and convey the general idea, the key verb 'accueillent' is not a cognate. An English speaker might miss that the professors are 'welcoming' the initiative, leading to partial understanding.",
+      "actual_cognate_words": [
+        "professeurs",
+        "positivement",
+        "initiative",
+        "innovatrice"
+      ],
+      "generation_timestamp": "2025-01-02T20:39:35.887640"
+    },
+    {
+      "sentence": "Cependant, certains étudiants expriment des inquiétudes concernant les changements rapides.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "cependant",
+        "certains",
+        "étudiants",
+        "expriment",
+        "inquiétudes",
+        "concernant",
+        "changements",
+        "rapides"
+      ],
+      "generation_reasoning": "This sentence continues the story by introducing a contrasting perspective where some students express concerns about rapid changes. It fits difficulty level 3 because it predominantly uses cognate words, aiding comprehension for English speakers.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence includes many cognates that help infer that some students express something about rapid changes. However, words like 'inquiétudes' may not be understood, so important nuances about their 'concerns' might be missed.",
+      "actual_cognate_words": [
+        "certains",
+        "étudiants",
+        "expriment",
+        "concernant",
+        "changements",
+        "rapides"
+      ],
+      "generation_timestamp": "2025-01-02T20:39:35.887640"
+    },
+    {
+      "sentence": "Le gouvernement organise un dialogue ouvert pour adresser les préoccupations.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernement",
+        "organise",
+        "dialogue",
+        "ouvert",
+        "adresser",
+        "préoccupations"
+      ],
+      "generation_reasoning": "This sentence follows by describing how the government responds to the students' concerns by organizing an open dialogue, thus moving the story forward. It aligns with difficulty level 3 due to the extensive use of cognates that make the sentence clear through similar words.",
+      "actual_score": 3,
+      "actual_score_reasoning": "This sentence is composed almost entirely of cognate words that are easily understood by English speakers. Any missing words are basic connectors that do not alter the main idea.",
+      "actual_cognate_words": [
+        "gouvernement",
+        "organise",
+        "dialogue",
+        "ouvert",
+        "adresser",
+        "préoccupations"
+      ],
+      "generation_timestamp": "2025-01-02T20:39:35.887640"
+    },
+    {
+      "sentence": "Finalement, un consensus est atteint pour progresser avec le projet.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "consensus",
+        "atteint",
+        "progresser",
+        "projet"
+      ],
+      "generation_reasoning": "This sentence concludes the narrative by stating that a consensus is reached to proceed with the project, thereby resolving the earlier concerns. It meets difficulty level 3 as it primarily consists of cognate words that convey the essential meaning to English speakers.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The presence of several cognates allows an English speaker to grasp that finally a consensus is achieved to progress with the project. However, the verb 'atteint' (reached) may not be recognized, missing a key detail.",
+      "actual_cognate_words": [
+        "Finalement",
+        "consensus",
+        "est",
+        "progresser",
+        "avec",
+        "projet"
+      ],
+      "generation_timestamp": "2025-01-02T20:39:35.887640"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.4545454545454546,
+    "creation_date": "2025-01-02T20:37:08.432486",
+    "sentence_count": 11
+  }
+}

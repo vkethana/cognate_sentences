@@ -1,0 +1,129 @@
+{
+  "story": [
+    {
+      "sentence": "Le matin, Pierre se réveille tôt.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence uses basic French vocabulary with no cognates recognizable to English speakers. It introduces Pierre waking up early in the morning.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains few or no cognates that an English speaker could recognize to deduce the meaning.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Il met ses bottes et sort de la maison.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Continues the story by describing Pierre putting on his boots and leaving the house. No cognates are used, maintaining difficulty level 0.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognates like \"bottes\" and \"maison\", but key verbs like \"met\" and \"sort\" may be unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "bottes",
+        "maison"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Pierre marche vers la forêt.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Pierre walks towards the forest, furthering the narrative. The sentence contains basic words without cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains cognates like \"marche\" and \"forêt\". The sentence is fully understandable through cognates, and missed words don't change the meaning.",
+      "actual_cognate_words": [
+        "marche",
+        "forêt"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Il cherche des champignons pour le déjeuner.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Continues the story as Pierre looks for mushrooms for lunch. Uses simple vocabulary with no cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognates like \"cherche\" and \"pour\", but key words like \"champignons\" and \"déjeuner\" might be unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "cherche",
+        "pour"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Dans les bois, il entend un bruit étrange.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Advances the narrative by revealing that he hears a strange noise in the woods. Contains no cognates, matching difficulty level 0.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains a cognate like \"étrange\", but key verbs and nouns are unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "étrange"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Un lapin sort des buissons.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The story continues with a rabbit coming out of the bushes. The sentence uses basic French words without cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognates that an English speaker could recognize to deduce the meaning.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Pierre sourit et continue sa recherche.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Pierre smiles and continues his search, progressing the story. Maintains difficulty level 0 with no cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like \"continue\" and \"recherche\". An English speaker might guess that \"Pierre continues his research\", missing \"sourit\" which adds nuance.",
+      "actual_cognate_words": [
+        "continue",
+        "recherche"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Soudain, il voit un grand cerf.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The narrative advances as he suddenly sees a large deer. Uses simple vocabulary without cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains a cognate like \"grand\", but key verbs and nouns are unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "grand"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Le cerf s'enfuit rapidement.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Continues the story with the deer running away quickly. Contains no cognates, keeping the difficulty at level 0.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains a cognate like \"rapidement\", but key verbs and nouns are unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "rapidement"
+      ],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    },
+    {
+      "sentence": "Pierre rentre chez lui avec un panier plein.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Concludes the story as Pierre returns home with a full basket. Uses basic French vocabulary without cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Few or no cognates that an English speaker could recognize to deduce the meaning.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:24:07.319689"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 1.0,
+    "creation_date": "2025-01-02T21:23:02.021435",
+    "sentence_count": 10
+  }
+}

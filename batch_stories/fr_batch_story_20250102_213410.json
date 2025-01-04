@@ -1,0 +1,206 @@
+{
+  "story": [
+    {
+      "sentence": "Le matin, Luc marche vers le village pour le travail.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "marche",
+        "village",
+        "travail"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 1 because it contains some cognate words like 'marche', 'village', and 'travail', but is largely unintelligible to an English speaker. The cognates may allow them to guess that Luc is going somewhere, but not the specific details. As the first sentence, it introduces Luc and his journey to the village for work.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words. An English speaker might guess the main idea but could miss some details.",
+      "actual_cognate_words": [
+        "matin",
+        "Luc",
+        "marche",
+        "village",
+        "travail"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "En chemin, il voit un signe étrange près du pont.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "signe",
+        "étrange",
+        "pont"
+      ],
+      "generation_reasoning": "This sentence continues the story by describing what Luc sees on his way. It matches difficulty level 1 because it contains some cognates like 'signe', 'étrange', and 'pont', but the main verbs and context are not cognates, making it difficult for an English speaker to fully understand.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words, but some words might not be immediately understood, leading to partial comprehension.",
+      "actual_cognate_words": [
+        "signe",
+        "étrange",
+        "pont"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Curieux, il entre dans le bois et suit un sentier.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "curieux",
+        "sentier"
+      ],
+      "generation_reasoning": "Continuing the story, Luc's curiosity leads him into the woods. The sentence contains cognates like 'curieux' and 'sentier', but key actions are expressed with non-cognate words, keeping the difficulty at level 1.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Several cognate words present, but key words like 'bois' may not be recognized, causing partial understanding.",
+      "actual_cognate_words": [
+        "Curieux",
+        "entre",
+        "suit",
+        "sentier"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Plus tard, il entend un bruit étrange venant de la grotte.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "entend",
+        "bruit",
+        "étrange",
+        "grotte"
+      ],
+      "generation_reasoning": "The story progresses as Luc hears a strange noise from a cave. Cognates like 'entend', 'bruit', 'étrange', and 'grotte' are present, but the sentence remains largely unintelligible to English speakers, fitting difficulty level 1.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words. An English speaker might understand most of the sentence but may miss nuances.",
+      "actual_cognate_words": [
+        "Plus tard",
+        "entend",
+        "bruit",
+        "étrange",
+        "grotte"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Sans peur, Luc avance et entre dans l'obscurité.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "avance",
+        "entre",
+        "obscurité"
+      ],
+      "generation_reasoning": "Luc bravely moves forward into darkness. This sentence has cognates like 'avance', 'entre', and 'obscurité', but crucial verbs and context remain difficult for an English speaker to grasp, maintaining level 1 difficulty.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words, but key phrases may not be understood, leading to major meaning gaps.",
+      "actual_cognate_words": [
+        "avance",
+        "entre",
+        "obscurité"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Il trouve un objet brillant posé sur une pierre.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "objet",
+        "brillant",
+        "pierre"
+      ],
+      "generation_reasoning": "Continuing the narrative, Luc discovers an object. Cognate words like 'objet', 'brillant', and 'pierre' provide hints but don't convey the full meaning, keeping the difficulty appropriate.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; missed words don't change the meaning.",
+      "actual_cognate_words": [
+        "objet",
+        "brillant",
+        "posé",
+        "pierre"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "En touchant l'objet, une vision étrange apparaît.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "objet",
+        "vision",
+        "étrange",
+        "apparaît"
+      ],
+      "generation_reasoning": "The story develops as a strange vision appears when Luc touches the object. With cognates like 'objet', 'vision', 'étrange', and 'apparaît', the sentence remains at level 1 difficulty because key nuances are lost.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; an English speaker can grasp the full meaning.",
+      "actual_cognate_words": [
+        "touchant",
+        "objet",
+        "vision",
+        "étrange",
+        "apparaît"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Luc comprend qu'il doit retourner au village rapidement.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "comprend",
+        "retourner",
+        "village",
+        "rapidement"
+      ],
+      "generation_reasoning": "Luc realizes he must return to the village quickly. Cognate words such as 'comprend', 'retourner', 'village', and 'rapidement' are present, but the full context isn't clear to an English speaker, fitting level 1 difficulty.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words; the meaning is fully understandable.",
+      "actual_cognate_words": [
+        "Luc",
+        "comprend",
+        "retourner",
+        "village",
+        "rapidement"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Il avertit les habitants du danger imminent.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "avertit",
+        "habitants",
+        "danger",
+        "imminent"
+      ],
+      "generation_reasoning": "Luc warns the villagers of imminent danger. The cognates 'avertit', 'habitants', 'danger', and 'imminent' hint at the situation, but crucial details remain unclear, maintaining the appropriate difficulty.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; an English speaker would grasp the meaning.",
+      "actual_cognate_words": [
+        "avertit",
+        "habitants",
+        "danger",
+        "imminent"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    },
+    {
+      "sentence": "Grâce à lui, le village est sauvé du mal mystérieux.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "village",
+        "sauvé",
+        "mystérieux"
+      ],
+      "generation_reasoning": "The story concludes with the village being saved thanks to Luc. Cognates like 'village', 'sauvé', and 'mystérieux' provide some understanding, but key concepts are still missing, keeping it at level 1 difficulty.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains some cognate words, but key words like 'mal' may not be recognized, leading to partial understanding.",
+      "actual_cognate_words": [
+        "village",
+        "sauvé",
+        "mal",
+        "mystérieux"
+      ],
+      "generation_timestamp": "2025-01-02T21:35:34.405541"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 2.3,
+    "creation_date": "2025-01-02T21:34:10.653439",
+    "sentence_count": 10
+  }
+}

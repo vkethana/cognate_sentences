@@ -1,0 +1,233 @@
+{
+  "story": [
+    {
+      "sentence": "Le jeune artiste visite une galerie obscure pour trouver l'inspiration.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "artiste",
+        "visite",
+        "galerie",
+        "obscure",
+        "trouver",
+        "inspiration"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 2 because it contains many cognates ('artiste', 'visite', 'galerie', 'obscure', 'trouver', 'inspiration') that help an English speaker understand the main idea. However, words like 'obscure' might not be fully clear, adding subtle meaning changes.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words such as 'artiste', 'visite', 'galerie', 'obscure', and 'inspiration'. An English speaker might understand that an artist visits a gallery to find inspiration but may miss 'jeune' (young), 'pour' (for), and 'trouver' (to find), which provide important details.",
+      "actual_cognate_words": [
+        "artiste",
+        "visite",
+        "galerie",
+        "obscure",
+        "inspiration"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Il découvre un tableau énigmatique qui l'intrigue profondément.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "découvre",
+        "tableau",
+        "énigmatique",
+        "intrigue",
+        "profondément"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that the artist finds an enigmatic painting that deeply intrigues him. It contains many cognates ('découvre', 'tableau', 'énigmatique', 'intrigue', 'profondément'), but words like 'profondément' might not be fully understood, causing subtle meaning differences.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'découvre', 'énigmatique', and 'intrigue' that hint at discovery and intrigue. However, key words like 'tableau' (painting) and 'profondément' (deeply) are not cognates, making it difficult to grasp the main idea.",
+      "actual_cognate_words": [
+        "découvre",
+        "énigmatique",
+        "intrigue"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Le propriétaire de la galerie refuse de vendre le tableau mystérieux.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "propriétaire",
+        "galerie",
+        "refuse",
+        "vendre",
+        "tableau",
+        "mystérieux"
+      ],
+      "generation_reasoning": "Continuing the story, the gallery owner refuses to sell the mysterious painting. The sentence includes cognates ('propriétaire', 'galerie', 'refuse', 'vendre', 'tableau', 'mystérieux'), but may cause confusion with words like 'propriétaire' not being immediately recognized, adding subtle misunderstanding.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'propriétaire', 'galerie', 'refuse', and 'mystérieux', which provide hints about the proprietor, gallery, refusal, and something mysterious. However, key verbs like 'vendre' (sell) and nouns like 'tableau' (painting) are not cognates, making it difficult to grasp the main idea.",
+      "actual_cognate_words": [
+        "propriétaire",
+        "galerie",
+        "refuse",
+        "mystérieux"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Déterminé, l'artiste décide de revenir la nuit pour l'étudier discrètement.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "déterminé",
+        "artiste",
+        "décide",
+        "revenir",
+        "nuit",
+        "étudier",
+        "discrètement"
+      ],
+      "generation_reasoning": "The artist, determined, decides to return at night to study it discreetly, advancing the story. Cognates ('déterminé', 'artiste', 'décide', 'revenir', 'nuit', 'étudier', 'discrètement') help understanding, but connectors like 'pour l'étudier' might be missed, altering the nuance.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words like 'déterminé', 'artiste', 'décide', 'étudier', and 'discrètement'. An English speaker might understand that the artist is determined and decides to study something discreetly. However, missing words like 'revenir' (return) and 'nuit' (night) may lead to missing important details about the timing and action.",
+      "actual_cognate_words": [
+        "déterminé",
+        "artiste",
+        "décide",
+        "étudier",
+        "discrètement"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Cependant, il découvre une porte secrète derrière le tableau.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "cependant",
+        "découvre",
+        "porte",
+        "secrète",
+        "derrière",
+        "tableau"
+      ],
+      "generation_reasoning": "Continuing the story, he discovers a secret door behind the painting. The sentence contains cognates ('cependant', 'découvre', 'porte', 'secrète', 'derrière', 'tableau') but words like 'derrière' might be missed, affecting understanding.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'cependant', 'découvre', and 'secrète' that suggest discovery of something secret. However, key nouns like 'porte' (door), 'derrière' (behind), and 'tableau' (painting) are not cognates, making the main idea difficult to grasp.",
+      "actual_cognate_words": [
+        "cependant",
+        "découvre",
+        "secrète"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Curieux, il entre et trouve un passage vers un monde fantastique.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "curieux",
+        "entre",
+        "trouve",
+        "passage",
+        "vers",
+        "monde",
+        "fantastique"
+      ],
+      "generation_reasoning": "Advancing the narrative, curious, he enters and finds a passage to a fantastic world. Cognates ('curieux', 'entre', 'trouve', 'passage', 'vers', 'monde', 'fantastique') aid comprehension, but some words like 'vers' may not be understood, altering subtleties.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'curieux', 'entre', 'passage', and 'fantastique' indicating curiosity, entrance, passage, and something fantastic. However, missing words like 'trouve' (finds), 'vers' (towards), and 'monde' (world) are crucial for understanding the sentence's main idea.",
+      "actual_cognate_words": [
+        "curieux",
+        "entre",
+        "passage",
+        "fantastique"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Là, il rencontre des créatures étranges qui parlent une langue inconnue.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "rencontre",
+        "créatures",
+        "étranges",
+        "parlent",
+        "langue",
+        "inconnue"
+      ],
+      "generation_reasoning": "He meets strange creatures who speak an unknown language, progressing the story. Cognates ('rencontre', 'créatures', 'étranges', 'parlent', 'langue', 'inconnue') help grasp the main idea, but nuances may be lost due to words like 'inconnue'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words like 'rencontre' (encounters), 'créatures', 'étranges', and 'langue', which help an English speaker understand that he meets strange creatures who speak a language. However, words like 'inconnue' (unknown) may be missed, altering the full meaning.",
+      "actual_cognate_words": [
+        "rencontre",
+        "créatures",
+        "étranges",
+        "langue"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Ils lui montrent des inventions incroyables et des paysages magnifiques.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "montrent",
+        "inventions",
+        "incroyables",
+        "paysages",
+        "magnifiques"
+      ],
+      "generation_reasoning": "Continuing, they show him incredible inventions and magnificent landscapes. Cognates ('montrent', 'inventions', 'incroyables', 'paysages', 'magnifiques') assist understanding, but missing connections may alter the full meaning.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'inventions', 'incroyables', and 'magnifiques' that suggest amazing inventions and something magnificent. However, key verbs like 'montrent' (show) and nouns like 'paysages' (landscapes) are not cognates, making it difficult to grasp the full meaning.",
+      "actual_cognate_words": [
+        "inventions",
+        "incroyables",
+        "magnifiques"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Après une aventure passionnante, il retourne dans sa réalité avec des idées nouvelles.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "aventure",
+        "passionnante",
+        "retourne",
+        "réalité",
+        "idées",
+        "nouvelles"
+      ],
+      "generation_reasoning": "Advancing the story, after an exciting adventure, he returns to his reality with new ideas. Cognates ('aventure', 'passionnante', 'retourne', 'réalité', 'idées', 'nouvelles') help comprehension, but terms like 'passionnante' might not be fully understood.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words like 'aventure', 'passionnante', 'retourne', 'réalité', and 'idées', which help an English speaker understand that after an exciting adventure, he returns to his reality with some ideas. Missing words like 'nouvelles' (new) may cause subtle changes in understanding.",
+      "actual_cognate_words": [
+        "aventure",
+        "passionnante",
+        "retourne",
+        "réalité",
+        "idées"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    },
+    {
+      "sentence": "Finalement, il crée une œuvre d'art qui captive le monde entier.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "finalement",
+        "crée",
+        "œuvre",
+        "art",
+        "captive",
+        "monde",
+        "entier"
+      ],
+      "generation_reasoning": "Concluding the story, he creates a work of art that captivates the entire world. Cognates ('finalement', 'crée', 'œuvre', 'art', 'captive', 'monde', 'entier') aid understanding, but certain nuances might be missed, matching difficulty level 2.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains predominantly cognate words such as 'finalement', 'crée', 'œuvre d'art', 'captive', and 'entier'. An English speaker can understand that he finally creates a work of art that captivates the entire world. The sentence is fully understandable through cognates except for basic connectors.",
+      "actual_cognate_words": [
+        "finalement",
+        "crée",
+        "œuvre d'art",
+        "captive",
+        "entier"
+      ],
+      "generation_timestamp": "2025-01-02T21:42:05.054985"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 1.6,
+    "creation_date": "2025-01-02T21:40:42.547469",
+    "sentence_count": 10
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "story": [
+    {
+      "sentence": "Un jour, un étudiant décide de voyager en Europe.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "étudiant",
+        "décide",
+        "voyager",
+        "Europe"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 2 because it contains many cognate words like 'étudiant', 'décide', 'voyager', and 'Europe', which help an English speaker grasp the main idea that a student decides to travel to Europe. However, words like 'Un jour' (one day) might be missed, adding subtlety to the timing of the event.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words except for basic connectors, making it fully understandable to an English speaker through cognates.",
+      "actual_cognate_words": [
+        "étudiant",
+        "décide",
+        "voyager",
+        "Europe"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Il prépare soigneusement son itinéraire et réserve des hôtels.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "prépare",
+        "soigneusement",
+        "itinéraire",
+        "réserve",
+        "hôtels"
+      ],
+      "generation_reasoning": "This sentence includes cognates such as 'prépare', 'soigneusement', 'itinéraire', 'réserve', and 'hôtels', indicating that he carefully prepares his itinerary and reserves hotels. Words like 'son' (his) may be missed, affecting the understanding of possession. It continues the story by showing his preparations for the trip.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words that help an English speaker understand the main idea, but words like 'soigneusement' and 'son' may cause them to miss important details.",
+      "actual_cognate_words": [
+        "prépare",
+        "itinéraire",
+        "réserve",
+        "hôtels"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Avant de partir, il visite sa famille pour dire au revoir.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Avant",
+        "partir",
+        "visite",
+        "famille",
+        "dire",
+        "au revoir"
+      ],
+      "generation_reasoning": "The sentence contains cognates like 'Avant', 'partir', 'visite', 'famille', 'dire', and 'au revoir', conveying that before leaving, he visits his family to say goodbye. Missing 'pour' (to) could alter the understanding of purpose. This continues the story by describing his actions prior to departure.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words, but key verbs and phrases are not cognates, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "visite",
+        "famille"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "À l'aéroport, il rencontre un ami d'enfance par hasard.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "aéroport",
+        "rencontre",
+        "ami",
+        "enfance",
+        "hasard"
+      ],
+      "generation_reasoning": "Cognates like 'aéroport', 'rencontre', 'ami', 'enfance', and 'hasard' indicate that at the airport, he meets a childhood friend by chance. Words like 'par' (by) might be overlooked, affecting the understanding of 'by chance'. This progresses the story by introducing an unexpected encounter.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words, but key verbs and phrases are not cognates, making it hard to grasp the main idea.",
+      "actual_cognate_words": [
+        "aéroport",
+        "ami"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Ils décident de voyager ensemble pour partager l'aventure.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "décident",
+        "voyager",
+        "ensemble",
+        "partager",
+        "aventure"
+      ],
+      "generation_reasoning": "The sentence includes cognates such as 'décident', 'voyager', 'ensemble', 'partager', and 'aventure', showing that they decide to travel together to share the adventure. Missing 'pour' (to) could change the perception of their intent. This continues the story by explaining their joint decision.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words allowing the main idea to be understood, but missing words like 'ensemble' may lead to missing important details.",
+      "actual_cognate_words": [
+        "décident",
+        "voyager",
+        "partager",
+        "aventure"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Pendant le voyage, ils explorent des monuments historiques célèbres.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Pendant",
+        "voyage",
+        "explorent",
+        "monuments",
+        "historiques",
+        "célèbres"
+      ],
+      "generation_reasoning": "Contains cognates like 'Pendant', 'voyage', 'explorent', 'monuments', 'historiques', and 'célèbres', indicating that during the trip, they explore famous historical monuments. Words like 'des' (some) might be missed, leading to a subtle loss of meaning. This continues the story by detailing their activities.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, allowing the main idea to be understood, but missing words like 'pendant' may lead to subtle misunderstandings.",
+      "actual_cognate_words": [
+        "voyage",
+        "explorent",
+        "monuments",
+        "historiques",
+        "célèbres"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Ils goûtent la cuisine locale et découvrent de nouvelles saveurs.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "goûtent",
+        "cuisine",
+        "locale",
+        "découvrent",
+        "nouvelles",
+        "saveurs"
+      ],
+      "generation_reasoning": "With cognates like 'goûtent', 'cuisine', 'locale', 'découvrent', 'nouvelles', and 'saveurs', the sentence conveys that they taste local cuisine and discover new flavors. Missing connectors like 'et' (and) might affect the flow of actions. This advances the story by describing their culinary experiences.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but missing verbs like 'goûtent' may prevent full understanding of the main idea.",
+      "actual_cognate_words": [
+        "cuisine",
+        "locale",
+        "découvrent",
+        "nouvelles",
+        "saveurs"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Un soir, ils assistent à un concert de musique traditionnelle.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "soir",
+        "assistent",
+        "concert",
+        "musique",
+        "traditionnelle"
+      ],
+      "generation_reasoning": "Includes cognates such as 'soir', 'assistent', 'concert', 'musique', and 'traditionnelle', suggesting that one evening, they attend a traditional music concert. Words like 'à' (to) may be missed, slightly altering the understanding of their action. This continues the story by highlighting their entertainment activities.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains some cognate words that help understand the main idea, but words like 'assistent' may cause misunderstandings.",
+      "actual_cognate_words": [
+        "concert",
+        "musique",
+        "traditionnelle"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Malheureusement, ils perdent leurs bagages à la gare.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Malheureusement",
+        "perdent",
+        "bagages",
+        "gare"
+      ],
+      "generation_reasoning": "Cognates like 'Malheureusement', 'perdent', 'bagages', and 'gare' indicate that unfortunately, they lose their luggage at the station. Missing 'leurs' (their) could change whose luggage was lost. This adds a conflict to the story, increasing tension.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains some cognate words that convey the main idea, but missing words like 'malheureusement' may lead to missing the nuance of misfortune.",
+      "actual_cognate_words": [
+        "perdent",
+        "bagages",
+        "gare"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    },
+    {
+      "sentence": "Finalement, ils rentrent chez eux avec des souvenirs inoubliables.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Finalement",
+        "rentrent",
+        "souvenirs",
+        "inoubliables"
+      ],
+      "generation_reasoning": "Contains cognates like 'Finalement', 'rentrent', 'souvenirs', and 'inoubliables', conveying that finally, they return home with unforgettable memories. Words like 'chez eux' (to their homes) might be missed, subtly affecting the ending. This concludes the story by summarizing their overall experience.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words except for basic connectors, making it fully understandable to an English speaker through cognates.",
+      "actual_cognate_words": [
+        "finalement",
+        "rentrent",
+        "souvenirs",
+        "inoubliables"
+      ],
+      "generation_timestamp": "2025-01-02T21:38:17.624688"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 2.0,
+    "creation_date": "2025-01-02T21:36:53.352395",
+    "sentence_count": 10
+  }
+}

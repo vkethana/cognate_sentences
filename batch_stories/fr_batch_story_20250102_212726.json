@@ -1,0 +1,217 @@
+{
+  "story": [
+    {
+      "sentence": "Un matin, Pierre découvre une lettre étrange chez lui.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Pierre",
+        "découvre",
+        "lettre",
+        "étrange"
+      ],
+      "generation_reasoning": "This sentence contains cognate words like \"Pierre\", \"découvre\", \"lettre\", and \"étrange\", which help an English speaker understand that Pierre discovers a strange letter. However, the phrase \"chez lui\" (at his home) might be missed, so the nuance of where he discovers the letter might be lost.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words like 'Pierre', 'découvre', 'lettre', and 'étrange', allowing an English speaker to grasp that Pierre discovers a strange letter. However, missing words like 'un matin' ('one morning') and 'chez lui' ('at his place') may lead to loss of important details.",
+      "actual_cognate_words": [
+        "Pierre",
+        "découvre",
+        "lettre",
+        "étrange"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Il décide d'ouvrir l'enveloppe malgré ses inquiétudes.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "décide",
+        "ouvrir",
+        "enveloppe",
+        "malgré",
+        "inquiétudes"
+      ],
+      "generation_reasoning": "The sentence includes cognates such as \"décide\", \"ouvrir\", \"enveloppe\", \"malgré\", and \"inquiétudes\", allowing an English speaker to grasp that he decides to open the envelope despite worries. The possessive \"ses\" (his) might be missed, so they may not realize the worries are his own. This sentence continues the story by showing Pierre's action after discovering the letter.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognate words such as 'décide', 'ouvrir', 'enveloppe', and 'malgré', helping an English speaker understand that he decides to open the envelope despite something. However, 'ses inquiétudes' ('his worries') might be missed, altering the full meaning.",
+      "actual_cognate_words": [
+        "décide",
+        "ouvrir",
+        "enveloppe",
+        "malgré"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "À l'intérieur, il trouve une invitation pour un rendez-vous secret.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "À l'intérieur",
+        "trouve",
+        "invitation",
+        "rendez-vous",
+        "secret"
+      ],
+      "generation_reasoning": "With cognates like \"À l'intérieur\", \"trouve\", \"invitation\", \"rendez-vous\", and \"secret\", an English speaker can understand that he finds an invitation to a secret meeting. However, they might miss prepositions like \"pour\", affecting the nuance that the invitation is for a secret rendezvous. This continues the story by revealing what Pierre found in the envelope.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains numerous cognate words like 'intérieur', 'trouve', 'invitation', 'rendez-vous', and 'secret', making the sentence fully understandable through cognates. Any missed words do not change the overall meaning.",
+      "actual_cognate_words": [
+        "intérieur",
+        "trouve",
+        "invitation",
+        "rendez-vous",
+        "secret"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Pierre hésite, mais la curiosité l'emporte finalement.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Pierre",
+        "hésite",
+        "curiosité",
+        "finalement"
+      ],
+      "generation_reasoning": "The sentence contains cognates such as \"Pierre\", \"hésite\", \"curiosité\", and \"finalement\", helping an English speaker understand that Pierre hesitates but curiosity finally... However, \"l'emporte\" (prevails) may be missed, so they don't fully grasp that curiosity prevails. This continues the story by showing Pierre's internal conflict and decision.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Features several cognate words such as 'Pierre', 'hésite', 'curiosité', and 'finalement'. An English speaker might understand that Pierre hesitates but curiosity something finally. Missing 'l'emporte' ('wins over') leads to loss of important action.",
+      "actual_cognate_words": [
+        "Pierre",
+        "hésite",
+        "curiosité",
+        "finalement"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Il se rend à l'adresse indiquée sur la lettre.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "adresse",
+        "indiquée",
+        "lettre"
+      ],
+      "generation_reasoning": "Including cognates like \"adresse\", \"indiquée\", and \"lettre\", the sentence allows an English speaker to understand there's an address indicated on the letter. However, \"Il se rend à\" (He goes to) may be missed, so they might not realize that he goes to that address. This continues the story by describing Pierre's action of going to the specified location.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words like 'adresse', 'indiquée', and 'lettre', allowing an English speaker to infer that something about an address indicated on the letter. However, 'Il se rend à' ('he goes to') might be unclear, affecting the understanding of the main action.",
+      "actual_cognate_words": [
+        "adresse",
+        "indiquée",
+        "lettre"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Là-bas, une femme mystérieuse l'attend avec impatience.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "femme",
+        "mystérieuse",
+        "attend",
+        "impatience"
+      ],
+      "generation_reasoning": "The sentence has cognates like \"femme\", \"mystérieuse\", \"attend\", and \"impatience\", helping an English speaker understand that a mysterious woman is waiting impatiently for him. The term \"Là-bas\" (over there) may be missed, so they might not know where this meeting takes place. This continues the story by introducing a new character awaiting Pierre.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognate words such as 'femme', 'mystérieuse', and 'impatience', helping an English speaker realize there's a mysterious woman with impatience. Missing 'l'attend' ('awaits him') leads to missing the key action.",
+      "actual_cognate_words": [
+        "femme",
+        "mystérieuse",
+        "impatience"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Elle lui révèle une mission dangereuse à accomplir.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Elle",
+        "révèle",
+        "mission",
+        "dangereuse",
+        "accomplir"
+      ],
+      "generation_reasoning": "With cognates such as \"Elle\", \"révèle\", \"mission\", \"dangereuse\", and \"accomplir\", an English speaker can understand that she reveals a dangerous mission to accomplish. The word \"lui\" (to him) may be missed, so they might not grasp that she is revealing it specifically to Pierre. This continues the story by explaining why the woman was waiting for him.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words like 'révèle', 'mission', 'dangereuse', and 'accomplir', making the sentence fully understandable. Any missed words do not change the overall meaning.",
+      "actual_cognate_words": [
+        "révèle",
+        "mission",
+        "dangereuse",
+        "accomplir"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Pierre est hésitant, mais il accepte après une longue réflexion.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Pierre",
+        "hésitant",
+        "accepte",
+        "réflexion"
+      ],
+      "generation_reasoning": "The sentence includes cognates like \"Pierre\", \"hésitant\", \"accepte\", and \"réflexion\", helping an English speaker understand that Pierre is hesitant but accepts after reflection. The word \"longue\" (long) could be missed, so they might not realize it took him a long time to decide. This continues the story by showing Pierre's decision to accept the mission.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Features several cognate words such as 'Pierre', 'hésitant', 'accepte', 'longue', and 'réflexion'. An English speaker can understand that Pierre is hesitant but accepts after a long reflection. Missing connectors do not alter the main idea.",
+      "actual_cognate_words": [
+        "Pierre",
+        "hésitant",
+        "accepte",
+        "longue",
+        "réflexion"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Ensemble, ils élaborent un plan afin de réussir la mission.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Ensemble",
+        "élaborent",
+        "plan",
+        "réussir",
+        "mission"
+      ],
+      "generation_reasoning": "Containing cognates such as \"Ensemble\", \"élaborent\", \"plan\", \"réussir\", and \"mission\", the sentence allows an English speaker to understand that they develop a plan to succeed in the mission. However, the phrase \"afin de\" (in order to) might be missed, affecting the understanding of the purpose. This continues the story by showing their collaboration.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Includes cognate words like 'élaborent', 'plan', 'réussir', and 'mission', allowing an English speaker to grasp that they develop a plan to succeed in the mission. Missing words like 'Ensemble' ('together') and 'afin de' ('in order to') are connectors and don't change the meaning significantly.",
+      "actual_cognate_words": [
+        "élaborent",
+        "plan",
+        "réussir",
+        "mission"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    },
+    {
+      "sentence": "Après de nombreux obstacles, ils accomplissent finalement leur but initial.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Après",
+        "nombreux",
+        "obstacles",
+        "accomplissent",
+        "finalement",
+        "initial"
+      ],
+      "generation_reasoning": "The sentence includes cognates like \"Après\", \"nombreux\", \"obstacles\", \"accomplissent\", \"finalement\", and \"initial\", helping an English speaker understand that after many obstacles, they finally accomplish their initial... something. The word \"but\" (goal) may be missed, so the reader might not know exactly what they accomplished. This concludes the story by showing their success.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words such as 'nombreux', 'obstacles', 'accomplissent', 'finalement', and 'initial'. An English speaker might understand that after numerous obstacles, they accomplish something initial. However, misunderstanding 'but' (which means 'goal' in French) can change the meaning.",
+      "actual_cognate_words": [
+        "nombreux",
+        "obstacles",
+        "accomplissent",
+        "finalement",
+        "initial"
+      ],
+      "generation_timestamp": "2025-01-02T21:28:42.314292"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 2.4,
+    "creation_date": "2025-01-02T21:27:26.968413",
+    "sentence_count": 10
+  }
+}

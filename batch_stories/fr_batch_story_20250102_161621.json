@@ -1,0 +1,188 @@
+{
+  "story": [
+    {
+      "sentence": "Le cuisinier habile coupe des légumes rapidement.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "légumes",
+        "rapidement"
+      ],
+      "generation_reasoning": "Contains some cognate words like 'légumes' and 'rapidement' in non-crucial positions. The key verbs and subject ('coupe', 'cuisinier habile') are not cognates, making the sentence largely unintelligible to an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The sentence contains cognate words like \"coupe\" (cut), \"légumes\" (legumes/vegetables), and \"rapidement\" (rapidly). However, key words like \"cuisinier\" (cook) and \"habile\" (skillful) are not easily recognized by English speakers. They might grasp that something is being cut rapidly involving vegetables, but miss important details about who is performing the action and the skill involved.",
+      "actual_cognate_words": [
+        "coupe",
+        "légumes",
+        "rapidement"
+      ],
+      "generation_timestamp": "2025-01-02T16:16:48.159541"
+    },
+    {
+      "sentence": "Il ajoute de l'eau pour la soupe.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "ajoute",
+        "soupe"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that after cutting vegetables, the cook adds water to make the soup. It matches difficulty level 1 because it contains some cognate words ('ajoute', 'soupe') but the key verb 'ajoute' may not be immediately recognized by English speakers, leaving gaps in understanding.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The only cognate word is 'soupe' meaning 'soup'. The rest of the sentence contains words that are unlikely to be understood by an English speaker. They might guess the topic is soup but not comprehend the action.",
+      "actual_cognate_words": [
+        "soupe"
+      ],
+      "generation_timestamp": "2025-01-02T16:18:18.874554"
+    },
+    {
+      "sentence": "La cuisine sent bon maintenant.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "cuisine"
+      ],
+      "generation_reasoning": "This sentence follows by indicating that the kitchen now smells good, implying progress in cooking. It matches difficulty level 1 as it contains the cognate 'cuisine', but key words like 'sent' are not cognates, making the full meaning less accessible to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'cuisine'. However, words like 'sent bon' and 'maintenant' are not intelligible to an English speaker. They may recognize it's about cuisine but miss that it 'smells good now'.",
+      "actual_cognate_words": [
+        "cuisine"
+      ],
+      "generation_timestamp": "2025-01-02T16:18:18.874554"
+    },
+    {
+      "sentence": "Les gens s'assoient aux tables.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "tables"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing people are sitting at the tables, suggesting customers are arriving. It fits difficulty level 1 with the cognate 'tables', while the main verb 's'assoient' is not a cognate, which may obscure the action taking place.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes the cognate 'tables'. The other words are not easily understood. An English speaker might guess the sentence involves tables but not that 'people are sitting at the tables'.",
+      "actual_cognate_words": [
+        "tables"
+      ],
+      "generation_timestamp": "2025-01-02T16:18:18.874554"
+    },
+    {
+      "sentence": "Il donne les plats aux clients.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "clients"
+      ],
+      "generation_reasoning": "This sentence progresses the narrative as the cook gives the dishes to the customers. It meets difficulty level 1 because it includes the cognate 'clients', but the key verb 'donne' is not a cognate, making it harder for English speakers to grasp the exact action.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates: 'donne' (donate/give), 'plats' (plates/dishes), and 'clients'. An English speaker might understand that 'he gives plates to clients', grasping the main idea despite subtle differences.",
+      "actual_cognate_words": [
+        "donne",
+        "plats",
+        "clients"
+      ],
+      "generation_timestamp": "2025-01-02T16:18:18.874554"
+    },
+    {
+      "sentence": "Tout le monde est content.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "content"
+      ],
+      "generation_reasoning": "This sentence concludes the story by stating everyone is happy. It aligns with difficulty level 1 as it uses the cognate 'content', but essential words like 'est' are not cognates, which may prevent full comprehension of the sentence's meaning.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes the cognates 'monde' (world) and 'content'. An English speaker might interpret this as 'All the world is content', understanding the general meaning that everyone is happy.",
+      "actual_cognate_words": [
+        "monde",
+        "content"
+      ],
+      "generation_timestamp": "2025-01-02T16:18:18.874554"
+    },
+    {
+      "sentence": "Soudain, une musique joyeuse commence à jouer.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "musique",
+        "joyeuse",
+        "commence"
+      ],
+      "generation_reasoning": "This sentence continues the story by introducing cheerful music that starts playing, which enhances the happy atmosphere from 'Tout le monde est content.' It matches difficulty level 1 because it contains some cognate words like 'musique' and 'commence' in non-crucial positions, but the overall meaning remains largely unintelligible to an English speaker.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains several cognate words like \"Soudain\" (sudden), \"musique\" (music), \"joyeuse\" (joyous), and \"commence\" (commence). An English speaker could understand it as \"Sudden(ly), a joyous music commences to...\" The verb \"jouer\" means \"to play,\" which is not a cognate but is a basic verb that doesn't significantly alter the overall understanding.",
+      "actual_cognate_words": [
+        "Soudain",
+        "musique",
+        "joyeuse",
+        "commence"
+      ],
+      "generation_timestamp": "2025-01-02T16:19:12.561454"
+    },
+    {
+      "sentence": "Les enfants rient et courent dans le jardin.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "enfants",
+        "jardin"
+      ],
+      "generation_reasoning": "Following the music starting, this sentence describes children laughing and running in the garden, adding to the joyful scene. It fits difficulty level 1 as it includes cognates like 'enfants' and 'jardin' in non-crucial positions, but the main action words are less accessible to an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The cognate words are \"enfants\" (infants) and \"jardin\" (garden). However, key verbs \"rient\" (laugh) and \"courent\" (run) are not cognates, leaving major gaps in understanding the action taking place.",
+      "actual_cognate_words": [
+        "enfants",
+        "jardin"
+      ],
+      "generation_timestamp": "2025-01-02T16:19:12.561454"
+    },
+    {
+      "sentence": "Une table est couverte de plats délicieux.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "table",
+        "délicieux"
+      ],
+      "generation_reasoning": "Continuing the story, this sentence mentions a table covered with delicious dishes, contributing to the festive environment. It matches difficulty level 1 because it uses cognates like 'table' and 'délicieux' in non-crucial positions, but key nouns and verbs may not be immediately understood by an English speaker.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognates such as \"table,\" \"est\" (is), \"couverte\" (covered), \"plats\" (which resembles \"plates\" but means \"dishes\"), and \"délicieux\" (delicious). An English speaker might interpret it as \"A table is covered with delicious plates,\" potentially missing nuances like \"plats\" meaning \"dishes\" instead of \"plates.\"",
+      "actual_cognate_words": [
+        "table",
+        "est",
+        "couverte",
+        "plats",
+        "délicieux"
+      ],
+      "generation_timestamp": "2025-01-02T16:19:12.561454"
+    },
+    {
+      "sentence": "Le ciel s'assombrit, mais personne ne part.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "ciel",
+        "personne"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by noting that the sky is darkening, but no one is leaving, indicating the enjoyment of the gathering. It fits difficulty level 1 as it includes cognates like 'ciel' and 'personne' in non-crucial positions, while crucial verbs remain less accessible.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The sentence includes cognates like \"mais\" (but), \"personne\" (person), and \"part\" (part). However, critical words like \"ciel\" (sky) and \"s'assombrit\" (darkens) are not cognates, making it difficult for an English speaker to grasp the main idea.",
+      "actual_cognate_words": [
+        "mais",
+        "personne",
+        "part"
+      ],
+      "generation_timestamp": "2025-01-02T16:19:12.561454"
+    },
+    {
+      "sentence": "Finalement, les étoiles brillent au-dessus de tous.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "finalement",
+        "étoiles"
+      ],
+      "generation_reasoning": "Concluding the story, this sentence describes stars shining above everyone, bringing a peaceful end to the event. It matches difficulty level 1 by using cognates like 'étoiles' and 'finalement' in non-crucial positions, but key elements of the sentence may not be clear to an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Only the word \"Finalement\" (finally) is a cognate. The rest of the sentence lacks cognates, leaving major gaps in understanding and making it hard for an English speaker to infer the meaning.",
+      "actual_cognate_words": [
+        "Finalement"
+      ],
+      "generation_timestamp": "2025-01-02T16:19:12.561454"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 1.4545454545454546,
+    "creation_date": "2025-01-02T16:16:21.050553",
+    "sentence_count": 11
+  }
+}

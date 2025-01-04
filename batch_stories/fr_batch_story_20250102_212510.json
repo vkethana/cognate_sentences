@@ -1,0 +1,236 @@
+{
+  "story": [
+    {
+      "sentence": "Le scientifique David découvre une formule révolutionnaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifique",
+        "découvre",
+        "formule",
+        "révolutionnaire"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it uses a high percentage of cognate words ('scientifique', 'découvre', 'formule', 'révolutionnaire'), making it fully understandable to an English speaker through cognates. As the first sentence, it introduces the main character and sets the stage for the story.",
+      "actual_score": 3,
+      "actual_score_reasoning": "This sentence is almost entirely composed of cognate words that are similar to English equivalents. An English speaker could understand 'The scientist David discovers a revolutionary formula.'",
+      "actual_cognate_words": [
+        "Le",
+        "scientifique",
+        "David",
+        "découvre",
+        "une",
+        "formule",
+        "révolutionnaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Il présente la formule aux experts de l'université.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "présente",
+        "formule",
+        "experts",
+        "université"
+      ],
+      "generation_reasoning": "The sentence maintains difficulty level 3 by using cognates ('présente', 'formule', 'experts', 'université') that convey the key meaning. It continues the story by showing that David is presenting his discovery to university experts.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates, and an English speaker would understand 'He presents the formula to the experts of the university.', making it fully understandable.",
+      "actual_cognate_words": [
+        "Il",
+        "présente",
+        "la",
+        "formule",
+        "experts",
+        "université"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Les experts applaudissent la découverte extraordinaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "experts",
+        "applaudissent",
+        "découverte",
+        "extraordinaire"
+      ],
+      "generation_reasoning": "This sentence is level 3 as it uses cognates ('experts', 'applaudissent', 'découverte', 'extraordinaire') to convey the main idea. It continues the story by showing the experts' positive reaction to David's discovery.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognates that convey the main idea 'The experts applaud the extraordinary discovery.', which is fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "Les",
+        "experts",
+        "applaudissent",
+        "la",
+        "découverte",
+        "extraordinaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Le gouvernement invite David au palais officiel.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernement",
+        "invite",
+        "palais",
+        "officiel"
+      ],
+      "generation_reasoning": "The sentence uses cognates ('gouvernement', 'invite', 'palais', 'officiel') to make it fully understandable at level 3. It continues the story by indicating that the government is recognizing David's work.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognates, and an English speaker would understand 'The government invites David to the official palace.', making it fully understandable.",
+      "actual_cognate_words": [
+        "Le",
+        "gouvernement",
+        "invite",
+        "David",
+        "palais",
+        "officiel"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Au palais, le président félicite David pour sa contribution.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "félicite",
+        "contribution"
+      ],
+      "generation_reasoning": "This sentence is level 3 due to the use of cognates ('président', 'félicite', 'contribution'). It continues the story by depicting the president congratulating David.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Though the sentence has several cognates, the word 'félicite' might not be immediately recognized by an English speaker. They might miss that 'félicite' means 'congratulates', potentially altering the meaning. This leads to some loss of detail.",
+      "actual_cognate_words": [
+        "palais",
+        "président",
+        "félicite",
+        "David",
+        "pour",
+        "contribution"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Les médias internationaux diffusent l'information rapidement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "médias",
+        "internationaux",
+        "diffusent",
+        "information",
+        "rapidement"
+      ],
+      "generation_reasoning": "The sentence maintains level 3 by including cognates ('médias', 'internationaux', 'diffusent', 'information', 'rapidement'). It continues the story by showing that the news spreads quickly through international media.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognates, but 'diffusent' may not be fully understood by English speakers as 'broadcast' or 'disseminate'. They might miss this verb's meaning, leading to a partial understanding.",
+      "actual_cognate_words": [
+        "Les",
+        "médias",
+        "internationaux",
+        "diffusent",
+        "information",
+        "rapidement"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "La population célèbre le succès avec enthousiasme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "population",
+        "célèbre",
+        "succès",
+        "enthousiasme"
+      ],
+      "generation_reasoning": "This sentence is at level 3 because it uses cognates ('population', 'célèbre', 'succès', 'enthousiasme'). It continues the story by showing the public celebrating David's success.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognates, and an English speaker would understand 'The population celebrates the success with enthusiasm.', making it fully understandable.",
+      "actual_cognate_words": [
+        "La",
+        "population",
+        "célèbre",
+        "le",
+        "succès",
+        "enthousiasme"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Les industries adoptent la nouvelle technologie immédiatement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "industries",
+        "adoptent",
+        "nouvelle",
+        "technologie",
+        "immédiatement"
+      ],
+      "generation_reasoning": "The sentence is level 3 due to cognates ('industries', 'adoptent', 'nouvelle', 'technologie', 'immédiatement'), making it understandable. It continues the story by indicating industries are adopting David's technology.",
+      "actual_score": 3,
+      "actual_score_reasoning": "This sentence uses cognates throughout, allowing an English speaker to understand 'The industries adopt the new technology immediately.', thus being fully understandable.",
+      "actual_cognate_words": [
+        "Les",
+        "industries",
+        "adoptent",
+        "la",
+        "nouvelle",
+        "technologie",
+        "immédiatement"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "Les économies globales bénéficient de l'innovation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "économies",
+        "globales",
+        "bénéficient",
+        "innovation"
+      ],
+      "generation_reasoning": "This sentence maintains level 3 with cognates ('économies', 'globales', 'bénéficient', 'innovation'). It continues the story by showing the global economic benefits of David's innovation.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence includes cognates that convey 'The global economies benefit from the innovation.' An English speaker would understand it fully.",
+      "actual_cognate_words": [
+        "Les",
+        "économies",
+        "globales",
+        "bénéficient",
+        "innovation"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    },
+    {
+      "sentence": "David reçoit un prix prestigieux pour ses réalisations exceptionnelles.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "reçoit",
+        "prix",
+        "prestigieux",
+        "réalisations",
+        "exceptionnelles"
+      ],
+      "generation_reasoning": "The sentence is at level 3 using cognates ('reçoit', 'prix', 'prestigieux', 'réalisations', 'exceptionnelles'), making it fully understandable. It concludes the story by showing David receiving a prestigious award for his exceptional achievements.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, 'reçoit' and 'réalisations' might cause confusion. 'Réalisations' may be misinterpreted as 'realizations' instead of 'achievements', leading to a misunderstanding of the sentence's meaning.",
+      "actual_cognate_words": [
+        "David",
+        "reçoit",
+        "un",
+        "prix",
+        "prestigieux",
+        "pour",
+        "réalisations",
+        "exceptionnelles"
+      ],
+      "generation_timestamp": "2025-01-02T21:26:14.646833"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.7,
+    "creation_date": "2025-01-02T21:25:10.066502",
+    "sentence_count": 10
+  }
+}

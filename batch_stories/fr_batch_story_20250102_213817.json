@@ -1,0 +1,231 @@
+{
+  "story": [
+    {
+      "sentence": "Le célèbre artiste annonce une nouvelle collection artistique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "célèbre",
+        "artiste",
+        "annonce",
+        "nouvelle",
+        "collection",
+        "artistique"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 because it uses almost exclusively cognate words such as 'célèbre', 'artiste', 'annonce', 'nouvelle', 'collection', and 'artistique'. An English speaker can fully understand that a famous artist announces a new artistic collection.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words and is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "célèbre",
+        "artiste",
+        "annonce",
+        "nouvelle",
+        "collection",
+        "artistique"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Les médias internationaux célèbrent son innovation incroyable.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "médias",
+        "internationaux",
+        "célèbrent",
+        "son",
+        "innovation",
+        "incroyable"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing the international media celebrating his incredible innovation. It uses cognates like 'médias', 'internationaux', 'célèbrent', 'son', 'innovation', and 'incroyable', making it fully understandable to English speakers.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words and is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "médias",
+        "internationaux",
+        "célèbrent",
+        "innovation",
+        "incroyable"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Le public attend avec impatience la révélation officielle.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "public",
+        "attend",
+        "impatience",
+        "révélation",
+        "officielle"
+      ],
+      "generation_reasoning": "Continuing the story, this sentence indicates that the public is eagerly awaiting the official revelation. It matches difficulty level 3 by using cognates like 'public', 'attend', 'impatience', 'révélation', and 'officielle'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but 'attend' is a false friend and may lead to misunderstanding, changing the meaning.",
+      "actual_cognate_words": [
+        "public",
+        "impatience",
+        "révélation",
+        "officielle"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Pendant ce temps, le critique renommé exprime son admiration.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "pendant",
+        "critique",
+        "renommé",
+        "exprime",
+        "admiration"
+      ],
+      "generation_reasoning": "This sentence progresses the narrative by mentioning that meanwhile, the renowned critic expresses his admiration. Cognates such as 'pendant', 'critique', 'renommé', 'exprime', and 'admiration' ensure full comprehension at difficulty level 3.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but 'Pendant ce temps' may not be understood, affecting comprehension of the sentence.",
+      "actual_cognate_words": [
+        "critique",
+        "renommé",
+        "exprime",
+        "admiration"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Cependant, un incident mystérieux interrompt les préparations.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "cependant",
+        "incident",
+        "mystérieux",
+        "interrompt",
+        "préparations"
+      ],
+      "generation_reasoning": "Advancing the story, this sentence introduces a mysterious incident that interrupts the preparations. It matches difficulty level 3 with cognates like 'cependant', 'incident', 'mystérieux', 'interrompt', and 'préparations'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words, but 'Cependant' may not be recognized, which could affect understanding of the sentence.",
+      "actual_cognate_words": [
+        "incident",
+        "mystérieux",
+        "interrompt",
+        "préparations"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "L'artiste publie un communiqué pour expliquer la situation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "publie",
+        "communiqué",
+        "expliquer",
+        "situation"
+      ],
+      "generation_reasoning": "Continuing the narrative, the artist publishes a communiqué to explain the situation. The sentence is composed of cognates like 'artiste', 'publie', 'communiqué', 'expliquer', and 'situation', fitting difficulty level 3.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words and is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "artiste",
+        "publie",
+        "communiqué",
+        "expliquer",
+        "situation"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Les fans soutiennent l'artiste malgré les défis inattendus.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "fans",
+        "soutiennent",
+        "artiste",
+        "malgré",
+        "défis",
+        "inattendus"
+      ],
+      "generation_reasoning": "This sentence shows that fans support the artist despite unexpected challenges, maintaining the story's flow. Cognates such as 'fans', 'soutiennent', 'artiste', 'malgré', 'défis', and 'inattendus' make it fully understandable.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words, but 'malgré' and 'soutiennent' may not be recognized, potentially changing the meaning.",
+      "actual_cognate_words": [
+        "fans",
+        "artiste",
+        "défis",
+        "inattendus"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Finalement, la collection est présentée avec un succès énorme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "collection",
+        "présentée",
+        "succès",
+        "énorme"
+      ],
+      "generation_reasoning": "Advancing the story, the sentence reveals that finally, the collection is presented with enormous success. It uses cognates like 'finalement', 'collection', 'présentée', 'succès', and 'énorme'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words and is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "Finalement",
+        "collection",
+        "présentée",
+        "succès",
+        "énorme"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "Le monde entier applaudit la contribution magnifique de l'artiste.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "monde",
+        "entier",
+        "applaudit",
+        "contribution",
+        "magnifique",
+        "artiste"
+      ],
+      "generation_reasoning": "Continuing the narrative, the entire world applauds the artist's magnificent contribution. Cognates such as 'monde', 'entier', 'applaudit', 'contribution', 'magnifique', and 'artiste' ensure comprehension at difficulty level 3.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words, but 'entier' and 'applaudit' may not be recognized, possibly affecting understanding.",
+      "actual_cognate_words": [
+        "monde",
+        "entier",
+        "contribution",
+        "magnifique",
+        "artiste"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    },
+    {
+      "sentence": "L'artiste remercie ses admirateurs pour leur support incroyable.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "remercie",
+        "admirateurs",
+        "support",
+        "incroyable"
+      ],
+      "generation_reasoning": "Concluding the story, the artist thanks his admirers for their incredible support. This sentence matches difficulty level 3 by using cognates like 'artiste', 'remercie', 'admirateurs', 'support', and 'incroyable'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words, but 'remercie' may not be recognized, which could change the meaning.",
+      "actual_cognate_words": [
+        "artiste",
+        "admirateurs",
+        "support",
+        "incroyable"
+      ],
+      "generation_timestamp": "2025-01-02T21:39:27.019396"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.4,
+    "creation_date": "2025-01-02T21:38:17.626097",
+    "sentence_count": 10
+  }
+}

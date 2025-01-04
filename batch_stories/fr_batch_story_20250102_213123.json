@@ -1,0 +1,170 @@
+{
+  "story": [
+    {
+      "sentence": "Le pêcheur lève les filets au matin.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "matin"
+      ],
+      "generation_reasoning": "This sentence starts the story with a fisherman lifting nets in the morning. It matches difficulty level 1 because it contains a cognate ('matin') that might hint at time, but the main action is unintelligible to an English speaker.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Contains very few cognate words; key nouns and verbs like \"pêcheur\" (fisherman), \"lève\" (lifts), and \"filets\" (nets) are not cognates. An English speaker would find the sentence unintelligible.",
+      "actual_cognate_words": [
+        "le",
+        "les",
+        "au",
+        "matin"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Les poissons brillent avec l'eau claire.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "claire"
+      ],
+      "generation_reasoning": "This continues the story as the fish shine in clear water. It matches difficulty level 1 because it has a cognate ('claire') in a non-crucial position, but leaves major meaning gaps.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like \"brillent\" (brilliant), \"avec\" (with), \"eau\" (water), and \"claire\" (clear). However, key nouns like \"poissons\" (fish) are not cognates, leaving major gaps in understanding.",
+      "actual_cognate_words": [
+        "brillent",
+        "avec",
+        "eau",
+        "claire"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Un nuage sombre couvre le soleil.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "sombre",
+        "soleil"
+      ],
+      "generation_reasoning": "Continuing the story, a dark cloud covers the sun. This sentence matches difficulty level 1 because it includes cognates ('sombre', 'soleil') that might suggest mood and setting, but the main action is unclear.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes cognate words such as \"sombre\" (somber) and \"couvre\" (covers). Without cognates for \"nuage\" (cloud) and \"soleil\" (sun), an English speaker might grasp that something somber covers something but would miss the main idea.",
+      "actual_cognate_words": [
+        "sombre",
+        "couvre"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Le vent froid souffle du nord.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "vent",
+        "nord"
+      ],
+      "generation_reasoning": "The story progresses as a cold wind blows from the north. It matches difficulty level 1 by including cognates ('vent', 'nord') in non-crucial positions, leaving the main meaning unintelligible.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Contains almost no cognates except \"nord\" (north). Key words like \"vent\" (wind), \"froid\" (cold), and \"souffle\" (blows) are not cognates, making the sentence unintelligible to an English speaker.",
+      "actual_cognate_words": [
+        "nord"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Le ciel s'assombrit, la pluie commence.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "commence"
+      ],
+      "generation_reasoning": "As the sky darkens and rain begins, the story continues. This sentence fits difficulty level 1 because it contains a cognate ('commence'), but overall meaning remains unclear to an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes the cognate \"commence\" (commences). However, important nouns like \"ciel\" (sky) and \"pluie\" (rain) are not cognates, leaving major gaps in understanding.",
+      "actual_cognate_words": [
+        "commence"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Il trouve refuge dans une grotte.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "refuge",
+        "grotte"
+      ],
+      "generation_reasoning": "The fisherman finds refuge in a cave, continuing the narrative. It matches difficulty level 1 with cognates ('refuge', 'grotte') in non-crucial positions, but the main action isn't clear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains several cognates like \"il\" (he), \"refuge\", \"dans\" (in), and \"grotte\" (grotto). An English speaker could fully grasp the sentence as \"He finds refuge in a grotto,\" with no significant loss of meaning.",
+      "actual_cognate_words": [
+        "il",
+        "refuge",
+        "dans",
+        "grotte"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Une silhouette sombre se dessine au loin.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "silhouette",
+        "sombre"
+      ],
+      "generation_reasoning": "A dark silhouette appears in the distance, advancing the story. This sentence matches difficulty level 1 because it includes cognates ('silhouette', 'sombre') but leaves major meaning gaps.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognates such as \"silhouette\" and \"sombre\" (somber). An English speaker might infer that a dark silhouette appears, but may miss details like \"se dessine\" (is outlined) and \"au loin\" (in the distance), slightly altering the meaning.",
+      "actual_cognate_words": [
+        "silhouette",
+        "sombre"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Le pêcheur observe avec crainte.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "observe"
+      ],
+      "generation_reasoning": "Continuing the story, the fisherman watches with fear. It fits difficulty level 1 by including a cognate ('observe') in a non-crucial position, keeping the main meaning unclear.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate words like \"observe\" and \"avec\" (with). Key words like \"pêcheur\" (fisherman) and \"crainte\" (fear) are not cognates, leaving major gaps in understanding.",
+      "actual_cognate_words": [
+        "observe",
+        "avec"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Un bruit mystérieux vient de la mer.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "mystérieux",
+        "mer"
+      ],
+      "generation_reasoning": "A mysterious noise comes from the sea, adding to the narrative. This sentence matches difficulty level 1 because it contains cognates ('mystérieux', 'mer') but leaves the main action unintelligible.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes the cognate \"mystérieux\" (mysterious). Without cognates for \"bruit\" (noise), \"vient\" (comes), and \"mer\" (sea), an English speaker might understand there is something mysterious but miss the main idea.",
+      "actual_cognate_words": [
+        "mystérieux"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    },
+    {
+      "sentence": "Au lever du soleil, le pêcheur repart.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "soleil"
+      ],
+      "generation_reasoning": "Concluding the story, at sunrise, the fisherman leaves again. It fits difficulty level 1 with a cognate ('soleil') in a non-crucial position, and the overall meaning remains unclear to an English speaker.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like \"lever\" (lever), \"soleil\" (solar), and \"repart\" (depart). An English speaker might interpret this as \"At the rise of the sun, the fisherman departs,\" capturing most of the main idea but potentially missing nuances.",
+      "actual_cognate_words": [
+        "lever",
+        "soleil",
+        "repart"
+      ],
+      "generation_timestamp": "2025-01-02T21:32:59.279162"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 1.2,
+    "creation_date": "2025-01-02T21:31:23.883015",
+    "sentence_count": 10
+  }
+}

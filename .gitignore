@@ -8,7 +8,6 @@ data3/*
 data4/*
 data_safe/*
 logs/*
-*.json
 *.log
 *.backup
 __pycache__/*.pyc
@@ -188,3 +187,4 @@ secrets/*
 ignoreme.py
 *.pik
 new_data/*
+misc/*

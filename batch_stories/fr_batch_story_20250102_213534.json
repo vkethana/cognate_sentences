@@ -1,0 +1,258 @@
+{
+  "story": [
+    {
+      "sentence": "Un étudiant nommé Daniel voyage à Paris pour une compétition internationale de mathématiques.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "étudiant",
+        "Daniel",
+        "voyage",
+        "Paris",
+        "compétition",
+        "internationale",
+        "mathématiques"
+      ],
+      "generation_reasoning": "This sentence is Level 3 because it uses cognates like 'étudiant', 'voyage', 'compétition', 'internationale', and 'mathématiques' which convey the main idea. An English speaker can understand that a student named Daniel is traveling to Paris for an international mathematics competition.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates; it uses almost exclusively cognate words except for basic connectors. An English speaker could comprehend the full meaning.",
+      "actual_cognate_words": [
+        "étudiant",
+        "Daniel",
+        "voyage",
+        "Paris",
+        "compétition",
+        "internationale",
+        "mathématiques"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "À Paris, il rencontre une brillante scientifique française appelée Isabelle.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "Paris",
+        "rencontre",
+        "brillante",
+        "scientifique",
+        "française",
+        "Isabelle"
+      ],
+      "generation_reasoning": "This sentence continues the story by introducing Isabelle, a brilliant French scientist Daniel meets in Paris. It remains Level 3 due to cognates like 'scientifique', 'française', and 'brillante'.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The sentence contains some cognate words but key verbs like 'rencontre' are not cognates. An English speaker might grasp the general topic but miss the main action, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "Paris",
+        "brillante",
+        "scientifique",
+        "française",
+        "Isabelle"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Ils discutent des théories complexes de physique quantique et d'astrophysique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "discutent",
+        "théories",
+        "complexes",
+        "physique",
+        "quantique",
+        "astrophysique"
+      ],
+      "generation_reasoning": "This sentence is Level 3 as it uses cognates such as 'discutent', 'théories', 'complexes', 'physique quantique', and 'astrophysique'. It shows that they discuss complex theories in quantum physics and astrophysics.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words, and the sentence is fully understandable through cognates. An English speaker could comprehend the full meaning.",
+      "actual_cognate_words": [
+        "Ils",
+        "discutent",
+        "théories",
+        "complexes",
+        "physique",
+        "quantique",
+        "astrophysique"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Daniel propose une solution innovante à un problème scientifique important.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "Daniel",
+        "propose",
+        "solution",
+        "innovante",
+        "problème",
+        "scientifique",
+        "important"
+      ],
+      "generation_reasoning": "Continuing the story, Daniel proposes an innovative solution to an important scientific problem. The sentence is Level 3 with cognates like 'propose', 'solution', 'innovante', 'problème', 'scientifique', and 'important'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words except for basic connectors, making it fully understandable through cognates.",
+      "actual_cognate_words": [
+        "Daniel",
+        "propose",
+        "solution",
+        "innovante",
+        "problème",
+        "scientifique",
+        "important"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Impressionnée, Isabelle invite Daniel à collaborer avec son équipe de recherche.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "impressionnée",
+        "Isabelle",
+        "invite",
+        "Daniel",
+        "collaborer",
+        "équipe",
+        "recherche"
+      ],
+      "generation_reasoning": "This sentence is Level 3 because it uses cognates like 'impressionnée', 'invite', 'collaborer', 'équipe', and 'recherche'. It continues the story by showing Isabelle inviting Daniel to collaborate with her research team.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates; the few non-cognate words are basic connectors that don't change the meaning.",
+      "actual_cognate_words": [
+        "Impressionnée",
+        "Isabelle",
+        "invite",
+        "Daniel",
+        "collaborer",
+        "équipe",
+        "recherche"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Ensemble, ils développent une technologie révolutionnaire pour l'énergie propre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "ensemble",
+        "développent",
+        "technologie",
+        "révolutionnaire",
+        "énergie",
+        "propre"
+      ],
+      "generation_reasoning": "The sentence remains Level 3 with cognates such as 'ensemble', 'développent', 'technologie', 'révolutionnaire', and 'énergie'. It continues the story by stating they develop revolutionary technology for clean energy.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words, allowing an English speaker to fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "Ensemble",
+        "ils",
+        "développent",
+        "technologie",
+        "révolutionnaire",
+        "énergie",
+        "propre"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Leur invention attire l'attention de la communauté scientifique internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "invention",
+        "attire",
+        "attention",
+        "communauté",
+        "scientifique",
+        "internationale"
+      ],
+      "generation_reasoning": "This sentence is Level 3 due to cognates like 'invention', 'attire', 'attention', 'communauté', 'scientifique', and 'internationale'. It shows their invention attracts international scientific community attention.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates; an English speaker could comprehend the full meaning.",
+      "actual_cognate_words": [
+        "Leur",
+        "invention",
+        "attire",
+        "attention",
+        "communauté",
+        "scientifique",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Le gouvernement subventionne leur projet pour accélérer le développement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernement",
+        "subventionne",
+        "projet",
+        "accélérer",
+        "développement"
+      ],
+      "generation_reasoning": "Continuing the story, the government funds their project to accelerate development. It's Level 3 with cognates like 'gouvernement', 'subventionne', 'projet', 'accélérer', and 'développement'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but the key verb 'subventionne' may not be understood by an English speaker, leading to a partial understanding of the sentence.",
+      "actual_cognate_words": [
+        "gouvernement",
+        "leur",
+        "projet",
+        "accélérer",
+        "développement"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Leur découverte reçoit le prestigieux prix Nobel de physique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découverte",
+        "reçoit",
+        "prestigieux",
+        "prix",
+        "Nobel",
+        "physique"
+      ],
+      "generation_reasoning": "This sentence is Level 3 since it uses cognates such as 'découverte', 'reçoit', 'prestigieux', 'prix', 'Nobel', and 'physique'. It continues the story by stating their discovery receives the prestigious Nobel Prize in Physics.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognate words and is fully understandable to an English speaker through cognates.",
+      "actual_cognate_words": [
+        "Leur",
+        "découverte",
+        "reçoit",
+        "prestigieux",
+        "prix",
+        "Nobel",
+        "physique"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    },
+    {
+      "sentence": "Inspirés, de jeunes scientifiques internationaux rejoignent leur mission.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "inspirés",
+        "jeunes",
+        "scientifiques",
+        "internationaux",
+        "rejoignent",
+        "mission"
+      ],
+      "generation_reasoning": "Concluding the story, the sentence is Level 3 with cognates like 'inspirés', 'jeunes', 'scientifiques', 'internationaux', 'rejoignent', and 'mission'. It shows that inspired young international scientists join their mission.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but 'rejoignent' may not be immediately recognized as 'join'. An English speaker might guess the main idea but could miss important details, leading to subtle changes in meaning.",
+      "actual_cognate_words": [
+        "Inspirés",
+        "jeunes",
+        "scientifiques",
+        "internationaux",
+        "rejoignent",
+        "mission"
+      ],
+      "generation_timestamp": "2025-01-02T21:36:53.346257"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.6,
+    "creation_date": "2025-01-02T21:35:34.407332",
+    "sentence_count": 10
+  }
+}

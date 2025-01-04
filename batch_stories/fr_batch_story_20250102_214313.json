@@ -1,0 +1,182 @@
+{
+  "story": [
+    {
+      "sentence": "Un homme part pour une forêt mystérieuse.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "forêt",
+        "mystérieuse"
+      ],
+      "generation_reasoning": "The sentence contains cognate words 'forêt' and 'mystérieuse', which are not in crucial positions. Key verbs like 'part' are not cognates, making it largely unintelligible to an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate words like 'part', 'forêt', and 'mystérieuse', but also includes words unintelligible to an English speaker. The cognates might allow them to guess the general topic (a mysterious forest) but not the main idea or the action taking place.",
+      "actual_cognate_words": [
+        "part",
+        "forêt",
+        "mystérieuse"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Le voyageur suit un chemin obscur.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "voyageur",
+        "obscur"
+      ],
+      "generation_reasoning": "This continues the story by showing the man proceeding into the forest. It contains cognates 'voyageur' and 'obscur', but key words like 'suit' and 'chemin' are not cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'voyageur' and 'obscur', but key verbs and objects like 'suit' and 'chemin' are unintelligible to an English speaker. They might understand that the traveler is involved with something obscure but not the specific action.",
+      "actual_cognate_words": [
+        "voyageur",
+        "obscur"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Il entend des bruits étranges parmi les arbres.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "étranges",
+        "arbres"
+      ],
+      "generation_reasoning": "This continues the story with the man hearing strange noises among the trees. Contains cognates 'étranges' and 'arbres', but key words like 'entend' and 'bruits' are not cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'étranges' (strange), but other words are unintelligible to an English speaker. They might guess that something strange is happening but would miss the main idea and details.",
+      "actual_cognate_words": [
+        "étranges"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Le temps change brusquement, et une tempête arrive.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "change",
+        "tempête",
+        "arrive"
+      ],
+      "generation_reasoning": "The story continues as the weather changes suddenly and a storm arrives. Contains cognates 'change', 'tempête', and 'arrive', but key words like 'temps' and 'brusquement' are not cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words like 'temps', 'change', 'brusquement', 'tempête', and 'arrive'. An English speaker might understand that time/weather changes abruptly and a tempest arrives, capturing the main idea but possibly missing nuances.",
+      "actual_cognate_words": [
+        "temps",
+        "change",
+        "brusquement",
+        "tempête",
+        "arrive"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Il cherche un refuge mais ne le trouve pas.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "cherche",
+        "refuge",
+        "trouve"
+      ],
+      "generation_reasoning": "Shows the man looking for shelter but unable to find it, continuing the story. Contains cognates 'cherche', 'refuge', and 'trouve', but grammatical structures and negations are not cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words like 'cherche' and 'refuge'. An English speaker might understand that he searches for refuge but may miss the negative 'ne... pas', changing the meaning about whether he finds it.",
+      "actual_cognate_words": [
+        "cherche",
+        "refuge"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Il aperçoit une cabane éloignée.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "cabane"
+      ],
+      "generation_reasoning": "The man spots a distant cabin, continuing the story. Contains cognate 'cabane', but key verbs like 'aperçoit' and adjectives like 'éloignée' are not cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'cabane' (cabin), but other words are unintelligible to an English speaker. They might guess that there is a cabin involved but miss the action and details.",
+      "actual_cognate_words": [
+        "cabane"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Il se précipite vers l'abri.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "précipite"
+      ],
+      "generation_reasoning": "Shows the man rushing towards the shelter, continuing the story. Contains cognate 'précipite', but other key words like 'vers' and 'abri' are not cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains the cognate 'précipite', suggesting 'precipitates' or 'hurries' to an English speaker. However, other words are unintelligible, and they might not grasp the full meaning.",
+      "actual_cognate_words": [
+        "précipite"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Il atteint la cabane mais l'entrée est bloquée.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "cabane",
+        "entrée",
+        "bloquée"
+      ],
+      "generation_reasoning": "He reaches the cabin but the entrance is blocked, continuing the story. Contains cognates 'cabane', 'entrée', 'bloquée', but key verbs like 'atteint' and conjunctions are not cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains several cognate words that allow an English speaker to understand the sentence. The meaning is conveyed clearly through the cognate words.",
+      "actual_cognate_words": [
+        "atteint",
+        "cabane",
+        "entrée",
+        "bloquée"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Il frappe, et une vieille femme ouvre la porte.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "femme",
+        "ouvre",
+        "porte"
+      ],
+      "generation_reasoning": "He knocks, and an old woman opens the door, continuing the story. Contains cognates 'femme', 'ouvre', 'porte', but key verbs like 'frappe' and adjectives like 'vieille' are not cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate words like 'femme', 'ouvre', and 'porte'. An English speaker might recognize 'female', 'open', and 'port', but may not grasp the full meaning. They might understand that a woman opens something but miss the main idea.",
+      "actual_cognate_words": [
+        "femme",
+        "ouvre",
+        "porte"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    },
+    {
+      "sentence": "Elle l'invite à entrer et lui offre une soupe chaude.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "invite",
+        "offre",
+        "soupe",
+        "chaude"
+      ],
+      "generation_reasoning": "She invites him in and offers him hot soup, concluding the story. Contains cognates 'invite', 'offre', 'soupe', 'chaude', but crucial pronouns and verbs like 'lui' and 'entrer' are not cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains numerous cognate words that make the sentence fully understandable to an English speaker. The meaning is conveyed clearly through the cognates.",
+      "actual_cognate_words": [
+        "invite",
+        "entrer",
+        "offre",
+        "soupe",
+        "chaude"
+      ],
+      "generation_timestamp": "2025-01-02T21:44:45.820340"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 1.6,
+    "creation_date": "2025-01-02T21:43:13.669452",
+    "sentence_count": 10
+  }
+}

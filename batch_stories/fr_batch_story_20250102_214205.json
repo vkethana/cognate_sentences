@@ -1,0 +1,227 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur Thomas organise une conférence internationale à Paris.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "Thomas",
+        "organise",
+        "conférence",
+        "internationale",
+        "Paris"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it uses almost exclusively cognate words, especially for key meaning-bearing words. The small connecting words 'Le', 'une', 'à' can be ignored without losing meaning.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words except for basic connectors. An English speaker would likely fully understand the meaning through the cognates.",
+      "actual_cognate_words": [
+        "professeur",
+        "Thomas",
+        "organise",
+        "conférence",
+        "internationale",
+        "Paris"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Les scientifiques du monde entier arrivent pour participer.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifiques",
+        "monde",
+        "entier",
+        "arrivent",
+        "participer"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 as it contains many cognate words. It continues the story by indicating that scientists from around the world are arriving to participate in the conference.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Most words are cognates, and an English speaker would likely understand the sentence fully.",
+      "actual_cognate_words": [
+        "scientifiques",
+        "monde",
+        "entier",
+        "arrivent",
+        "participer"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Le thème principal de la conférence est la technologie avancée.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "thème",
+        "principal",
+        "conférence",
+        "technologie",
+        "avancée"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 due to the high presence of cognates in key positions. It continues the story by introducing the main theme of the conference, which is advanced technology.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "thème",
+        "principal",
+        "conférence",
+        "technologie",
+        "avancée"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Pendant les présentations, il y a une démonstration spectaculaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "présentations",
+        "démonstration",
+        "spectaculaire"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 because it is composed almost entirely of cognate words. It continues the story by describing that during the presentations, there is a spectacular demonstration.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many key words are cognates, important words like 'pendant' (during) and 'il y a' (there is) may not be recognized by an English speaker, leading to a partial understanding of the sentence.",
+      "actual_cognate_words": [
+        "présentations",
+        "démonstration",
+        "spectaculaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Un robot autonome navigue la salle sans assistance humaine.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "robot",
+        "autonome",
+        "navigue",
+        "salle",
+        "assistance",
+        "humaine"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 as it uses cognate words for key concepts. It continues the story by depicting an autonomous robot navigating the room without human assistance.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Several key words are cognates, but words like 'salle' (room) and 'sans' (without) might not be understood, causing important details to be missed.",
+      "actual_cognate_words": [
+        "robot",
+        "autonome",
+        "navigue",
+        "assistance",
+        "humaine"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Les délégués applaudissent avec enthousiasme la performance innovante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "délégués",
+        "applaudissent",
+        "enthousiasme",
+        "performance",
+        "innovante"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 due to the high use of cognates. It continues the story by showing that the delegates enthusiastically applaud the innovative performance.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains mostly cognate words and is likely to be fully understood by an English speaker.",
+      "actual_cognate_words": [
+        "délégués",
+        "applaudissent",
+        "enthousiasme",
+        "performance",
+        "innovante"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Un problème technique interrompt la démonstration.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "problème",
+        "technique",
+        "interrompt",
+        "démonstration"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it contains mostly cognate words in crucial positions. It continues the story by introducing a technical problem that interrupts the demonstration.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "problème",
+        "technique",
+        "interrompt",
+        "démonstration"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Les ingénieurs travaillent rapidement pour résoudre la situation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "ingénieurs",
+        "travaillent",
+        "rapidement",
+        "résoudre",
+        "situation"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 as it is composed almost entirely of cognate words. It continues the story by explaining that the engineers work quickly to resolve the situation.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, key verbs like 'travaillent' (work) and 'résoudre' (resolve) might not be immediately recognized, leading to potential misunderstanding.",
+      "actual_cognate_words": [
+        "ingénieurs",
+        "travaillent",
+        "rapidement",
+        "résoudre",
+        "situation"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Finalement, le système fonctionne et l'événement continue.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "système",
+        "fonctionne",
+        "événement",
+        "continue"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 due to the high presence of cognates. It continues the story by stating that finally, the system works and the event continues.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains mostly cognate words and is likely to be fully understood by an English speaker.",
+      "actual_cognate_words": [
+        "finalement",
+        "système",
+        "fonctionne",
+        "événement",
+        "continue"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    },
+    {
+      "sentence": "Le professeur Thomas remercie tous les participants pour leur patience.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "Thomas",
+        "remercie",
+        "participants",
+        "patience"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 as it uses cognate words for key meanings. It concludes the story by mentioning that Professor Thomas thanks all the participants for their patience.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While several words are cognates, the key verb 'remercie' (thanks) may not be recognized, causing the main action of the sentence to be missed.",
+      "actual_cognate_words": [
+        "professeur",
+        "Thomas",
+        "participants",
+        "patience"
+      ],
+      "generation_timestamp": "2025-01-02T21:43:13.666762"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.6,
+    "creation_date": "2025-01-02T21:42:05.056572",
+    "sentence_count": 10
+  }
+}

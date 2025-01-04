@@ -1,0 +1,215 @@
+{
+  "story": [
+    {
+      "sentence": "Un célèbre scientifique découvre une nouvelle planète.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "célèbre",
+        "scientifique",
+        "découvre",
+        "nouvelle",
+        "planète"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it uses almost exclusively cognate words: célèbre, scientifique, découvre, nouvelle, planète. An English speaker can fully understand the meaning through these cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, and the meaning is fully understandable through cognates. The non-cognate words are basic connectors that don't change the meaning.",
+      "actual_cognate_words": [
+        "célèbre",
+        "scientifique",
+        "découvre",
+        "nouvelle",
+        "planète"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Il présente sa découverte à la communauté internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "présente",
+        "découverte",
+        "communauté",
+        "internationale"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it uses many cognate words: présente, découverte, communauté, internationale. An English speaker can understand 'He presents his discovery to the international community'. It continues the story by showing the scientist sharing his discovery.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, and an English speaker can understand the meaning through cognates. The non-cognate words are basic connectors that don't change the meaning.",
+      "actual_cognate_words": [
+        "présente",
+        "découverte",
+        "communauté",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Les médias diffusent la nouvelle mondialement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "médias",
+        "diffusent",
+        "nouvelle",
+        "mondialement"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it includes cognate words: médias, diffusent, nouvelle, mondialement. An English speaker understands that the media spreads the news worldwide. It continues the story by showing how the discovery is shared globally.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is made up of cognate words, and the meaning is clear to an English speaker. Non-cognate words are articles that do not affect comprehension.",
+      "actual_cognate_words": [
+        "médias",
+        "diffusent",
+        "nouvelle",
+        "mondialement"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Le public réagit avec excitation et anticipation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "public",
+        "réagit",
+        "excitation",
+        "anticipation"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 due to cognate words: public, réagit, excitation, anticipation. An English speaker grasps that the public reacts with excitement and anticipation. It continues the story by depicting the public's response.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence consists of cognate words, and the overall meaning is understandable through them. Non-cognate words are basic connectors.",
+      "actual_cognate_words": [
+        "public",
+        "réagit",
+        "excitation",
+        "anticipation"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Les gouvernements collaborent pour planifier une mission spatiale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernements",
+        "collaborent",
+        "planifier",
+        "mission",
+        "spatiale"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it uses cognate words: gouvernements, collaborent, planifier, mission, spatiale. An English speaker understands that governments collaborate to plan a space mission. It continues the story by showing governmental action.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognate words, allowing an English speaker to grasp the meaning. Non-cognate words are basic connectors that do not alter the meaning.",
+      "actual_cognate_words": [
+        "gouvernements",
+        "collaborent",
+        "planifier",
+        "mission",
+        "spatiale"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Les ingénieurs construisent un vaisseau spatial révolutionnaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "ingénieurs",
+        "construisent",
+        "vaisseau spatial",
+        "révolutionnaire"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 with cognate words: ingénieurs, construisent, vaisseau spatial, révolutionnaire. An English speaker understands that engineers build a revolutionary spacecraft. It continues the story by describing the construction of the spacecraft.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed of cognate words, and the meaning is fully understandable through them. The non-cognate words are basic connectors.",
+      "actual_cognate_words": [
+        "ingénieurs",
+        "construisent",
+        "vaisseau",
+        "spatial",
+        "révolutionnaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Les astronautes se préparent rigoureusement pour le voyage.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "astronautes",
+        "préparent",
+        "rigoureusement",
+        "voyage"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 due to cognate words: astronautes, préparent, rigoureusement, voyage. An English speaker grasps that astronauts prepare rigorously for the voyage. It continues the story by focusing on the astronauts' preparation.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognate words, and an English speaker would understand the main idea. The non-cognate words are basic connectors that don't change the meaning.",
+      "actual_cognate_words": [
+        "astronautes",
+        "préparent",
+        "rigoureusement",
+        "voyage"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Le lancement est un succès spectaculaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "lancement",
+        "succès",
+        "spectaculaire"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 with cognate words: lancement, succès, spectaculaire. An English speaker understands that the launch is a spectacular success. It continues the story by highlighting the successful launch.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognate words, making the meaning clear to an English speaker. Non-cognate words are basic connectors.",
+      "actual_cognate_words": [
+        "lancement",
+        "succès",
+        "spectaculaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "Le vaisseau spatial atteint la nouvelle planète.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "vaisseau spatial",
+        "atteint",
+        "nouvelle",
+        "planète"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 due to cognate words: vaisseau spatial, atteint, nouvelle, planète. An English speaker understands that the spacecraft reaches the new planet. It continues the story by describing the mission's accomplishment.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is made up of cognate words, allowing the meaning to be understood through them. Non-cognate words are basic connectors.",
+      "actual_cognate_words": [
+        "vaisseau",
+        "spatial",
+        "atteint",
+        "nouvelle",
+        "planète"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    },
+    {
+      "sentence": "L'humanité célèbre l'accomplissement historique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "humanité",
+        "célèbre",
+        "accomplissement",
+        "historique"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 with cognate words: humanité, célèbre, accomplissement, historique. An English speaker understands that humanity celebrates the historic achievement. It concludes the story by depicting global celebration.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence consists of cognate words, and the meaning is clear to an English speaker. The non-cognate word \"L'\" is a basic connector.",
+      "actual_cognate_words": [
+        "humanité",
+        "célèbre",
+        "accomplissement",
+        "historique"
+      ],
+      "generation_timestamp": "2025-01-02T21:19:13.528326"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 3.0,
+    "creation_date": "2025-01-02T21:18:04.306852",
+    "sentence_count": 10
+  }
+}

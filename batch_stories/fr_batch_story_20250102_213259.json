@@ -1,0 +1,223 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur arrive à l'université pour donner une conférence importante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "arrive",
+        "université",
+        "donner",
+        "conférence",
+        "importante"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 because it uses almost exclusively cognate words like 'professeur', 'arrive', 'université', 'donner', 'conférence', and 'importante'. An English speaker can fully understand the meaning through these cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains numerous cognate words that an English speaker can understand. The missing words are basic connectors and do not significantly alter the meaning, making the sentence fully understandable through cognates.",
+      "actual_cognate_words": [
+        "professeur",
+        "arrive",
+        "université",
+        "conférence",
+        "importante"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Il découvre que les étudiants attendent avec impatience dans l'auditorium.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découvre",
+        "étudiants",
+        "attendent",
+        "impatience",
+        "auditorium"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that the students are eagerly waiting for him. It matches difficulty level 3 because it contains cognates like 'découvre', 'étudiants', 'attendent', 'impatience', and 'auditorium', making it fully understandable.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While there are several cognate words, the verb 'attendent' might be misunderstood. An English speaker might get the main idea but could miss important nuances, leading to misunderstanding.",
+      "actual_cognate_words": [
+        "découvre",
+        "étudiants",
+        "impatience",
+        "auditorium"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Pendant la présentation, un incident extraordinaire se produit.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "présentation",
+        "incident",
+        "extraordinaire",
+        "produit"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by introducing an extraordinary incident during the presentation. It aligns with difficulty level 3 through cognates such as 'présentation', 'incident', 'extraordinaire', and 'produit'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence has several cognates, but the phrase 'se produit' may not be fully understood. An English speaker might grasp the main idea but miss some details, changing the meaning slightly.",
+      "actual_cognate_words": [
+        "présentation",
+        "incident",
+        "extraordinaire",
+        "produit"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Un phénomène mystérieux apparaît sur l'écran principal.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "phénomène",
+        "mystérieux",
+        "apparaît",
+        "écran",
+        "principal"
+      ],
+      "generation_reasoning": "This sentence adds to the story by describing a mysterious phenomenon appearing on the main screen. It meets difficulty level 3 with cognates like 'phénomène', 'mystérieux', 'apparaît', 'écran', and 'principal'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Several cognate words are present, but the word 'écran' (screen) is not a cognate and is a key detail. This might cause an English speaker to miss important information.",
+      "actual_cognate_words": [
+        "phénomène",
+        "mystérieux",
+        "apparaît",
+        "principal"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Les spectateurs observent le spectacle avec fascination.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "spectateurs",
+        "observent",
+        "spectacle",
+        "fascination"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by showing the spectators observing the spectacle with fascination. It fits difficulty level 3 due to cognates like 'spectateurs', 'observent', 'spectacle', and 'fascination'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words. The missing words are basic and do not change the meaning, making it fully understandable through cognates.",
+      "actual_cognate_words": [
+        "spectateurs",
+        "observent",
+        "spectacle",
+        "fascination"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Le professeur analyse rapidement la situation confuse.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "analyse",
+        "rapidement",
+        "situation",
+        "confuse"
+      ],
+      "generation_reasoning": "This sentence progresses the story as the professor quickly analyzes the confusing situation. It matches difficulty level 3 through cognates such as 'professeur', 'analyse', 'rapidement', 'situation', and 'confuse'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "With many cognate words, the sentence is fully understandable. The non-cognate words are basic and do not alter the meaning.",
+      "actual_cognate_words": [
+        "professeur",
+        "analyse",
+        "rapidement",
+        "situation",
+        "confuse"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Il propose une solution innovante pour résoudre le problème.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "propose",
+        "solution",
+        "innovante",
+        "résoudre",
+        "problème"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by having him propose an innovative solution to solve the problem. It aligns with difficulty level 3 because of cognates like 'propose', 'solution', 'innovante', 'résoudre', and 'problème'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognates, but the verb 'résoudre' is not a cognate and is essential to the meaning. An English speaker might miss important details.",
+      "actual_cognate_words": [
+        "propose",
+        "solution",
+        "innovante",
+        "problème"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Les étudiants applaudissent son initiative brillante.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "étudiants",
+        "applaudissent",
+        "initiative",
+        "brillante"
+      ],
+      "generation_reasoning": "This sentence adds to the story by describing the students applauding his brilliant initiative. It fits difficulty level 3 with cognates like 'étudiants', 'applaudissent', 'initiative', and 'brillante'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Almost all words are cognates, and the sentence is fully understandable. Missing words do not change the meaning.",
+      "actual_cognate_words": [
+        "étudiants",
+        "applaudissent",
+        "initiative",
+        "brillante"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "L'événement inspire une nouvelle théorie scientifique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "événement",
+        "inspire",
+        "nouvelle",
+        "théorie",
+        "scientifique"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by indicating that the event inspires a new scientific theory. It meets difficulty level 3 due to cognates such as 'événement', 'inspire', 'nouvelle', 'théorie', and 'scientifique'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognate words and is fully understandable through cognates. The meaning is clear.",
+      "actual_cognate_words": [
+        "événement",
+        "inspire",
+        "nouvelle",
+        "théorie",
+        "scientifique"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    },
+    {
+      "sentence": "Le monde académique célèbre cette découverte exceptionnelle.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "monde",
+        "académique",
+        "célèbre",
+        "découverte",
+        "exceptionnelle"
+      ],
+      "generation_reasoning": "This sentence concludes the story by showing the academic world celebrating this exceptional discovery. It aligns with difficulty level 3 because it uses cognates like 'monde', 'académique', 'célèbre', 'découverte', and 'exceptionnelle'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "With numerous cognate words, the sentence is fully understandable. Missing words are basic connectors and do not change the meaning.",
+      "actual_cognate_words": [
+        "monde",
+        "académique",
+        "célèbre",
+        "découverte",
+        "exceptionnelle"
+      ],
+      "generation_timestamp": "2025-01-02T21:34:10.652395"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.6,
+    "creation_date": "2025-01-02T21:32:59.280009",
+    "sentence_count": 10
+  }
+}

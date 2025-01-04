@@ -1,0 +1,178 @@
+{
+  "story": [
+    {
+      "sentence": "Les enfants entrent dans le bus jaune.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "bus"
+      ],
+      "generation_reasoning": "This sentence contains the cognate 'bus', which might hint at transportation, but overall, an English speaker would not grasp the full meaning. It introduces the story by showing the children boarding the yellow bus.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates like 'enfants' (infants), 'entrent' (enter), and 'bus'. An English speaker might understand that children are entering a bus, missing minor details.",
+      "actual_cognate_words": [
+        "enfants",
+        "entrent",
+        "bus"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Le trajet est long et bruyant.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "trajet",
+        "long"
+      ],
+      "generation_reasoning": "Contains cognates 'trajet' and 'long' suggesting a journey, but key details like 'bruyant' (noisy) are not cognates. This continues the story by describing the nature of the trip.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Has few cognates such as 'long' and 'et' (and). Key words like 'trajet' and 'bruyant' are not cognates, making the main idea unclear to an English speaker.",
+      "actual_cognate_words": [
+        "long",
+        "et"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Au zoo, ils voient des animaux exotiques.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "zoo",
+        "exotiques"
+      ],
+      "generation_reasoning": "Includes cognates 'zoo' and 'exotiques', indicating they are at a zoo with exotic creatures, but the main action is unclear. This advances the story as the children arrive at the zoo.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognates like 'zoo', 'animaux' (animals), and 'exotiques'. An English speaker would understand that they see exotic animals at the zoo.",
+      "actual_cognate_words": [
+        "zoo",
+        "animaux",
+        "exotiques"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Thomas prend des photos avec son appareil.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "photos",
+        "appareil"
+      ],
+      "generation_reasoning": "Contains cognates 'photos' and 'appareil', hinting at picture-taking, but lacks context of who is doing it and where. This continues the story with Thomas taking pictures.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes cognates 'Thomas' and 'photos'. Lacks cognates for key verbs and objects, so the main action is unclear to an English speaker.",
+      "actual_cognate_words": [
+        "Thomas",
+        "photos"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Après, ils achètent des souvenirs au magasin.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "souvenirs",
+        "magasin"
+      ],
+      "generation_reasoning": "Includes cognates 'souvenirs' and 'magasin', suggesting shopping activities, but details are missing. This progresses the story as they shop for souvenirs after visiting the zoo.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates like 'Après' (after) and 'souvenirs'. Missing key verbs and objects, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "Après",
+        "souvenirs"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Thomas perd sa casquette rouge.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "Thomas",
+        "rouge"
+      ],
+      "generation_reasoning": "Contains cognates 'Thomas' and 'rouge', indicating Thomas and something red, but key verbs are not cognates. This adds a conflict to the story with Thomas losing his red cap.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Has cognates 'Thomas' and 'rouge' (red). Key words like 'perd' (loses) and 'casquette' are not cognates, making the sentence hard to understand.",
+      "actual_cognate_words": [
+        "Thomas",
+        "rouge"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Il cherche partout mais ne la trouve pas.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "partout"
+      ],
+      "generation_reasoning": "Has the cognate 'partout', which means 'everywhere', but the overall action is unclear. This continues the story as Thomas searches for his lost item.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes cognates 'cherche' (search) and 'mais' (but). Insufficient cognates to convey the main idea, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "cherche",
+        "mais"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Un gardien aide Thomas à la retrouver.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "gardien",
+        "aide",
+        "Thomas"
+      ],
+      "generation_reasoning": "Contains cognates 'gardien', 'aide', and 'Thomas', suggesting someone is helping Thomas, but specifics are missing. This advances the story with a guard assisting Thomas.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like 'gardien' (guardian), 'aide' (help), and 'retrouver' (retrieve). An English speaker might grasp that a guardian helps Thomas find something.",
+      "actual_cognate_words": [
+        "gardien",
+        "aide",
+        "Thomas",
+        "retrouver"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "La classe rentre à l'école fatiguée mais heureuse.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "classe",
+        "école"
+      ],
+      "generation_reasoning": "Includes cognates 'classe' and 'école', hinting they return to school, but emotional nuances may be lost. This continues the story as the class heads back to school tired but happy.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Has several cognates such as 'classe', 'école' (school), 'fatiguée' (fatigued), and 'mais' (but). An English speaker might understand that the class returns to school tired but happy, missing subtle nuances.",
+      "actual_cognate_words": [
+        "classe",
+        "rentre",
+        "école",
+        "fatiguée",
+        "mais"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    },
+    {
+      "sentence": "Thomas raconte sa journée à sa famille.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "Thomas",
+        "famille"
+      ],
+      "generation_reasoning": "Contains cognates 'Thomas' and 'famille', indicating Thomas and family, but the main verb is not a cognate. This concludes the story with Thomas telling his family about his day.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes cognates 'Thomas', 'journée' (journey/day), and 'famille'. Missing key verbs like 'raconte' (tells), so the main action may not be understood.",
+      "actual_cognate_words": [
+        "Thomas",
+        "journée",
+        "famille"
+      ],
+      "generation_timestamp": "2025-01-02T21:47:39.010676"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 1.5,
+    "creation_date": "2025-01-02T21:46:03.694697",
+    "sentence_count": 10
+  }
+}

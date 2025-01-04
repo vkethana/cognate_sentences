@@ -1,0 +1,276 @@
+{
+  "story": [
+    {
+      "sentence": "Le président affirme que la crise économique est terminée, bien que les citoyens ne ressentent pas encore les effets.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "président",
+        "affirme",
+        "crise",
+        "économique",
+        "terminée",
+        "citoyens",
+        "ressentent",
+        "effets"
+      ],
+      "generation_reasoning": "An English speaker would understand that the president says the economic crisis is over and that citizens do not yet feel the effects. However, they might miss 'bien que' meaning 'although', changing the relationship between the clauses and altering the nuance.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognate words like 'président', 'affirme', 'crise', 'économique', 'terminée', 'citoyens', and 'effets'. An English speaker might understand that the president affirms that the economic crisis is over, but might miss important nuances such as 'bien que' (although) and 'ne...pas encore ressentent' (do not yet feel), which change the meaning regarding whether citizens are feeling the effects.",
+      "actual_cognate_words": [
+        "président",
+        "affirme",
+        "crise",
+        "économique",
+        "terminée",
+        "citoyens",
+        "effets"
+      ],
+      "generation_timestamp": "2025-01-02T20:32:12.740954"
+    },
+    {
+      "sentence": "Toutefois, le taux de chômage reste élevé, ce qui inquiète les économistes.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "Toutefois",
+        "taux",
+        "reste",
+        "élevé",
+        "économistes"
+      ],
+      "generation_reasoning": "This sentence follows the previous one by indicating that despite the president's assertion, unemployment remains high, causing concern among economists. It matches difficulty level 2 because it contains many cognates like 'taux', 'élevé', 'économistes', but key words like 'chômage' may not be immediately understood by English speakers, leading to missing important details.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'Toutefois', 'élevé', and 'économistes', but key words like 'taux', 'chômage', and 'inquiète' are not cognates. An English speaker might grasp that something remains elevated and involves economists, but would miss the main idea.",
+      "actual_cognate_words": [
+        "Toutefois",
+        "élevé",
+        "économistes"
+      ],
+      "generation_timestamp": "2025-01-02T20:36:21.374575"
+    },
+    {
+      "sentence": "Le gouvernement propose de nouvelles réformes pour améliorer la situation financière.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "gouvernement",
+        "propose",
+        "nouvelles",
+        "réformes",
+        "situation",
+        "financière"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing the government's response to the economic concerns. It matches difficulty level 2 because while it includes cognates like 'gouvernement', 'propose', 'réformes', 'situation', and 'financière', the verb 'améliorer' might not be immediately recognized by English speakers, causing them to miss nuances.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains mostly cognate words like 'gouvernement', 'propose', 'réformes', 'situation', and 'financière'. An English speaker would understand the main idea fully through cognates.",
+      "actual_cognate_words": [
+        "gouvernement",
+        "propose",
+        "nouvelles",
+        "réformes",
+        "situation",
+        "financière"
+      ],
+      "generation_timestamp": "2025-01-02T20:36:21.374575"
+    },
+    {
+      "sentence": "Les syndicats critiquent ces mesures, les jugeant insuffisantes et injustes.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "syndicats",
+        "critiquent",
+        "mesures",
+        "insuffisantes",
+        "injustes"
+      ],
+      "generation_reasoning": "This sentence follows by presenting the unions' reaction, criticizing the government's reforms. It matches difficulty level 2 because it contains cognates like 'syndicats', 'critiquent', 'mesures', 'insuffisantes', and 'injustes', but the word 'jugeant' may not be familiar to English speakers, leading to a partial understanding.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words like 'critiquent', 'mesures', 'insuffisantes', and 'injustes'. However, words like 'syndicats' and 'jugeant' may not be easily recognized by an English speaker. They might understand that something is being criticized as insufficient and unjust but miss who is doing the criticizing.",
+      "actual_cognate_words": [
+        "critiquent",
+        "mesures",
+        "insuffisantes",
+        "injustes"
+      ],
+      "generation_timestamp": "2025-01-02T20:36:21.374575"
+    },
+    {
+      "sentence": "Des manifestations éclatent dans plusieurs villes du pays, exprimant le mécontentement public.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "manifestations",
+        "plusieurs",
+        "villes",
+        "pays",
+        "exprimant",
+        "public"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by describing protests erupting across the country. It matches difficulty level 2 because while it includes cognates like 'manifestations', 'villes', 'pays', 'exprimant', and 'public', words like 'éclatent' and 'mécontentement' might not be immediately understood, causing English speakers to miss important details.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words like 'manifestations', 'mécontentement', and 'public', but key verbs like 'éclatent' and words like 'villes', 'pays' are not cognates. An English speaker might recognize 'manifestations' and 'public discontent' but miss the main action and context.",
+      "actual_cognate_words": [
+        "manifestations",
+        "exprimant",
+        "mécontentement",
+        "public"
+      ],
+      "generation_timestamp": "2025-01-02T20:36:21.374575"
+    },
+    {
+      "sentence": "Face à la pression, le président annonce un plan d'action plus ambitieux.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "pression",
+        "président",
+        "annonce",
+        "plan",
+        "action",
+        "ambitieux"
+      ],
+      "generation_reasoning": "This sentence follows by showing the president responding to the pressure by announcing a more ambitious action plan. It matches difficulty level 2 because it contains cognates like 'pression', 'président', 'annonce', 'plan', 'action', and 'ambitieux', but small connecting words may cause English speakers to miss subtle nuances.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words. An English speaker would fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "Face",
+        "pression",
+        "président",
+        "annonce",
+        "plan",
+        "action",
+        "plus",
+        "ambitieux"
+      ],
+      "generation_timestamp": "2025-01-02T20:36:21.374575"
+    },
+    {
+      "sentence": "Le public attend impatiemment des détails sur les nouvelles mesures.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "public",
+        "attend",
+        "impatiemment",
+        "détails",
+        "nouvelles",
+        "mesures"
+      ],
+      "generation_reasoning": "This sentence continues the story by highlighting the public's eager anticipation for more information about the president's ambitious action plan. It matches difficulty level 2 because it contains several cognate words like 'public', 'attend', 'impatiemment', 'détails', 'nouvelles', and 'mesures', allowing an English speaker to grasp the main idea but possibly missing nuances such as the intensity conveyed by 'impatiemment'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words such as 'public', 'impatiente' (impatient), 'détails' (details), 'nouvelles' (new), and 'mesures' (measures). An English speaker might understand that the public is impatiently awaiting details about new measures. They might miss the verb 'attend' meaning 'waits' instead of 'attend' in English. Overall, the main idea is mostly understandable with minor nuances missed.",
+      "actual_cognate_words": [
+        "public",
+        "impatiente",
+        "détails",
+        "nouvelles",
+        "mesures"
+      ],
+      "generation_timestamp": "2025-01-02T20:37:08.431394"
+    },
+    {
+      "sentence": "Cependant, les experts craignent que le plan ne soit pas suffisant pour résoudre les problèmes actuels.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "cependant",
+        "experts",
+        "craignent",
+        "plan",
+        "suffisant",
+        "résoudre",
+        "problèmes",
+        "actuels"
+      ],
+      "generation_reasoning": "This sentence follows by introducing the experts' concerns about the adequacy of the president's plan to solve current issues. It matches difficulty level 2 because it includes cognate words like 'cependant', 'experts', 'craignent', 'plan', 'suffisant', 'résoudre', 'problèmes', and 'actuels'. An English speaker would understand the main idea but might miss nuances in phrases like 'ne soit pas suffisant'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "This sentence includes cognates like 'experts', 'plan', 'suffisant' (sufficient), 'résoudre' (resolve), 'problèmes' (problems), and 'actuels' (actual/current). An English speaker might grasp that experts fear the plan isn't sufficient to resolve current problems. However, words like 'cependant' (however) and the subjunctive construction might cause some nuances to be lost.",
+      "actual_cognate_words": [
+        "experts",
+        "craignent",
+        "plan",
+        "suffisant",
+        "résoudre",
+        "problèmes",
+        "actuels"
+      ],
+      "generation_timestamp": "2025-01-02T20:37:08.431394"
+    },
+    {
+      "sentence": "Les opposants politiques dénoncent le manque de consultation lors de l'élaboration du plan.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "opposants",
+        "politiques",
+        "dénoncent",
+        "manque",
+        "consultation",
+        "élaboration",
+        "plan"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by showing that political opponents are criticizing the lack of consultation in the plan's development. It fits difficulty level 2 as it uses cognate words such as 'opposants', 'politiques', 'dénoncent', 'manque', 'consultation', 'élaboration', and 'plan'. An English speaker would understand the main points but might miss details like 'lors de' meaning 'during'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is rich in cognates: 'opposants politiques' (political opponents), 'dénoncent' (denounce), 'manque' (lack), 'consultation', 'élaboration' (elaboration), and 'plan'. An English speaker could fully understand that political opponents denounce the lack of consultation during the plan's development. The meaning is clear, and missed words, if any, do not change the overall understanding.",
+      "actual_cognate_words": [
+        "opposants",
+        "politiques",
+        "dénoncent",
+        "manque",
+        "consultation",
+        "élaboration",
+        "plan"
+      ],
+      "generation_timestamp": "2025-01-02T20:37:08.431394"
+    },
+    {
+      "sentence": "Malgré les critiques, le gouvernement affirme que les changements auront un impact significatif.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "malgré",
+        "critiques",
+        "gouvernement",
+        "affirme",
+        "changements",
+        "impact",
+        "significatif"
+      ],
+      "generation_reasoning": "This sentence follows by presenting the government's response to criticism, asserting the plan's significant impact. It matches difficulty level 2 because it includes cognate words like 'malgré', 'critiques', 'gouvernement', 'affirme', 'changements', 'impact', and 'significatif'. An English speaker would grasp the main idea but might miss nuances in future tense verbs like 'auront'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Cognate words like 'critiques' (critics), 'gouvernement' (government), 'affirme' (affirm), 'changements' (changes), 'impact', and 'significatif' (significant) are present. An English speaker might understand that despite criticisms, the government asserts that the changes will have a significant impact. Missing the word 'malgré' (despite) might lead to misunderstanding the relation between the criticisms and the government's affirmation.",
+      "actual_cognate_words": [
+        "critiques",
+        "gouvernement",
+        "affirme",
+        "changements",
+        "impact",
+        "significatif"
+      ],
+      "generation_timestamp": "2025-01-02T20:37:08.431394"
+    },
+    {
+      "sentence": "Les citoyens espèrent que ces mesures apporteront enfin des solutions durables.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "citoyens",
+        "espèrent",
+        "mesures",
+        "apporteront",
+        "solutions",
+        "durables"
+      ],
+      "generation_reasoning": "This sentence continues the story by expressing the citizens' hope for lasting solutions from the new measures. It fits difficulty level 2 as it uses cognate words like 'citoyens', 'espèrent', 'mesures', 'apporteront', 'solutions', and 'durables'. An English speaker would understand the main idea but might miss subtleties conveyed by words like 'enfin'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains cognates such as 'citoyens' (citizens), 'espèrent' (hope), 'mesures' (measures), 'apporteront' (will bring), 'solutions', and 'durables' (durable/sustainable). An English speaker might gather that citizens hope these measures will bring lasting solutions. They might miss nuances like 'enfin' (finally), but the main idea is mostly understandable.",
+      "actual_cognate_words": [
+        "citoyens",
+        "espèrent",
+        "mesures",
+        "apporteront",
+        "solutions",
+        "durables"
+      ],
+      "generation_timestamp": "2025-01-02T20:37:08.431394"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 2.090909090909091,
+    "creation_date": "2025-01-02T20:30:14.537202",
+    "sentence_count": 11
+  }
+}

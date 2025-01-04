@@ -1,0 +1,227 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur organise un atelier pour explorer des sujets divers.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "professeur",
+        "organise",
+        "atelier",
+        "explorer",
+        "divers"
+      ],
+      "generation_reasoning": "The sentence contains cognates like 'professeur', 'organise', 'atelier', 'explorer', and 'divers', which suggest an academic setting but do not clearly define the event or purpose of the subjects being explored.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, allowing an English speaker to grasp the main idea, but may miss 'atelier' (workshop), leading to incomplete understanding.",
+      "actual_cognate_words": [
+        "professeur",
+        "organise",
+        "explorer",
+        "sujets",
+        "divers"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "Le musicien écrit une chanson, mais garde le refrain secret pour l'instant.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "musicien",
+        "chanson",
+        "secret"
+      ],
+      "generation_reasoning": "'Musicien' and 'chanson' are cognates indicating music, while 'secret' gives a clue about what is being done, but doesn’t specify the overall purpose or content of the song.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; missing 'pour l'instant' ('for now') doesn't change the main meaning.",
+      "actual_cognate_words": [
+        "musicien",
+        "écrit",
+        "chanson",
+        "mais",
+        "garde",
+        "refrain",
+        "secret"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "La technologie moderne influence le mode de vie des jeunes.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "technologie",
+        "moderne",
+        "influence"
+      ],
+      "generation_reasoning": "Cognates like 'technologie', 'moderne', and 'influence' provide a hint that the topic involves modern technology, but the phrase 'mode de vie des jeunes' leaves essential cultural context out.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognates, but an English speaker might misinterpret 'mode de vie' and miss 'des jeunes', altering the meaning.",
+      "actual_cognate_words": [
+        "technologie",
+        "moderne",
+        "influence",
+        "mode",
+        "vie"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "Un architecte célèbre dessinera un édifice devant la mairie.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "architecte",
+        "célèbre",
+        "édifice"
+      ],
+      "generation_reasoning": "Words such as 'architecte', 'célèbre', and 'édifice' give clues about architecture, but specifics about what the building represents or its purpose are missing.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognates, but key verbs and locations are unintelligible, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "architecte",
+        "célèbre",
+        "édifice"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "Pendant l'exposition, les artistes montrent leurs œuvres innovantes.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "exposition",
+        "artistes",
+        "œuvres"
+      ],
+      "generation_reasoning": "'Exposition', 'artistes', and 'œuvres' are helpful cognates suggesting an art exhibit, but the nature and themes of the artworks are not revealed.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; missing 'pendant' ('during') doesn't significantly alter the meaning.",
+      "actual_cognate_words": [
+        "exposition",
+        "artistes",
+        "montrent",
+        "œuvres",
+        "innovantes"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "Le programme éducatif implique plusieurs disciplines scientifiques.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "programme",
+        "éducatif",
+        "disciplines",
+        "scientifiques"
+      ],
+      "generation_reasoning": "'Programme', 'éducatif', 'disciplines', and 'scientifiques' let us deduce it’s about an educational program with scientific subjects, but it lacks clarity about the scope or methods used.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "programme",
+        "éducatif",
+        "implique",
+        "plusieurs",
+        "disciplines",
+        "scientifiques"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "L'artiste digital réalise des projets qui surprennent le public.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "artiste",
+        "digital",
+        "projets",
+        "public"
+      ],
+      "generation_reasoning": "Cognates like 'artiste', 'projets', and 'public' suggest an artist audience setting, but what the projects entail or their significance isn't clear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; the sentence conveys the complete meaning.",
+      "actual_cognate_words": [
+        "artiste",
+        "digital",
+        "réalise",
+        "projets",
+        "surprennent",
+        "public"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "La conférence annuelle discutera des défis économiques actuels.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "conférence",
+        "annuelle",
+        "défis",
+        "économiques",
+        "actuels"
+      ],
+      "generation_reasoning": "'Conférence', 'annuelle', 'défis', 'économiques', and 'actuels' identify an annual economic conference, but without insight into the specific challenges discussed.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "conférence",
+        "annuelle",
+        "discutera",
+        "défis",
+        "économiques",
+        "actuels"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "Les étudiants organisent une manifestation contre les réductions budgétaires.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "étudiants",
+        "organisent",
+        "manifestation",
+        "budgétaires"
+      ],
+      "generation_reasoning": "'Étudiants', 'organisent', 'manifestation', and 'budgétaires' indicate a student-led protest but doesn't specify what the budget cuts affect.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Fully understandable through cognates; the main idea is clear to an English speaker.",
+      "actual_cognate_words": [
+        "étudiants",
+        "organisent",
+        "manifestation",
+        "contre",
+        "réductions",
+        "budgétaires"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    },
+    {
+      "sentence": "Le réalisateur commence un nouveau film avec un acteur international.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "réalisateur",
+        "film",
+        "acteur",
+        "international"
+      ],
+      "generation_reasoning": "Cognates like 'réalisateur', 'film', and 'acteur' relate to filmmaking, but details on the film's content or the actor's role are absent.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "réalisateur",
+        "commence",
+        "nouveau",
+        "film",
+        "acteur",
+        "international"
+      ],
+      "generation_timestamp": "2025-01-01T13:33:50.099443"
+    }
+  ],
+  "metadata": {
+    "total_count": 10,
+    "difficulty_counts": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 7
+    },
+    "last_updated": "2025-01-01T13:34:45.496964"
+  }
+}

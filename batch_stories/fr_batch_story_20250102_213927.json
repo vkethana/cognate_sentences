@@ -1,0 +1,230 @@
+{
+  "story": [
+    {
+      "sentence": "Le célèbre musicien voyage à Paris pour un grand concert.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "célèbre",
+        "musicien",
+        "voyage",
+        "Paris",
+        "grand",
+        "concert"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 3 because it uses almost exclusively cognate words understandable to English speakers. It introduces the famous musician traveling to Paris for a big concert.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognates, and an English speaker can understand that the famous musician travels to Paris for a grand concert. The non-cognate words are basic connectors and do not impede understanding.",
+      "actual_cognate_words": [
+        "célèbre",
+        "musicien",
+        "voyage",
+        "Paris",
+        "grand",
+        "concert"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Il répète les mélodies dans le studio moderne.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "répète",
+        "mélodies",
+        "studio",
+        "moderne"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that he rehearses the melodies in the modern studio. It uses cognates like 'répète', 'mélodies', 'studio', and 'moderne'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Several cognates like 'mélodies', 'studio', and 'moderne' help convey the main idea. However, words like 'répète' may not be immediately understood, causing an English speaker to miss some details.",
+      "actual_cognate_words": [
+        "mélodies",
+        "studio",
+        "moderne"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Les fans anticipent la performance spectaculaire avec enthousiasme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "fans",
+        "anticipent",
+        "performance",
+        "spectaculaire",
+        "enthousiasme"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that the fans eagerly anticipate the spectacular performance. It uses cognates such as 'fans', 'anticipent', 'performance', 'spectaculaire', and 'enthousiasme'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Almost all content words are cognates, and an English speaker can understand that the fans anticipate the spectacular performance with enthusiasm.",
+      "actual_cognate_words": [
+        "fans",
+        "anticipent",
+        "performance",
+        "spectaculaire",
+        "enthousiasme"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Le soir du concert, le théâtre est rempli de célébrités internationales.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "soir",
+        "concert",
+        "théâtre",
+        "rempli",
+        "célébrités",
+        "internationales"
+      ],
+      "generation_reasoning": "This sentence continues the story by describing the night of the concert, where the theater is filled with international celebrities. It uses cognates like 'soir', 'concert', 'théâtre', 'rempli', 'célébrités', and 'internationales'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many cognates are present, an English speaker might not fully grasp 'est rempli de', possibly missing that the theater is filled with international celebrities.",
+      "actual_cognate_words": [
+        "soir",
+        "concert",
+        "théâtre",
+        "est",
+        "rempli",
+        "célébrités",
+        "internationales"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Le musicien commence à jouer une symphonie magique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "musicien",
+        "commence",
+        "jouer",
+        "symphonie",
+        "magique"
+      ],
+      "generation_reasoning": "This sentence continues the story by stating that the musician begins to play a magical symphony. It uses cognates like 'musicien', 'commence', 'jouer', 'symphonie', and 'magique'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates, but 'à jouer' may not be understood as 'to play', so an English speaker might miss that the musician begins to play a magical symphony.",
+      "actual_cognate_words": [
+        "musicien",
+        "commence",
+        "symphonie",
+        "magique"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Le public applaudit avec enthousiasme et admiration.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "public",
+        "applaudit",
+        "enthousiasme",
+        "admiration"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that the audience applauds with enthusiasm and admiration. It uses cognates such as 'public', 'applaudit', 'enthousiasme', and 'admiration'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "All key content words are cognates, and an English speaker can understand that the public applauds with enthusiasm and admiration.",
+      "actual_cognate_words": [
+        "public",
+        "applaudit",
+        "enthousiasme",
+        "admiration"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Après le concert, il reçoit de nombreux compliments des critiques.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "après",
+        "concert",
+        "reçoit",
+        "nombreux",
+        "compliments",
+        "critiques"
+      ],
+      "generation_reasoning": "This sentence continues the story by stating that after the concert, he receives numerous compliments from critics. It uses cognates like 'après', 'concert', 'reçoit', 'nombreux', 'compliments', and 'critiques'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognates, but 'des critiques' might be misinterpreted as 'criticisms' rather than 'critics', altering the meaning.",
+      "actual_cognate_words": [
+        "Après",
+        "concert",
+        "reçoit",
+        "nombreux",
+        "compliments",
+        "critiques"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Les journaux publient des articles élogieux sur sa performance.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "journaux",
+        "publient",
+        "articles",
+        "élogieux",
+        "performance"
+      ],
+      "generation_reasoning": "This sentence continues the story by mentioning that newspapers publish laudatory articles about his performance. It uses cognates such as 'journaux', 'publient', 'articles', 'élogieux', and 'performance'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many words are cognates, 'élogieux' may not be understood, leading an English speaker to miss that the articles are praiseful.",
+      "actual_cognate_words": [
+        "journaux",
+        "publient",
+        "articles",
+        "performance"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Il décide d'enregistrer un nouvel album en France.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "décide",
+        "enregistrer",
+        "album",
+        "France"
+      ],
+      "generation_reasoning": "This sentence continues the story by revealing that he decides to record a new album in France. It uses cognates like 'décide', 'enregistrer', 'album', and 'France'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Several cognates are present, but 'enregistrer' might be misread as 'to register' instead of 'to record', causing misunderstanding.",
+      "actual_cognate_words": [
+        "décide",
+        "enregistrer",
+        "nouvel",
+        "album",
+        "France"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    },
+    {
+      "sentence": "Son succès renforce sa renommée internationale dans la musique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "succès",
+        "renforce",
+        "renommée",
+        "internationale",
+        "musique"
+      ],
+      "generation_reasoning": "This final sentence concludes the story by stating that his success reinforces his international fame in music. It uses cognates such as 'succès', 'renforce', 'renommée', 'internationale', and 'musique'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "All key words are cognates, allowing an English speaker to understand that his success reinforces his international renown in music.",
+      "actual_cognate_words": [
+        "succès",
+        "renforce",
+        "renommée",
+        "internationale",
+        "musique"
+      ],
+      "generation_timestamp": "2025-01-02T21:40:42.544606"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.4,
+    "creation_date": "2025-01-02T21:39:27.022811",
+    "sentence_count": 10
+  }
+}

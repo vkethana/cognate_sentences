@@ -1,0 +1,222 @@
+{
+  "story": [
+    {
+      "sentence": "Le scientifique découvre une carte ancienne.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "scientifique",
+        "découvre",
+        "carte",
+        "ancienne"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 2 because it contains many cognate words such as 'scientifique', 'découvre', 'carte', and 'ancienne'. An English speaker could understand that a scientist discovers an old map, but might miss nuances due to words like 'une' and 'le'. As this is the first sentence, it starts the story about a scientist discovering a map.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words that an English speaker might recognize, such as 'scientifique' (scientist), 'découvre' (discover), 'carte' (card), and 'ancienne' (ancient). An English speaker might understand the main idea but could misinterpret 'carte' as 'card' instead of 'map', potentially missing some nuances.",
+      "actual_cognate_words": [
+        "scientifique",
+        "découvre",
+        "carte",
+        "ancienne"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Il décide de partir en expédition pour trouver le trésor.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "décide",
+        "partir",
+        "expédition",
+        "trouver",
+        "trésor"
+      ],
+      "generation_reasoning": "This sentence continues the story by explaining that he decides to go on an expedition to find the treasure. It matches difficulty level 2 because it has cognates like 'décide', 'partir', 'expédition', 'trouver', and 'trésor', but includes non-cognate words like 'pour' and 'en'. An English speaker might understand that he decides to start an expedition to find the treasure but may miss some connectors.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Includes cognate words like 'décide' (decides), 'expédition' (expedition), and 'trésor' (treasure), but key verbs 'partir' (to leave) and 'trouver' (to find) are not cognates and are essential to the sentence. An English speaker might grasp the general topic but miss the main action, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "décide",
+        "expédition",
+        "trésor"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Le voyage est dangereux à cause des tempêtes fréquentes.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "voyage",
+        "dangereux",
+        "tempêtes",
+        "fréquentes"
+      ],
+      "generation_reasoning": "This sentence continues the story by describing the dangerous journey due to frequent storms. It matches difficulty level 2 with cognates like 'voyage', 'dangereux', 'tempêtes', and 'fréquentes', but includes words like 'à cause des'. An English speaker might understand 'The voyage is dangerous ... storms frequent', missing some details.",
+      "actual_score": 2,
+      "actual_score_reasoning": "An English speaker might recognize 'voyage' (journey), 'dangereux' (dangerous), 'cause' (cause), 'tempêtes' (tempests), and 'fréquentes' (frequent). They could understand that the journey is dangerous due to frequent storms, though 'à cause de' might not be perfectly understood. They would get the main idea with minor nuances missed.",
+      "actual_cognate_words": [
+        "voyage",
+        "dangereux",
+        "cause",
+        "tempêtes",
+        "fréquentes"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Son équipe arrive finalement sur une île isolée.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "équipe",
+        "arrive",
+        "finalement",
+        "île",
+        "isolée"
+      ],
+      "generation_reasoning": "This sentence progresses the story by stating that his team finally arrives on an isolated island. It matches difficulty level 2 with cognates like 'équipe', 'arrive', 'finalement', 'île', and 'isolée', but includes non-cognate words like 'son', 'sur', and 'une'. An English speaker might understand 'Team arrives finally on an island isolated', possibly missing possession and prepositions.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Although it contains cognates like 'arrive' (arrives), 'finalement' (finally), 'île' (isle), and 'isolée' (isolated), key words 'son' (his/her) and 'équipe' (team) are not cognates. An English speaker might miss that it is 'his team', which leaves major gaps in understanding.",
+      "actual_cognate_words": [
+        "arrive",
+        "finalement",
+        "île",
+        "isolée"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Ils explorent la jungle dense pendant plusieurs jours.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "explorent",
+        "jungle",
+        "dense",
+        "pendant",
+        "jours"
+      ],
+      "generation_reasoning": "This sentence continues the story with them exploring the dense jungle for several days. It matches difficulty level 2 with cognates like 'explorent', 'jungle', 'dense', 'pendant', and 'jours', but includes words like 'plusieurs'. An English speaker may understand 'They explore the dense jungle during several days', missing precise time frames.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like 'explorent' (explore), 'jungle', and 'dense' (dense). Words like 'pendant' (for/during), 'plusieurs' (several), and 'jours' (days) may not be recognized. An English speaker might understand that they explore the dense jungle but might miss the duration, leading to some missed details.",
+      "actual_cognate_words": [
+        "explorent",
+        "jungle",
+        "dense"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Le groupe rencontre des animaux exotiques et des plantes nouvelles.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "groupe",
+        "rencontre",
+        "animaux",
+        "exotiques",
+        "plantes",
+        "nouvelles"
+      ],
+      "generation_reasoning": "This sentence shows the group encountering exotic animals and new plants. It matches difficulty level 2 with cognates such as 'groupe', 'rencontre', 'animaux', 'exotiques', 'plantes', and 'nouvelles', but includes words like 'des' and 'et'. An English speaker might understand 'The group encounters exotic animals and new plants', possibly missing articles.",
+      "actual_score": 2,
+      "actual_score_reasoning": "An English speaker would recognize 'groupe' (group), 'rencontre' (encounters), 'animaux exotiques' (exotic animals), 'plantes' (plants), and 'nouvelles' (new). They might understand that the group encounters exotic animals and new plants, perhaps missing minor nuances.",
+      "actual_cognate_words": [
+        "groupe",
+        "rencontre",
+        "animaux",
+        "exotiques",
+        "plantes",
+        "nouvelles"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Ils trouvent une entrée secrète menant à une grotte.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "trouvent",
+        "entrée",
+        "secrète",
+        "menant",
+        "grotte"
+      ],
+      "generation_reasoning": "This sentence advances the story as they find a secret entrance leading to a cave. It fits difficulty level 2 with cognates like 'trouvent', 'entrée', 'secrète', 'menant', and 'grotte', but includes words like 'une' and 'à'. An English speaker could get 'They find a secret entrance leading to a cave', perhaps missing function words.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognates like 'trouvent' (find), 'entrée' (entrance), 'secrète' (secret), and 'grotte' (grotto/cave). 'Menant' (leading) may not be understood. An English speaker might comprehend that they find a secret entrance to a cave, missing some details.",
+      "actual_cognate_words": [
+        "trouvent",
+        "entrée",
+        "secrète",
+        "grotte"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Dans la grotte, ils découvrent des inscriptions anciennes.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "grotte",
+        "découvrent",
+        "inscriptions",
+        "anciennes"
+      ],
+      "generation_reasoning": "This sentence continues the story with them discovering ancient inscriptions in the cave. It matches difficulty level 2 with cognates like 'grotte', 'découvrent', 'inscriptions', and 'anciennes', but includes non-cognate words like 'dans' and 'des'. An English speaker might understand 'In the cave, they discover ancient inscriptions', possibly missing prepositions and articles.",
+      "actual_score": 3,
+      "actual_score_reasoning": "All words are cognates: 'grotte' (grotto), 'découvrent' (discover), 'inscriptions' (inscriptions), and 'anciennes' (ancient). An English speaker can fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "grotte",
+        "découvrent",
+        "inscriptions",
+        "anciennes"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Les inscriptions révèlent l'emplacement exact du trésor.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "inscriptions",
+        "révèlent",
+        "emplacement",
+        "exact",
+        "trésor"
+      ],
+      "generation_reasoning": "This sentence advances the story by mentioning that the inscriptions reveal the exact location of the treasure. It fits difficulty level 2 with cognates like 'inscriptions', 'révèlent', 'emplacement', 'exact', and 'trésor', but includes words like 'les' and 'du'. An English speaker might get 'Inscriptions reveal exact emplacement treasure', possibly missing 'du' as 'of the'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like 'inscriptions', 'révèlent' (reveal), 'exact', and 'trésor' (treasure). 'L'emplacement' (the location) may not be recognized. An English speaker might get that the inscriptions reveal something exact of the treasure, missing critical details.",
+      "actual_cognate_words": [
+        "inscriptions",
+        "révèlent",
+        "exact",
+        "trésor"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    },
+    {
+      "sentence": "Le scientifique ouvre le coffret et trouve des artefacts précieux.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "scientifique",
+        "ouvre",
+        "coffret",
+        "trouve",
+        "artefacts",
+        "précieux"
+      ],
+      "generation_reasoning": "This sentence concludes the story with the scientist opening the chest and finding precious artifacts. It matches difficulty level 2 with cognates like 'scientifique', 'ouvre', 'coffret', 'trouve', 'artefacts', and 'précieux', but includes words like 'le', 'et', and 'des'. An English speaker might understand 'The scientist opens the chest and finds precious artifacts', missing some articles.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognates like 'scientifique' (scientist), 'ouvre' (opens), 'artefacts', and 'précieux' (precious). 'Coffret' may be mistaken for 'coffer' or 'coffin'. An English speaker would understand that the scientist opens something and finds precious artifacts, overall capturing the main idea but potentially misinterpreting 'coffret'.",
+      "actual_cognate_words": [
+        "scientifique",
+        "ouvre",
+        "coffret",
+        "artefacts",
+        "précieux"
+      ],
+      "generation_timestamp": "2025-01-02T21:14:46.938155"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 1.9,
+    "creation_date": "2025-01-02T21:13:11.125982",
+    "sentence_count": 10
+  }
+}

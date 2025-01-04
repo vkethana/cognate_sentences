@@ -1,0 +1,244 @@
+{
+  "story": [
+    {
+      "sentence": "Le musicien célèbre voyage à Paris pour un concert exceptionnel.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "musicien",
+        "célèbre",
+        "voyage",
+        "Paris",
+        "concert",
+        "exceptionnel"
+      ],
+      "generation_reasoning": "This sentence is difficulty level 3 because it uses cognates like 'musicien', 'célèbre', 'voyage', 'Paris', 'concert', 'exceptionnel', which make the meaning fully understandable to an English speaker through cognates. The small connecting words do not affect understanding.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable to an English speaker through cognates; it uses almost exclusively cognate words except for basic connectors.",
+      "actual_cognate_words": [
+        "musicien",
+        "célèbre",
+        "voyage",
+        "Paris",
+        "pour",
+        "concert",
+        "exceptionnel"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Le concert est un succès monumental avec une ovation prolongée.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "concert",
+        "succès",
+        "monumental",
+        "ovation",
+        "prolongée"
+      ],
+      "generation_reasoning": "This sentence continues the story by describing the success of the concert. It is difficulty level 3 because it uses cognates such as 'concert', 'succès', 'monumental', 'ovation', 'prolongée', which make the sentence fully understandable through cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates; key words are cognates and convey the full meaning.",
+      "actual_cognate_words": [
+        "concert",
+        "est",
+        "succès",
+        "monumental",
+        "avec",
+        "ovation",
+        "prolongée"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Après la performance, le musicien est invité à un événement prestigieux au Louvre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "performance",
+        "musicien",
+        "invité",
+        "événement",
+        "prestigieux",
+        "Louvre"
+      ],
+      "generation_reasoning": "This sentence continues from the previous by showing what happens after the performance. It is difficulty level 3 because of cognates like 'performance', 'musicien', 'invité', 'événement', 'prestigieux', 'Louvre'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "Après",
+        "performance",
+        "musicien",
+        "est",
+        "invité",
+        "événement",
+        "prestigieux",
+        "Louvre"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Là, il rencontre des figures influentes dans le monde artistique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "rencontre",
+        "figures",
+        "influentes",
+        "monde",
+        "artistique"
+      ],
+      "generation_reasoning": "This sentence follows by describing who he meets at the event. It is difficulty level 3 due to cognates such as 'rencontre', 'figures', 'influentes', 'monde', 'artistique'.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is fully understandable through cognates; key words convey the main idea without loss of meaning.",
+      "actual_cognate_words": [
+        "Là",
+        "rencontre",
+        "figures",
+        "influentes",
+        "monde",
+        "artistique"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "On lui offre une opportunité de collaborer sur un projet unique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "offre",
+        "opportunité",
+        "collaborer",
+        "projet",
+        "unique"
+      ],
+      "generation_reasoning": "Continuing the story, the musician is offered an opportunity. The sentence is level 3 with cognates like 'offre', 'opportunité', 'collaborer', 'projet', 'unique'.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but some pronouns and connectors may not be understood, potentially causing subtle changes in meaning.",
+      "actual_cognate_words": [
+        "offre",
+        "opportunité",
+        "collaborer",
+        "projet",
+        "unique"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Il accepte et commence à planifier le projet ambitieux.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "accepte",
+        "commence",
+        "planifier",
+        "projet",
+        "ambitieux"
+      ],
+      "generation_reasoning": "This sentence shows his acceptance and action, using cognates like 'accepte', 'commence', 'planifier', 'projet', 'ambitieux', making it level 3.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is mostly composed of cognates, making it fully understandable without missing key details.",
+      "actual_cognate_words": [
+        "accepte",
+        "commence",
+        "planifier",
+        "projet",
+        "ambitieux"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Le projet implique une fusion de musique et d'arts visuels.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "projet",
+        "implique",
+        "fusion",
+        "musique",
+        "arts",
+        "visuels"
+      ],
+      "generation_reasoning": "Continuing from planning, this explains the nature of the project. Cognates such as 'projet', 'implique', 'fusion', 'musique', 'arts', 'visuels' render it level 3.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Almost all words are cognates; the sentence is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "projet",
+        "implique",
+        "fusion",
+        "musique",
+        "arts",
+        "visuels"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Ils organisent une exposition spectaculaire qui gagne une acclamation internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "organisent",
+        "exposition",
+        "spectaculaire",
+        "gagne",
+        "acclamation",
+        "internationale"
+      ],
+      "generation_reasoning": "This continues the story by showing the result of the project. Cognates such as 'organisent', 'exposition', 'spectaculaire', 'gagne', 'acclamation', 'internationale' make the sentence level 3.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognate words that convey the full meaning clearly to an English speaker.",
+      "actual_cognate_words": [
+        "organisent",
+        "exposition",
+        "spectaculaire",
+        "gagne",
+        "acclamation",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "La carrière du musicien atteint de nouveaux sommets.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "carrière",
+        "musicien",
+        "atteint",
+        "nouveaux",
+        "sommets"
+      ],
+      "generation_reasoning": "This sentence shows the impact on his career, using cognates like 'carrière', 'musicien', 'atteint', 'nouveaux', 'sommets', fitting level 3.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Key words are cognates, making the sentence fully understandable.",
+      "actual_cognate_words": [
+        "carrière",
+        "musicien",
+        "atteint",
+        "nouveaux",
+        "sommets"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    },
+    {
+      "sentence": "Il réfléchit sur son voyage et est reconnaissant pour les opportunités.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "réfléchit",
+        "voyage",
+        "reconnaissant",
+        "opportunités"
+      ],
+      "generation_reasoning": "Concluding the story, he reflects on his journey. Cognates like 'réfléchit', 'voyage', 'reconnaissant', 'opportunités' help make it level 3.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but 'reconnaissant' may be misinterpreted, potentially altering the meaning.",
+      "actual_cognate_words": [
+        "réfléchit",
+        "voyage",
+        "est",
+        "reconnaissant",
+        "opportunités"
+      ],
+      "generation_timestamp": "2025-01-02T21:25:10.008243"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.8,
+    "creation_date": "2025-01-02T21:24:07.321209",
+    "sentence_count": 10
+  }
+}

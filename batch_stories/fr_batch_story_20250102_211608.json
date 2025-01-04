@@ -1,0 +1,125 @@
+{
+  "story": [
+    {
+      "sentence": "La fille mange une pomme.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence introduces the main character, a girl eating an apple. It uses basic French vocabulary without any cognate words recognizable to English speakers, making it completely unintelligible to them.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words that an English speaker would recognize.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "Elle voit un oiseau dans l'arbre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "Continuing the story, the girl sees a bird in the tree. The sentence uses basic French words with no cognates, maintaining the difficulty level. It logically follows the first sentence by introducing a new element that the girl observes.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The word \"arbre\" is a cognate to \"arboretum\" or \"arboreal\", but key words like \"voit\", \"oiseau\", and \"dans\" are not cognates, leaving major meaning gaps.",
+      "actual_cognate_words": [
+        "arbre"
+      ],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "L'oiseau chante doucement.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The bird sings softly, adding to the peaceful scene. This continues the narrative by describing the bird's action. No cognate words are present, keeping the sentence at difficulty level 0.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The word \"chante\" is a cognate to \"chant\", but key words like \"oiseau\" and \"doucement\" are not, leaving major gaps in understanding.",
+      "actual_cognate_words": [
+        "chante"
+      ],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "La fille sourit à l'oiseau.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The girl smiles at the bird, showing her appreciation of its song. This follows from the previous sentence by illustrating her reaction. The sentence uses basic vocabulary without cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words that an English speaker would recognize.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "Un chat monte sur l'arbre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "A cat climbs the tree, introducing an element of tension to the story. This continues the narrative by adding a new character and action. The sentence uses basic French words without cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The words \"monte\" and \"arbre\" are cognates to \"mount\" and \"arboreal\", but key words like \"chat\" are not recognized, leaving gaps in understanding.",
+      "actual_cognate_words": [
+        "monte",
+        "arbre"
+      ],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "Le chat chasse l'oiseau.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The cat chases the bird, escalating the action. This follows logically from the previous sentence where the cat climbed the tree. No cognate words are used, maintaining difficulty level 0.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The word \"chasse\" is a cognate to \"chase\", but other key words like \"chat\" and \"oiseau\" may not be recognized, leading to gaps in understanding.",
+      "actual_cognate_words": [
+        "chasse"
+      ],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "L'oiseau s'envole vite.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The bird flies away quickly, responding to the cat's chase. This continues the story by showing the bird's escape. The sentence uses basic vocabulary without cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "The sentence contains no cognate words that an English speaker would recognize.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "La fille gronde le chat.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The girl scolds the cat, expressing her disapproval of its actions. This follows from the previous events where the cat chased the bird. No cognate words are present.",
+      "actual_score": 0,
+      "actual_score_reasoning": "No cognate words present.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "Le chat descend de l'arbre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The cat comes down from the tree, obeying or reacting to the girl's scolding. This continues the narrative logically. The sentence uses basic French words without cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The words \"descend\" and \"arbre\" are cognates to \"descend\" and \"arboreal/tree\", allowing an English speaker to infer that something descends from a tree, but may miss that \"chat\" means \"cat\".",
+      "actual_cognate_words": [
+        "descend",
+        "arbre"
+      ],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    },
+    {
+      "sentence": "Elle touche le chat doucement.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "She gently touches the cat, perhaps forgiving it or comforting it. This concludes the story on a positive note. The sentence maintains difficulty level 0 with no cognate words.",
+      "actual_score": 1,
+      "actual_score_reasoning": "The word \"touche\" is a cognate to \"touch\", but other words like \"chat\" and \"doucement\" may not be recognized, leaving gaps in understanding.",
+      "actual_cognate_words": [
+        "touche"
+      ],
+      "generation_timestamp": "2025-01-02T21:17:19.816836"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 0.7,
+    "creation_date": "2025-01-02T21:16:08.653714",
+    "sentence_count": 10
+  }
+}

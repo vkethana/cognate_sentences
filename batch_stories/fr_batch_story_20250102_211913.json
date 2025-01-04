@@ -1,0 +1,225 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur célèbre organise une conférence internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "célèbre",
+        "organise",
+        "conférence",
+        "internationale"
+      ],
+      "generation_reasoning": "This sentence is at difficulty level 3 because it uses predominantly cognate words like 'professeur', 'célèbre', 'organise', 'conférence', and 'internationale'. An English speaker can fully understand the sentence through these cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words, allowing an English speaker to fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "professeur",
+        "célèbre",
+        "organise",
+        "conférence",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Des experts de multiples pays arrivent pour participer.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "experts",
+        "multiples",
+        "pays",
+        "arrivent",
+        "participer"
+      ],
+      "generation_reasoning": "This sentence continues the story by stating that experts from multiple countries are arriving to participate. It uses cognate words such as 'experts', 'multiples', 'pays', 'arrivent', and 'participer', making it fully understandable to an English speaker.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words that allow an English speaker to understand that experts from multiple places arrive to participate, but may miss that 'pays' means 'countries', missing some details.",
+      "actual_cognate_words": [
+        "experts",
+        "multiples",
+        "arrivent",
+        "participer"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Le thème principal de la conférence est la technologie moderne.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "thème",
+        "principal",
+        "conférence",
+        "technologie",
+        "moderne"
+      ],
+      "generation_reasoning": "Continuing the narrative, this sentence reveals the main theme of the conference. It includes cognate words like 'thème', 'principal', 'conférence', 'technologie', and 'moderne', which convey the key meaning clearly.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words, allowing an English speaker to fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "thème",
+        "principal",
+        "conférence",
+        "est",
+        "technologie",
+        "moderne"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Les participants discutent des innovations récentes dans l'industrie.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "participants",
+        "discutent",
+        "innovations",
+        "récentes",
+        "industrie"
+      ],
+      "generation_reasoning": "This sentence furthers the story by mentioning that participants discuss recent innovations in the industry. Cognate words such as 'participants', 'discutent', 'innovations', 'récentes', and 'industrie' make the sentence fully comprehensible.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words that allow an English speaker to understand that participants discuss recent innovations in the industry, but may miss prepositions and articles, changing some details.",
+      "actual_cognate_words": [
+        "participants",
+        "discutent",
+        "innovations",
+        "récentes",
+        "industrie"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Une présentation spéciale sur l'intelligence artificielle étonne le public.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "présentation",
+        "spéciale",
+        "intelligence",
+        "artificielle",
+        "étonne",
+        "public"
+      ],
+      "generation_reasoning": "Continuing the narrative, this sentence describes how a special presentation on artificial intelligence surprises the audience. Cognate words like 'présentation', 'spéciale', 'intelligence', 'artificielle', 'étonne', and 'public' ensure full understanding.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words; an English speaker would understand there is a special presentation on artificial intelligence and the public, but may miss 'étonne' meaning 'astonishes', missing the main action of the sentence.",
+      "actual_cognate_words": [
+        "présentation",
+        "spéciale",
+        "intelligence",
+        "artificielle",
+        "public"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Les scientifiques partagent leurs recherches avancées.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifiques",
+        "partagent",
+        "recherches",
+        "avancées"
+      ],
+      "generation_reasoning": "This sentence adds that scientists share their advanced research, continuing the story. It uses cognate words such as 'scientifiques', 'partagent', 'recherches', and 'avancées', making it fully understandable to an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words that indicate scientists and advanced research, but the key verb 'partagent' meaning 'share' is unintelligible to an English speaker, leading to a major meaning gap.",
+      "actual_cognate_words": [
+        "scientifiques",
+        "recherches",
+        "avancées"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Le gouvernement soutient les projets technologiques prometteurs.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernement",
+        "soutient",
+        "projets",
+        "technologiques",
+        "prometteurs"
+      ],
+      "generation_reasoning": "Advancing the narrative, this sentence states that the government supports promising technological projects. Cognate words like 'gouvernement', 'soutient', 'projets', 'technologiques', and 'prometteurs' convey the main ideas clearly.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate words indicating government and promising technological projects, but the key verb 'soutient' meaning 'supports' may be unintelligible to an English speaker, leading to a major meaning gap.",
+      "actual_cognate_words": [
+        "gouvernement",
+        "projets",
+        "technologiques",
+        "prometteurs"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Les médias couvrent largement l'événement important.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "médias",
+        "couvrent",
+        "largement",
+        "événement",
+        "important"
+      ],
+      "generation_reasoning": "This sentence continues the story by indicating that the media widely cover the important event. Cognate words such as 'médias', 'couvrent', 'largement', 'événement', and 'important' make the sentence fully comprehensible.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate words indicating media and important event, but the key verb 'couvrent' meaning 'cover' is unintelligible to an English speaker, leading to a major meaning gap.",
+      "actual_cognate_words": [
+        "médias",
+        "largement",
+        "événement",
+        "important"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Le succès de la conférence inspire de nouvelles collaborations internationales.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "succès",
+        "conférence",
+        "inspire",
+        "nouvelles",
+        "collaborations",
+        "internationales"
+      ],
+      "generation_reasoning": "Continuing the narrative, this sentence explains that the success of the conference inspires new international collaborations. Cognate words like 'succès', 'conférence', 'inspire', 'nouvelles', 'collaborations', and 'internationales' ensure full understanding.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains almost exclusively cognate words, allowing an English speaker to fully understand the sentence through cognates.",
+      "actual_cognate_words": [
+        "succès",
+        "conférence",
+        "inspire",
+        "collaborations",
+        "internationales"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    },
+    {
+      "sentence": "Le professeur remercie tous pour leur contribution significative.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "remercie",
+        "contribution",
+        "significative"
+      ],
+      "generation_reasoning": "Concluding the story, this sentence states that the professor thanks everyone for their significant contribution. Cognate words such as 'professeur', 'remercie', 'contribution', and 'significative' convey the message clearly.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words, but the key verb 'remercie' meaning 'thanks' and 'tous' meaning 'all' may be unintelligible to an English speaker, leading to a major meaning gap.",
+      "actual_cognate_words": [
+        "professeur",
+        "contribution",
+        "significative"
+      ],
+      "generation_timestamp": "2025-01-02T21:20:22.056181"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 1.9,
+    "creation_date": "2025-01-02T21:19:14.000076",
+    "sentence_count": 10
+  }
+}

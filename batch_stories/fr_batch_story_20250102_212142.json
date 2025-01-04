@@ -1,0 +1,241 @@
+{
+  "story": [
+    {
+      "sentence": "Le professeur scientifique découvre une nouvelle planète mystérieuse.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "scientifique",
+        "découvre",
+        "nouvelle",
+        "planète",
+        "mystérieuse"
+      ],
+      "generation_reasoning": "This sentence is composed almost entirely of cognates, making it fully understandable to an English speaker. The key meaning-bearing words are cognates ('professeur', 'scientifique', 'découvre', 'nouvelle', 'planète', 'mystérieuse').",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "professeur",
+        "scientifique",
+        "découvre",
+        "nouvelle",
+        "planète",
+        "mystérieuse"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Il décide d'organiser une expédition internationale pour explorer cette planète.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "décide",
+        "organiser",
+        "expédition",
+        "internationale",
+        "explorer",
+        "planète"
+      ],
+      "generation_reasoning": "This sentence uses numerous cognates, ensuring full comprehension. It continues the story by explaining that he decides to organize an international expedition to explore the planet.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses mostly cognate words, conveying the complete meaning to an English speaker.",
+      "actual_cognate_words": [
+        "décide",
+        "organiser",
+        "expédition",
+        "internationale",
+        "explorer",
+        "planète"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Les scientifiques du monde entier acceptent l'invitation avec enthousiasme.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifiques",
+        "monde",
+        "entier",
+        "acceptent",
+        "invitation",
+        "enthousiasme"
+      ],
+      "generation_reasoning": "The sentence contains many cognates like 'scientifiques', 'monde', 'entier', 'acceptent', 'invitation', 'enthousiasme'. It continues the narrative by showing that scientists worldwide accept the invitation enthusiastically.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains many cognate words, allowing an English speaker to fully grasp the meaning.",
+      "actual_cognate_words": [
+        "scientifiques",
+        "monde",
+        "entier",
+        "acceptent",
+        "invitation",
+        "enthousiasme"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "L'équipe internationale prépare la mission avec technologie avancée.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "équipe",
+        "internationale",
+        "prépare",
+        "mission",
+        "technologie",
+        "avancée"
+      ],
+      "generation_reasoning": "This sentence is filled with cognates such as 'équipe', 'internationale', 'prépare', 'mission', 'technologie', 'avancée'. It continues the story as the international team prepares the mission with advanced technology.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words, making it fully understandable.",
+      "actual_cognate_words": [
+        "équipe",
+        "internationale",
+        "prépare",
+        "mission",
+        "technologie",
+        "avancée"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Après un voyage long, ils atterrissent sur la surface extraterrestre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "voyage",
+        "long",
+        "atterrissent",
+        "surface",
+        "extraterrestre"
+      ],
+      "generation_reasoning": "The sentence includes cognates like 'voyage', 'long', 'atterrissent', 'surface', 'extraterrestre'. It continues the narrative by describing their landing on the extraterrestrial surface after a long voyage.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognate words, but the key verb 'atterrissent' is not a cognate and may be unintelligible, causing a misunderstanding of the main action.",
+      "actual_cognate_words": [
+        "Après",
+        "voyage",
+        "long",
+        "surface",
+        "extraterrestre"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Ils découvrent des structures architecturales anciennes sur la planète.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découvrent",
+        "structures",
+        "architecturales",
+        "anciennes",
+        "planète"
+      ],
+      "generation_reasoning": "Contains cognates such as 'découvrent', 'structures', 'architecturales', 'anciennes', 'planète'. It continues the story with their discovery of ancient architectural structures on the planet.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses mainly cognate words, conveying the discovery of ancient architectural structures on the planet.",
+      "actual_cognate_words": [
+        "découvrent",
+        "structures",
+        "architecturales",
+        "anciennes",
+        "planète"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Une énergie mystérieuse commence à affecter l'équipage.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "énergie",
+        "mystérieuse",
+        "commence",
+        "affecter",
+        "équipage"
+      ],
+      "generation_reasoning": "Uses cognates like 'énergie', 'mystérieuse', 'commence', 'affecter', 'équipage'. It continues the story by introducing a mysterious energy that begins to affect the crew.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognate words that make the meaning clear to an English speaker.",
+      "actual_cognate_words": [
+        "énergie",
+        "mystérieuse",
+        "commence",
+        "affecter",
+        "équipage"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Le professeur réalise que la planète contient une intelligence alien.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "professeur",
+        "réalise",
+        "planète",
+        "contient",
+        "intelligence",
+        "alien"
+      ],
+      "generation_reasoning": "Includes cognates 'professeur', 'réalise', 'planète', 'contient', 'intelligence', 'alien'. It continues the narrative as the professor realizes the planet contains an alien intelligence.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses cognate words to convey that the professor realizes the planet contains an alien intelligence.",
+      "actual_cognate_words": [
+        "professeur",
+        "réalise",
+        "planète",
+        "contient",
+        "intelligence",
+        "alien"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "Ils établissent une communication pacifique avec la civilisation extraterrestre.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "établissent",
+        "communication",
+        "pacifique",
+        "civilisation",
+        "extraterrestre"
+      ],
+      "generation_reasoning": "Features cognates like 'établissent', 'communication', 'pacifique', 'civilisation', 'extraterrestre'. It continues the story by detailing how they establish peaceful communication with the extraterrestrial civilization.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Using cognate words, the sentence communicates that they establish peaceful communication with the extraterrestrial civilization.",
+      "actual_cognate_words": [
+        "établissent",
+        "communication",
+        "pacifique",
+        "civilisation",
+        "extraterrestre"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    },
+    {
+      "sentence": "L'expédition retourne sur Terre avec des connaissances révolutionnaires.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "expédition",
+        "retourne",
+        "Terre",
+        "connaissances",
+        "révolutionnaires"
+      ],
+      "generation_reasoning": "Contains cognates such as 'expédition', 'retourne', 'Terre', 'connaissances', 'révolutionnaires'. It concludes the story as the expedition returns to Earth with revolutionary knowledge.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed of cognate words that allow an English speaker to understand that the expedition returns to Earth with revolutionary knowledge.",
+      "actual_cognate_words": [
+        "expédition",
+        "retourne",
+        "Terre",
+        "connaissances",
+        "révolutionnaires"
+      ],
+      "generation_timestamp": "2025-01-02T21:23:02.019481"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.9,
+    "creation_date": "2025-01-02T21:21:42.658094",
+    "sentence_count": 10
+  }
+}

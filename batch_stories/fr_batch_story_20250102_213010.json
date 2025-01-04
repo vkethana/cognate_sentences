@@ -1,0 +1,135 @@
+{
+  "story": [
+    {
+      "sentence": "Le chat dort sur le lit.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence uses basic, high-frequency French words with no cognates, making it unintelligible to English speakers. It starts the story.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Contains minimal cognate words ('lit' could be associated with 'lit' in English), but overall, it's unintelligible to an English speaker.",
+      "actual_cognate_words": [
+        "lit"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Il se réveille et voit par la fenêtre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence continues the story by describing the cat waking up and seeing through the window. It uses basic French vocabulary without cognates, maintaining unintelligibility to English speakers.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains some cognate words ('réveille' may be associated with 'reveille', 'fenêtre' with 'fenestration'), but the main idea is unclear to an English speaker.",
+      "actual_cognate_words": [
+        "réveille",
+        "fenêtre"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Dehors, il voit un oiseau dans un arbre.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence follows by revealing that the cat sees a bird in a tree outside. Again, it uses basic French words without cognates, maintaining difficulty level 0.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Contains few cognates ('arbre' relates to 'arbor'), but the overall meaning remains unintelligible.",
+      "actual_cognate_words": [
+        "arbre"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Le chat saute du lit et va vers la porte.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "This sentence continues the story as the cat jumps from the bed and goes towards the door. It uses simple French words without cognates, keeping the unintelligibility level intact.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains several cognate words ('chat', 'lit', 'porte') that might help an English speaker approximate the meaning, but important details may be missed.",
+      "actual_cognate_words": [
+        "chat",
+        "lit",
+        "porte"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Il miaule pour que quelqu'un ouvre la porte.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The cat meows so someone will open the door. This continues the narrative and uses basic French vocabulary without cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains minimal cognates ('porte'), leaving major meaning gaps for an English speaker.",
+      "actual_cognate_words": [
+        "porte"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "La porte s'ouvre, et le chat sort.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The door opens, and the cat goes out. This continues the story and maintains difficulty level 0 with no cognates.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognate words ('porte', 'ouvre', 'chat', 'sort') that may help understand parts of the sentence, but subtle details may be missed.",
+      "actual_cognate_words": [
+        "porte",
+        "ouvre",
+        "chat",
+        "sort"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Il se faufile doucement vers l'oiseau.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The cat sneaks slowly towards the bird. This continues the narrative and uses basic French words without cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Contains little to no cognates, making it unintelligible to an English speaker.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "L'oiseau s'envole vite.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The bird flies away quickly. This continues the story and maintains difficulty level 0 with no cognates.",
+      "actual_score": 0,
+      "actual_score_reasoning": "Contains little to no cognates, leaving the sentence unintelligible to an English speaker.",
+      "actual_cognate_words": [],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Le chat s'assoit et voit l'oiseau s'envoler.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "The cat sits and watches the bird fly away. This continues the narrative and uses basic vocabulary without cognates.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains minimal cognate words ('chat'), resulting in major meaning gaps for an English speaker.",
+      "actual_cognate_words": [
+        "chat"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    },
+    {
+      "sentence": "Il va au lit pour dormir encore.",
+      "target_difficulty": 0,
+      "proposed_cognate_words": [],
+      "generation_reasoning": "He goes to the bed to sleep again. This concludes the story, maintaining difficulty level 0 with no cognates.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains several cognate words ('lit', 'dormir', 'encore') that make the sentence fully understandable through cognates.",
+      "actual_cognate_words": [
+        "lit",
+        "dormir",
+        "encore"
+      ],
+      "generation_timestamp": "2025-01-02T21:31:23.880608"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 0,
+    "actual_difficulty_mean": 1.0,
+    "creation_date": "2025-01-02T21:30:10.336647",
+    "sentence_count": 10
+  }
+}

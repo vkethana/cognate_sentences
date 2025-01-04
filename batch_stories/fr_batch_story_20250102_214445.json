@@ -1,0 +1,229 @@
+{
+  "story": [
+    {
+      "sentence": "Un scientifique célèbre découvre un document important.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifique",
+        "célèbre",
+        "découvre",
+        "document",
+        "important"
+      ],
+      "generation_reasoning": "This sentence is composed primarily of cognates such as 'scientifique', 'célèbre', 'découvre', 'document', and 'important'. These words are easily recognizable to English speakers. The small connectors 'un' can be ignored without losing the overall meaning.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, allowing an English speaker to fully understand the main idea. The non-cognate words are basic connectors that don't change the meaning.",
+      "actual_cognate_words": [
+        "scientifique",
+        "célèbre",
+        "découvre",
+        "document",
+        "important"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Le document révèle un projet secret du gouvernement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "document",
+        "révèle",
+        "projet",
+        "secret",
+        "gouvernement"
+      ],
+      "generation_reasoning": "This sentence continues the story by explaining what the document contains. It includes cognates like 'document', 'révèle', 'projet', 'secret', and 'gouvernement'. The connectors 'le' and 'du' do not impede understanding.",
+      "actual_score": 3,
+      "actual_score_reasoning": "An English speaker can fully understand the sentence through the cognate words. The non-cognate words are basic connectors and do not affect comprehension.",
+      "actual_cognate_words": [
+        "document",
+        "révèle",
+        "projet",
+        "secret",
+        "gouvernement"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Le scientifique contacte immédiatement un agent spécial.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifique",
+        "contacte",
+        "immédiatement",
+        "agent",
+        "spécial"
+      ],
+      "generation_reasoning": "This sentence advances the narrative by showing the scientist's action. It uses cognates such as 'scientifique', 'contacte', 'immédiatement', 'agent', and 'spécial'. Small words like 'le' and 'un' are non-essential for comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words, making it fully understandable to an English speaker. The missing words are simple articles that do not alter the meaning.",
+      "actual_cognate_words": [
+        "scientifique",
+        "contacte",
+        "immédiatement",
+        "agent",
+        "spécial"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "L'agent informe le président de la situation urgente.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "agent",
+        "informe",
+        "président",
+        "situation",
+        "urgente"
+      ],
+      "generation_reasoning": "Continuing the story, this sentence includes cognates like 'agent', 'informe', 'président', 'situation', and 'urgente'. The connector 'de' can be overlooked without losing meaning.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The cognate words convey the main idea clearly. The non-cognate words are basic and do not impede understanding.",
+      "actual_cognate_words": [
+        "agent",
+        "informe",
+        "président",
+        "situation",
+        "urgente"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Le président organise une réunion avec le conseil national.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "organise",
+        "réunion",
+        "conseil",
+        "national"
+      ],
+      "generation_reasoning": "This sentence shows the president's response, using cognates like 'président', 'organise', 'réunion', 'conseil', and 'national'. The connectors 'une' and 'avec' are minor and non-disruptive.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While the sentence has many cognates, an English speaker might misinterpret 'réunion' as 'reunion' instead of 'meeting', potentially missing important nuances.",
+      "actual_cognate_words": [
+        "président",
+        "organise",
+        "réunion",
+        "conseil",
+        "national"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Pendant la réunion, ils analysent les informations du document.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "réunion",
+        "analysent",
+        "informations",
+        "document"
+      ],
+      "generation_reasoning": "Advancing the narrative, this sentence uses cognates such as 'réunion', 'analysent', 'informations', and 'document'. Words like 'pendant' and 'les' are connectors that can be ignored.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognates, but words like 'Pendant' and 'ils' might not be understood, causing an English speaker to miss key details about when the action takes place and who is performing it.",
+      "actual_cognate_words": [
+        "réunion",
+        "analysent",
+        "informations",
+        "document"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Ils découvrent une menace dangereuse pour la nation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "découvrent",
+        "menace",
+        "dangereuse",
+        "nation"
+      ],
+      "generation_reasoning": "This sentence reveals a plot point using cognates like 'découvrent', 'menace', 'dangereuse', and 'nation'. Connecting words 'ils' and 'pour' are not crucial for understanding.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The cognate words communicate the main idea, but the pronoun 'Ils' and the preposition 'pour' might be missed, possibly altering the understanding of who is involved and the relationship expressed.",
+      "actual_cognate_words": [
+        "découvrent",
+        "menace",
+        "dangereuse",
+        "nation"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Le président ordonne une action rapide pour protéger la nation.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "président",
+        "ordonne",
+        "action",
+        "rapide",
+        "protéger",
+        "nation"
+      ],
+      "generation_reasoning": "Continuing the story, this sentence includes cognates such as 'président', 'ordonne', 'action', 'rapide', 'protéger', and 'nation'. Minor words like 'le' and 'une' are easily bypassed.",
+      "actual_score": 3,
+      "actual_score_reasoning": "With predominantly cognate words, an English speaker can fully grasp the sentence's meaning. The non-cognate words are basic connectors and do not change the overall understanding.",
+      "actual_cognate_words": [
+        "président",
+        "ordonne",
+        "action",
+        "rapide",
+        "protéger",
+        "nation"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Les agents spéciaux exécutent le plan avec précision.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "agents",
+        "spéciaux",
+        "exécutent",
+        "plan",
+        "précision"
+      ],
+      "generation_reasoning": "This sentence shows the agents carrying out orders, with cognates like 'agents', 'spéciaux', 'exécutent', 'plan', and 'précision'. Connectors 'les' and 'le' are not essential.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is mostly composed of cognate words, making it fully understandable. The missing words are simple articles and prepositions that do not affect the main idea.",
+      "actual_cognate_words": [
+        "agents",
+        "spéciaux",
+        "exécutent",
+        "plan",
+        "précision"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    },
+    {
+      "sentence": "Finalement, la menace est neutralisée et la paix est restaurée.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "finalement",
+        "menace",
+        "neutralisée",
+        "paix",
+        "restaurée"
+      ],
+      "generation_reasoning": "Concluding the story, this sentence uses cognates like 'finalement', 'menace', 'neutralisée', 'paix', and 'restaurée'. Small words like 'la' and 'est' do not hinder comprehension.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The cognate words clearly convey the conclusion of events. The non-cognate words are basic and do not impede comprehension, allowing an English speaker to understand the full meaning.",
+      "actual_cognate_words": [
+        "Finalement",
+        "menace",
+        "neutralisée",
+        "paix",
+        "restaurée"
+      ],
+      "generation_timestamp": "2025-01-02T21:46:03.691981"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.7,
+    "creation_date": "2025-01-02T21:44:45.823001",
+    "sentence_count": 10
+  }
+}

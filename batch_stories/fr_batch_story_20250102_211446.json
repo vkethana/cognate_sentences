@@ -1,0 +1,243 @@
+{
+  "story": [
+    {
+      "sentence": "Le scientifique célèbre découvre une formule mystérieuse dans son laboratoire secret.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "scientifique",
+        "célèbre",
+        "découvre",
+        "formule",
+        "mystérieuse",
+        "laboratoire",
+        "secret"
+      ],
+      "generation_reasoning": "This sentence is level 2 because it contains many cognate words like 'scientifique', 'célèbre', 'découvre', 'formule', 'mystérieuse', 'laboratoire', 'secret' that an English speaker can recognize and understand the main idea. However, words like 'son' (his), 'dans' (in) may be missed, affecting nuances in meaning.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence consists almost entirely of cognate words, making it fully understandable to an English speaker through cognates alone.",
+      "actual_cognate_words": [
+        "scientifique",
+        "célèbre",
+        "découvre",
+        "formule",
+        "mystérieuse",
+        "laboratoire",
+        "secret"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Il décide de présenter ses résultats à l'université renommée de Paris.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "décide",
+        "présenter",
+        "résultats",
+        "université",
+        "renommée",
+        "Paris"
+      ],
+      "generation_reasoning": "This sentence continues the story by showing that he decides to present his results at the renowned University of Paris. It is level 2 because it includes many cognates like 'décide', 'présenter', 'résultats', 'université', 'renommée', 'Paris'. Missing words like 'ses' (his) and prepositions may cause subtle misunderstandings.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making the meaning fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "décide",
+        "présenter",
+        "résultats",
+        "université",
+        "renommée",
+        "Paris"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Pendant la conférence, un espion industriel écoute secrètement.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "pendant",
+        "conférence",
+        "espion",
+        "industriel",
+        "écoute",
+        "secrètement"
+      ],
+      "generation_reasoning": "This sentence follows the story by introducing an industrial spy listening secretly during the conference. Level 2 because it has cognates 'pendant', 'conférence', 'espion', 'industriel', 'écoute', 'secrètement', but small words like 'un', 'la' may cause nuances to be missed.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Although the sentence contains many cognate words, the word 'Pendant' may not be recognizable, causing the English speaker to miss that the spying occurs during the conference.",
+      "actual_cognate_words": [
+        "conférence",
+        "espion",
+        "industriel",
+        "écoute",
+        "secrètement"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Le soir, le scientifique réalise que ses documents importants ont disparu.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "scientifique",
+        "réalise",
+        "documents",
+        "importants",
+        "disparu"
+      ],
+      "generation_reasoning": "This continues the story by showing that the scientist realizes his important documents have disappeared. Level 2 due to cognates 'scientifique', 'réalise', 'documents', 'importants', 'disparu', but words like 'Le soir' (the evening), 'ses' (his) might be missed.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains many cognates, but words like 'Le soir' and 'ont' may not be understood, causing the English speaker to miss details like when the scientist realizes his documents have disappeared.",
+      "actual_cognate_words": [
+        "scientifique",
+        "réalise",
+        "documents",
+        "importants",
+        "disparu"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Il contacte immédiatement la police pour signaler le vol.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "contacte",
+        "immédiatement",
+        "police",
+        "signaler",
+        "vol"
+      ],
+      "generation_reasoning": "Continues the story as the scientist contacts the police immediately to report the theft. Level 2 with cognates 'contacte', 'immédiatement', 'police', 'signaler', 'vol', but words like 'la', 'pour' (to) may be missed, changing nuances.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence is composed almost entirely of cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "contacte",
+        "immédiatement",
+        "police",
+        "signaler",
+        "vol"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Les autorités commencent une enquête approfondie sur l'incident.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "autorités",
+        "commencent",
+        "enquête",
+        "approfondie",
+        "incident"
+      ],
+      "generation_reasoning": "Continues the story as authorities start an in-depth investigation into the incident. Level 2 with cognates 'autorités', 'commencent', 'enquête', 'approfondie', 'incident', but words like 'Les', 'une', 'sur' might be missed.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "autorités",
+        "commencent",
+        "enquête",
+        "approfondie",
+        "incident"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Pendant ce temps, l'espion vend les informations à une corporation rivale.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "pendant",
+        "espion",
+        "vend",
+        "informations",
+        "corporation",
+        "rivale"
+      ],
+      "generation_reasoning": "Continues by showing the spy selling the information to a rival corporation. Level 2 with cognates 'pendant', 'espion', 'vend', 'informations', 'corporation', 'rivale'. Words like 'ce', 'les', 'une' may be missed.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words, but key verbs like 'vend' and phrases like 'Pendant ce temps' may not be recognized, causing the English speaker to miss important aspects of the meaning.",
+      "actual_cognate_words": [
+        "espion",
+        "informations",
+        "corporation",
+        "rivale"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Le scientifique découvre la trahison et décide de poursuivre l'espion.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "scientifique",
+        "découvre",
+        "trahison",
+        "décide",
+        "poursuivre",
+        "espion"
+      ],
+      "generation_reasoning": "Continues as the scientist discovers the betrayal and decides to pursue the spy. Level 2 with cognates 'scientifique', 'découvre', 'trahison', 'décide', 'poursuivre', 'espion'. Words like 'la' may be missed.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While many cognate words are present, words like 'trahison' may not be recognized, causing the English speaker to miss that it is a betrayal that the scientist discovers.",
+      "actual_cognate_words": [
+        "scientifique",
+        "découvre",
+        "décide",
+        "poursuivre",
+        "espion"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Avec l'aide des autorités, il réussit à récupérer sa formule.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "aide",
+        "autorités",
+        "réussit",
+        "récupérer",
+        "formule"
+      ],
+      "generation_reasoning": "Continues by the scientist, with the help of authorities, managing to recover his formula. Level 2 with cognates 'aide', 'autorités', 'réussit', 'récupérer', 'formule'. Words like 'des', 'sa' may be missed.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words, but key verbs like 'réussit' may not be recognized, leading the English speaker to miss that he succeeds in recovering his formula.",
+      "actual_cognate_words": [
+        "Avec",
+        "aide",
+        "autorités",
+        "récupérer",
+        "formule"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    },
+    {
+      "sentence": "Finalement, il présente sa découverte au monde et reçoit une reconnaissance internationale.",
+      "target_difficulty": 2,
+      "proposed_cognate_words": [
+        "finalement",
+        "présente",
+        "découverte",
+        "monde",
+        "reçoit",
+        "reconnaissance",
+        "internationale"
+      ],
+      "generation_reasoning": "Concludes the story with him presenting his discovery to the world and receiving international recognition. Level 2 with cognates 'finalement', 'présente', 'découverte', 'monde', 'reçoit', 'reconnaissance', 'internationale'. Small connecting words may be missed.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence uses almost exclusively cognate words, making it fully understandable to an English speaker.",
+      "actual_cognate_words": [
+        "Finalement",
+        "présente",
+        "découverte",
+        "monde",
+        "reçoit",
+        "reconnaissance",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-02T21:16:08.651810"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 2,
+    "actual_difficulty_mean": 2.5,
+    "creation_date": "2025-01-02T21:14:46.939957",
+    "sentence_count": 10
+  }
+}

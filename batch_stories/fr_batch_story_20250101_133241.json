@@ -1,0 +1,256 @@
+{
+  "story": [
+    {
+      "sentence": "La compétition internationale aura lieu sur un continent européen en janvier.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "compétition",
+        "internationale",
+        "continent",
+        "européen",
+        "janvier"
+      ],
+      "generation_reasoning": "Most key words are cognates, providing clear meaning despite a few ambiguous connectors.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains many cognate words, but phrases like \"aura lieu\" (will take place) may not be understood by an English speaker, possibly missing the main verb.",
+      "actual_cognate_words": [
+        "compétition",
+        "internationale",
+        "continent",
+        "européen",
+        "janvier"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "L'artiste célèbre du musée présente une œuvre impressionnante à l'exposition.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "artiste",
+        "célèbre",
+        "musée",
+        "présente",
+        "œuvre",
+        "impressionnante",
+        "exposition"
+      ],
+      "generation_reasoning": "The main subject and action use cognates, allowing the core meaning to be easily understood.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes several cognate words, but \"œuvre\" may not be recognized, leading to missing key details.",
+      "actual_cognate_words": [
+        "artiste",
+        "célèbre",
+        "musée",
+        "présente",
+        "impressionnante",
+        "exposition"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "Le directeur général annonce une collaboration stratégique avec l'entreprise américaine.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "directeur",
+        "général",
+        "annonce",
+        "collaboration",
+        "stratégique",
+        "entreprise",
+        "américaine"
+      ],
+      "generation_reasoning": "The sentence is filled with cognates that convey the main action and entities involved.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Mostly cognates and easily understandable; an English speaker would grasp the full meaning.",
+      "actual_cognate_words": [
+        "directeur général",
+        "annonce",
+        "collaboration",
+        "stratégique",
+        "entreprise",
+        "américaine"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "Le document officiel circule dans les universités pour une validation académique.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "document",
+        "officiel",
+        "circule",
+        "universités",
+        "validation",
+        "académique"
+      ],
+      "generation_reasoning": "The key terms are cognates, making the flow of the information clear despite some connecting words.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains many cognate words; an English speaker would understand the main idea without missing details.",
+      "actual_cognate_words": [
+        "document",
+        "officiel",
+        "circule",
+        "universités",
+        "validation",
+        "académique"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "Une technologie avancée permet d'améliorer l'efficacité des systèmes modernes.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "technologie",
+        "avancée",
+        "améliorer",
+        "efficacité",
+        "systèmes",
+        "modernes"
+      ],
+      "generation_reasoning": "Core concepts are easily accessible due to the heavy use of cognates describing technology and efficiency.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes several cognates, but \"permet d'améliorer\" may not be fully understood, leading to subtle meaning changes.",
+      "actual_cognate_words": [
+        "technologie",
+        "avancée",
+        "permet",
+        "améliorer",
+        "efficacité",
+        "systèmes",
+        "modernes"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "La célébration importante inclut des discours inspirants pour la communauté locale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "célébration",
+        "importante",
+        "discours",
+        "inspirants",
+        "communauté",
+        "locale"
+      ],
+      "generation_reasoning": "Most descriptive and action words are cognates, making the sentence understandable despite some articles.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Consists of cognates and basic connectors; the meaning is clear to an English speaker.",
+      "actual_cognate_words": [
+        "célébration",
+        "importante",
+        "inclut",
+        "discours",
+        "inspirants",
+        "communauté",
+        "locale"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "Le scientifique renommé développe une hypothèse innovante sur l'espace interstellaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifique",
+        "renommé",
+        "développe",
+        "hypothèse",
+        "innovante",
+        "espace",
+        "interstellaire"
+      ],
+      "generation_reasoning": "The scientific context is clear due to the multiple cognates that define the activity and focus.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Mostly cognates; an English speaker would understand the sentence fully.",
+      "actual_cognate_words": [
+        "scientifique",
+        "renommé",
+        "développe",
+        "hypothèse",
+        "innovante",
+        "espace",
+        "interstellaire"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "L'investisseur enthousiaste discute des opportunités économiques pour l'année prochaine.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "investisseur",
+        "enthousiaste",
+        "discute",
+        "opportunités",
+        "économiques",
+        "prochaine"
+      ],
+      "generation_reasoning": "Core nouns and verbs are cognates, making the financial discussion understandable.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains numerous cognates; the main idea is clear to an English speaker.",
+      "actual_cognate_words": [
+        "investisseur",
+        "enthousiaste",
+        "discute",
+        "opportunités",
+        "économiques",
+        "année prochaine"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "Le champion olympique écrase la concurrence avec une performance exceptionnelle.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "champion",
+        "olympique",
+        "concurrence",
+        "performance",
+        "exceptionnelle"
+      ],
+      "generation_reasoning": "Names of people and actions are cognates, clarifying the competitive context.",
+      "actual_score": 2,
+      "actual_score_reasoning": "\"Écrase\" (crushes) may not be recognized, possibly altering the understanding of the action.",
+      "actual_cognate_words": [
+        "champion",
+        "olympique",
+        "concurrence",
+        "performance",
+        "exceptionnelle"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    },
+    {
+      "sentence": "L'initiative écologique cherche à réduire les effets destructeurs sur l'environnement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "initiative",
+        "écologique",
+        "réduire",
+        "effets",
+        "destructeurs",
+        "environnement"
+      ],
+      "generation_reasoning": "Environmental terms and their aims are clear through cognates, supporting comprehension.",
+      "actual_score": 2,
+      "actual_score_reasoning": "\"Cherche à\" (seeks to) may not be immediately understood, leading to subtle changes in meaning.",
+      "actual_cognate_words": [
+        "initiative",
+        "écologique",
+        "réduire",
+        "effets",
+        "destructeurs",
+        "environnement"
+      ],
+      "generation_timestamp": "2025-01-01T13:32:54.297401"
+    }
+  ],
+  "metadata": {
+    "total_count": 10,
+    "difficulty_counts": {
+      "0": 0,
+      "1": 0,
+      "2": 5,
+      "3": 5
+    },
+    "last_updated": "2025-01-01T13:33:37.371571"
+  }
+}

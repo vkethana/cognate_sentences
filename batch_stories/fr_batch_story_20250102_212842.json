@@ -1,0 +1,226 @@
+{
+  "story": [
+    {
+      "sentence": "Un scientifique découvre une nouvelle planète spectaculaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "scientifique",
+        "découvre",
+        "nouvelle",
+        "planète",
+        "spectaculaire"
+      ],
+      "generation_reasoning": "All key meaning-bearing words are cognates, making the sentence fully understandable to an English speaker. As the first sentence, it starts the story by introducing a scientist discovering a new planet.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains several cognate words such as 'scientifique', 'planète', and 'spectaculaire', allowing an English speaker to grasp the main idea about a scientist and a spectacular planet. However, the verb 'découvre' is not a cognate and is key to understanding that the scientist discovers the planet. Therefore, important details might be missed.",
+      "actual_cognate_words": [
+        "scientifique",
+        "nouvelle",
+        "planète",
+        "spectaculaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "Il décide de présenter sa découverte à la communauté internationale.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "décide",
+        "présenter",
+        "découverte",
+        "communauté",
+        "internationale"
+      ],
+      "generation_reasoning": "The sentence uses cognates for key words, making it understandable to an English speaker. It continues the story by showing the scientist deciding to present his discovery to the international community.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence contains cognate words like 'décide', 'présenter', 'découverte', 'communauté', and 'internationale', and missing words do not alter the meaning. Therefore, it is fully understandable through cognates.",
+      "actual_cognate_words": [
+        "décide",
+        "présenter",
+        "découverte",
+        "communauté",
+        "internationale"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "Les médias mondiaux diffusent l'information rapidement.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "médias",
+        "mondiaux",
+        "diffusent",
+        "information",
+        "rapidement"
+      ],
+      "generation_reasoning": "Key words are cognates, so an English speaker can understand that global media are spreading the information rapidly. This continues the story by showing the spread of the news.",
+      "actual_score": 3,
+      "actual_score_reasoning": "The sentence includes numerous cognates, making it fully understandable to an English speaker. Any missing words do not affect the overall meaning.",
+      "actual_cognate_words": [
+        "médias",
+        "mondiaux",
+        "diffusent",
+        "information",
+        "rapidement"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "Les gouvernements planifient une mission pour explorer la planète.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "gouvernements",
+        "planifient",
+        "mission",
+        "explorer",
+        "planète"
+      ],
+      "generation_reasoning": "Cognate words convey that governments are planning a mission to explore the planet. This continues the story as a reaction to the discovery.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While the sentence contains several cognates like 'gouvernements', 'mission', 'explorer', and 'planète', the verb 'planifient' may not be understood by an English speaker, which could cause them to miss the action of planning.",
+      "actual_cognate_words": [
+        "gouvernements",
+        "mission",
+        "explorer",
+        "planète"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "Les astronautes commencent leur entraînement intensif.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "astronautes",
+        "commencent",
+        "entraînement",
+        "intensif"
+      ],
+      "generation_reasoning": "Cognates indicate that astronauts are starting their intensive training, continuing the story by preparing for the mission.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence includes cognates such as 'astronautes', 'commencent', and 'intensif', but 'entraînement' may not be immediately recognized, leading to missing the idea of training.",
+      "actual_cognate_words": [
+        "astronautes",
+        "commencent",
+        "intensif"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "La mission spatiale s'élance avec succès vers la nouvelle planète.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "mission",
+        "spatiale",
+        "succès",
+        "nouvelle",
+        "planète"
+      ],
+      "generation_reasoning": "Cognate words show that the space mission launches successfully towards the new planet, advancing the story.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains cognates like 'mission', 'spatiale', 'succès', and 'planète', but the key verb 's'élance' may not be understood, causing the reader to miss that the mission launches.",
+      "actual_cognate_words": [
+        "mission",
+        "spatiale",
+        "succès",
+        "nouvelle",
+        "planète"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "Pendant le voyage, l'équipage observe des phénomènes extraordinaires.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "voyage",
+        "équipage",
+        "observe",
+        "phénomènes",
+        "extraordinaires"
+      ],
+      "generation_reasoning": "Cognates allow understanding that during the voyage, the crew observes extraordinary phenomena, continuing the story during the journey.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence has several cognates, but 'équipage' may not be recognized by an English speaker, leading to missing that it is the crew observing the phenomena.",
+      "actual_cognate_words": [
+        "voyage",
+        "observe",
+        "phénomènes",
+        "extraordinaires"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "À l'arrivée, ils trouvent des signes de vie extraterrestre avancée.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "arrivée",
+        "trouvent",
+        "signes",
+        "vie",
+        "extraterrestre",
+        "avancée"
+      ],
+      "generation_reasoning": "Cognates help an English speaker understand that upon arrival, they find signs of advanced extraterrestrial life, moving the story forward.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Despite several cognates, the key verb 'trouvent' may not be understood, leading to missing that they find the signs.",
+      "actual_cognate_words": [
+        "arrivée",
+        "signes",
+        "vie",
+        "extraterrestre",
+        "avancée"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "Le contact avec les extraterrestres change l'avenir de l'humanité.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "contact",
+        "extraterrestres",
+        "change",
+        "avenir",
+        "humanité"
+      ],
+      "generation_reasoning": "Cognates show that contact with extraterrestrials changes the future of humanity, furthering the story's impact.",
+      "actual_score": 2,
+      "actual_score_reasoning": "The sentence contains cognates like 'contact', 'extraterrestres', 'change', and 'humanité', but 'avenir' may not be recognized, causing the reader to miss that the future is being changed.",
+      "actual_cognate_words": [
+        "contact",
+        "extraterrestres",
+        "change",
+        "humanité"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    },
+    {
+      "sentence": "L'humanité entame une nouvelle ère de coopération interstellaire.",
+      "target_difficulty": 3,
+      "proposed_cognate_words": [
+        "humanité",
+        "entame",
+        "nouvelle",
+        "ère",
+        "coopération",
+        "interstellaire"
+      ],
+      "generation_reasoning": "Cognates indicate that humanity begins a new era of interstellar cooperation, concluding the story.",
+      "actual_score": 2,
+      "actual_score_reasoning": "While the sentence includes several cognates, the verb 'entame' may not be recognized, leading to missing that humanity is beginning a new era.",
+      "actual_cognate_words": [
+        "humanité",
+        "nouvelle",
+        "ère",
+        "coopération",
+        "interstellaire"
+      ],
+      "generation_timestamp": "2025-01-02T21:30:10.335345"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 3,
+    "actual_difficulty_mean": 2.2,
+    "creation_date": "2025-01-02T21:28:42.316328",
+    "sentence_count": 10
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "story": [
+    {
+      "sentence": "Le soleil se lève sur le petit village.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "soleil",
+        "village"
+      ],
+      "generation_reasoning": "This sentence matches difficulty level 1 because it includes cognates like 'soleil' and 'village' in non-crucial positions, which may hint at the topic but leave major meaning gaps for an English speaker.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognate words like 'soleil' (sun), 'petit' (petite), and 'village'. However, key verbs like 'se lève' (rises) are not cognates. An English speaker might grasp that something is happening with the small village but miss the main action.",
+      "actual_cognate_words": [
+        "soleil",
+        "sur",
+        "petit",
+        "village"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Un étranger mystérieux marche dans les rues.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "étranger",
+        "mystérieux",
+        "marche",
+        "rues"
+      ],
+      "generation_reasoning": "This continues the story by introducing a mysterious stranger walking in the streets. It matches difficulty level 1 with cognates such as 'étranger', 'mystérieux', 'marche', and 'rues' in non-crucial positions, leaving key details unclear.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Includes multiple cognates: 'étranger' (stranger), 'mystérieux' (mysterious), 'marche' (marches), 'dans' (in), 'rues' (streets). An English speaker could understand 'A mysterious stranger marches in the streets', closely matching the actual meaning.",
+      "actual_cognate_words": [
+        "étranger",
+        "mystérieux",
+        "marche",
+        "dans",
+        "rues"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Les enfants jouent près de la fontaine centrale.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "enfants",
+        "jouent",
+        "fontaine",
+        "centrale"
+      ],
+      "generation_reasoning": "This sentence continues the narrative by focusing on children playing near the central fountain. It fits difficulty level 1 with cognates like 'enfants', 'jouent', 'fontaine', and 'centrale' in non-critical positions.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains cognates like 'enfants' (infants/children), 'fontaine' (fountain), 'centrale' (central). An English speaker might understand 'The children play near the central fountain', capturing the main idea.",
+      "actual_cognate_words": [
+        "enfants",
+        "fontaine",
+        "centrale"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "L'étranger parle avec le vieil homme au marché.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "étranger",
+        "parle",
+        "homme",
+        "marché"
+      ],
+      "generation_reasoning": "Continuing the story, the stranger speaks with the old man at the market. Matches difficulty level 1 due to cognates such as 'étranger', 'parle', 'homme', and 'marché' that are not crucial to full understanding.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognates such as 'étranger' (stranger), 'parle' (parley/speaks), 'avec' (with), 'homme' (man), 'marché' (market). The word 'vieil' (old) is not a cognate, so an English speaker might miss that it's an old man, missing an important detail.",
+      "actual_cognate_words": [
+        "étranger",
+        "parle",
+        "avec",
+        "homme",
+        "marché"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Une rumeur se répand rapidement parmi les habitants.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "rumeur",
+        "rapidement",
+        "habitants"
+      ],
+      "generation_reasoning": "The narrative progresses as a rumor spreads quickly among the inhabitants. It aligns with difficulty level 1 by using cognates like 'rumeur', 'rapidement', and 'habitants' in non-essential parts.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Contains cognates like 'rumeur' (rumor), 'rapidement' (rapidly), 'habitants' (inhabitants). An English speaker might get 'A rumor spreads rapidly among the inhabitants' but could miss nuances like 'se répand' (spreads) and 'parmi' (among).",
+      "actual_cognate_words": [
+        "rumeur",
+        "rapidement",
+        "habitants"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Le maire du village organise une réunion urgente.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "maire",
+        "village",
+        "organise",
+        "réunion",
+        "urgente"
+      ],
+      "generation_reasoning": "Continuing the story, the village mayor organizes an urgent meeting. It fits difficulty level 1 with cognates such as 'maire', 'village', 'organise', 'réunion', and 'urgente' in non-crucial positions.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Features multiple cognates: 'maire' (mayor), 'village', 'organise', 'réunion' (reunion/meeting), 'urgente' (urgent). An English speaker would likely understand the sentence fully.",
+      "actual_cognate_words": [
+        "maire",
+        "village",
+        "organise",
+        "réunion",
+        "urgente"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Les villageois s'assemblent dans la grande salle.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "villageois",
+        "assemblent",
+        "grande"
+      ],
+      "generation_reasoning": "The villagers gather in the large hall, continuing the narrative. Matches difficulty level 1 by including cognates like 'villageois', 'assemblent', and 'grande' in non-critical positions.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Includes cognates such as 'villageois' (villagers), 'assemblent' (assemble), 'grande' (grand), 'salle' (hall). An English speaker might understand 'The villagers assemble in the grand hall', grasping the main idea.",
+      "actual_cognate_words": [
+        "villageois",
+        "assemblent",
+        "grande",
+        "salle"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "L'étranger révèle une nouvelle surprenante.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "étranger",
+        "révèle",
+        "nouvelle",
+        "surprenante"
+      ],
+      "generation_reasoning": "Advancing the plot, the stranger reveals surprising news. It aligns with difficulty level 1 through cognates like 'étranger', 'révèle', 'nouvelle', and 'surprenante' in non-essential parts.",
+      "actual_score": 3,
+      "actual_score_reasoning": "Contains cognates like 'étranger' (stranger), 'révèle' (reveals), 'nouvelle' (novel/news), 'surprenante' (surprising). An English speaker could understand 'The stranger reveals surprising news', closely matching the meaning.",
+      "actual_cognate_words": [
+        "étranger",
+        "révèle",
+        "nouvelle",
+        "surprenante"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Le silence tombe sur la foule étonnée.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "silence",
+        "tombe",
+        "foule"
+      ],
+      "generation_reasoning": "Continuing the story, silence falls over the astonished crowd. It fits difficulty level 1 by using cognates such as 'silence', 'tombe', and 'foule' in non-crucial positions.",
+      "actual_score": 2,
+      "actual_score_reasoning": "Includes cognates 'silence', 'tombe' (tomb/falls), 'foule' (crowd). However, 'étonnée' (astonished) is not a cognate. An English speaker might understand 'Silence falls on the crowd' but miss the crowd's astonishment.",
+      "actual_cognate_words": [
+        "silence",
+        "tombe",
+        "foule"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    },
+    {
+      "sentence": "Le soleil se couche laissant le village inquiet.",
+      "target_difficulty": 1,
+      "proposed_cognate_words": [
+        "soleil",
+        "village"
+      ],
+      "generation_reasoning": "Concluding the narrative, the sun sets leaving the village worried. This matches difficulty level 1 with cognates 'soleil' and 'village' in non-critical positions.",
+      "actual_score": 1,
+      "actual_score_reasoning": "Contains cognates like 'soleil' (sun), 'couche' (couch/sets), 'village'. However, 'inquiet' (anxious) is not a cognate, and 'se couche' may not be clearly understood as 'sets'. An English speaker might miss significant parts of the meaning.",
+      "actual_cognate_words": [
+        "soleil",
+        "couche",
+        "village"
+      ],
+      "generation_timestamp": "2025-01-02T21:21:42.656399"
+    }
+  ],
+  "metadata": {
+    "language": "fr",
+    "target_difficulty": 1,
+    "actual_difficulty_mean": 2.3,
+    "creation_date": "2025-01-02T21:20:22.057829",
+    "sentence_count": 10
+  }
+}
