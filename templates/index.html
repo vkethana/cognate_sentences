@@ -25,7 +25,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             font-size: 14px;
-            min-width: 200px;
+            min-width: 150px;
             z-index: 100;  /* Above story container but below modals */
         }
 
@@ -159,12 +159,32 @@
     </div>
     <div id="story-container">
         <div class="control-links">
+            <a href="#" id="info-link">info</a>
             <a href="#" id="story-link">story list</a>
-            <a href="#" id="stats-link">hide stats</a>
+            <a href="#" id="stats-link">show/hide stats</a>
             <a href="#" id="settings-link">settings</a>
         </div>
         <div id="sentence-display">
             press spacebar to begin
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal-overlay" id="info-modal">
+        <div class="modal">
+            <h2>Info</h2>
+            <p>
+                This app helps you learn French through reading, and translating, stories in French.
+                Press the spacebar to get started. 
+                You will see a sentence in French.
+                Every once in a while, you'll be asked to translate a sentence into English.
+                Your translations will be scored with the power of AI!
+                Your difficulty level will be adjusted based on your performance on the translation exercises.
+            </p>
+            <p>
+                You can learn more about how this app works <a target="_blank" href="https://www.vkethana.com/cognateful">here</a>.
+            </p>
+            <button onclick="document.getElementById('info-modal').style.display = 'none'">OK</button>
         </div>
     </div>
 
@@ -262,6 +282,10 @@
         const settingsLink = document.getElementById('settings-link');
         const storyModal = document.getElementById('story-list-modal');
         const storyLink = document.getElementById('story-link');
+        
+        const infoModal = document.getElementById('info-modal');
+        const infoLink = document.getElementById('info-link');
+
         const apiKeyInput = document.getElementById('api-key-input');
         const translationModal = document.getElementById('translation-modal');
         let currentSentenceToTranslate = '';
@@ -281,6 +305,17 @@
             e.preventDefault();
             storyModal.style.display = 'block';
             showStoryList();
+        });
+
+        infoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            infoModal.style.display = 'block';
+        });
+
+        infoModal.addEventListener('click', function(e) {
+            if (e.target === infoModal) {
+                infoModal.style.display = 'none';
+            }
         });
 
         settingsModal.addEventListener('click', function(e) {
@@ -306,7 +341,6 @@
             const showStats = localStorage.getItem('showStats') === 'true';
             localStorage.setItem('showStats', (!showStats).toString());
             document.getElementById('stats-panel').classList.toggle('hidden');
-            statsLink.textContent = showStats ? 'stats' : 'hide stats';
 
             // For all span elements with  sentence-difficulty class, toggle hidden class
             const sentenceDifficulties = document.querySelectorAll('.sentence-difficulty');
