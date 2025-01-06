@@ -14,12 +14,13 @@ def calculate_cognate_word_scores(data_dir):
             print("Currently considering", file_path)
             with open(file_path, 'r') as f:
                 story_data = json.load(f)
-                for sentence_data in story_data.get('sentences', []):
+                for sentence_data in story_data.get('story', []):
+                    #print("looking at sentence")
                     # Updated to use actual_score instead of score
                     score = sentence_data.get('actual_score', 0)
                     # Updated to use actual_cognate_words instead of cognate_words
                     cognate_words = sentence_data.get('actual_cognate_words', [])
-                    print("Cognate words:", cognate_words)
+                    #print("Cognate words:", cognate_words)
                     
                     for word in cognate_words:
                         cognate_scores[word] += score

@@ -11,7 +11,7 @@ language_codes = {
     'fr': 'French'
 }
 SENTENCE_GENERATION_MODEL = 'gpt-4o'
-SENTENCE_SCORING_MODEL = 'o1-preview'
+SENTENCE_SCORING_MODEL = 'o1-preview' # 'o1' doesn't work for some reason
 data_directory = 'batch_stories_4o_generate_o1_score'
 
 def gpt_scored_rubric_batch(sentences):
