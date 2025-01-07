@@ -7,13 +7,16 @@ const MIN_DIFFICULTY = 0.0;
 // State variables
 let currentSentenceToTranslate = '';
 
-// Initialize local storage
+// Initialize local storage and UI state
 if (!localStorage.getItem('currentStoryFile')) {
     localStorage.setItem('currentStoryFile', '');
     localStorage.setItem('currentSentenceIndex', '0');
     localStorage.setItem('userDifficulty', '2.5');
     localStorage.setItem('seenStories', JSON.stringify([]));
 }
+
+// Set initial stats panel display state explicitly
+document.getElementById('stats-panel').style.display = 'none';
 
 // Stats display initialization
 document.getElementById('user-difficulty').textContent = 

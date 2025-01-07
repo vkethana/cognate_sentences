@@ -235,7 +235,7 @@ def get_story_details(story_title):
         filename = f"{story_title}.json"
         with open(os.path.join(STORIES_DIR, filename), 'r', encoding='utf-8') as f:
             story_data = json.load(f)
-            
+
         sentences = [
             {
                 'text': sentence['sentence'],
@@ -243,7 +243,7 @@ def get_story_details(story_title):
             }
             for sentence in story_data['story']
         ]
-            
+
         return jsonify({
             'title': story_title,
             'sentences': sentences
