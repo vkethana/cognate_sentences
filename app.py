@@ -11,8 +11,9 @@ app = Flask(__name__)
 
 STORIES_DIR = "batch_stories"
 SENTENCE_SCORING_MODEL = 'gpt-4o'
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY_COGNATEFUL"])
 
-def llm_score_translation(original: str, translation: str, api_key: str) -> Dict:
+def llm_score_translation(original: str, translation: str) -> Dict:
     """
     Scores a translation using the Language Model API.
     
@@ -25,7 +26,6 @@ def llm_score_translation(original: str, translation: str, api_key: str) -> Dict
         is_correct: A boolean indicating if the translation is correct
         wrong_morphemes: A list of morphemes that were incorrect
     """
-    client = OpenAI(api_key=api_key)
     system_prompt = f"""
         You are an expert in French-English translation. I will give you a sentence in French and a sentence in English. (The input will be provided in JSON format as described below.) Your job is to tell me whether the English sentence is a correct translation of the French sentence. If it is not, please identify words/morphemes that were incorrectly translated or are missing in the translation. You will be using a JSON format to provide your response.
         Here's the input format:
@@ -142,22 +142,16 @@ def load_story(filename: str) -> Dict:
 
 @app.route('/score_translation', methods=['POST'])
 def score_translation():
-    # Get the OpenAI API key from headers to simulate real authentication
-    auth_header = request.headers.get('Authorization')
-    if not auth_header or not auth_header.startswith('Bearer '):
-        return jsonify({'error': 'Missing or invalid API key'}), 401
-
     # Get the translation data
     data = request.get_json()
     original = data.get('original')
     translation = data.get('translation')
-    api_key = auth_header.split('Bearer ')[1].strip()
 
     if not original or not translation:
         return jsonify({'error': 'Missing original or translation text'}), 400
 
     wrong_morphemes = []
-    scoring_results = llm_score_translation(original, translation, api_key)
+    scoring_results = llm_score_translation(original, translation)
     try: 
         is_correct, wrong_morphemes = bool(scoring_results['is_correct']), list(scoring_results['incorrect_morphemes'])
     except:
