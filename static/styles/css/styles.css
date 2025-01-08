@@ -65,6 +65,7 @@ body {
     font-size: 14px;
     min-width: 150px;
     z-index: 100;  /* Above story container but below modals */
+    display: hidden;
 }
 
 #help-button:hover,
