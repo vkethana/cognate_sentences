@@ -18,7 +18,7 @@ if (!localStorage.getItem('currentStoryFile')) {
 */
 localStorage.setItem('currentStoryFile', '');
 localStorage.setItem('currentSentenceIndex', '0');
-localStorage.setItem('userDifficulty', '2.5');
+localStorage.setItem('userDifficulty', '3');
 localStorage.setItem('seenStories', JSON.stringify([]));
 
 // Set initial stats panel display state explicitly
@@ -37,10 +37,14 @@ function toggleStats() {
     panel.style.display = isVisible ? 'none' : 'block';
 
     // Toggle difficulty displays
+    /*
     const difficulties = document.querySelectorAll('.difficulty');
+    
     difficulties.forEach(diff => {
         diff.classList.toggle('visible');
     });
+    */
+    document.body.classList.toggle('show-stats');
 }
 
 function createSentenceBlock(sentence, difficulty, isActive = false) {
@@ -90,6 +94,10 @@ async function handleNext() {
         await handleSpacePress();
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    handleSpacePress();
+});
 
 async function handleSpacePress() {
     const display = document.getElementById('sentence-display');

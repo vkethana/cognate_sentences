@@ -10,7 +10,7 @@
         "relaxer"
       ],
       "generation_reasoning": "This sentence contains cognates like 'décide' (decides), 'partir' (to leave), 'vacances' (vacation), and 'relaxer' (to relax), making the main concept understandable with missing details like 'pour' (for).",
-      "actual_score": 3,
+      "actual_score": 2,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable through cognates. Missing words are basic connectors and do not change the meaning.",
       "actual_cognate_words": [
         "Marie",
@@ -32,7 +32,7 @@
         "vue"
       ],
       "generation_reasoning": "Cognates such as 'choisit' (chooses), 'hôtel' (hotel), 'luxueux' (luxurious), 'belle' (beautiful), and 'vue' (view) make the main idea clear. Continuation: Marie's plan for a relaxing vacation.",
-      "actual_score": 3,
+      "actual_score": 2,
       "actual_score_reasoning": "The sentence contains many cognate words, making it fully understandable through cognates. The missing words are basic connectors and do not alter the overall meaning.",
       "actual_cognate_words": [
         "choisit",
@@ -75,7 +75,7 @@
         "visitent"
       ],
       "generation_reasoning": "Cognates such as 'discutent' (discuss), 'magnifiques' (magnificent), 'plages' (beaches), and 'visitent' (visit) help infer a discussion topic, though subtleties may be missed. Continuation: Deepens the conversation related to travel.",
-      "actual_score": 3,
+      "actual_score": 1,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable to an English speaker. Missing words are basic connectors and pronouns that do not alter the meaning.",
       "actual_cognate_words": [
         "discutent",
@@ -97,7 +97,7 @@
         "amis"
       ],
       "generation_reasoning": "Cognates like 'promet' (promises), 'envoyer' (to send), 'cartes postales' (postcards), and 'amis' (friends). The promise indicates her intended actions on vacation. Continuation: Highlights her intentions of staying in touch.",
-      "actual_score": 3,
+      "actual_score": 2,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable. Basic connectors and possessive pronouns do not alter the meaning.",
       "actual_cognate_words": [
         "Marie",
@@ -139,7 +139,7 @@
         "incroyables"
       ],
       "generation_reasoning": "Cognates 'trajet' (journey), 'admire' (admires), 'paysages' (landscapes), 'incroyables' (incredible) highlight her activity during travel. Continuation: Captures her experience during travel.",
-      "actual_score": 3,
+      "actual_score": 2,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words, allowing an English speaker to fully understand the meaning. Missing words are basic connectors.",
       "actual_cognate_words": [
         "Pendant",
@@ -161,7 +161,7 @@
         "immédiatement"
       ],
       "generation_reasoning": "The cognates 'arrive' (arrives), 'finalement' (finally), 'hôtel' (hotel), 'repose' (rests), 'immédiatement' (immediately) outline her arrival and initial action at the destination. Continuation: Describes her arrival and immediate actions.",
-      "actual_score": 3,
+      "actual_score": 2,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable to an English speaker. Basic connectors and pronouns do not change the meaning.",
       "actual_cognate_words": [
         "arrive",
@@ -207,7 +207,7 @@
         "parfait"
       ],
       "generation_reasoning": "Cognates like 'grand' (big), 'sourire' (smile), 'pense' (thinks), 'voyage' (trip), 'parfait' (perfect) convey her positive assessment, although subjective nuances might be missed. Continuation: Reflects on her positive perception of the trip.",
-      "actual_score": 3,
+      "actual_score": 2,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words, making it fully understandable through cognates. Basic connectors do not alter the meaning.",
       "actual_cognate_words": [
         "Avec",

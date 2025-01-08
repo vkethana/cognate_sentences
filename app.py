@@ -98,7 +98,7 @@ def calculate_story_difficulty(story_data: Dict) -> float:
     difficulties = [sentence['actual_score'] for sentence in story_data['story']]
     return sum(difficulties) / len(difficulties)
 
-def get_story_candidates(target_difficulty: float, seen_stories: List[str], tolerance: float = 0.5) -> str:
+def get_story_candidates(target_difficulty: float, seen_stories: List[str], tolerance: float = 0.3) -> str:
     """
     Returns a random story filename that:
     1. Hasn't been seen before
@@ -175,7 +175,7 @@ def get_sentence():
     
     if data.get('needNewStory'):
         # Get user's current difficulty and seen stories
-        user_difficulty = float(data.get('userDifficulty', 2.5))  # Default to middle difficulty
+        user_difficulty = float(data.get('userDifficulty', 3.0))  # Default to middle difficulty
         seen_stories = data.get('seenStories', [])
         
         # Select appropriate story
