@@ -1,7 +1,7 @@
 {
   "story": [
     {
-      "sentence": "Le professeur international visite Paris pour une conférence.",
+      "sentence": "Le professeur visite Paris pour une conférence.",
       "target_difficulty": 3,
       "proposed_cognate_words": [
         "professeur",
@@ -9,12 +9,11 @@
         "visite",
         "conférence"
       ],
-      "generation_reasoning": "The sentence uses many cognates like 'professeur', 'international', 'visite', and 'conférence', making it fully understandable to English speakers.",
+      "generation_reasoning": "The sentence uses many cognates like 'professeur', 'visite', and 'conférence', making it fully understandable to English speakers.",
       "actual_score": 3,
       "actual_score_reasoning": "The sentence contains almost exclusively cognate words that are similar to English, making it fully understandable through cognates.",
       "actual_cognate_words": [
         "professeur",
-        "international",
         "visite",
         "Paris",
         "conférence"
